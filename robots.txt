@@ -1,0 +1,24 @@
+User-agent: *
+Disallow:
+Crawl-delay: 60
+Disallow: /css/
+Disallow: /images/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /private/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Disallow: /*.jpg$
+Disallow: /*.png$
+Disallow: /*.gif$
+Disallow: /*.jpeg$
+Disallow: /*.png$
+Disallow: /*.bmp$
+Disallow: /resume.html$
+Disallow: /resume.md$
+Disallow: /*.resume.html$
+Disallow: /*.resume.md$
+
+Sitemap: https://www.lengyuewusheng.com/sitemap.xml
+Sitemap: https://www.lengyuewusheng.com/baidusitemap.xml
