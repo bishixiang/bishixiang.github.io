@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="冷月无声">
 <meta property="og:description" content="工欲善其事必先利其器。。。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-17T08:03:08.121Z">
+<meta property="og:updated_time" content="2019-02-21T13:51:29.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tmux窗口管理">
 <meta name="twitter:description" content="工欲善其事必先利其器。。。">
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-17 16:03:08" itemprop="dateModified" datetime="2019-01-17T16:03:08+08:00">2019-01-17</time>
+                <time title="修改时间：2019-02-21 21:51:29" itemprop="dateModified" datetime="2019-02-21T21:51:29+08:00">2019-02-21</time>
               
             
           </span>
@@ -626,15 +626,31 @@
 <li>流出所有的 session、window、pane、运行的进程号：<code>tmux info</code></li>
 <li>变更配置文件后重新加载配置文件：<code>tmux source-file ~/.tmux.conf</code></li>
 <li>重命名会话<code>tmux rename -t 原会话名  新会话名</code></li>
-<li>会话间移动窗口：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`Ctrl + b,:`  进入命令行模式;</span><br><span class="line">move-window -s 源会话名:窗口号 -t 目标会话名        //move-window可以简写为movew</span><br><span class="line">movew -d 源会话名:窗口号                            //将某个窗口移动到当前会话</span><br></pre></td></tr></table></figure>
+<li><p>会话间移动窗口：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`Ctrl + b,:`  进入命令行模式;</span><br><span class="line">move-window -s 源会话名:窗口号 -t 目标会话名        //move-window可以简写为movew</span><br><span class="line">movew -d 源会话名:窗口号                            //将某个窗口移动到当前会话</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制模式</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">`Ctrl+b	[`进入复制模式，按`q`退出</span><br><span class="line">按下`空格键`开始复制，移动光标选择复制区域</span><br><span class="line">按下`回车键`复制选中文本并退出复制模式</span><br><span class="line">按下`Ctrl+b	]`粘贴复制模式中复制的文本</span><br></pre></td></tr></table></figure>
+<ul>
+<li>复制模式中不接受键盘的字符输入，如果误入复制模式，可以直接按<code>q</code>键退出复制模式。</li>
+<li>另外复制模式中可以上翻查看在普通模式下无法查看的屏幕输出内容。</li>
+</ul>
+</li>
+<li><p>终端类型与配色方案</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ncurses库包名</span><br><span class="line">    CentOS 5:</span><br><span class="line">    ncurses-5.5-24.20060715</span><br><span class="line">    CentOS 6/7:</span><br><span class="line">    ncurses-base-5.9-13.20130511.el7.noarch</span><br><span class="line">文件路径</span><br><span class="line">    /usr/share/terminfo/</span><br><span class="line">    eg:</span><br><span class="line">    /usr/share/terminfo/s/screen-256color</span><br><span class="line">    /usr/share/terminfo/x/xterm-256color</span><br><span class="line">终端配置</span><br><span class="line">    echo $TERM</span><br><span class="line">    echo $TERMINFO</span><br><span class="line">    export TERM=screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">    export TERMINFO=/user/share/terminfo</span><br><span class="line">tmux 临时设置默认终端类型</span><br><span class="line">    set -g default-terminal &quot;xterm&quot;</span><br><span class="line">当终端不支持screen-256color，vim编辑文件报错时，将TERM修改为xterm</span><br><span class="line">    # echo $TERM</span><br><span class="line">    screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">备注：</span><br><span class="line">    vim ~/.tmux.conf</span><br><span class="line">    必须设置成</span><br><span class="line">    set -g default-terminal &quot;screen-256color&quot;</span><br><span class="line">    不能设置成</span><br><span class="line">    set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">    否则tmux新开的窗口中默认的$TERM就是xterm-256color，</span><br><span class="line">    开启omnitty 会有阴影，显示会有问题。也可以手动修改窗口中的$TERM环境变量消除阴影。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>screen-256color和xterm-256color的区别？</p>
 </li>
 </ul>
-<p>export TERM=xterm</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a href="http://linuxwiki.github.io/ProductivityTools/tmux.html" target="_blank" rel="noopener">tmux wiki</a></li>
 <li><a href="http://louiszhai.github.io/2017/09/30/tmux/#Tmux%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener">Tmux使用手册</a></li>
+<li><a href="https://linux.cn/blog-17704-5941.html" target="_blank" rel="noopener">linux term</a></li>
+<li><a href="http://www.kbase101.com/question/26581.html" target="_blank" rel="noopener">zsh：在tmux中设置TERM = screen-256color，但在没有tmux的情况下设置xterm-256color</a></li>
+<li><a href="https://better-coding.com/solved-xterm-256color-unknown-terminal-type/" target="_blank" rel="noopener">xterm-256color’: unknown terminal type.</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/GNU_Screen_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">GNU Screen</a>#%E4%BD%BF%E7%94%A8_256_%E8%89%B2)</li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/11/00015_存储空间计算/">存储空间计算</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/12/00016_Linux共享内存机制/">Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/22/00021_Linux系统中的IO模型/">Linux系统中的IO模式</a></li><li><a href="https://www.lengyuewusheng.com/2018/03/12/00027_awk使用总结/">awk使用总结</a></li></ul></div>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/2017/08/11/00015_存储空间计算/">存储空间计算</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/12/00016_Linux共享内存机制/">Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/22/00021_Linux系统中的IO模型/">Linux系统中的IO模式</a></li><li><a href="https://www.lengyuewusheng.com/2018/03/14/00029_Linux访问Windows共享/">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/">常用shell命令总结</a></li></ul></div>
       
     </div>
 
@@ -681,7 +697,7 @@
   <p><span>本文标题:</span><a href="/2018/03/03/00026_tmux窗口管理/">tmux窗口管理</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p>
   <p><span>发布时间:</span>2018年03月03日 - 12:03</p>
-  <p><span>最后更新:</span>2019年01月17日 - 16:01</p>
+  <p><span>最后更新:</span>2019年02月21日 - 21:02</p>
   <p><span>原始链接:</span><a href="/2018/03/03/00026_tmux窗口管理/" title="tmux窗口管理">https://www.lengyuewusheng.com/2018/03/03/00026_tmux窗口管理/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/2018/03/03/00026_tmux窗口管理/" aria-label="复制成功！"></i></span>
   </p>
@@ -906,6 +922,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     
