@@ -210,9 +210,9 @@
         <category>技术</category>
       </categories>
       <tags>
+        <tag>rpm</tag>
         <tag>Linux</tag>
         <tag>yum</tag>
-        <tag>rpm</tag>
       </tags>
   </entry>
   <entry>
@@ -300,8 +300,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
         <tag>Linux</tag>
+        <tag>Windows</tag>
         <tag>共享</tag>
       </tags>
   </entry>
@@ -422,8 +422,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>共享内存</tag>
         <tag>Linux</tag>
+        <tag>共享内存</tag>
       </tags>
   </entry>
   <entry>
@@ -480,8 +480,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>rewrite</tag>
         <tag>nginx</tag>
+        <tag>rewrite</tag>
       </tags>
   </entry>
   <entry>
@@ -492,8 +492,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>rewrite</tag>
         <tag>nginx</tag>
+        <tag>rewrite</tag>
       </tags>
   </entry>
   <entry>
