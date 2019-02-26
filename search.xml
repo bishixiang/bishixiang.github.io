@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[rsync用例总结]]></title>
-    <url>%2F2018%2F12%2F04%2F00053_rsync%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93%2F</url>
+    <title><![CDATA[rsync经典用例总结]]></title>
+    <url>%2F2018%2F12%2F04%2F00053_rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[rsync是经典的数据传输工具，但本篇博客总结的既不细致，也不全面。惭愧，惭愧。。。 备份更新1rsync -avzP -b --suffix=$(date &quot;+.bak%Y%m%d%H%M%S&quot;) --backup-dir=/data/backup/ src dst 备份目录下如果存在同名文件会被新的备份文件强制覆盖 -b –suffix 既适用推送也适用于拉取，但是都是在dest侧备份 -b –backup-dir 仅适用于拉取，推送数据时适用会报错 递归创建目录1rsync -avzP -R src dest -R 参数会在dest目录基础上递归创建src目录路径，如rsync -avzP -R 10.0.0.1::data/data/test1/test2/test3 /data/test,在本地会生成路径/data/test/data/test1/test2/test3 慎用–delete12345678910rsync -avzP --delete 10.0.0.1::data/data/test /data/test //该种写法会在/data/test下再创建一层test目录，不会删除/data/test的其它目录和rsync -avzP --delete 10.0.0.1::data/data/test/ /data/test //该种写法会将本地/data/test目录下的文件与src目录强一致的效果是截然不同的，自己体会下。细思极恐。。。另外，rsync -avzP --delete 10.0.0.1::data/data/test/ /data/test和rsync -avzP --delete 10.0.0.1::data/data/test/* /data/test //该种写法会将src目录下的子文件和目录和本地/data/test中的同名子文件和目录进行强一致，本地/data/test中的其它文件目录不会被删除的效果也不同，使用时要十分谨慎。 rsync认证 RSYNC_PASSWORD仅适用于rsync协议，rsync配置中指定的用户密码，rsync服务需要通过daemon方式启动； 1export RSYNC_PASSWORD=&quot;passwd&quot; rsync协议使用的两种方式 rsync 协议 12rsync rsync://username@1.2.3.4:/abc /defrsync 1.2.3.4::abc/ /def ssh 协议 1rsync 1.2.3.4:/abc/ /def 仅适用rsync客户端，通过ssh协议传输 参考 http://linuxwiki.github.io/Services/rsync.html https://www.cnblogs.com/shihuc/p/5628893.html https://unix.stackexchange.com/questions/111526/how-can-i-rsync-without-prompt-for-password-without-using-public-key-authentica]]></content>
       <categories>
         <category>技术积累</category>
