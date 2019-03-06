@@ -127,14 +127,14 @@
 
 
   <meta name="description" content="共享内存允许两个或更多进程访问同一块内存。">
-<meta name="keywords" content="Hexo,Blog,lengyuewusheng">
+<meta name="keywords" content="共享内存,tmpfs,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统中的tmpfs、&#x2F;dev&#x2F;shm、tmp以及共享内存机制">
 <meta property="og:url" content="https://www.lengyuewusheng.com/2017/08/12/00016_Linux共享内存机制/index.html">
 <meta property="og:site_name" content="冷月无声">
 <meta property="og:description" content="共享内存允许两个或更多进程访问同一块内存。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-18T11:32:50.713Z">
+<meta property="og:updated_time" content="2019-03-06T13:01:54.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统中的tmpfs、&#x2F;dev&#x2F;shm、tmp以及共享内存机制">
 <meta name="twitter:description" content="共享内存允许两个或更多进程访问同一块内存。">
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2017-08-18 19:32:50" itemprop="dateModified" datetime="2017-08-18T19:32:50+08:00">2017-08-18</time>
+                <time title="修改时间：2019-03-06 21:01:54" itemprop="dateModified" datetime="2019-03-06T21:01:54+08:00">2019-03-06</time>
               
             
           </span>
@@ -502,7 +502,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
 
                 
                 
@@ -584,7 +584,53 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cat /proc/sys/kernel/shmmax</span><br><span class="line">68719476736</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>/dev/shm空间大小设定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t tmpfs -o size=2G tmpfs -o remount /dev/shm</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t tmpfs -o size=2G tmpfs -o remount /dev/shm</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="修改tmpfs大小"><a href="#修改tmpfs大小" class="headerlink" title="修改tmpfs大小"></a>修改tmpfs大小</h1><ul>
+<li><p>/etc/fstab 字段介绍</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/fstab</span><br><span class="line"># &lt;file system&gt;            &lt;dir&gt;                        &lt;type&gt;    &lt;options&gt;             &lt;dump&gt; &lt;pass&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>file system: 要挂载的分区或存储设备</li>
+<li>dir:  file systems的挂载位置</li>
+<li>type: 要挂载设备或是分区的文件系统类型<ul>
+<li>ext2, ext3, ext4, reiserfs, xfs, jfs, smbfs, iso9660, vfat, ntfs, swap 及 auto</li>
+</ul>
+</li>
+<li>options: 挂载时使用的参数<ul>
+<li>defaults</li>
+</ul>
+</li>
+<li>dump: dump工具通过它决定何时作备份<ul>
+<li>0和1,0表示忽略，1则进行备份。大部分的用户是没有安装 dump 的，对他们而言<dump>应设为 0。</dump></li>
+</ul>
+</li>
+<li>pass fsck 读取 pass的数值来决定需要检查的文件系统的检查顺序。允许的数字是0,1,和2。<ul>
+<li>根目录应当获得最高的优先权 1,</li>
+<li>其它所有需要被检查的设备设置为 2.</li>
+<li>0表示设备不会被 fsck 所检查。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>centos5修改tmpfs大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0            //修改这行不起作用</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind,size=55g         0 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>centos6/7修改tmpfs大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs       /dev/shm      tmpfs   defaults,size=30g        0 0</span><br><span class="line">/dev/shm    /tmp          none     rw,bind                 0 0    // 修改这行不起作用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mount -a        //加载文件&quot;/etc/fstab&quot;中描述的所有文件系统。</span><br><span class="line">mount -o remount /dev/shm   //重新加载设备</span><br></pre></td></tr></table></figure>
+<ul>
+<li>要直接执行 mount -a 命令，因为可能造成无法访问当前目录中的文件（比如你应该保证 lockfiles 的正常存在）。</li>
+<li>然而，如果它们都是空的，那么就可以直接执行 mount -a 而不必重启电脑。</li>
+<li><p>应用更改后，可以通过 findmnt 检查是否生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findmnt --target /tmp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tmpfs 可以设置成比物理内存大，但是只能存储小于物理内存空间的数据，之后会出现登录掉线等异常.</p>
+</li>
+</ul>
+</li>
 </ul>
 <div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/2017/08/11/00015_存储空间计算/">存储空间计算</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/22/00021_Linux系统中的IO模型/">Linux系统中的IO模式</a></li><li><a href="https://www.lengyuewusheng.com/2018/03/03/00026_tmux窗口管理/">tmux窗口管理</a></li><li><a href="https://www.lengyuewusheng.com/2018/03/14/00029_Linux访问Windows共享/">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/">常用shell命令总结</a></li></ul></div>
       
@@ -633,7 +679,7 @@
   <p><span>本文标题:</span><a href="/2017/08/12/00016_Linux共享内存机制/">Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p>
   <p><span>发布时间:</span>2017年08月12日 - 22:08</p>
-  <p><span>最后更新:</span>2017年08月18日 - 19:08</p>
+  <p><span>最后更新:</span>2019年03月06日 - 21:03</p>
   <p><span>原始链接:</span><a href="/2017/08/12/00016_Linux共享内存机制/" title="Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制">https://www.lengyuewusheng.com/2017/08/12/00016_Linux共享内存机制/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/2017/08/12/00016_Linux共享内存机制/" aria-label="复制成功！"></i></span>
   </p>
@@ -850,7 +896,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -862,6 +942,10 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
+                    
+                      
                     
                       
                     
@@ -1171,7 +1255,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tmpfs"><span class="nav-text">tmpfs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dev-shm"><span class="nav-text">/dev/shm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tmp目录"><span class="nav-text">/tmp目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux的两种共享内存机制"><span class="nav-text">Linux的两种共享内存机制:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tmpfs"><span class="nav-text">tmpfs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dev-shm"><span class="nav-text">/dev/shm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tmp目录"><span class="nav-text">/tmp目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux的两种共享内存机制"><span class="nav-text">Linux的两种共享内存机制:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改tmpfs大小"><span class="nav-text">修改tmpfs大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
             
 
           </div>

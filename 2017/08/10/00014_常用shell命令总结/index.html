@@ -127,14 +127,14 @@
 
 
   <meta name="description" content="Linux常用低端入门命令。">
-<meta name="keywords" content="shell,命令,Linux">
+<meta name="keywords" content="shell,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用shell命令总结">
 <meta property="og:url" content="https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/index.html">
 <meta property="og:site_name" content="冷月无声">
 <meta property="og:description" content="Linux常用低端入门命令。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-22T07:37:26.411Z">
+<meta property="og:updated_time" content="2019-03-04T12:56:26.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用shell命令总结">
 <meta name="twitter:description" content="Linux常用低端入门命令。">
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-22 15:37:26" itemprop="dateModified" datetime="2018-11-22T15:37:26+08:00">2018-11-22</time>
+                <time title="修改时间：2019-03-04 20:56:26" itemprop="dateModified" datetime="2019-03-04T20:56:26+08:00">2019-03-04</time>
               
             
           </span>
@@ -502,7 +502,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a></span>
 
                 
                 
@@ -683,7 +683,7 @@
 <li><p>变量赋值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;VAR:-string&#125;  如果VAR变量为空则返回string</span><br><span class="line">$&#123;VAR:+string&#125;  如果VAR变量不为空则返回string</span><br><span class="line">$&#123;VAR:=string&#125;  如果VAR变量为空则重新赋值VAR变量值为string</span><br><span class="line">$&#123;VAR:?string&#125;  如果VAR变量为空则将&quot;string&quot;作为报错信息输出到stderr</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>字符串截取</p>
+<li><p>字符串截取及替换</p>
 </li>
 </ul>
 <table>
@@ -726,9 +726,25 @@
 <td style="text-align:left">${var:0-n}</td>
 <td style="text-align:left">从右边第n个字符开始，往右截取到最后</td>
 </tr>
+<tr>
+<td style="text-align:left">${var/ABC/abc}</td>
+<td style="text-align:left">将${var}中第一个ABC用abc替换ABC</td>
+</tr>
+<tr>
+<td style="text-align:left">${var//ABC/abc}</td>
+<td style="text-align:left">将${var}中所有的ABC用abc替换ABC</td>
+</tr>
+<tr>
+<td style="text-align:left">${var/#ABC/abc}</td>
+<td style="text-align:left">如果字符串${var}以ABC开头则用abc替换ABC</td>
+</tr>
+<tr>
+<td style="text-align:left">${var/%ABC/abc}</td>
+<td style="text-align:left">如果字符串${var}以ABC结尾则用abc替换ABC</td>
+</tr>
 </tbody>
 </table>
-<p>eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$&#123;var&#125;=http://test.com/index.html_http://test.com/default.html</span><br><span class="line"></span><br><span class="line">$&#123;var#*//&#125;:	test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var##*/&#125;:	default.html</span><br><span class="line">$&#123;var%/*&#125;:	http://test.com/index.html_http://test.com</span><br><span class="line">$&#123;var%%/*&#125;:	http:</span><br><span class="line">$&#123;var:0:3&#125;:	htt</span><br><span class="line">$&#123;var:5&#125;:	//test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var:0-10:3&#125;:	fau</span><br><span class="line">$&#123;var:0-10&#125;:	fault.html</span><br></pre></td></tr></table></figure></p>
+<p>eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var=http://test.com/index.html_http://test.com/default.html</span><br><span class="line"></span><br><span class="line">$&#123;var#*//&#125;:	test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var##*/&#125;:	default.html</span><br><span class="line">$&#123;var%/*&#125;:	http://test.com/index.html_http://test.com</span><br><span class="line">$&#123;var%%/*&#125;:	http:</span><br><span class="line">$&#123;var:0:3&#125;:	htt</span><br><span class="line">$&#123;var:5&#125;:	//test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var:0-10:3&#125;:	fau</span><br><span class="line">$&#123;var:0-10&#125;:	fault.html</span><br><span class="line">$&#123;var/http/https&#125;:  https://test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var//http/https&#125;:  https://test.com/index.html_https://test.com/default.html</span><br><span class="line">$&#123;var/#http/https&#125;:  https://test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var/%html/php&#125;:  http://test.com/index.html_http://test.com/default.php</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>变量的间接引用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var1=&quot;It&apos;s a magical way&quot;</span><br><span class="line">var2=&quot;var1&quot;</span><br><span class="line">echo &quot;$&#123;!var2&#125;&quot;</span><br></pre></td></tr></table></figure>
@@ -861,7 +877,7 @@
   <p><span>本文标题:</span><a href="/2017/08/10/00014_常用shell命令总结/">常用shell命令总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p>
   <p><span>发布时间:</span>2017年08月10日 - 21:08</p>
-  <p><span>最后更新:</span>2018年11月22日 - 15:11</p>
+  <p><span>最后更新:</span>2019年03月04日 - 20:03</p>
   <p><span>原始链接:</span><a href="/2017/08/10/00014_常用shell命令总结/" title="常用shell命令总结">https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/" aria-label="复制成功！"></i></span>
   </p>
@@ -928,8 +944,6 @@
         <div class="post-tags">
           
             <a href="/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
-          
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
           
         </div>
       
@@ -1078,7 +1092,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1090,6 +1138,10 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
+                    
+                      
                     
                       
                     

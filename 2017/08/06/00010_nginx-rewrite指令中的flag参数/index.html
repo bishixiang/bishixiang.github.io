@@ -127,14 +127,14 @@
 
 
   <meta name="description" content="Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。">
-<meta name="keywords" content="Hexo,Blog,lengyuewusheng">
+<meta name="keywords" content="nginx,rewrite">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx-rewrite指令中的flag参数">
 <meta property="og:url" content="https://www.lengyuewusheng.com/2017/08/06/00010_nginx-rewrite指令中的flag参数/index.html">
 <meta property="og:site_name" content="冷月无声">
 <meta property="og:description" content="Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-24T11:18:35.806Z">
+<meta property="og:updated_time" content="2019-02-27T12:57:36.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx-rewrite指令中的flag参数">
 <meta name="twitter:description" content="Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。">
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-24 19:18:35" itemprop="dateModified" datetime="2018-10-24T19:18:35+08:00">2018-10-24</time>
+                <time title="修改时间：2019-02-27 20:57:36" itemprop="dateModified" datetime="2019-02-27T20:57:36+08:00">2019-02-27</time>
               
             
           </span>
@@ -502,7 +502,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/nginx/" itemprop="url" rel="index"><span itemprop="name">nginx</span></a></span>
 
                 
                 
@@ -580,10 +580,14 @@
 </table>
 <ul>
 <li>说明<ul>
+<li>last：将rewrite后的地址重新在server标签执行；</li>
+<li>break：将rewrite后地址重新在当前的location标签执行；</li>
+<li>last和break正常返回200状态码；</li>
 <li>last一般写在server和if中，而break一般使用在location中；</li>
 <li>last不终止重写后的url匹配，而break终止重写后的匹配；</li>
 <li>一般使用302重定向是在一个网站或网页在24到48小时之内临时移到其它位置，建议尽量采用301重定向；</li>
 <li>rewrite指令执行过程中如果循环超过10次，则返回500 Internal Server Error错误；</li>
+<li>rewrite正则表达regex式中包含 “}” 或 “;”时整个表达式需要用双引号或单引号引起来；</li>
 </ul>
 </li>
 </ul>
@@ -640,7 +644,7 @@
   <p><span>本文标题:</span><a href="/2017/08/06/00010_nginx-rewrite指令中的flag参数/">nginx-rewrite指令中的flag参数</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p>
   <p><span>发布时间:</span>2017年08月06日 - 06:08</p>
-  <p><span>最后更新:</span>2018年10月24日 - 19:10</p>
+  <p><span>最后更新:</span>2019年02月27日 - 20:02</p>
   <p><span>原始链接:</span><a href="/2017/08/06/00010_nginx-rewrite指令中的flag参数/" title="nginx-rewrite指令中的flag参数">https://www.lengyuewusheng.com/2017/08/06/00010_nginx-rewrite指令中的flag参数/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/2017/08/06/00010_nginx-rewrite指令中的flag参数/" aria-label="复制成功！"></i></span>
   </p>
@@ -857,7 +861,41 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -869,6 +907,10 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
+                    
+                      
                     
                       
                     
