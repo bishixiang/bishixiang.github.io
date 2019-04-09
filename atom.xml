@@ -44,13 +44,13 @@
   </entry>
   
   <entry>
-    <title>应用开发开发的12要素</title>
-    <link href="https://www.lengyuewusheng.com/2019/01/25/00057_%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%BC%80%E5%8F%91%E7%9A%8412%E8%A6%81%E7%B4%A0/"/>
-    <id>https://www.lengyuewusheng.com/2019/01/25/00057_应用开发开发的12要素/</id>
+    <title>应用开发的12要素</title>
+    <link href="https://www.lengyuewusheng.com/2019/01/25/00057_%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%8412%E8%A6%81%E7%B4%A0/"/>
+    <id>https://www.lengyuewusheng.com/2019/01/25/00057_应用开发的12要素/</id>
     <published>2019-01-25T14:47:57.000Z</published>
-    <updated>2019-04-09T06:08:49.895Z</updated>
+    <updated>2019-04-09T06:16:26.262Z</updated>
     
-    <content type="html"><![CDATA[<p>12-Factor 为构建 SaaS 应用提供方法论。</p><a id="more"></a><ul><li><p>基准代码</p><blockquote><p>一份基准代码，多份部署</p></blockquote></li><li><p>依赖</p><blockquote><p>显式声明依赖关系</p></blockquote></li><li><p>配置</p><blockquote><p>在环境中存储配置</p></blockquote></li><li><p>后端服务</p><blockquote><p>把后端服务当作附加资源</p></blockquote></li><li><p>构建，发布，运行</p><blockquote><p>严格分离构建和运行</p></blockquote></li><li><p>进程</p><blockquote><p>以一个或多个无状态进程运行应用</p></blockquote></li><li><p>端口绑定</p><blockquote><p>通过端口绑定提供服务</p></blockquote></li><li><p>并发</p><blockquote><p>通过进程模型进行扩展</p></blockquote></li><li><p>易处理</p><blockquote><p>快速启动和优雅终止可最大化健壮性</p></blockquote></li><li><p>开发环境与线上环境等价</p><blockquote><p>尽可能的保持开发，预发布，线上环境相同</p></blockquote></li><li><p>日志</p><blockquote><p>把日志当作事件流</p></blockquote></li><li><p>管理进程</p><blockquote><p>后台管理任务当作一次性进程运行</p></blockquote></li></ul><h1 id="THE-TWELVE-FACTOR-APP"><a href="#THE-TWELVE-FACTOR-APP" class="headerlink" title="THE TWELVE-FACTOR APP"></a><a href="https://www.12factor.net/zh_cn/" target="_blank" rel="noopener">THE TWELVE-FACTOR APP</a></h1>]]></content>
+    <content type="html"><![CDATA[<p>12-Factor 为构建 SaaS 应用提供方法论。</p><a id="more"></a><ul><li><p>基准代码</p><blockquote><p>一份基准代码，多份部署</p></blockquote></li><li><p>依赖</p><blockquote><p>显式声明依赖关系</p></blockquote></li><li><p>配置</p><blockquote><p>在环境中存储配置</p></blockquote></li><li><p>后端服务</p><blockquote><p>把后端服务当作附加资源</p></blockquote></li><li><p>构建，发布，运行</p><blockquote><p>严格分离构建和运行</p></blockquote></li><li><p>进程</p><blockquote><p>以一个或多个无状态进程运行应用</p></blockquote></li><li><p>端口绑定</p><blockquote><p>通过端口绑定提供服务</p></blockquote></li><li><p>并发</p><blockquote><p>通过进程模型进行扩展</p></blockquote></li><li><p>易处理</p><blockquote><p>快速启动和优雅终止可最大化健壮性</p></blockquote></li><li><p>开发环境与线上环境等价</p><blockquote><p>尽可能的保持开发，预发布，线上环境相同</p></blockquote></li><li><p>日志</p><blockquote><p>把日志当作事件流</p></blockquote></li><li><p>管理进程</p><blockquote><p>后台管理任务当作一次性进程运行</p></blockquote></li></ul><h1 id="转载自"><a href="#转载自" class="headerlink" title="转载自"></a>转载自</h1><ul><li><a href="https://www.12factor.net/zh_cn/" target="_blank" rel="noopener">THE TWELVE-FACTOR APP</a></li></ul>]]></content>
     
     <summary type="html">
     
