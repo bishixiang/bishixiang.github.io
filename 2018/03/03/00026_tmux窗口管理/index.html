@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="冷月无声">
 <meta property="og:description" content="工欲善其事必先利其器。。。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T10:38:56.784Z">
+<meta property="og:updated_time" content="2019-05-26T05:29:34.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tmux窗口管理">
 <meta name="twitter:description" content="工欲善其事必先利其器。。。">
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-04 18:38:56" itemprop="dateModified" datetime="2019-03-04T18:38:56+08:00">2019-03-04</time>
+                <time title="修改时间：2019-05-26 13:29:34" itemprop="dateModified" datetime="2019-05-26T13:29:34+08:00">2019-05-26</time>
               
             
           </span>
@@ -636,6 +636,15 @@
 <li>另外复制模式中可以上翻查看在普通模式下无法查看的屏幕输出内容。</li>
 </ul>
 </li>
+</ul>
+<ul>
+<li>窗口自动调整大小问题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> tmux默认会同步同一个会话的操作到所有会话连接的终端窗口中，这种同步机制，限制了窗口的大小为最小的会话连接。</span><br><span class="line"> 为了避免窗口自动调整大小，终端剩余空间填充小圆点可以执行</span><br><span class="line"> tmux a -d</span><br><span class="line">或在会话命令行模式下执行</span><br><span class="line">: a -d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>调整窗口排序顺序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令行模式下</span><br><span class="line">swap-window -s 1 -t 2  交换1、2窗口</span><br><span class="line">swap-window -t 1       当前窗口和1号窗口交换</span><br><span class="line">move-window -t 1       将当前窗口移动到1号窗口位置</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>终端类型与配色方案</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ncurses库包名</span><br><span class="line">    CentOS 5:</span><br><span class="line">    ncurses-5.5-24.20060715</span><br><span class="line">    CentOS 6/7:</span><br><span class="line">    ncurses-base-5.9-13.20130511.el7.noarch</span><br><span class="line">文件路径</span><br><span class="line">    /usr/share/terminfo/</span><br><span class="line">    eg:</span><br><span class="line">    /usr/share/terminfo/s/screen-256color</span><br><span class="line">    /usr/share/terminfo/x/xterm-256color</span><br><span class="line">终端配置</span><br><span class="line">    echo $TERM</span><br><span class="line">    echo $TERMINFO</span><br><span class="line">    export TERM=screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">    export TERMINFO=/user/share/terminfo</span><br><span class="line">tmux 临时设置默认终端类型</span><br><span class="line">    set -g default-terminal &quot;xterm&quot;</span><br><span class="line">当终端不支持screen-256color，vim编辑文件报错时，将TERM修改为xterm</span><br><span class="line">    # echo $TERM</span><br><span class="line">    screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">备注：</span><br><span class="line">    vim ~/.tmux.conf</span><br><span class="line">    必须设置成</span><br><span class="line">    set -g default-terminal &quot;screen-256color&quot;</span><br><span class="line">    不能设置成</span><br><span class="line">    set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">    否则tmux新开的窗口中默认的$TERM就是xterm-256color，</span><br><span class="line">    开启omnitty 会有阴影，显示会有问题。也可以手动修改窗口中的$TERM环境变量消除阴影。</span><br></pre></td></tr></table></figure>
 </li>
@@ -697,7 +706,7 @@
   <p><span>本文标题:</span><a href="/2018/03/03/00026_tmux窗口管理/">tmux窗口管理</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p>
   <p><span>发布时间:</span>2018年03月03日 - 12:03</p>
-  <p><span>最后更新:</span>2019年03月04日 - 18:03</p>
+  <p><span>最后更新:</span>2019年05月26日 - 13:05</p>
   <p><span>原始链接:</span><a href="/2018/03/03/00026_tmux窗口管理/" title="tmux窗口管理">https://www.lengyuewusheng.com/2018/03/03/00026_tmux窗口管理/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/2018/03/03/00026_tmux窗口管理/" aria-label="复制成功！"></i></span>
   </p>
@@ -867,7 +876,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1199,7 +1208,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">94</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

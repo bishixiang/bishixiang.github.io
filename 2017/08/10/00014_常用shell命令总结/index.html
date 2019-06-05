@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="冷月无声">
 <meta property="og:description" content="Linux常用低端入门命令。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-04T12:10:28.290Z">
+<meta property="og:updated_time" content="2019-06-05T02:09:32.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用shell命令总结">
 <meta name="twitter:description" content="Linux常用低端入门命令。">
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-04 20:10:28" itemprop="dateModified" datetime="2019-04-04T20:10:28+08:00">2019-04-04</time>
+                <time title="修改时间：2019-06-05 10:09:32" itemprop="dateModified" datetime="2019-06-05T10:09:32+08:00">2019-06-05</time>
               
             
           </span>
@@ -758,8 +758,20 @@
 <td style="text-align:left">${var%e}</td>
 <td style="text-align:left">如果字符串${var}最后一个字母是e则删掉</td>
 </tr>
+<tr>
+<td style="text-align:left">$-</td>
+<td style="text-align:left">当前设置的shell选项</td>
+</tr>
+<tr>
+<td style="text-align:left">${-#*i}</td>
+<td style="text-align:left">删除shell选项中i以及其左边的所有字符，常用于判断是否是交互式shell</td>
+</tr>
 </tbody>
 </table>
+<ul>
+<li>$- shell选项参数说明<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$- prints The current set of options in your current shell.</span><br><span class="line"></span><br><span class="line">himBH means following options are enabled:</span><br><span class="line"></span><br><span class="line">H - histexpand</span><br><span class="line">m - monitor</span><br><span class="line">h - hashall</span><br><span class="line">B - braceexpand</span><br><span class="line">i - interactive</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var=http://test.com/index.html_http://test.com/default.html</span><br><span class="line"></span><br><span class="line">$&#123;var#*//&#125;:	test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var##*/&#125;:	default.html</span><br><span class="line">$&#123;var%/*&#125;:	http://test.com/index.html_http://test.com</span><br><span class="line">$&#123;var%%/*&#125;:	http:</span><br><span class="line">$&#123;var:0:3&#125;:	htt</span><br><span class="line">$&#123;var:5&#125;:	//test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var:0-10:3&#125;:	fau</span><br><span class="line">$&#123;var:0-10&#125;:	fault.html</span><br><span class="line">$&#123;var/http/https&#125;:  https://test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var//http/https&#125;:  https://test.com/index.html_https://test.com/default.html</span><br><span class="line">$&#123;var/#http/https&#125;:  https://test.com/index.html_http://test.com/default.html</span><br><span class="line">$&#123;var/%html/php&#125;:  http://test.com/index.html_http://test.com/default.php</span><br><span class="line"></span><br><span class="line">var=&quot;starrend&quot;</span><br><span class="line">$&#123;var#start&#125;: end</span><br><span class="line">$&#123;var%end&#125;: start</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>变量的间接引用</p>
@@ -893,7 +905,7 @@
   <p><span>本文标题:</span><a href="/2017/08/10/00014_常用shell命令总结/">常用shell命令总结</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p>
   <p><span>发布时间:</span>2017年08月10日 - 21:08</p>
-  <p><span>最后更新:</span>2019年04月04日 - 20:04</p>
+  <p><span>最后更新:</span>2019年06月05日 - 10:06</p>
   <p><span>原始链接:</span><a href="/2017/08/10/00014_常用shell命令总结/" title="常用shell命令总结">https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/2017/08/10/00014_常用shell命令总结/" aria-label="复制成功！"></i></span>
   </p>
@@ -1061,7 +1073,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1393,7 +1405,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">94</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
