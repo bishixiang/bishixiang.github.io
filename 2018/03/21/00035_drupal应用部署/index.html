@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="冷月无声">
 <meta property="og:description" content="Drupal是一款诞生于2000年的基于PHP语言编写的经典开源内容管理框架。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T10:38:56.843Z">
+<meta property="og:updated_time" content="2019-08-14T09:52:40.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="drupal应用部署">
 <meta name="twitter:description" content="Drupal是一款诞生于2000年的基于PHP语言编写的经典开源内容管理框架。">
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-04 18:38:56" itemprop="dateModified" datetime="2019-03-04T18:38:56+08:00">2019-03-04</time>
+                <time title="修改时间：2019-08-14 17:52:40" itemprop="dateModified" datetime="2019-08-14T17:52:40+08:00">2019-08-14</time>
               
             
           </span>
@@ -547,6 +547,7 @@
 <a id="more"></a>
 <p>坊间传说drupal使用成本比wp高，偶然的机会看到一个基于drupal搭建的网站还不赖。兴趣使然，简单研究了一下drupal的搭建和使用。<br>以下简单给出搭建的关键步骤：</p>
 <h2 id="composer工具准备"><a href="#composer工具准备" class="headerlink" title="composer工具准备"></a>composer工具准备</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br><span class="line">mv composer.phar /usr/sbin/</span><br><span class="line">composer self-update</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">php -r &quot;copy(&apos;https://getcomposer.org/installer&apos;, &apos;composer-setup.php&apos;);&quot;</span><br><span class="line">php -r &quot;if (hash_file(&apos;sha384&apos;, &apos;composer-setup.php&apos;) === &apos;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&apos;) &#123; echo &apos;Installer verified&apos;; &#125; else &#123; echo &apos;Installer corrupt&apos;; unlink(&apos;composer-setup.php&apos;); &#125; echo PHP_EOL;&quot;</span><br><span class="line">php composer-setup.php --install-dir=/bin --filename=composer --version=1.9.0</span><br><span class="line">composer config -g --unset repos.packagist</span><br><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
 <h2 id="以lightning为例部署"><a href="#以lightning为例部署" class="headerlink" title="以lightning为例部署"></a>以lightning为例部署</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">composer create-project acquia/lightning-project drupal</span><br><span class="line">chown -R nobody:nobody drupal</span><br></pre></td></tr></table></figure>
 <ul>
 <li>drupal/docroot为应用根目录</li>
@@ -555,6 +556,9 @@
 <h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>以上方式部署完成后，用nginx的默认php应用配置会导致除了首页能访问，其它所有页面全部404，<br>根据drupal的路由特点需要简单配置rewrite规则，nginx应用的基本配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       *:80;</span><br><span class="line">    # include vhosts/vhosts.listen.addr;</span><br><span class="line">    # server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line"></span><br><span class="line">    access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html/drupal/docroot;</span><br><span class="line">        index  index.php index.htm;</span><br><span class="line">        try_files $uri $uri/ @rewrite;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ ^/sites/.*/private/ &#123;</span><br><span class="line">        access_log  off;</span><br><span class="line">        internal;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location @rewrite &#123;</span><br><span class="line">            rewrite ^/(.*)$ /index.php?q=$1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        root           html/drupal/docroot;</span><br><span class="line">        fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny  all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如此一来，基本上就可以用了。。。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://getcomposer.org/download/" target="_blank" rel="noopener">composer文档</a></li>
+</ul>
 
       
     </div>
@@ -602,7 +606,7 @@
   <p><span>本文标题:</span><a href="/2018/03/21/00035_drupal应用部署/">drupal应用部署</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p>
   <p><span>发布时间:</span>2018年03月21日 - 21:03</p>
-  <p><span>最后更新:</span>2019年03月04日 - 18:03</p>
+  <p><span>最后更新:</span>2019年08月14日 - 17:08</p>
   <p><span>原始链接:</span><a href="/2018/03/21/00035_drupal应用部署/" title="drupal应用部署">https://www.lengyuewusheng.com/2018/03/21/00035_drupal应用部署/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/2018/03/21/00035_drupal应用部署/" aria-label="复制成功！"></i></span>
   </p>
@@ -865,6 +869,8 @@
                     
                       
                     
+                      
+                    
                     <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -877,6 +883,24 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
                     
                       
                     
@@ -1208,7 +1232,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#composer工具准备"><span class="nav-text">composer工具准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以lightning为例部署"><span class="nav-text">以lightning为例部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx配置"><span class="nav-text">nginx配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#composer工具准备"><span class="nav-text">composer工具准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以lightning为例部署"><span class="nav-text">以lightning为例部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx配置"><span class="nav-text">nginx配置</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></div>
             
 
           </div>
