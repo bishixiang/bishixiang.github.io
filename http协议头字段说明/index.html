@@ -1,0 +1,332 @@
+<!DOCTYPE html><html class="theme-next mist use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.3.0/han.min.css"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="baidu-site-verification" content="baidu_verify_efFTzzqBeC.html"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css"><link rel="stylesheet" href="/css/main.css?v=6.7.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0"><link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Mist",version:"6.7.0",sidebar:{position:"left",display:"hide",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,fastclick:!0,lazyload:!0,tabs:!0,motion:{enable:!0,async:!0,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="HTTP协议头字段定义了一个超文本传输协议事务中的操作参数。"><meta name="keywords" content="http,协议"><meta property="og:type" content="article"><meta property="og:title" content="http协议头字段说明"><meta property="og:url" content="https:&#x2F;&#x2F;www.lengyuewusheng.com&#x2F;http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E&#x2F;index.html"><meta property="og:site_name" content="冷月无声"><meta property="og:description" content="HTTP协议头字段定义了一个超文本传输协议事务中的操作参数。"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2019-03-04T10:34:11.294Z"><meta name="twitter:card" content="summary"><link rel="alternate" href="/atom.xml" title="冷月无声" type="application/atom+xml"><link rel="canonical" href="https://www.lengyuewusheng.com/http协议头字段说明/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>http协议头字段说明 | 冷月无声</title><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119523284-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-119523284-1")</script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?01d66b7109c2a75544d1724df8a28646";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">冷月无声</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">相信积累的力量！</h1></div><div class="site-nav-toggle"><button aria-label="切换导航栏"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><div class="reading-progress-bar"></div><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="冷月无声"><meta itemprop="description" content="不止于技术。"><meta itemprop="image" content="/private/logo.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="冷月无声"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">http协议头字段说明</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-03-28 22:56:06" itemprop="dateCreated datePublished" datetime="2018-03-28T22:56:06+08:00">2018-03-28</time> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于</span> <time title="修改时间：2019-03-04 18:34:11" itemprop="dateModified" datetime="2019-03-04T18:34:11+08:00">2019-03-04</time> </span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/http/" itemprop="url" rel="index"><span itemprop="name">http</span></a></span> </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> 阅读次数： <span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body han-init-context" itemprop="articleBody"><blockquote class="blockquote-center"><p>HTTP协议头字段定义了一个超文本传输协议事务中的操作参数。</p></blockquote><a id="more"></a><p>按照惯例，非标准的协议头字段是在字段名称前加上<code>X-</code>前缀来标识。</p><p>标准中没有对每个协议头字段的名称和值的大小设置任何限制，也没有限制字段的个数。在实际场景中出于安全性的考虑，大部分的服务器、客户端和代理软件都会实施一些限制。</p><h2 id="http请求字段"><a href="#http请求字段" class="headerlink" title="http请求字段"></a>http请求字段</h2><h3 id="请求字段"><a href="#请求字段" class="headerlink" title="请求字段"></a>请求字段</h3><table><thead><tr><th align="left">协议头字段名</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left">Accept</td><td align="left">能够接受的回应内容类型(Content-Types)。</td><td align="left">Accept: text/plain</td></tr><tr><td align="left">Accept-Charset</td><td align="left">能够接受的字符集。</td><td align="left">Accept-Charset: utf-8</td></tr><tr><td align="left">Accept-Encoding</td><td align="left">能够接受的编码方式列表。</td><td align="left">Accept-Encoding: gzip, deflate</td></tr><tr><td align="left">Accept-Language</td><td align="left">能够接受的回应内容的自然语言列表。</td><td align="left">Accept-Language: en-US</td></tr><tr><td align="left">Accept-Datetime</td><td align="left">能够接受的按照时间来表示的版本。</td><td align="left">Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT</td></tr><tr><td align="left">Authorization</td><td align="left">用于超文本传输协议的认证的认证信息。</td><td align="left">Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</td></tr><tr><td align="left">Cache-Control</td><td align="left">用来指定在这次的请求/响应链中的所有缓存机制 都必须 遵守的指令。</td><td align="left">Cache-Control: no-cache</td></tr><tr><td align="left">Connection</td><td align="left">该浏览器想要优先使用的连接类型。</td><td align="left">Connection: keep-alive<br>Connection: Upgrade</td></tr><tr><td align="left">Cookie</td><td align="left">之前由服务器通过Set- Cookie发送的一个超文本传输协议Cookie。</td><td align="left">Cookie: $Version=1; Skin=new;</td></tr><tr><td align="left">Content-Length</td><td align="left">以八位字节数组(8位的字节)表示的请求体的长度。</td><td align="left">Content-Length: 348</td></tr><tr><td align="left">Content-MD5</td><td align="left">请求体的内容的二进制 MD5 散列值，以 Base64 编码的结果。</td><td align="left">Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==</td></tr><tr><td align="left">Content-Type</td><td align="left">请求体的多媒体类型(用于POST和PUT请求中)。</td><td align="left">Content-Type: application/x-www-form-urlencoded</td></tr><tr><td align="left">Date</td><td align="left">发送该消息的日期和时间(按照 RFC 7231 中定义的”超文本传输协议日期”格式来发送)。</td><td align="left">Date: Tue, 15 Nov 1994 08:12:31 GMT</td></tr><tr><td align="left">Expect</td><td align="left">表明客户端要求服务器做出特定的行为。</td><td align="left">Expect: 100-continue</td></tr><tr><td align="left">From</td><td align="left">发起此请求的用户的邮件地址。</td><td align="left">From: <a href="mailto:user@example.com" target="_blank" rel="noopener">user@example.com</a></td></tr><tr><td align="left">Host</td><td align="left">服务器的域名(用于虚拟主机)，以及服务器所监听的传输控制协议端口号。自HTTP/1.1开始成为必需字段。</td><td align="left">Host: lengyuewusheng.com:80<br>Host: lengyuewusheng.com</td></tr><tr><td align="left">If-Match</td><td align="left">仅当客户端提供的实体与服务器上对应的实体相匹配时，才进行对应的操作。主要作用时，用作像 PUT 这样的方法中，仅当从用户上次更新某个资源以来，该资源未被修改的情况下，才更新该资源。</td><td align="left">If-Match: “737060cd8c284d8af7ad3082f209582d”</td></tr><tr><td align="left">If-Modified-Since</td><td align="left">允许在对应的内容未被修改的情况下返回304未修改(304 Not Modified)。</td><td align="left">If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT</td></tr><tr><td align="left">If-None-Match</td><td align="left">允许在对应的内容未被修改的情况下返回304未修改(304 Not Modified)。</td><td align="left">If-None-Match: “a7dc0d7b8902e9c8c096c93eb431d19e”</td></tr><tr><td align="left">If-Range</td><td align="left">如果该实体未被修改过，则向我发送我所缺少的那一个或多个部分；否则，发送整个新的实体</td><td align="left">If-Range: “a7dc0d7b8902e9c8c096c93eb431d19e”</td></tr><tr><td align="left">If-Unmodified-Since</td><td align="left">仅当该实体自某个特定时间已来未被修改的情况下，才发送回应。</td><td align="left">If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT</td></tr><tr><td align="left">Max-Forwards</td><td align="left">限制该消息可被代理及网关转发的次数。</td><td align="left">Max-Forwards: 10</td></tr><tr><td align="left">Origin</td><td align="left">发起一个针对跨来源资源共享的请求(要求服务器在回应中加入一个’访问控制-允许来源’(‘Access-Control-Allow-Origin’)字段)。</td><td align="left">Origin: <a href="http://www.example-social-network.com" target="_blank" rel="noopener">http://www.example-social-network.com</a></td></tr><tr><td align="left">Pragma</td><td align="left">报文指令，与具体的实现相关，这些字段可能在请求/回应链中的任何时候产生多种效果。不常用。</td><td align="left">Pragma: no-cache</td></tr><tr><td align="left">Proxy-Authorization</td><td align="left">用来向代理进行认证的认证信息。</td><td align="left">Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</td></tr><tr><td align="left">Range</td><td align="left">仅请求某个实体的一部分。字节偏移以0开始。参见字节服务。</td><td align="left">Range: bytes=500-999</td></tr><tr><td align="left">Referer</td><td align="left">表示浏览器所访问的前一个页面，正是那个页面上的某个链接将浏览器带到了当前所请求的这个页面。</td><td align="left">Referer: <a href="https://www.lengyuewusheng.com">https://www.lengyuewusheng.com</a></td></tr><tr><td align="left">TE</td><td align="left">浏览器预期接受的传输编码方式：可使用回应协议头 Transfer-Encoding 字段中的值；另外还可用”trailers”(与”分块 “传输方式相关)这个值来表明浏览器希望在最后一个尺寸为0的块之后还接收到一些额外的字段。</td><td align="left">TE: trailers, deflate</td></tr><tr><td align="left">User-Agent</td><td align="left">浏览器的浏览器身份标识字符串。</td><td align="left">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36</td></tr><tr><td align="left">Upgrade</td><td align="left">要求服务器升级到另一个协议。</td><td align="left">Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</td></tr><tr><td align="left">Via</td><td align="left">向服务器告知，这个请求是由哪些代理发出的。</td><td align="left">Via: 1.0 fred, 1.1 example.com (Apache/1.1)</td></tr><tr><td align="left">Warning</td><td align="left">一个一般性的警告，告知，在实体内容体中可能存在错误。</td><td align="left">Warning: 199 Miscellaneous warning</td></tr></tbody></table><h3 id="非标准请求字段"><a href="#非标准请求字段" class="headerlink" title="非标准请求字段"></a>非标准请求字段</h3><table><thead><tr><th align="left">协议头非标准字段名</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left">X-Requested-With</td><td align="left">主要用于标识 Ajax 及可扩展标记语言 请求。大部分的JavaScript框架会发送这个字段，且将其值设置为 XMLHttpRequest。</td><td align="left">X-Requested-With: XMLHttpRequest</td></tr><tr><td align="left">DNT</td><td align="left">请求某个网页应用程序停止跟踪某个用户。在火狐浏览器中，相当于X-Do-Not-Track协议头字段(自 Firefox/4.0 Beta 11 版开始支持)。Safari和Internet Explorer 9也支持这个字段。</td><td align="left">启用：DNT: 1<br>禁用：DNT: 0</td></tr><tr><td align="left">X-Forwarded-For</td><td align="left">一个事实标准 ，用于标识某个通过超文本传输协议代理或负载均衡连接到某个网页服务器的客户端的原始互联网地址。</td><td align="left">X-Forwarded-For: client1, proxy1, proxy2<br>X-Forwarded-For: 129.78.138.66, 129.78.64.103</td></tr><tr><td align="left">X-Forwarded-Host</td><td align="left">一个事实标准 ，用于识别客户端原本发出的 Host 请求头部。</td><td align="left">X-Forwarded-Host: lengyuewusheng.com:80<br>X-Forwarded-Host: lengyuewusheng.com</td></tr><tr><td align="left">X-Forwarded-Proto</td><td align="left">一个事实标准，用于标识某个超文本传输协议请求最初所使用的协议。</td><td align="left">X-Forwarded-Proto: https</td></tr><tr><td align="left">Front-End-Https</td><td align="left">被微软的服务器和负载均衡器所使用的非标准头部字段。</td><td align="left">Front-End-Https: on</td></tr><tr><td align="left">X-Http-Method-Override</td><td align="left">请求某个网页应用程序使用该协议头字段中指定的方法(一般是PUT或DELETE)来覆盖掉在请求中所指定的方法(一般是POST)。当某个浏览器或防火墙阻止直接发送PUT 或DELETE 方法时，可使用这种方式。</td><td align="left">X-HTTP-Method-Override: DELETE</td></tr><tr><td align="left">X-ATT-DeviceId</td><td align="left">使服务器更容易解读AT&amp;T设备User-Agent字段中常见的设备型号、固件信息。</td><td align="left">X-Att-Deviceid: GT-P7320/P7320XXLPG</td></tr><tr><td align="left">X-Wap-Profile</td><td align="left">链接到互联网上的一个XML文件，其完整、仔细地描述了正在连接的设备。</td><td align="left">以为AT&amp;T Samsung Galaxy S2提供的XML文件为例：x-wap-profile: <a href="http://wap.samsungmobile.com/uaprof/SGH-I777.xml" target="_blank" rel="noopener">http://wap.samsungmobile.com/uaprof/SGH-I777.xml</a></td></tr><tr><td align="left">Proxy-Connection</td><td align="left">该字段源于早期超文本传输协议版本实现中的错误。与标准的连接(Connection)字段的功能完全相同。</td><td align="left">Proxy-Connection: keep-alive</td></tr><tr><td align="left">X-Csrf-Token</td><td align="left">用于防止 跨站请求伪造。辅助用的头部有 X-CSRFToken或 X-XSRF-TOKEN。</td><td align="left">X-Csrf-Token: i8XNjC4b8KVok4uw5RftR38Wgp2BFwql</td></tr></tbody></table><h2 id="http回应字段"><a href="#http回应字段" class="headerlink" title="http回应字段"></a>http回应字段</h2><h3 id="回应字段"><a href="#回应字段" class="headerlink" title="回应字段"></a>回应字段</h3><table><thead><tr><th align="left">协议头字段名</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left">Access-Control-Allow-Origin</td><td align="left">指定哪些网站可参与到跨来源资源共享过程中。</td><td align="left">Access-Control-Allow-Origin: *</td></tr><tr><td align="left">Accept-Patch</td><td align="left">指定服务器支持的文件格式类型。</td><td align="left">Accept-Patch: text/example;charset=utf-8</td></tr><tr><td align="left">Accept-Ranges</td><td align="left">这个服务器支持哪些种类的部分内容范围。</td><td align="left">Accept-Ranges: bytes</td></tr><tr><td align="left">Age</td><td align="left">这个对象在代理缓存中存在的时间，以秒为单位。</td><td align="left">Age: 12</td></tr><tr><td align="left">Allow</td><td align="left">对于特定资源有效的动作。针对HTTP/405这一错误代码而使用。</td><td align="left">Allow: GET, HEAD</td></tr><tr><td align="left">Cache-Control</td><td align="left">向从服务器直到客户端在内的所有缓存机制告知，它们是否可以缓存这个对象。其单位为秒。</td><td align="left">Cache-Control: max-age=3600</td></tr><tr><td align="left">Connection</td><td align="left">针对该连接所预期的选项。</td><td align="left">Connection: close</td></tr><tr><td align="left">Content-Disposition</td><td align="left">一个可以让客户端下载文件并建议文件名的头部。文件名需要用双引号引起来。</td><td align="left">Content-Disposition: attachment; filename=”fname.ext”</td></tr><tr><td align="left">Content-Encoding</td><td align="left">在数据上使用的编码类型。</td><td align="left">Content-Encoding: gzip</td></tr><tr><td align="left">Content-Language</td><td align="left">内容所使用的语言。</td><td align="left">Content-Language: da</td></tr><tr><td align="left">Content-Length</td><td align="left">回应消息体的长度，以字节(8位为一字节)为单位。</td><td align="left">Content-Length: 348</td></tr><tr><td align="left">Content-Location</td><td align="left">所返回的数据的一个候选位置。</td><td align="left">Content-Location: /index.htm</td></tr><tr><td align="left">Content-MD5</td><td align="left">回应内容的二进制 MD5 散列，以 Base64 方式编码。</td><td align="left">Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==</td></tr><tr><td align="left">Content-Range</td><td align="left">这条部分消息是属于某条完整消息的哪个部分。</td><td align="left">Content-Range: bytes 21010-47021/47022</td></tr><tr><td align="left">Content-Type</td><td align="left">当前内容的MIME类型。</td><td align="left">Content-Type: text/html; charset=utf-8</td></tr><tr><td align="left">Date</td><td align="left">此条消息被发送时的日期和时间(按照 RFC 7231 中定义的“超文本传输协议日期”格式来表示)</td><td align="left">Date: Tue, 15 Nov 2017 08:12:31 GMT</td></tr><tr><td align="left">ETag</td><td align="left">对于某个资源的某个特定版本的一个标识符，通常是一个 消息散列。</td><td align="left">ETag: “737060cd8c284d8af7ad3082f209582d”</td></tr><tr><td align="left">Expires</td><td align="left">指定一个日期/时间，超过该时间则认为此回应已经过期。</td><td align="left">Expires: Thu, 01 Dec 1994 16:00:00 GMT</td></tr><tr><td align="left">Last-Modified</td><td align="left">所请求的对象的最后修改日期(按照 RFC 7231 中定义的“超文本传输协议日期”格式来表示)</td><td align="left">Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT</td></tr><tr><td align="left">Link</td><td align="left">用来表达与另一个资源之间的类型关系。</td><td align="left">Link:; rel=”alternate”</td></tr><tr><td align="left">Location</td><td align="left">用来进行重定向，或者在创建了某个新资源时使用。</td><td align="left">Location: <a href="http://lengyuewusheng.com" target="_blank" rel="noopener">http://lengyuewusheng.com</a></td></tr><tr><td align="left">P3P</td><td align="left">用于支持设置P3P策略，标准格式为“P3P:CP=”your_compact_policy””。然而P3P规范并不成功，大部分现代浏览器没有完整实现该功能。</td><td align="left">P3P: CP=”This is not a P3P policy!”</td></tr><tr><td align="left">Pragma</td><td align="left">报文指令，与具体的实现相关，这些字段可能在请求/回应链中的任何时候产生多种效果。</td><td align="left">Pragma: no-cache</td></tr><tr><td align="left">Proxy-Authenticate</td><td align="left">要求在访问代理时提供身份认证信息。</td><td align="left">Proxy-Authenticate: Basic</td></tr><tr><td align="left">Public-Key-Pins</td><td align="left">用于缓解中间人攻击，声明网站认证使用的传输层安全协议证书的散列值。</td><td align="left">Public-Key-Pins: max-age=2592000; pin-sha256=”E9CZ9INDbd+2eRQozYqqbQ2yXLVKB9+xcprMF+44U1g=”;</td></tr><tr><td align="left">Refresh</td><td align="left">用于设定可定时的重定向跳转。</td><td align="left">5秒后跳转，Refresh: 5; url=<a href="http://www.w3.org/pub/WWW/People.html" target="_blank" rel="noopener">http://www.w3.org/pub/WWW/People.html</a></td></tr><tr><td align="left">Retry-After</td><td align="left">如果某个实体临时不可用，则此协议头用来告知客户端日后重试。其值可以是一个特定的时间段(以秒为单位)或一个超文本传输协议日期。</td><td align="left">Example 1: Retry-After: 120<br>Example 2: Retry-After: Fri, 07 Nov 2014 23:59:59 GMT</td></tr><tr><td align="left">Server</td><td align="left">服务器的名字。</td><td align="left">Server: Apache/2.4.1 (Unix)</td></tr><tr><td align="left">Set-Cookie</td><td align="left">HTTP cookie</td><td align="left">Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1</td></tr><tr><td align="left">Status</td><td align="left">通用网关接口 协议头字段，用来说明当前这个超文本传输协议回应的 状态 。</td><td align="left">Status: 200 OK</td></tr><tr><td align="left">Strict-Transport-Security</td><td align="left">HTTP严格传输安全这一头部告知客户端缓存这一强制 HTTPS 策略的时间，以及这一策略是否适用于其子域名。</td><td align="left">Strict-Transport-Security: max-age=16070400; includeSubDomains</td></tr><tr><td align="left">Trailer</td><td align="left">这个头部数值指示了在这一系列头部信息由由分块传输编码编码。</td><td align="left">Trailer: Max-Forwards</td></tr><tr><td align="left">Transfer-Encoding</td><td align="left">用来将实体安全地传输给用户的编码形式。当前定义的方法包括：分块（chunked）、compress、deflate、gzip和identity。</td><td align="left">Transfer-Encoding: chunked</td></tr><tr><td align="left">Upgrade</td><td align="left">要求客户端升级到另一个协议。</td><td align="left">Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</td></tr><tr><td align="left">Vary</td><td align="left">告知下游的代理服务器，应当如何对未来的请求协议头进行匹配，以决定是否可使用已缓存的回应内容而不是重新从原始服务器请求新的内容。</td><td align="left">Vary: *</td></tr><tr><td align="left">Via</td><td align="left">告知代理服务器的客户端，当前回应是通过什么途径发送的。</td><td align="left">Via: 1.0 fred, 1.1 example.com (Apache/1.1)</td></tr><tr><td align="left">Warning</td><td align="left">一般性的警告，告知在实体内容体中可能存在错误。</td><td align="left">Warning: 199 Miscellaneous warning</td></tr><tr><td align="left">WWW-Authenticate</td><td align="left">表明在请求获取这个实体时应当使用的认证模式。</td><td align="left">WWW-Authenticate: Basic</td></tr><tr><td align="left">X-Frame-Options</td><td align="left">点击劫持保护：<br>deny：该页面不允许在 frame 中展示，即使是同域名内；<br>sameorigin：该页面允许同域名内在 frame 中展示。<br>allow-from uri：该页面允许在指定uri的 frame 中展示。<br>allowall：允许任意位置的frame显示，非标准值。</td><td align="left">X-Frame-Options: deny</td></tr></tbody></table><h3 id="非标准回应字段"><a href="#非标准回应字段" class="headerlink" title="非标准回应字段"></a>非标准回应字段</h3><table><thead><tr><th align="left">协议头字段名</th><th align="left">说明</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left">X-XSS-Protection</td><td align="left">跨站脚本攻击(XSS)过滤器。</td><td align="left">X-XSS-Protection: 1; mode=block</td></tr><tr><td align="left">Content-Security-Policy, X-Content-Security-Policy, X-WebKit-CSP</td><td align="left">内容安全策略定义。</td><td align="left">X-WebKit-CSP: default-src ‘self’</td></tr><tr><td align="left">X-Content-Type-Options</td><td align="left">唯一允许的数值为”nosniff”，防止 Internet Explorer 对文件进行MIME类型嗅探。这也对 Google Chrome 下载扩展时适用。</td><td align="left">X-Content-Type-Options: nosniff</td></tr><tr><td align="left">X-Powered-By</td><td align="left">表明用于支持当前网页应用程序的技术。</td><td align="left">(例如：PHP)(版本号细节通常放置在X-Runtime或X-Version中) X-Powered-By: PHP/7.1.0</td></tr><tr><td align="left">X-UA-Compatible</td><td align="left">推荐指定的渲染引擎(通常是向后兼容模式)来显示内容。也用于激活Internet Explorer中的 Chrome Frame。</td><td align="left">X-UA-Compatible: IE=EmulateIE7<br>X-UA-Compatible: IE=edge<br>X-UA-Compatible: Chrome=1</td></tr><tr><td align="left">X-Content-Duration</td><td align="left">指出音视频的长度，单位为秒。只受Gecko内核浏览器支持。</td><td align="left">X-Content-Duration: 42.666</td></tr></tbody></table><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul><li><a href="https://zh.wikipedia.org/wiki/HTTP头字段" target="_blank" rel="noopener">wikipedia·http头字段</a></li><li><a href="https://github.com/CyC2018/Interview-Notebook/blob/master/notes/HTTP.md#%E5%9B%9Bhttp-%E9%A6%96%E9%83%A8" target="_blank" rel="noopener">http首部</a></li></ul></div><div><div id="wechat_subscriber" style="display:block;padding:10px 0;margin:20px auto;width:100%;text-align:center"><img id="wechat_subscriber_qcode" src="/private/qingjiaojidan.jpg" alt="冷月无声 wechat" style="width:200px;max-width:100%"><div>关注也是一种力量</div></div></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------End of article. <i class="fa fa-paw"></i> I appreciate whoever read and leave commends on articles.-------------</div></div></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script><script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script><link rel="stylesheet" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"><p><span>本文标题:</span><a href="/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/">http协议头字段说明</a></p><p><span>文章作者:</span><a href="/" title="访问 冷月无声 的个人博客">冷月无声</a></p><p><span>发布时间:</span>2018年03月28日 - 22:03</p><p><span>最后更新:</span>2019年03月04日 - 18:03</p><p><span>原始链接:</span><a href="/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/" title="http协议头字段说明">https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</a> <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span>本博客所有文章除特别声明外，均采用<i class="fa fa-creative-commons"></i><a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank"> BY-NC-SA 3.0</a>许可协议。转载请注明出处！</p></div><script>var clipboard=new Clipboard(".fa-clipboard");clipboard.on("success",$(function(){$(".fa-clipboard").click(function(){swal({title:"",text:"复制成功",html:!1,timer:500,showConfirmButton:!1})})}))</script></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div></div><button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'><span>打赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"><img id="wechat_qr" src="/private/wechatpay.jpg" alt="冷月无声 微信支付"><p>微信支付</p></div><div id="alipay" style="display:inline-block"><img id="alipay_qr" src="/private/alipay.jpg" alt="冷月无声 支付宝"><p>支付宝</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/http/" rel="tag"><i class="fa fa-tag"></i> http</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag"><i class="fa fa-tag"></i> 协议</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/raid%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/" rel="next" title="RAID技术总结"><i class="fa fa-chevron-left"></i> RAID技术总结</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B/" rel="prev" title="TCP连接过程">TCP连接过程 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zNjE1Mi8xMjY4Nw"></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/private/logo.jpg" alt="冷月无声"><p class="site-author-name" itemprop="name">冷月无声</p><p class="site-description motion-element" itemprop="description">不止于技术。</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/%20%7C%7C%20archive"><span class="site-state-item-count">75</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">39</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/index.html"><span class="site-state-item-count">115</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/bishixiang" title="GitHub &rarr; https://github.com/bishixiang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a href="https://weibo.com/bishixiang" title="Weibo &rarr; https://weibo.com/bishixiang" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a> </span><span class="links-of-author-item"><a href="mailto:bishixiang@163.com" title="E-Mail &rarr; mailto:bishixiang@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"><a href="https://openresty.org/cn/" title="https://openresty.org/cn/" rel="noopener" target="_blank">openresty</a></li><li class="links-of-blogroll-item"><a href="https://docs.ansible.com/" title="https://docs.ansible.com/" rel="noopener" target="_blank">Ansible</a></li></ul></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#http请求字段"><span class="nav-text">http请求字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求字段"><span class="nav-text">请求字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非标准请求字段"><span class="nav-text">非标准请求字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http回应字段"><span class="nav-text">http回应字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回应字段"><span class="nav-text">回应字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非标准回应字段"><span class="nav-text">非标准回应字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-text">参考文档</span></a></li></ol></div></div></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2019</span> <span class="with-love" id="animate"><i class="fa fa-user"></i> </span><span class="author" itemprop="copyrightHolder">冷月无声</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0</div><span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="site-uv" title="总访客量"><i class="fa fa-user"></i> <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> </span><span class="site-pv" title="总访问量"><i class="fa fa-eye"></i> <span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div><script>!function(){var e=document.createElement("script");e.src="//tajs.qq.com/stats?sId=65816777";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div style="display:none"><script src="//s95.cnzz.com/z_stat.php?id=1273577931&web_id=1273577931"></script></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div><div><script>window._bd_share_config={common:{bdText:"",bdMini:"1",bdMiniList:!1,bdPic:""},image:{viewList:["tsina","douban","sqq","qzone","weixin","twi","fbook"],viewText:"分享到：",viewSize:"16"},slide:{bdImg:"5",bdPos:"left",bdTop:"100"}}</script><script>with(document)(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="//bdimg.share.baidu.com/static/api/js/share.js?cdnversion="+~(-new Date/36e5)</script></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1.1/reading_progress.min.js"></script><script src="/js/src/utils.js?v=6.7.0"></script><script src="/js/src/motion.js?v=6.7.0"></script><script src="/js/src/scrollspy.js?v=6.7.0"></script><script src="/js/src/post-details.js?v=6.7.0"></script><script src="/js/src/bootstrap.js?v=6.7.0"></script><script>window.livereOptions={refer:"http协议头字段说明/"},function(e,t){var n,r=e.getElementsByTagName(t)[0];"function"!=typeof LivereTower&&((n=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",n.async=!0,r.parentNode.insertBefore(n,r))}(document,"script")</script><script>// Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });</script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script src="//cdnjs.cloudflare.com/ajax/libs/pangu/3.3.0/pangu.min.js"></script><script>pangu.spacingPage()</script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script><script>bookmark.scrollToMark("auto","#更多")</script><style>.copy-btn{display:inline-block;padding:6px 12px;font-size:13px;font-weight:700;line-height:20px;color:#333;white-space:nowrap;vertical-align:middle;cursor:pointer;background-color:#eee;background-image:linear-gradient(#fcfcfc,#eee);border:1px solid #d5d5d5;border-radius:3px;user-select:none;outline:0}.highlight-wrap .copy-btn{transition:opacity .3s ease-in-out;opacity:0;padding:2px 6px;position:absolute;right:4px;top:8px}.highlight-wrap .copy-btn:focus,.highlight-wrap:hover .copy-btn{opacity:1}.highlight-wrap{position:relative}</style><script>$(".highlight").each(function(e,t){var n=$("<div>").addClass("highlight-wrap");$(t).after(n),n.append($("<button>").addClass("copy-btn").append("复制").on("click",function(e){var t=$(this).parent().find(".code").find(".line").map(function(e,t){return $(t).text()}).toArray().join("\n"),n=document.createElement("textarea"),o=document.createRange(),a=window.getSelection(),i=window.pageYOffset||document.documentElement.scrollTop;n.style.top=i+"px",n.style.position="absolute",n.style.opacity="0",n.value=t,n.textContent=t,n.contentEditable=!0,n.readOnly=!1,document.body.appendChild(n),o.selectNode(n),a.removeAllRanges(),a.addRange(o),n.setSelectionRange(0,t.length),document.execCommand("copy")?$(this).text("复制成功"):$(this).text("复制失败"),n.blur(),$(this).blur()})).on("mouseleave",function(e){var t=$(this).find(".copy-btn");setTimeout(function(){t.text("复制")},300)}).append(t)})</script></body></html>
