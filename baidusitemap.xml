@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.lengyuewusheng.com/pandoc-revealjs%E4%BD%BF%E7%94%A8markdown%E7%BC%96%E5%86%99%E5%9C%A8%E7%BA%BFppt.html</loc>
+    <lastmod>2019-12-08</lastmod>
+  </url>  <url>
+    <loc>https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html</loc>
+    <lastmod>2019-12-08</lastmod>
+  </url>  <url>
     <loc>https://www.lengyuewusheng.com/hexo-next-github-pages%E6%90%AD%E5%BB%BA%E5%BC%80%E6%BA%90%E5%8D%9A%E5%AE%A2.html</loc>
     <lastmod>2019-12-02</lastmod>
   </url>  <url>
@@ -14,12 +20,6 @@
     <lastmod>2019-12-01</lastmod>
   </url>  <url>
     <loc>https://www.lengyuewusheng.com/systemd%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</loc>
-    <lastmod>2019-12-01</lastmod>
-  </url>  <url>
-    <loc>https://www.lengyuewusheng.com/pandoc-revealjs%E4%BD%BF%E7%94%A8markdown%E7%BC%96%E5%86%99%E5%9C%A8%E7%BA%BFppt.html</loc>
-    <lastmod>2019-12-01</lastmod>
-  </url>  <url>
-    <loc>https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html</loc>
     <lastmod>2019-12-01</lastmod>
   </url>  <url>
     <loc>https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html</loc>
