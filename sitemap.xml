@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.lengyuewusheng.com/nginx%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</loc>
+    
+    <lastmod>2020-02-15T03:08:41.853Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.lengyuewusheng.com/systemd%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</loc>
     
     <lastmod>2020-02-15T03:00:25.454Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://www.lengyuewusheng.com/tomcat%E8%B0%83%E4%BC%98%E5%AE%9E%E8%B7%B5.html</loc>
     
     <lastmod>2020-02-15T02:56:57.786Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.lengyuewusheng.com/nginx%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</loc>
-    
-    <lastmod>2020-02-15T02:56:11.022Z</lastmod>
     
   </url>
   
