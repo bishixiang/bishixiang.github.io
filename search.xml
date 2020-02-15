@@ -475,8 +475,8 @@
         <category>yum</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>rpm</tag>
+        <tag>Linux</tag>
         <tag>yum</tag>
       </tags>
   </entry>
