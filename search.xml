@@ -385,9 +385,9 @@
         <category>TCP/IP</category>
       </categories>
       <tags>
-        <tag>TCP/IP</tag>
         <tag>三次握手</tag>
         <tag>四次挥手</tag>
+        <tag>TCP/IP</tag>
       </tags>
   </entry>
   <entry>
@@ -475,9 +475,9 @@
         <category>yum</category>
       </categories>
       <tags>
+        <tag>rpm</tag>
         <tag>Linux</tag>
         <tag>yum</tag>
-        <tag>rpm</tag>
       </tags>
   </entry>
   <entry>
@@ -541,8 +541,8 @@
       </categories>
       <tags>
         <tag>协议</tag>
-        <tag>TCP/IP</tag>
         <tag>OSI</tag>
+        <tag>TCP/IP</tag>
       </tags>
   </entry>
   <entry>
@@ -566,8 +566,8 @@
         <category>Windows</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
         <tag>Linux</tag>
+        <tag>Windows</tag>
         <tag>共享</tag>
       </tags>
   </entry>
@@ -770,8 +770,8 @@
         <category>Windows</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
         <tag>工具</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -854,8 +854,8 @@
         <category>shell</category>
       </categories>
       <tags>
-        <tag>curl</tag>
         <tag>shell</tag>
+        <tag>curl</tag>
       </tags>
   </entry>
   <entry>
