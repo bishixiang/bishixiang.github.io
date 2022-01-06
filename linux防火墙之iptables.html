@@ -1,19 +1,603 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.3.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png"><link rel="mask-icon" href="/images/logo.svg" color="#222"><meta name="baidu-site-verification" content="baidu_verify_efFTzzqBeC.html"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css"><script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script><script class="hexo-configurations">var NexT=window.NexT||{},CONFIG={hostname:"www.lengyuewusheng.com",root:"/",images:"/images",scheme:"Mist",version:"8.1.0",exturl:!1,sidebar:{position:"left",display:"post",padding:18,offset:12},copycode:!1,bookmark:{enable:!1,color:"#222",save:"auto"},fancybox:!1,mediumzoom:!1,lazyload:!0,pangu:!1,comments:{style:"tabs",active:null,storage:!0,lazyload:!1,nav:null},motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"fadeInDown",post_body:"fadeInDown",coll_header:"fadeInLeft",sidebar:"fadeInUp"}},prism:!1,i18n:{placeholder:"搜索...",empty:"没有找到任何搜索结果：${query}",hits_time:"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）",hits:"找到 ${hits} 个搜索结果"},path:"/search.xml",localsearch:{enable:!0,trigger:"auto",top_n_per_article:1,unescape:!1,preload:!1}}</script><meta name="description" content="iptables是Linux防火墙的管理工具，位于&#x2F;sbin&#x2F;iptables。真正实现防火墙功能的是位于内核空间的netfilter，它是Linux内核中实现包过滤的内部结构。"><meta property="og:type" content="article"><meta property="og:title" content="Linux防火墙之iptables"><meta property="og:url" content="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html"><meta property="og:site_name" content="冷月无声"><meta property="og:description" content="iptables是Linux防火墙的管理工具，位于&#x2F;sbin&#x2F;iptables。真正实现防火墙功能的是位于内核空间的netfilter，它是Linux内核中实现包过滤的内部结构。"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2018-12-08T14:32:52.000Z"><meta property="article:modified_time" content="2019-04-01T06:56:30.852Z"><meta property="article:author" content="冷月无声"><meta property="article:tag" content="Linux"><meta property="article:tag" content="iptables"><meta name="twitter:card" content="summary"><link rel="canonical" href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html"><script class="page-configurations">CONFIG.page={sidebar:"",isHome:!1,isPost:!0,lang:"zh-CN"}</script><title>Linux防火墙之iptables | 冷月无声</title><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119523284-1"></script><script>function gtag(){dataLayer.push(arguments)}CONFIG.hostname===location.hostname&&(window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-119523284-1"))</script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?01d66b7109c2a75544d1724df8a28646";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style>body{margin-top:2rem}.use-motion .collection-header,.use-motion .comments,.use-motion .menu-item,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header,.use-motion .sidebar{visibility:visible}.use-motion .footer,.use-motion .header,.use-motion .site-brand-container .toggle{opacity:initial}.use-motion .custom-logo-image,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line{transform:scaleX(1)}.search-pop-overlay,.sidebar-nav{display:none}.sidebar-panel{display:block}</style></noscript><link rel="alternate" href="/atom.xml" title="冷月无声" type="application/atom+xml"></head><body itemscope itemtype="http://schema.org/WebPage" class="use-motion"><div class="headband"></div><main class="main"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-container"><div class="site-nav-toggle"><div class="toggle" aria-label="切换导航栏"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div></div><div class="site-meta"><a href="/" class="brand" rel="start"><i class="logo-line"></i><h1 class="site-title">冷月无声</h1><i class="logo-line"></i></a><p class="site-subtitle" itemprop="description">相信积累的力量！</p></div><div class="site-nav-right"><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class="site-nav"><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-search"><a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class="search-pop-overlay"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"><input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input"></div><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class="search-result-icon"><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div><aside class="sidebar"><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class="sidebar-nav"><li class="sidebar-nav-toc">文章目录</li><li class="sidebar-nav-overview">站点概览</li></ul><div class="sidebar-panel-container"><section class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables%E5%91%BD%E4%BB%A4%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">iptables命令简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">iptables基础操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">iptables应用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99"><span class="nav-number">3.1.</span> <span class="nav-text">基本规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E5%88%99%E6%A1%88%E4%BE%8B"><span class="nav-number">3.2.</span> <span class="nav-text">规则案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACCEPT"><span class="nav-number">3.2.1.</span> <span class="nav-text">ACCEPT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%85%E5%85%81%E8%AE%B8%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E7%A6%BB%E5%BC%80%E6%9C%AC%E6%9C%BA%EF%BC%9B%E5%91%A8%E4%B8%80%E4%B8%8D%E5%85%81%E8%AE%B8%E8%AE%BF%E9%97%AE"><span class="nav-number">4.</span> <span class="nav-text">web服务器仅允许响应报文离开本机；周一不允许访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E8%AF%B7%E6%B1%82%E9%80%9F%E7%8E%87%E4%B8%8D%E8%83%BD%E8%B6%85%E8%BF%87100%E4%B8%AA%E6%AF%8F%E7%A7%92"><span class="nav-number">5.</span> <span class="nav-text">新请求速率不能超过100个每秒</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web%E5%8C%85%E5%90%ABadmin%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E9%A1%B5%E9%9D%A2%E4%B8%8D%E5%85%81%E8%AE%B8%E8%AE%BF%E9%97%AE%EF%BC%8C%E6%BA%90%E7%AB%AF%E5%8F%A3%EF%BC%9Adport"><span class="nav-number">6.</span> <span class="nav-text">web包含admin字符串的页面不允许访问，源端口：dport</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%85%E5%85%81%E8%AE%B8%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E7%A6%BB%E5%BC%80%E4%B8%BB%E6%9C%BA-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3%EF%BC%88%E7%9B%AE%E6%A0%87%E7%AB%AF%E5%8F%A3%EF%BC%89%EF%BC%9Asport"><span class="nav-number">7.</span> <span class="nav-text">web服务器仅允许响应报文离开主机,放行端口（目标端口）：sport</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">8.</span> <span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div></section><section class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" alt="冷月无声" src="/private/logo.jpg"><p class="site-author-name" itemprop="name">冷月无声</p><div class="site-description" itemprop="description">不止于技术。</div></div><div class="site-state-wrap site-overview-item animated"><nav class="site-state"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">77</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">39</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class="site-state-item-count">117</span> <span class="site-state-item-name">标签</span></a></div></nav></div><div class="links-of-author site-overview-item animated"><span class="links-of-author-item"><a href="https://github.com/bishixiang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a> </span><span class="links-of-author-item"><a href="https://weibo.com/bishixiang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a> </span><span class="links-of-author-item"><a href="mailto:bishixiang@163.com" title="E-Mail → mailto:bishixiang@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></span></div><div class="links-of-blogroll site-overview-item animated"><div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"><a href="https://openresty.org/cn/" title="https:&#x2F;&#x2F;openresty.org&#x2F;cn&#x2F;" rel="noopener" target="_blank">openresty</a></li><li class="links-of-blogroll-item"><a href="https://docs.ansible.com/" title="https:&#x2F;&#x2F;docs.ansible.com&#x2F;" rel="noopener" target="_blank">Ansible</a></li></ul></div></section></div></div></aside><div class="sidebar-dimmer"></div></header><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span>0%</span></div><div class="reading-progress-bar"></div><noscript><div class="noscript-warning">Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class="post-block"><article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/private/logo.jpg"><meta itemprop="name" content="冷月无声"><meta itemprop="description" content="不止于技术。"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="冷月无声"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Linux防火墙之iptables</h1><div class="post-meta-container"><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-12-08 22:32:52" itemprop="dateCreated datePublished" datetime="2018-12-08T22:32:52+08:00">2018-12-08</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar-check"></i> </span><span class="post-meta-item-text">更新于</span> <time title="修改时间：2019-04-01 14:56:30" itemprop="dateModified" datetime="2019-04-01T14:56:30+08:00">2019-04-01</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-folder"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iptables/" itemprop="url" rel="index"><span itemprop="name">iptables</span></a> </span></span><span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display:none"><span class="post-meta-item-icon"><i class="far fa-eye"></i> </span><span class="post-meta-item-text">阅读次数：</span> <span id="busuanzi_value_page_pv"></span></span></div></div></header><div class="post-body" itemprop="articleBody"><blockquote class="blockquote-center"><p>iptables是Linux防火墙的管理工具，位于/sbin/iptables。真正实现防火墙功能的是位于内核空间的netfilter，它是Linux内核中实现包过滤的内部结构。</p></blockquote><a id="more"></a><blockquote><p>过滤 IPv4 数据包的代码已经内置于内核中，并且按照不同的目的被组织成<code>表</code>的集合。<br><code>表</code>由一组预先定义的<code>链</code>组成，<code>链</code>包含遍历顺序规则。<br>每一条规则包含一个谓词的潜在匹配和相应的动作(称为目标)，如果谓词为真，该动作会被执行。也就是说条件匹配。<br>iptables 是用户工具，允许用户使用<code>链</code>和<code>规则</code>。</p></blockquote><h1 id="iptables命令简介"><a href="#iptables命令简介" class="headerlink" title="iptables命令简介"></a>iptables命令简介</h1><blockquote><p>iptables [-t 表名: filter/nat/mangle/raw] 命令选项 [链名: PREROUTING/INPUT/OUTPUT/FORWARD/POSTROUTING] [条件匹配] [-j 目标动作或跳转: ACCEPT/DROP/REJECT/LOG/REDIRECT/SNAT/DNAT]</p></blockquote><ul><li><p>常用的命令选项</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-t：指定要操纵的表(四个表)；</span><br><span class="line">-A：向规则链中添加条目；</span><br><span class="line">-D：从规则链中删除条目；</span><br><span class="line">-i：向规则链中插入条目；</span><br><span class="line">-R：替换规则链中的条目；</span><br><span class="line">-L：显示规则链中已有的条目；</span><br><span class="line">-F：清楚规则链中已有的条目；</span><br><span class="line">-Z：清空规则链中的数据包计算器和字节计数器；</span><br><span class="line">-N：创建新的用户自定义规则链；</span><br><span class="line">-P：定义规则链中的默认目标；</span><br><span class="line">-h：显示帮助信息；</span><br><span class="line">-p：指定要匹配的数据包协议类型；</span><br><span class="line">-s：指定要匹配的数据包源；</span><br><span class="line"></span><br><span class="line">-i -in-interface 进入的网络接口</span><br><span class="line">-o --out-interface 输出的网络接口</span><br><span class="line">-m state 当与连接跟踪结合使用时，允许访问包的连接跟踪状态。</span><br><span class="line">--state state  state是一个逗号分割的匹配连接状态列表。</span><br><span class="line">    INVALID 表示包是未知连接，</span><br><span class="line">    ESTABLISHED 表示是双向传送的连接，</span><br><span class="line">    NEW 表示包 为新的连接，否则是非双向传送的，</span><br><span class="line">    RELATED 表示包由新连接开始，但是和一个已存在的连接在一起，如FTP数据传送，或者一个ICMP错误。</span><br></pre></td></tr></table></figure></li><li><p>常用的条件匹配：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1、状态匹配：-m state --state 连接状态</span><br><span class="line">NEW：与任何连接无关的</span><br><span class="line">ESTABLISHED：响应请求或已建立连接的</span><br><span class="line">RELATED：与已有连接有相关性的，如FTP数据连接</span><br><span class="line"></span><br><span class="line">2、MAC地址匹配：-m mac --mac-source MAC地址</span><br><span class="line">eg：iptables -A INPUT -m mac --mac-source f0:1b:12:12:22:4f -j DROP</span><br><span class="line"></span><br><span class="line">3、IP范围匹配：-m iprange --src-range  IP范围</span><br><span class="line">eg：iptables -A FORWARD -p tcp -m iprange --src-range 192.168.0.1-192.168.0.10 -j ACCEPT</span><br><span class="line"></span><br><span class="line">4、多端口匹配：-m multiport --sports 源端口列表  和  -m multiport --sports 目的端口列表</span><br><span class="line">eg：iptables -A INPUT -p tcp -m multiport --dport 11,29,116,121 -j ACCEPT</span><br></pre></td></tr></table></figure><h1 id="iptables基础操作"><a href="#iptables基础操作" class="headerlink" title="iptables基础操作"></a>iptables基础操作</h1></li></ul><blockquote><p>以下内容基于centos6系统环境。</p></blockquote><ul><li><p>服务安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install iptables</span><br></pre></td></tr></table></figure></li><li><p>保存iptables到文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables-save &gt; ~&#x2F;iptables.rules</span><br><span class="line">或</span><br><span class="line">&#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;iptables save 默认将规则写入&#x2F;etc&#x2F;sysconfig&#x2F;iptables</span><br><span class="line">重启service iptables restart生效</span><br></pre></td></tr></table></figure></li><li><p>从文件中还原iptables规则</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables-restore &lt; ~&#x2F;iptables.rules</span><br></pre></td></tr></table></figure></li><li><p>监控iptables</p><ul><li>查看规则命中的次数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -L -v -n --line-numbers</span><br></pre></td></tr></table></figure></li><li>删除不必要的规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -nvL | grep -v &quot;0     0&quot;</span><br></pre></td></tr></table></figure></li><li>监控iptables活动<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch --interval&#x3D;5 &#39;iptables -nvL | grep -v &quot;0     0&quot;&#39;</span><br></pre></td></tr></table></figure></li><li>使用FWLogwatch分析iptables日志生成报告</li></ul></li></ul><ul><li>清空所有默认规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br></pre></td></tr></table></figure></li><li>清空所有自定义规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -X</span><br></pre></td></tr></table></figure></li><li>所有计数器归0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -Z</span><br></pre></td></tr></table></figure></li></ul><h1 id="iptables应用实例"><a href="#iptables应用实例" class="headerlink" title="iptables应用实例"></a>iptables应用实例</h1><h2 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h2><ul><li>预设规则（默认为ACCEPT）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -P INPUT DROP</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -P FORWARD DROP</span><br></pre></td></tr></table></figure></li><li>查看当前规则：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -nvL --line-number</span><br></pre></td></tr></table></figure></li><li>追加规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -s 10.1.1.1 -j DROP</span><br></pre></td></tr></table></figure></li><li>插入规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT 3 -s 10.1.1.2 -j DROP</span><br></pre></td></tr></table></figure></li><li>删除规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -D INPUT -s 10.1.1.1 -j DROP</span><br><span class="line">按行号删</span><br><span class="line">iptables -D INPUT 1</span><br></pre></td></tr></table></figure></li><li>修改规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将第2条规则改为ACCEPT</span><br><span class="line">iptables -R INPUT 3 -j ACCEPT</span><br></pre></td></tr></table></figure></li><li>清空规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br></pre></td></tr></table></figure><h2 id="规则案例"><a href="#规则案例" class="headerlink" title="规则案例"></a>规则案例</h2></li></ul><h3 id="ACCEPT"><a href="#ACCEPT" class="headerlink" title="ACCEPT"></a>ACCEPT</h3><ul><li>放行ping<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p icmp -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -p icmp -j ACCEPT</span><br></pre></td></tr></table></figure></li><li>允许lookback<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i lo -p all -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -o lo -p all -j ACCEPT</span><br><span class="line">或</span><br><span class="line">iptables -A INPUT -i lo -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -o lo -j ACCEPT</span><br></pre></td></tr></table></figure></li><li>放行80端口<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT      &#x2F;&#x2F;如果设置了iptables -P OUTPUT DROP，需要添加该条，否则远程无法连接</span><br></pre></td></tr></table></figure></li><li>允许防火墙转发除ICMP协议以外的所有数据包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A FORWARD -p ! icmp -j ACCEPT</span><br><span class="line">&#96;&#96;&#96;&#96;</span><br><span class="line">  - 注：&quot;!&quot; 条件取反</span><br><span class="line"></span><br><span class="line">- 允许某个特定网络 rsync 进入本机</span><br></pre></td></tr></table></figure>iptables -A INPUT -i eth0 -p tcp -s 192.168.1.0/24 –dport 873 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A OUTPUT -o eth0 -p tcp –sport 873 -m state –state ESTABLISHED -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">- 仅允许来自指定网络的ssh连接请求</span><br></pre></td></tr></table></figure>iptables -A INPUT -i eth0 -p tcp -s 192.168.1.0/24 –dport 22 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A OUTPUT -o eth0 -p tcp –sport 22 -m state –state ESTABLISHED -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 仅允许从本地发起到指定网络的SSH连接请求</span><br></pre></td></tr></table></figure>iptables -A OUTPUT -o eth0 -p tcp -d 192.168.1.0/24 –dport 22 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A INPUT -i eth0 -p tcp –sport 22 -m state –state ESTABLISHED -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许转发来自192.168.1.0&#x2F;24局域网段的DNS解析请求数据包。</span><br></pre></td></tr></table></figure>iptables -A FORWARD -s 192.168.1.0/24 -p udp –dport 53 -j ACCEPT<br>iptables -A FORWARD -d 192.168.1.0/24 -p udp –sport 53 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许本机开放从TCP端口1000-1024提供的应用服务。</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp –dport 1000:1024 -j ACCEPT<br>iptables -A OUTPUT -p tcp –sport 1000:1024 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 使用Multiport放行多个端口</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp -m multiport –dports 22,80,443 -j ACCEPT<br>iptables -A OUTPUT -p tcp -m multiport –sports 22,80,443 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许防火墙本机对外开放TCP端口20、21、25、110以及被动模式FTP端口1250-1280</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp -m multiport –dport 20,21,25,110,1250:1280 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 注意：这里用“-m multiport --dport”来指定多个目的端口</span><br><span class="line"></span><br><span class="line">- 针对端口访问的过滤。下面表示除了192.168.1.1-192.168.1.10之间的ip能访问192.168.0.1机器的80端口以外，其他ip都不可以访问！</span><br></pre></td></tr></table></figure>iptables -A INPUT -d 192.168.0.1 -p tcp –dport 80 -m iprange –src-range 192.168.1.1-192.168.1.10 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 只允许管理员从192.168.1.0&#x2F;24网段使用SSH远程登录防火墙主机。</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp –dport 22 -s 202.13.0.0/16 -j ACCEPT<br>iptables -A INPUT -p tcp –dport 22 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许192.168.1.0网段的服务器访问（-t filter表配置可以省略，默认就是这种表的配置）</span><br></pre></td></tr></table></figure>iptables -A INPUT -s 192.168.1.0/24 -p tcp -m state –state NEW -m tcp –dport 22 -j ACCEPT<br>或者<br>iptables -t filter -A INPUT -s 192.168.1.0/24 -p tcp -m state –state NEW -m tcp –dport 22 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 如果本地主机有两块网卡，一块连接内网(eth0)，一块连接外网(eth1)，那么可以使用下面的规则将eth0的数据路由到eht1：</span><br></pre></td></tr></table></figure>iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许所有本机向外的访问</span><br></pre></td></tr></table></figure>iptables -A OUTPUT -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### DROP</span><br><span class="line"></span><br><span class="line">- 屏蔽环回(loopback)访问</span><br></pre></td></tr></table></figure>iptables -A INPUT -i lo -j DROP<br>iptables -A OUTPUT -o lo -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽 ping</span><br></pre></td></tr></table></figure>iptables -A INPUT -p icmp -i eth0 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽来自外部的ping，即禁止外部机器ping本机</span><br></pre></td></tr></table></figure>iptables -A INPUT -p icmp –icmp-type echo-request -j DROP<br>iptables -A OUTPUT -p icmp –icmp-type echo-reply -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽从本机ping外部主机，禁止本机ping外部机器</span><br></pre></td></tr></table></figure>iptables -A OUTPUT -p icmp –icmp-type echo-request -j DROP<br>iptables -A INPUT -p icmp –icmp-type echo-reply -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - --icmp-type 8 同样表示 Echo request（Ping回显请求）</span><br><span class="line"></span><br><span class="line">- 允许本机 ping 别的主机；但不开放别的主机 ping 本机；</span><br></pre></td></tr></table></figure>iptables -I INPUT -p icmp –icmp-type echo-request -j DROP<br>iptables -I INPUT -p icmp –icmp-type echo-reply -j ACCEPT<br>iptables -I INPUT -p icmp –icmp-type destination-Unreachable -j ACCEPT<br>或者下面禁ping操作：<br>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽指定mac地址</span><br></pre></td></tr></table></figure>iptables -A INPUT -m mac –mac-source 00:00:00:00:00:00 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽某个IP</span><br></pre></td></tr></table></figure>iptables -A INPUT -s xxx.xxx.xxx.xxx -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 拒绝转发来自192.168.0.1主机的数据</span><br></pre></td></tr></table></figure>iptables -A FORWARD -s 192.168.0.1 -j REJECT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽从192.168.0.1到192.168.0.254</span><br></pre></td></tr></table></figure>iptables -I INPUT -s 192.168.0.0/24 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 过滤源地址段：</span><br></pre></td></tr></table></figure>iptables -A INPUT -m iprange –src-range 192.168.1.1-192.168.1.10 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 过滤目标地址段：</span><br></pre></td></tr></table></figure>iptables -A INPUT -m iprange –dst-range 192.168.1.11-192.168.1.20 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 丢弃无效的数据包</span><br></pre></td></tr></table></figure>iptables -A INPUT -m conntrack –ctstate INVALID -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 拒绝转发来自192.168.1.1主机的数据，允许转发来自192.168.0.0&#x2F;24网段的数据</span><br></pre></td></tr></table></figure>iptables -A FORWARD -s 192.168.1.1 -j REJECT<br>iptables -A FORWARD -s 192.168.0.0/24 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 说明：注意一定要把拒绝的放在前面不然就不起作用了！</span><br><span class="line"></span><br><span class="line">- 丢弃从外网接口（eth1）进入防火墙本机的源地址为私网地址的数据包</span><br></pre></td></tr></table></figure>iptables -A INPUT -i eth1 -s 192.168.0.0/16 -j DROP<br>iptables -A INPUT -i eth1 -s 172.16.0.0/12 -j DROP<br>iptables -A INPUT -i eth1 -s 10.0.0.0/8 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 拒绝 TCP 标志位全部为 1 及全部为 0 的报文访问本机</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp –tcp-flags ALL ALL -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 禁止转发来自MAC地址为&#96;aa:aa:aa:45:75:d0&#96;的和主机的数据包</span><br></pre></td></tr></table></figure>iptables -A FORWARD -m mac –mac-source aa:aa:aa:45:75:d0 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - iptables中使用“-m 模块关键字”的形式调用显示匹配。咱们这里用“-m mac –mac-source”来表示数据包的源MAC地址</span><br><span class="line"></span><br><span class="line">- 禁止转发源IP地址为192.168.1.1-192.168.1.100的TCP数据包</span><br></pre></td></tr></table></figure>iptables -A FORWARD -p tcp -m iprange –src-range 192.168.1.1-192.168.1.100 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 此处用“-m iprange --src-range”指定IP范围</span><br><span class="line"></span><br><span class="line">- 禁止转发与正常TCP连接无关的非--syn请求数据包</span><br></pre></td></tr></table></figure>iptables -A FORWARD -m state –state NEW -p tcp ! –syn -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - “-m state”表示数据包的连接状态，“NEW”表示与任何连接无关的</span><br><span class="line"></span><br><span class="line">- 拒绝访问防火墙的新数据包，但允许响应连接或与已有连接相关的数据包</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp -m state –state NEW -j DROP<br>iptables -A INPUT -p tcp -m state –state ESTABLISHED,RELATED -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - “ESTABLISHED”表示已经响应请求或者已经建立连接的数据包，“RELATED”表示与已建立的连接有相关性的，比如FTP数据连接等</span><br><span class="line"></span><br><span class="line">- 为某个端口访问设置白名单</span><br></pre></td></tr></table></figure>iptables -A INPUT -s<your_ip>-p tcp -m tcp –dport 22 -j ACCEPT<br>iptables -D INPUT -p tcp -m tcp –dport 22 -j DROP<br>eg:<br>iptables -A INPUT -p tcp –dport 21 -s 113.128.0.0/16 -j ACCEPT;<br>iptables -A INPUT -p tcp –dport 21 -s 120.0.0.0/8 -j ACCEPT;<br>iptables -A INPUT -p tcp –dport 21 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### LIMIT</span><br><span class="line"></span><br><span class="line">- 防止DoS攻击</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp –dport 80 -m limit –limit 25/minute –limit-burst 100 -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  - -m limit: 启用limit扩展，限制速度。</span><br><span class="line">  - --limit 25&#x2F;minute: 允许最多每分钟25个连接</span><br><span class="line">  - --limit-burst 100: 当达到100个连接后，才启用上述25&#x2F;minute限制（连接上限）</span><br><span class="line"></span><br><span class="line">- 限制并发连接数</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp –syn –dport 22 -m connlimit –connlimit-above 3 -j REJECT //限制每客户端不超过 3 个连接<br>iptables -A INPUT -p tcp –syn -m multiport –dport http,https –m connlimit –connlimit-above 20 -j REJECT –reject-with-tcp-reset<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 开放本机的ssh服务给192.168.1.1-192.168.1.100 中的主机；新请求建立的速率一分钟不得超过5个；仅允许响应报文通过其服务端口离开本机；</span><br></pre></td></tr></table></figure>iptables -A INPUT -p tcp –dport 22 -m iprange –src-rang 192.168.1.1-192.168.1.100 -m limit –limit 5/m -j ACCEPT<br>iptables -A OUTPUT -p tcp –sport 22 -m iprange –dst-rang 192.168.1.1-192.168.1.100 -m state –state ESTABLISHED -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### PREROUTING</span><br><span class="line"></span><br><span class="line">IPtables中可以灵活的做各种网络地址转换（NAT）。</span><br><span class="line"></span><br><span class="line">- 网络地址转换主要有两种：SNAT和DNAT</span><br><span class="line">  - SNAT是source network address translation的缩写，即源地址目标转换。</span><br><span class="line">    - MASQUERADE，地址伪装，在iptables中有着和SNAT相近的效果，但也有一些区别：使用SNAT的时候，出口ip的地址范围可以是一个，也可以是多个。</span><br><span class="line">  -  DNAT是destination network address translation的缩写，即目标网络地址转换。</span><br><span class="line"></span><br><span class="line">- 把所有10.0.0.0网段的数据包SNAT成192.168.1.1的ip然后发出去</span><br></pre></td></tr></table></figure>iptables -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -o eth0 -j SNAT –to-source 192.168.1.1<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 把所有10.0.0.0网段的数据包SNAT成192.168.1.1&#x2F;192.168.1.2&#x2F;192.168.1.3等几个ip然后发出去</span><br></pre></td></tr></table></figure>iptables -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -o eth0 -j SNAT –to-source 192.168.1.1-192.168.1.3<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 对于SNAT，不管是几个地址，必须明确的指定要SNAT的IP</span><br><span class="line"></span><br><span class="line">- 动态SNAT地址转换,不管现在eth0的出口获得了怎样的动态ip，MASQUERADE会自动读取eth0现在的ip地址然后做SNAT出去</span><br></pre></td></tr></table></figure>iptables -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -o eth0 -j MASQUERADE<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - MASQUERADE的作用是，从服务器的网卡上，自动获取当前ip地址来做NAT</span><br><span class="line"></span><br><span class="line">- 8022映射22端口</span><br></pre></td></tr></table></figure>iptables -t nat -A PREROUTING -p tcp -d 192.168.1.1 –dport 8022 -j DNAT –to-destination 192.168.1.1:22<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 将所有到达eth0网卡80端口的流量重定向转发到8080端口</span><br></pre></td></tr></table></figure>iptables -t nat -A PREROUTING -i eth0 -p tcp –dport 89 -j REDIRECT –to-port 8080<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 设置 8080 端口转发到 80 端口</span><br></pre></td></tr></table></figure>iptables -t nat -A PREROUTING -p tcp -d 10.1.1.1 –dport 8080 -j DNAT –to 10.1.1.1:80<br>iptables -A INPUT -i eth0 -p tcp –dport 8080 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A OUTPUT -o eth0 -p tcp –sport 8080 -m state –state ESTABLISHED -j ACCEPT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## 实践场景</span><br><span class="line"></span><br><span class="line">- 按时段限制(需要模块支持)</span><br></pre></td></tr></table></figure>iptables –A OUTPUT -p tcp -m multiport –dport http,https -i eth0 -o eth1 -m time –timestart 12:00 –timestop 13:00 –d 10.0.0.0/8 -j ACCEPT<br>iptables -A INPUT -p tcp -m time –timestart 02:00 –timestop 03:00 -j DROP<br>iptables -A INPUT -p udp -m time –timestart 02:00 –timestop 03:00 -j DROP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 限制本机的web服务器在周一不允许访问；新请求的速率不能超过100个每秒；web服务器包含了admin字符串的页面不允许访问：</span><br></pre></td></tr></table></figure><h1 id="web服务器仅允许响应报文离开本机；周一不允许访问"><a href="#web服务器仅允许响应报文离开本机；周一不允许访问" class="headerlink" title="web服务器仅允许响应报文离开本机；周一不允许访问"></a>web服务器仅允许响应报文离开本机；周一不允许访问</h1>iptables -A INPUT -p tcp –dport 80 -m time ! –weekdays Mon -j ACCEPT<br>iptables -A OUTPUT -p tcp –dport 80 -m state –state ESTABLISHED -j ACCEPT</your_ip></li></ul><h1 id="新请求速率不能超过100个每秒"><a href="#新请求速率不能超过100个每秒" class="headerlink" title="新请求速率不能超过100个每秒"></a>新请求速率不能超过100个每秒</h1><p>iptables -A INPUT -p tcp –dport 80 -m limit –limit 100/s -j ACCEPT</p><h1 id="web包含admin字符串的页面不允许访问，源端口：dport"><a href="#web包含admin字符串的页面不允许访问，源端口：dport" class="headerlink" title="web包含admin字符串的页面不允许访问，源端口：dport"></a>web包含admin字符串的页面不允许访问，源端口：dport</h1><p>iptables -A INPUT -p tcp –dport 80 -m string –algo bm –string ‘admin’ -j REJECT</p><h1 id="web服务器仅允许响应报文离开主机-放行端口（目标端口）：sport"><a href="#web服务器仅允许响应报文离开主机-放行端口（目标端口）：sport" class="headerlink" title="web服务器仅允许响应报文离开主机,放行端口（目标端口）：sport"></a>web服务器仅允许响应报文离开主机,放行端口（目标端口）：sport</h1><p>iptables -A OUTPUT -p tcp –dport 80 -m state –state ESTABLISHED -j ACCEPT</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在工作时间，即周一到周五的8:30-18:00，开放本机的ftp服务给 192.168.1.0网络中的主机访问；数据下载请求的次数每分钟不得超过5个；</span><br></pre></td></tr></table></figure><p>iptables -A INPUT -p tcp –dport 21 -s 192.168.1.0/24 -m time ! –weekdays 6,7 -m time –timestart 8:30 –timestop 18:00 -m connlimit –connlimit-above 5 -j ACCET</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽ssh和rsync端口，只允许白名单机器访问</span><br></pre></td></tr></table></figure><p>cat &lt;&lt; EOF<br>#!/bin/bash<br>/etc/init.d/iptables stop<br>iptables -A INPUT -s 10.0.0.1 -p tcp –dport 22 -j ACCEPT # 中控白名单<br>iptables -A OUTPUT -d 10.0.0.1 -p tcp –sport 22 -j ACCEPT<br>iptables -A INPUT -s 10.0.0.2 -p tcp –dport 22 -m state –state NEW,ESTABLISHED -j ACCEPT # 监控探针通过22端口连通性监控机器存活，开白名单。<br>iptables -A INPUT -p tcp -m multiport –dports 22,873 -j DROP<br>iptables -A OUTPUT -p tcp -m multiport –dports 22,873 -j DROP<br>iptables -L -v -n –line-numbers<br>EOF | bash</p><p>```</p><h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul><li><a target="_blank" rel="noopener" href="https://netfilter.org/projects/iptables/index.html">iptables官方网站</a></li><li><a target="_blank" rel="noopener" href="https://wiki.centos.org/zh/HowTos/Network/IPTables">IPTables</a></li><li>整理过程中参考部分微信公众号文章</li></ul><div><h1>推荐文章<span style="font-size:.45em;color:gray">（由<a target="_blank" rel="noopener" href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div></div><footer class="post-footer"><div class="reward-container"><div>Buy me a coffee</div><button onclick='document.querySelector(".post-reward").classList.toggle("active")'>赞赏</button><div class="post-reward"><div><img src="/private/wechatpay.jpg" alt="冷月无声 微信"> <span>微信</span></div><div><img src="/private/alipay.jpg" alt="冷月无声 支付宝"> <span>支付宝</span></div></div></div><div class="post-tags"><a href="/tags/Linux/" rel="tag"># Linux</a> <a href="/tags/iptables/" rel="tag"># iptables</a></div><div class="post-nav"><div class="post-nav-item"><a href="/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html" rel="prev" title="Linux OOM Killer 保护机制"><i class="fa fa-chevron-left"></i> Linux OOM Killer 保护机制</a></div><div class="post-nav-item"><a href="/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html" rel="next" title="rsync经典用例总结">rsync经典用例总结 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div class="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zNjE1Mi8xMjY4Nw"></div></div><script>window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      const commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }</script></div></main><footer class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2021</span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">冷月无声</span></div><div class="busuanzi-count"><span class="post-meta-item" id="busuanzi_container_site_uv" style="display:none"><span class="post-meta-item-icon"><i class="fa fa-user"></i> </span><span class="site-uv" title="总访客量"><span id="busuanzi_value_site_uv"></span> </span></span><span class="post-meta-item" id="busuanzi_container_site_pv" style="display:none"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="site-pv" title="总访问量"><span id="busuanzi_value_site_pv"></span></span></span></div><div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动</div></div></footer><script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js",(e=document.getElementsByTagName("script")[0]).parentNode.insertBefore(t,e)}()</script><script src="/js/local-search.js"></script><script>NProgress.configure({showSpinner:!0}),NProgress.start(),document.addEventListener("readystatechange",()=>{"interactive"===document.readyState&&NProgress.inc(.8),"complete"===document.readyState&&NProgress.done()}),document.addEventListener("pjax:send",()=>{NProgress.start()}),document.addEventListener("pjax:success",()=>{NProgress.done()})</script><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div style="display:none"><script src="//s95.cnzz.com/z_stat.php?id=1273577931&web_id=1273577931"></script></div><script>NexT.utils.loadComments("#lv-container",()=>{var e,t,n;window.livereOptions={refer:"linux防火墙之iptables.html"},e=document,t="script",n=e.getElementsByTagName(t)[0],"function"!=typeof LivereTower&&((t=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",t.async=!0,n.parentNode.insertBefore(t,n))})</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="baidu_verify_efFTzzqBeC.html">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.lengyuewusheng.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="iptables是Linux防火墙的管理工具，位于&#x2F;sbin&#x2F;iptables。真正实现防火墙功能的是位于内核空间的netfilter，它是Linux内核中实现包过滤的内部结构。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux防火墙之iptables">
+<meta property="og:url" content="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">
+<meta property="og:site_name" content="冷月无声">
+<meta property="og:description" content="iptables是Linux防火墙的管理工具，位于&#x2F;sbin&#x2F;iptables。真正实现防火墙功能的是位于内核空间的netfilter，它是Linux内核中实现包过滤的内部结构。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-08T14:32:52.000Z">
+<meta property="article:modified_time" content="2019-04-01T06:56:30.852Z">
+<meta property="article:author" content="冷月无声">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="iptables">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html","path":"linux防火墙之iptables.html","title":"Linux防火墙之iptables"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux防火墙之iptables | 冷月无声</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119523284-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-119523284-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?01d66b7109c2a75544d1724df8a28646"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="冷月无声" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">冷月无声</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">相信积累的力量！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables%E5%91%BD%E4%BB%A4%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">iptables命令简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">iptables基础操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iptables%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">iptables应用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99"><span class="nav-number">3.1.</span> <span class="nav-text">基本规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E5%88%99%E6%A1%88%E4%BE%8B"><span class="nav-number">3.2.</span> <span class="nav-text">规则案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACCEPT"><span class="nav-number">3.2.1.</span> <span class="nav-text">ACCEPT</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%85%E5%85%81%E8%AE%B8%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E7%A6%BB%E5%BC%80%E6%9C%AC%E6%9C%BA%EF%BC%9B%E5%91%A8%E4%B8%80%E4%B8%8D%E5%85%81%E8%AE%B8%E8%AE%BF%E9%97%AE"><span class="nav-number">4.</span> <span class="nav-text">web服务器仅允许响应报文离开本机；周一不允许访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E8%AF%B7%E6%B1%82%E9%80%9F%E7%8E%87%E4%B8%8D%E8%83%BD%E8%B6%85%E8%BF%87100%E4%B8%AA%E6%AF%8F%E7%A7%92"><span class="nav-number">5.</span> <span class="nav-text">新请求速率不能超过100个每秒</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web%E5%8C%85%E5%90%ABadmin%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E9%A1%B5%E9%9D%A2%E4%B8%8D%E5%85%81%E8%AE%B8%E8%AE%BF%E9%97%AE%EF%BC%8C%E6%BA%90%E7%AB%AF%E5%8F%A3%EF%BC%9Adport"><span class="nav-number">6.</span> <span class="nav-text">web包含admin字符串的页面不允许访问，源端口：dport</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%85%E5%85%81%E8%AE%B8%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%E7%A6%BB%E5%BC%80%E4%B8%BB%E6%9C%BA-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3%EF%BC%88%E7%9B%AE%E6%A0%87%E7%AB%AF%E5%8F%A3%EF%BC%89%EF%BC%9Asport"><span class="nav-number">7.</span> <span class="nav-text">web服务器仅允许响应报文离开主机,放行端口（目标端口）：sport</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">8.</span> <span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="冷月无声"
+      src="/private/logo.jpg">
+  <p class="site-author-name" itemprop="name">冷月无声</p>
+  <div class="site-description" itemprop="description">不止于技术。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">114</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bishixiang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/bishixiang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bishixiang@163.com" title="E-Mail → mailto:bishixiang@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://openresty.org/cn/" title="https:&#x2F;&#x2F;openresty.org&#x2F;cn&#x2F;" rel="noopener" target="_blank">openresty</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://docs.ansible.com/" title="https:&#x2F;&#x2F;docs.ansible.com&#x2F;" rel="noopener" target="_blank">Ansible</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/private/logo.jpg">
+      <meta itemprop="name" content="冷月无声">
+      <meta itemprop="description" content="不止于技术。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冷月无声">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux防火墙之iptables
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-08 22:32:52" itemprop="dateCreated datePublished" datetime="2018-12-08T22:32:52+08:00">2018-12-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-04-01 14:56:30" itemprop="dateModified" datetime="2019-04-01T14:56:30+08:00">2019-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/iptables/" itemprop="url" rel="index"><span itemprop="name">iptables</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>iptables是Linux防火墙的管理工具，位于/sbin/iptables。真正实现防火墙功能的是位于内核空间的netfilter，它是Linux内核中实现包过滤的内部结构。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<blockquote>
+<p>过滤 IPv4 数据包的代码已经内置于内核中，并且按照不同的目的被组织成<code>表</code>的集合。<br><code>表</code>由一组预先定义的<code>链</code>组成，<code>链</code>包含遍历顺序规则。<br>每一条规则包含一个谓词的潜在匹配和相应的动作(称为目标)，如果谓词为真，该动作会被执行。也就是说条件匹配。<br>iptables 是用户工具，允许用户使用<code>链</code>和<code>规则</code>。</p>
+</blockquote>
+<h1 id="iptables命令简介"><a href="#iptables命令简介" class="headerlink" title="iptables命令简介"></a>iptables命令简介</h1><blockquote>
+<p>iptables [-t 表名: filter/nat/mangle/raw] 命令选项 [链名: PREROUTING/INPUT/OUTPUT/FORWARD/POSTROUTING] [条件匹配] [-j 目标动作或跳转: ACCEPT/DROP/REJECT/LOG/REDIRECT/SNAT/DNAT]</p>
+</blockquote>
+<ul>
+<li>常用的命令选项<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-t：指定要操纵的表(四个表)；</span><br><span class="line">-A：向规则链中添加条目；</span><br><span class="line">-D：从规则链中删除条目；</span><br><span class="line">-i：向规则链中插入条目；</span><br><span class="line">-R：替换规则链中的条目；</span><br><span class="line">-L：显示规则链中已有的条目；</span><br><span class="line">-F：清楚规则链中已有的条目；</span><br><span class="line">-Z：清空规则链中的数据包计算器和字节计数器；</span><br><span class="line">-N：创建新的用户自定义规则链；</span><br><span class="line">-P：定义规则链中的默认目标；</span><br><span class="line">-h：显示帮助信息；</span><br><span class="line">-p：指定要匹配的数据包协议类型；</span><br><span class="line">-s：指定要匹配的数据包源；</span><br><span class="line"></span><br><span class="line">-i -in-interface 进入的网络接口</span><br><span class="line">-o --out-interface 输出的网络接口</span><br><span class="line">-m state 当与连接跟踪结合使用时，允许访问包的连接跟踪状态。</span><br><span class="line">--state state  state是一个逗号分割的匹配连接状态列表。</span><br><span class="line">    INVALID 表示包是未知连接，</span><br><span class="line">    ESTABLISHED 表示是双向传送的连接，</span><br><span class="line">    NEW 表示包 为新的连接，否则是非双向传送的，</span><br><span class="line">    RELATED 表示包由新连接开始，但是和一个已存在的连接在一起，如FTP数据传送，或者一个ICMP错误。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>常用的条件匹配：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1、状态匹配：-m state --state 连接状态</span><br><span class="line">NEW：与任何连接无关的</span><br><span class="line">ESTABLISHED：响应请求或已建立连接的</span><br><span class="line">RELATED：与已有连接有相关性的，如FTP数据连接</span><br><span class="line"></span><br><span class="line">2、MAC地址匹配：-m mac --mac-source MAC地址</span><br><span class="line">eg：iptables -A INPUT -m mac --mac-source f0:1b:12:12:22:4f -j DROP</span><br><span class="line"></span><br><span class="line">3、IP范围匹配：-m iprange --src-range  IP范围</span><br><span class="line">eg：iptables -A FORWARD -p tcp -m iprange --src-range 192.168.0.1-192.168.0.10 -j ACCEPT</span><br><span class="line"></span><br><span class="line">4、多端口匹配：-m multiport --sports 源端口列表  和  -m multiport --sports 目的端口列表</span><br><span class="line">eg：iptables -A INPUT -p tcp -m multiport --dport 11,29,116,121 -j ACCEPT</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="iptables基础操作"><a href="#iptables基础操作" class="headerlink" title="iptables基础操作"></a>iptables基础操作</h1><blockquote>
+<p>以下内容基于centos6系统环境。</p>
+</blockquote>
+<ul>
+<li><p>服务安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install iptables</span><br></pre></td></tr></table></figure></li>
+<li><p>保存iptables到文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables-save &gt; ~/iptables.rules</span><br><span class="line">或</span><br><span class="line">/etc/rc.d/init.d/iptables save 默认将规则写入/etc/sysconfig/iptables</span><br><span class="line">重启service iptables restart生效</span><br></pre></td></tr></table></figure></li>
+<li><p>从文件中还原iptables规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables-restore &lt; ~/iptables.rules</span><br></pre></td></tr></table></figure></li>
+<li><p>监控iptables</p>
+<ul>
+<li><p>查看规则命中的次数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -L -v -n --line-numbers</span><br></pre></td></tr></table></figure></li>
+<li><p>删除不必要的规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -nvL | grep -v &quot;0     0&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>监控iptables活动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch --interval=5 &#x27;iptables -nvL | grep -v &quot;0     0&quot;&#x27;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用FWLogwatch分析iptables日志生成报告</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>清空所有默认规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br></pre></td></tr></table></figure></li>
+<li><p>清空所有自定义规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -X</span><br></pre></td></tr></table></figure></li>
+<li><p>所有计数器归0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -Z</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="iptables应用实例"><a href="#iptables应用实例" class="headerlink" title="iptables应用实例"></a>iptables应用实例</h1><h2 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h2><ul>
+<li><p>预设规则（默认为ACCEPT）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -P INPUT DROP</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -P FORWARD DROP</span><br></pre></td></tr></table></figure></li>
+<li><p>查看当前规则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -nvL --line-number</span><br></pre></td></tr></table></figure></li>
+<li><p>追加规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -s 10.1.1.1 -j DROP</span><br></pre></td></tr></table></figure></li>
+<li><p>插入规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT 3 -s 10.1.1.2 -j DROP</span><br></pre></td></tr></table></figure></li>
+<li><p>删除规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -D INPUT -s 10.1.1.1 -j DROP</span><br><span class="line">按行号删</span><br><span class="line">iptables -D INPUT 1</span><br></pre></td></tr></table></figure></li>
+<li><p>修改规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将第2条规则改为ACCEPT</span><br><span class="line">iptables -R INPUT 3 -j ACCEPT</span><br></pre></td></tr></table></figure></li>
+<li><p>清空规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="规则案例"><a href="#规则案例" class="headerlink" title="规则案例"></a>规则案例</h2><h3 id="ACCEPT"><a href="#ACCEPT" class="headerlink" title="ACCEPT"></a>ACCEPT</h3><ul>
+<li><p>放行ping</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p icmp -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -p icmp -j ACCEPT</span><br></pre></td></tr></table></figure></li>
+<li><p>允许lookback</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i lo -p all -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -o lo -p all -j ACCEPT</span><br><span class="line">或</span><br><span class="line">iptables -A INPUT -i lo -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -o lo -j ACCEPT</span><br></pre></td></tr></table></figure></li>
+<li><p>放行80端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT      //如果设置了iptables -P OUTPUT DROP，需要添加该条，否则远程无法连接</span><br></pre></td></tr></table></figure></li>
+<li><p>允许防火墙转发除ICMP协议以外的所有数据包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A FORWARD -p ! icmp -j ACCEPT</span><br><span class="line">````</span><br><span class="line">  - 注：&quot;!&quot; 条件取反</span><br><span class="line"></span><br><span class="line">- 允许某个特定网络 rsync 进入本机</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -i eth0 -p tcp -s 192.168.1.0/24 –dport 873 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A OUTPUT -o eth0 -p tcp –sport 873 -m state –state ESTABLISHED -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">- 仅允许来自指定网络的ssh连接请求</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -i eth0 -p tcp -s 192.168.1.0/24 –dport 22 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A OUTPUT -o eth0 -p tcp –sport 22 -m state –state ESTABLISHED -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 仅允许从本地发起到指定网络的SSH连接请求</span><br></pre></td></tr></table></figure>
+<p>iptables -A OUTPUT -o eth0 -p tcp -d 192.168.1.0/24 –dport 22 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A INPUT -i eth0 -p tcp –sport 22 -m state –state ESTABLISHED -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许转发来自192.168.1.0/24局域网段的DNS解析请求数据包。</span><br></pre></td></tr></table></figure>
+<p>iptables -A FORWARD -s 192.168.1.0/24 -p udp –dport 53 -j ACCEPT<br>iptables -A FORWARD -d 192.168.1.0/24 -p udp –sport 53 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许本机开放从TCP端口1000-1024提供的应用服务。</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp –dport 1000:1024 -j ACCEPT<br>iptables -A OUTPUT -p tcp –sport 1000:1024 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 使用Multiport放行多个端口</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT  -p tcp -m multiport –dports 22,80,443 -j ACCEPT<br>iptables -A OUTPUT -p tcp -m multiport –sports 22,80,443 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许防火墙本机对外开放TCP端口20、21、25、110以及被动模式FTP端口1250-1280</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp -m multiport –dport 20,21,25,110,1250:1280 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 注意：这里用“-m multiport --dport”来指定多个目的端口</span><br><span class="line"></span><br><span class="line">- 针对端口访问的过滤。下面表示除了192.168.1.1-192.168.1.10之间的ip能访问192.168.0.1机器的80端口以外，其他ip都不可以访问！</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -d 192.168.0.1 -p tcp –dport 80 -m iprange –src-range 192.168.1.1-192.168.1.10 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 只允许管理员从192.168.1.0/24网段使用SSH远程登录防火墙主机。</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp –dport 22 -s 202.13.0.0/16 -j ACCEPT<br>iptables -A INPUT -p tcp –dport 22 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许192.168.1.0网段的服务器访问（-t filter表配置可以省略，默认就是这种表的配置）</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -s 192.168.1.0/24 -p tcp -m state –state NEW -m tcp –dport 22 -j ACCEPT<br>或者<br>iptables -t filter -A INPUT -s 192.168.1.0/24 -p tcp -m state –state NEW -m tcp –dport 22 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 如果本地主机有两块网卡，一块连接内网(eth0)，一块连接外网(eth1)，那么可以使用下面的规则将eth0的数据路由到eht1：</span><br></pre></td></tr></table></figure>
+<p>iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 允许所有本机向外的访问</span><br></pre></td></tr></table></figure>
+<p>iptables -A OUTPUT -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### DROP</span><br><span class="line"></span><br><span class="line">- 屏蔽环回(loopback)访问</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -i lo -j DROP<br>iptables -A OUTPUT -o lo -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽 ping</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p icmp -i eth0 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽来自外部的ping，即禁止外部机器ping本机</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p icmp –icmp-type echo-request -j DROP<br>iptables -A OUTPUT -p icmp –icmp-type echo-reply -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽从本机ping外部主机，禁止本机ping外部机器</span><br></pre></td></tr></table></figure>
+<p>iptables -A OUTPUT -p icmp –icmp-type echo-request -j DROP<br>iptables -A INPUT -p icmp –icmp-type echo-reply -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - --icmp-type 8 同样表示 Echo request（Ping回显请求）</span><br><span class="line"></span><br><span class="line">- 允许本机 ping 别的主机；但不开放别的主机 ping 本机；</span><br></pre></td></tr></table></figure>
+<p>iptables -I INPUT -p icmp –icmp-type echo-request -j DROP<br>iptables -I INPUT -p icmp –icmp-type echo-reply -j ACCEPT<br>iptables -I INPUT -p icmp –icmp-type destination-Unreachable -j ACCEPT<br>或者下面禁ping操作：<br>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽指定mac地址</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -m mac –mac-source 00:00:00:00:00:00 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽某个IP</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -s xxx.xxx.xxx.xxx -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 拒绝转发来自192.168.0.1主机的数据</span><br></pre></td></tr></table></figure>
+<p>iptables -A FORWARD -s 192.168.0.1 -j REJECT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽从192.168.0.1到192.168.0.254</span><br></pre></td></tr></table></figure>
+<p>iptables -I INPUT -s 192.168.0.0/24 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 过滤源地址段：</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -m iprange –src-range 192.168.1.1-192.168.1.10 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 过滤目标地址段：</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -m iprange –dst-range 192.168.1.11-192.168.1.20 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 丢弃无效的数据包</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -m conntrack –ctstate INVALID -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 拒绝转发来自192.168.1.1主机的数据，允许转发来自192.168.0.0/24网段的数据</span><br></pre></td></tr></table></figure>
+<p>iptables -A FORWARD -s 192.168.1.1 -j REJECT<br>iptables -A FORWARD -s 192.168.0.0/24 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 说明：注意一定要把拒绝的放在前面不然就不起作用了！</span><br><span class="line"></span><br><span class="line">- 丢弃从外网接口（eth1）进入防火墙本机的源地址为私网地址的数据包</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -i eth1 -s 192.168.0.0/16 -j DROP<br>iptables -A INPUT -i eth1 -s 172.16.0.0/12 -j DROP<br>iptables -A INPUT -i eth1 -s 10.0.0.0/8 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 拒绝 TCP 标志位全部为 1 及全部为 0 的报文访问本机</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp –tcp-flags ALL ALL -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 禁止转发来自MAC地址为`aa:aa:aa:45:75:d0`的和主机的数据包</span><br></pre></td></tr></table></figure>
+<p>iptables -A FORWARD -m mac –mac-source aa:aa:aa:45:75:d0 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - iptables中使用“-m 模块关键字”的形式调用显示匹配。咱们这里用“-m mac –mac-source”来表示数据包的源MAC地址</span><br><span class="line"></span><br><span class="line">- 禁止转发源IP地址为192.168.1.1-192.168.1.100的TCP数据包</span><br></pre></td></tr></table></figure>
+<p>iptables -A FORWARD -p tcp -m iprange –src-range 192.168.1.1-192.168.1.100 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 此处用“-m iprange --src-range”指定IP范围</span><br><span class="line"></span><br><span class="line">- 禁止转发与正常TCP连接无关的非--syn请求数据包</span><br></pre></td></tr></table></figure>
+<p>iptables -A FORWARD -m state –state NEW -p tcp ! –syn -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - “-m state”表示数据包的连接状态，“NEW”表示与任何连接无关的</span><br><span class="line"></span><br><span class="line">- 拒绝访问防火墙的新数据包，但允许响应连接或与已有连接相关的数据包</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp -m state –state NEW -j DROP<br>iptables -A INPUT -p tcp -m state –state ESTABLISHED,RELATED -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - “ESTABLISHED”表示已经响应请求或者已经建立连接的数据包，“RELATED”表示与已建立的连接有相关性的，比如FTP数据连接等</span><br><span class="line"></span><br><span class="line">- 为某个端口访问设置白名单</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -s <YOUR_IP> -p tcp -m tcp –dport 22 -j ACCEPT<br>iptables -D INPUT -p tcp -m tcp –dport 22 -j DROP<br>eg:<br>iptables -A INPUT -p tcp –dport 21 -s 113.128.0.0/16 -j ACCEPT;<br>iptables -A INPUT -p tcp –dport 21 -s 120.0.0.0/8 -j ACCEPT;<br>iptables -A INPUT -p tcp –dport 21 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### LIMIT</span><br><span class="line"></span><br><span class="line">- 防止DoS攻击</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp –dport 80 -m limit –limit 25/minute –limit-burst 100 -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  - -m limit: 启用limit扩展，限制速度。</span><br><span class="line">  - --limit 25/minute: 允许最多每分钟25个连接</span><br><span class="line">  - --limit-burst 100: 当达到100个连接后，才启用上述25/minute限制（连接上限）</span><br><span class="line"></span><br><span class="line">- 限制并发连接数</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp –syn –dport 22 -m connlimit –connlimit-above 3 -j REJECT  //限制每客户端不超过 3 个连接<br>iptables -A INPUT -p tcp –syn -m multiport –dport http,https –m connlimit –connlimit-above 20 -j REJECT –reject-with-tcp-reset</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 开放本机的ssh服务给192.168.1.1-192.168.1.100 中的主机；新请求建立的速率一分钟不得超过5个；仅允许响应报文通过其服务端口离开本机；</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp –dport 22 -m iprange –src-rang 192.168.1.1-192.168.1.100 -m limit –limit 5/m -j ACCEPT<br>iptables -A OUTPUT -p tcp –sport 22 -m iprange –dst-rang 192.168.1.1-192.168.1.100 -m state –state ESTABLISHED -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### PREROUTING</span><br><span class="line"></span><br><span class="line">IPtables中可以灵活的做各种网络地址转换（NAT）。</span><br><span class="line"></span><br><span class="line">- 网络地址转换主要有两种：SNAT和DNAT</span><br><span class="line">  - SNAT是source network address translation的缩写，即源地址目标转换。</span><br><span class="line">    - MASQUERADE，地址伪装，在iptables中有着和SNAT相近的效果，但也有一些区别：使用SNAT的时候，出口ip的地址范围可以是一个，也可以是多个。</span><br><span class="line">  -  DNAT是destination network address translation的缩写，即目标网络地址转换。</span><br><span class="line"></span><br><span class="line">- 把所有10.0.0.0网段的数据包SNAT成192.168.1.1的ip然后发出去</span><br></pre></td></tr></table></figure>
+<p>iptables -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -o eth0 -j SNAT –to-source 192.168.1.1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 把所有10.0.0.0网段的数据包SNAT成192.168.1.1/192.168.1.2/192.168.1.3等几个ip然后发出去</span><br></pre></td></tr></table></figure>
+<p>iptables -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -o eth0 -j SNAT –to-source 192.168.1.1-192.168.1.3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - 对于SNAT，不管是几个地址，必须明确的指定要SNAT的IP</span><br><span class="line"></span><br><span class="line">- 动态SNAT地址转换,不管现在eth0的出口获得了怎样的动态ip，MASQUERADE会自动读取eth0现在的ip地址然后做SNAT出去</span><br></pre></td></tr></table></figure>
+<p>iptables -t nat -A POSTROUTING -s 10.0.0.0/255.255.255.0 -o eth0 -j MASQUERADE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  - MASQUERADE的作用是，从服务器的网卡上，自动获取当前ip地址来做NAT</span><br><span class="line"></span><br><span class="line">- 8022映射22端口</span><br></pre></td></tr></table></figure>
+<p>iptables -t nat -A PREROUTING -p tcp -d 192.168.1.1 –dport 8022 -j DNAT –to-destination 192.168.1.1:22</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 将所有到达eth0网卡80端口的流量重定向转发到8080端口</span><br></pre></td></tr></table></figure>
+<p>iptables -t nat -A PREROUTING -i eth0 -p tcp –dport 89 -j REDIRECT –to-port 8080</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 设置 8080 端口转发到 80 端口</span><br></pre></td></tr></table></figure>
+<p>iptables -t nat -A PREROUTING -p tcp -d 10.1.1.1 –dport 8080 -j DNAT –to 10.1.1.1:80<br>iptables -A INPUT -i eth0 -p tcp –dport 8080 -m state –state NEW,ESTABLISHED -j ACCEPT<br>iptables -A OUTPUT -o eth0 -p tcp –sport 8080 -m state –state ESTABLISHED -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## 实践场景</span><br><span class="line"></span><br><span class="line">- 按时段限制(需要模块支持)</span><br></pre></td></tr></table></figure>
+<p>iptables –A OUTPUT -p tcp -m multiport –dport http,https -i eth0 -o eth1 -m time –timestart 12:00 –timestop 13:00 –d 10.0.0.0/8 -j ACCEPT<br>iptables -A INPUT -p tcp -m time –timestart 02:00 –timestop 03:00 -j DROP<br>iptables -A INPUT -p udp -m time –timestart 02:00 –timestop 03:00 -j DROP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 限制本机的web服务器在周一不允许访问；新请求的速率不能超过100个每秒；web服务器包含了admin字符串的页面不允许访问：</span><br></pre></td></tr></table></figure>
+<h1 id="web服务器仅允许响应报文离开本机；周一不允许访问"><a href="#web服务器仅允许响应报文离开本机；周一不允许访问" class="headerlink" title="web服务器仅允许响应报文离开本机；周一不允许访问"></a>web服务器仅允许响应报文离开本机；周一不允许访问</h1><p>iptables -A INPUT -p tcp –dport 80 -m time ! –weekdays Mon -j ACCEPT<br>iptables -A OUTPUT -p tcp –dport 80 -m state –state ESTABLISHED -j ACCEPT</p>
+</li>
+</ul>
+<h1 id="新请求速率不能超过100个每秒"><a href="#新请求速率不能超过100个每秒" class="headerlink" title="新请求速率不能超过100个每秒"></a>新请求速率不能超过100个每秒</h1><p>iptables -A INPUT -p tcp –dport 80 -m limit –limit 100/s -j ACCEPT</p>
+<h1 id="web包含admin字符串的页面不允许访问，源端口：dport"><a href="#web包含admin字符串的页面不允许访问，源端口：dport" class="headerlink" title="web包含admin字符串的页面不允许访问，源端口：dport"></a>web包含admin字符串的页面不允许访问，源端口：dport</h1><p>iptables -A INPUT -p tcp –dport 80 -m string –algo bm –string ‘admin’ -j REJECT</p>
+<h1 id="web服务器仅允许响应报文离开主机-放行端口（目标端口）：sport"><a href="#web服务器仅允许响应报文离开主机-放行端口（目标端口）：sport" class="headerlink" title="web服务器仅允许响应报文离开主机,放行端口（目标端口）：sport"></a>web服务器仅允许响应报文离开主机,放行端口（目标端口）：sport</h1><p>iptables -A OUTPUT -p tcp –dport 80 -m state –state ESTABLISHED -j ACCEPT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在工作时间，即周一到周五的8:30-18:00，开放本机的ftp服务给 192.168.1.0网络中的主机访问；数据下载请求的次数每分钟不得超过5个；</span><br></pre></td></tr></table></figure>
+<p>iptables -A INPUT -p tcp –dport 21 -s 192.168.1.0/24 -m time ! –weekdays 6,7 -m time –timestart 8:30 –timestop 18:00 -m connlimit –connlimit-above 5 -j ACCET</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 屏蔽ssh和rsync端口，只允许白名单机器访问</span><br></pre></td></tr></table></figure>
+<p>cat &lt;&lt; EOF<br>#!/bin/bash<br>/etc/init.d/iptables stop<br>iptables -A INPUT -s 10.0.0.1 -p tcp –dport 22 -j ACCEPT                                       # 中控白名单<br>iptables -A OUTPUT -d 10.0.0.1 -p tcp –sport 22 -j ACCEPT<br>iptables -A INPUT -s 10.0.0.2 -p tcp –dport 22 -m state –state NEW,ESTABLISHED -j ACCEPT      # 监控探针通过22端口连通性监控机器存活，开白名单。<br>iptables -A INPUT  -p tcp -m multiport –dports 22,873 -j DROP<br>iptables -A OUTPUT -p tcp -m multiport –dports 22,873 -j DROP<br>iptables -L -v -n –line-numbers<br>EOF | bash</p>
+<p>```</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://netfilter.org/projects/iptables/index.html">iptables官方网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.centos.org/zh/HowTos/Network/IPTables">IPTables</a></li>
+<li>整理过程中参考部分微信公众号文章</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a target="_blank" rel="noopener" href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/private/wechatpay.jpg" alt="冷月无声 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/private/alipay.jpg" alt="冷月无声 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/iptables/" rel="tag"># iptables</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html" rel="prev" title="rsync经典用例总结">
+                  <i class="fa fa-chevron-left"></i> rsync经典用例总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html" rel="next" title="Linux OOM Killer 保护机制">
+                  Linux OOM Killer 保护机制 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC8zNjE1Mi8xMjY4Nw"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冷月无声</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>

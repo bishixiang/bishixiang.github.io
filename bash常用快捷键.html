@@ -1,19 +1,642 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.3.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png"><link rel="mask-icon" href="/images/logo.svg" color="#222"><meta name="baidu-site-verification" content="baidu_verify_efFTzzqBeC.html"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css"><script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script><script class="hexo-configurations">var NexT=window.NexT||{},CONFIG={hostname:"www.lengyuewusheng.com",root:"/",images:"/images",scheme:"Mist",version:"8.1.0",exturl:!1,sidebar:{position:"left",display:"post",padding:18,offset:12},copycode:!1,bookmark:{enable:!1,color:"#222",save:"auto"},fancybox:!1,mediumzoom:!1,lazyload:!0,pangu:!1,comments:{style:"tabs",active:null,storage:!0,lazyload:!1,nav:null},motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"fadeInDown",post_body:"fadeInDown",coll_header:"fadeInLeft",sidebar:"fadeInUp"}},prism:!1,i18n:{placeholder:"搜索...",empty:"没有找到任何搜索结果：${query}",hits_time:"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）",hits:"找到 ${hits} 个搜索结果"},path:"/search.xml",localsearch:{enable:!0,trigger:"auto",top_n_per_article:1,unescape:!1,preload:!1}}</script><meta name="description" content="常用但不全面，会持续总结完善。。。"><meta property="og:type" content="article"><meta property="og:title" content="bash常用快捷键"><meta property="og:url" content="https://www.lengyuewusheng.com/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html"><meta property="og:site_name" content="冷月无声"><meta property="og:description" content="常用但不全面，会持续总结完善。。。"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2018-03-19T13:30:49.000Z"><meta property="article:modified_time" content="2020-11-16T13:17:22.173Z"><meta property="article:author" content="冷月无声"><meta property="article:tag" content="bash"><meta property="article:tag" content="快捷键"><meta name="twitter:card" content="summary"><link rel="canonical" href="https://www.lengyuewusheng.com/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html"><script class="page-configurations">CONFIG.page={sidebar:"",isHome:!1,isPost:!0,lang:"zh-CN"}</script><title>bash常用快捷键 | 冷月无声</title><script async src="https://www.googletagmanager.com/gtag/js?id=UA-119523284-1"></script><script>function gtag(){dataLayer.push(arguments)}CONFIG.hostname===location.hostname&&(window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-119523284-1"))</script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?01d66b7109c2a75544d1724df8a28646";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style>body{margin-top:2rem}.use-motion .collection-header,.use-motion .comments,.use-motion .menu-item,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header,.use-motion .sidebar{visibility:visible}.use-motion .footer,.use-motion .header,.use-motion .site-brand-container .toggle{opacity:initial}.use-motion .custom-logo-image,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line{transform:scaleX(1)}.search-pop-overlay,.sidebar-nav{display:none}.sidebar-panel{display:block}</style></noscript><link rel="alternate" href="/atom.xml" title="冷月无声" type="application/atom+xml"></head><body itemscope itemtype="http://schema.org/WebPage" class="use-motion"><div class="headband"></div><main class="main"><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-container"><div class="site-nav-toggle"><div class="toggle" aria-label="切换导航栏"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div></div><div class="site-meta"><a href="/" class="brand" rel="start"><i class="logo-line"></i><h1 class="site-title">冷月无声</h1><i class="logo-line"></i></a><p class="site-subtitle" itemprop="description">相信积累的力量！</p></div><div class="site-nav-right"><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class="site-nav"><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-search"><a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class="search-pop-overlay"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"><input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="搜索..." spellcheck="false" type="search" class="search-input"></div><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class="search-result-icon"><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle"><span class="toggle-line"></span> <span class="toggle-line"></span> <span class="toggle-line"></span></div><aside class="sidebar"><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class="sidebar-nav"><li class="sidebar-nav-toc">文章目录</li><li class="sidebar-nav-overview">站点概览</li></ul><div class="sidebar-panel-container"><section class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E9%94%AE%E6%B8%85%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">功能键清单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">控制命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bang-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">Bang(!)命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">相关资料</span></a></li></ol></div></section><section class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" alt="冷月无声" src="/private/logo.jpg"><p class="site-author-name" itemprop="name">冷月无声</p><div class="site-description" itemprop="description">不止于技术。</div></div><div class="site-state-wrap site-overview-item animated"><nav class="site-state"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">77</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">39</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class="site-state-item-count">117</span> <span class="site-state-item-name">标签</span></a></div></nav></div><div class="links-of-author site-overview-item animated"><span class="links-of-author-item"><a href="https://github.com/bishixiang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a> </span><span class="links-of-author-item"><a href="https://weibo.com/bishixiang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a> </span><span class="links-of-author-item"><a href="mailto:bishixiang@163.com" title="E-Mail → mailto:bishixiang@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></span></div><div class="links-of-blogroll site-overview-item animated"><div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"><a href="https://openresty.org/cn/" title="https:&#x2F;&#x2F;openresty.org&#x2F;cn&#x2F;" rel="noopener" target="_blank">openresty</a></li><li class="links-of-blogroll-item"><a href="https://docs.ansible.com/" title="https:&#x2F;&#x2F;docs.ansible.com&#x2F;" rel="noopener" target="_blank">Ansible</a></li></ul></div></section></div></div></aside><div class="sidebar-dimmer"></div></header><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span>0%</span></div><div class="reading-progress-bar"></div><noscript><div class="noscript-warning">Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class="post-block"><article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://www.lengyuewusheng.com/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/private/logo.jpg"><meta itemprop="name" content="冷月无声"><meta itemprop="description" content="不止于技术。"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="冷月无声"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">bash常用快捷键</h1><div class="post-meta-container"><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-03-19 21:30:49" itemprop="dateCreated datePublished" datetime="2018-03-19T21:30:49+08:00">2018-03-19</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar-check"></i> </span><span class="post-meta-item-text">更新于</span> <time title="修改时间：2020-11-16 21:17:22" itemprop="dateModified" datetime="2020-11-16T21:17:22+08:00">2020-11-16</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-folder"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/" itemprop="url" rel="index"><span itemprop="name">快捷键</span></a> </span></span><span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display:none"><span class="post-meta-item-icon"><i class="far fa-eye"></i> </span><span class="post-meta-item-text">阅读次数：</span> <span id="busuanzi_value_page_pv"></span></span></div></div></header><div class="post-body" itemprop="articleBody"><p>常用但不全面，会持续总结完善。。。</p><a id="more"></a><style>table th:nth-of-type(1){width:30%}nth-of-type(2){width:70%}</style><h1 id="功能键清单"><a href="#功能键清单" class="headerlink" title="功能键清单"></a>功能键清单</h1><table><thead><tr><th align="left">快捷键</th><th align="left">功能描述</th></tr></thead><tbody><tr><td align="left">Ctrl + a</td><td align="left">光标移至行首</td></tr><tr><td align="left">Alt + b</td><td align="left">按单词左移光标</td></tr><tr><td align="left">Ctrl + b</td><td align="left">按字符左移光标</td></tr><tr><td align="left">Ctrl + e</td><td align="left">光标移至行位</td></tr><tr><td align="left">Alt + f</td><td align="left">按单词右移光标</td></tr><tr><td align="left">Ctrl + f</td><td align="left">按字符右移光标</td></tr><tr><td align="left">Ctrl + xx</td><td align="left">在行首和光标之间切换</td></tr><tr><td align="left">Ctrl + 方向键</td><td align="left">光标以单词为单位移动</td></tr><tr><td align="left">Ctrl + u</td><td align="left">删除至行首</td></tr><tr><td align="left">Ctrl + w</td><td align="left">按单词往左删，删至空格处。（Alt + Backspaces删至特殊字符处）</td></tr><tr><td align="left">Ctrl + h</td><td align="left">按字符往左删</td></tr><tr><td align="left">Ctrl + k</td><td align="left">删除至行尾</td></tr><tr><td align="left">Ctrl + d</td><td align="left">按单词往右删</td></tr><tr><td align="left">Ctrl + d</td><td align="left">按字符往右删</td></tr><tr><td align="left">ctrl + y</td><td align="left">粘贴ctrl+u上次执行时删除的字符至光标后</td></tr><tr><td align="left">Alt + u</td><td align="left">从光标处更改为全部大写的单词</td></tr><tr><td align="left">Alt + c</td><td align="left">从光标处更改为首字母大写的单词</td></tr><tr><td align="left">Alt + l(小写的L)</td><td align="left">将当前单词改为全部小写</td></tr><tr><td align="left">Alt + t</td><td align="left">交换光标处和之前的单词</td></tr><tr><td align="left">Ctrl + t</td><td align="left">交换光标处和之前的字符</td></tr><tr><td align="left">Ctrl + ?</td><td align="left">撤消前一次输入</td></tr><tr><td align="left">Ctrl + s</td><td align="left">锁住终端</td></tr><tr><td align="left">Ctrl + q</td><td align="left">解锁终端</td></tr><tr><td align="left">Alt + 数字</td><td align="left">切换到第N个标签页</td></tr><tr><td align="left">Alt + r</td><td align="left">透明窗口切换</td></tr><tr><td align="left">Shift + Home</td><td align="left">顶部</td></tr><tr><td align="left">Shift + End</td><td align="left">底部</td></tr><tr><td align="left">Shift + PgUp</td><td align="left">向上翻页</td></tr><tr><td align="left">Shift + PgDn</td><td align="left">向下翻页</td></tr></tbody></table><h1 id="控制命令"><a href="#控制命令" class="headerlink" title="控制命令"></a>控制命令</h1><table><thead><tr><th>快捷键</th><th>功能描述</th></tr></thead><tbody><tr><td>Ctrl + r</td><td>搜索历史命令</td></tr><tr><td>Ctrl + p</td><td>历史命令中的上一条</td></tr><tr><td>Ctrl + n</td><td>历史命令中的下一条</td></tr><tr><td>Alt + .</td><td>使用上一条命令中的最后一个参数，与<code>!$</code>效果相同</td></tr><tr><td>Ctrl + l(小写L)</td><td>清屏</td></tr><tr><td>Ctrl + s</td><td>阻止屏幕输出（实机键盘操作生效，只是不显示）</td></tr><tr><td>Ctrl + q</td><td>允许屏幕输出</td></tr></tbody></table><h1 id="Bang-命令"><a href="#Bang-命令" class="headerlink" title="Bang(!)命令"></a>Bang(!)命令</h1><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td>!!</td><td>再次执行最近一条命令</td></tr><tr><td>!xxxx</td><td>再次执行最近一条以xxx开头的命令</td></tr><tr><td>!xxxx:p</td><td>仅打印最近一条以xxxx开头的命令</td></tr><tr><td>!*</td><td>上一条命令的所有参数（包含回车）</td></tr><tr><td>!*:p</td><td>输出<code>!*</code>的内容</td></tr><tr><td>!$</td><td>上一条命令最后一个参数，与<code>Alt+.</code>效果相同</td></tr><tr><td>^xxxx</td><td>删除上一条命令中的xxxx</td></tr><tr><td>^xxxx^yyyy</td><td>将上一条命令中的xxxx替换为yyyy</td></tr><tr><td>^xxxx^yyyy^</td><td>将上一条命令中的xxxx全部替换为yyyy</td></tr></tbody></table><h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul><li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3MTI2NzkxMA==&mid=2247489340&idx=1&sn=c7707e49184df0ba6cbca5505b756e6f&chksm=eac53615ddb2bf03d350efb74fa7cedd81fa8a7886f3bca6918d8f5602ed54e899c318b587a4&scene=0&xtrack=1&key=e4392a9f794f9be2426e33aab082a3b391b98fe6efcab81480f230fc2d84f7053a622e54ccdaa0406e3ba59e266aa9496cebb06026461a5f4e89ff77be93a50d99d8103a861960ae7e86fa7aa194d2df&ascene=14&uin=MjU4NTIwODY2MA==&devicetype=Windows+10&version=62070158&lang=zh_CN&pass_ticket=RLo5MX2JTDHvbIbfvEmJrcchovMVEsBeRTjwY6KxzhMgup4hP5dP2VtNUqFttHkd">掌握这些提升命令行效率的快捷键后，让你的 SHELL 快得飞起来</a></li><li><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/bash-shortcut.html">Bash 快捷键大全</a></li><li><a target="_blank" rel="noopener" href="https://linux.cn/article-9430-1.html">有用的 Bash 快捷键清单</a></li></ul></div><footer class="post-footer"><div class="reward-container"><div>Buy me a coffee</div><button onclick='document.querySelector(".post-reward").classList.toggle("active")'>赞赏</button><div class="post-reward"><div><img src="/private/wechatpay.jpg" alt="冷月无声 微信"> <span>微信</span></div><div><img src="/private/alipay.jpg" alt="冷月无声 支付宝"> <span>支付宝</span></div></div></div><div class="post-tags"><a href="/tags/bash/" rel="tag"># bash</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag"># 快捷键</a></div><div class="post-nav"><div class="post-nav-item"><a href="/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html" rel="prev" title="confluence 自动备份策略不生效"><i class="fa fa-chevron-left"></i> confluence 自动备份策略不生效</a></div><div class="post-nav-item"><a href="/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html" rel="next" title="influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比">influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div class="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zNjE1Mi8xMjY4Nw"></div></div><script>window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      const commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }</script></div></main><footer class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2021</span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">冷月无声</span></div><div class="busuanzi-count"><span class="post-meta-item" id="busuanzi_container_site_uv" style="display:none"><span class="post-meta-item-icon"><i class="fa fa-user"></i> </span><span class="site-uv" title="总访客量"><span id="busuanzi_value_site_uv"></span> </span></span><span class="post-meta-item" id="busuanzi_container_site_pv" style="display:none"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="site-pv" title="总访问量"><span id="busuanzi_value_site_pv"></span></span></span></div><div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动</div></div></footer><script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js",(e=document.getElementsByTagName("script")[0]).parentNode.insertBefore(t,e)}()</script><script src="/js/local-search.js"></script><script>NProgress.configure({showSpinner:!0}),NProgress.start(),document.addEventListener("readystatechange",()=>{"interactive"===document.readyState&&NProgress.inc(.8),"complete"===document.readyState&&NProgress.done()}),document.addEventListener("pjax:send",()=>{NProgress.start()}),document.addEventListener("pjax:success",()=>{NProgress.done()})</script><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div style="display:none"><script src="//s95.cnzz.com/z_stat.php?id=1273577931&web_id=1273577931"></script></div><script>NexT.utils.loadComments("#lv-container",()=>{var e,t,n;window.livereOptions={refer:"bash常用快捷键.html"},e=document,t="script",n=e.getElementsByTagName(t)[0],"function"!=typeof LivereTower&&((t=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",t.async=!0,n.parentNode.insertBefore(t,n))})</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="baidu_verify_efFTzzqBeC.html">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.lengyuewusheng.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="常用但不全面，会持续总结完善。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bash常用快捷键">
+<meta property="og:url" content="https://www.lengyuewusheng.com/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html">
+<meta property="og:site_name" content="冷月无声">
+<meta property="og:description" content="常用但不全面，会持续总结完善。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-19T13:30:49.000Z">
+<meta property="article:modified_time" content="2020-11-16T13:17:22.173Z">
+<meta property="article:author" content="冷月无声">
+<meta property="article:tag" content="bash">
+<meta property="article:tag" content="快捷键">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.lengyuewusheng.com/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.lengyuewusheng.com/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html","path":"bash常用快捷键.html","title":"bash常用快捷键"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>bash常用快捷键 | 冷月无声</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119523284-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-119523284-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?01d66b7109c2a75544d1724df8a28646"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="冷月无声" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">冷月无声</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">相信积累的力量！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E9%94%AE%E6%B8%85%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">功能键清单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">控制命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bang-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">Bang(!)命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">相关资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="冷月无声"
+      src="/private/logo.jpg">
+  <p class="site-author-name" itemprop="name">冷月无声</p>
+  <div class="site-description" itemprop="description">不止于技术。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">114</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bishixiang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/bishixiang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bishixiang@163.com" title="E-Mail → mailto:bishixiang@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://openresty.org/cn/" title="https:&#x2F;&#x2F;openresty.org&#x2F;cn&#x2F;" rel="noopener" target="_blank">openresty</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://docs.ansible.com/" title="https:&#x2F;&#x2F;docs.ansible.com&#x2F;" rel="noopener" target="_blank">Ansible</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.lengyuewusheng.com/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/private/logo.jpg">
+      <meta itemprop="name" content="冷月无声">
+      <meta itemprop="description" content="不止于技术。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冷月无声">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          bash常用快捷键
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-19 21:30:49" itemprop="dateCreated datePublished" datetime="2018-03-19T21:30:49+08:00">2018-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-16 21:17:22" itemprop="dateModified" datetime="2020-11-16T21:17:22+08:00">2020-11-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/" itemprop="url" rel="index"><span itemprop="name">快捷键</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>常用但不全面，会持续总结完善。。。</p>
+<span id="more"></span>
+
+<style> table th:nth-of-type(1){width: 30%;} nth-of-type(2){width: 70%;}</style>
+
+<h1 id="功能键清单"><a href="#功能键清单" class="headerlink" title="功能键清单"></a>功能键清单</h1><table>
+<thead>
+<tr>
+<th align="left">快捷键</th>
+<th align="left">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Ctrl + a</td>
+<td align="left">光标移至行首</td>
+</tr>
+<tr>
+<td align="left">Alt + b</td>
+<td align="left">按单词左移光标</td>
+</tr>
+<tr>
+<td align="left">Ctrl + b</td>
+<td align="left">按字符左移光标</td>
+</tr>
+<tr>
+<td align="left">Ctrl + e</td>
+<td align="left">光标移至行位</td>
+</tr>
+<tr>
+<td align="left">Alt + f</td>
+<td align="left">按单词右移光标</td>
+</tr>
+<tr>
+<td align="left">Ctrl + f</td>
+<td align="left">按字符右移光标</td>
+</tr>
+<tr>
+<td align="left">Ctrl + xx</td>
+<td align="left">在行首和光标之间切换</td>
+</tr>
+<tr>
+<td align="left">Ctrl + 方向键</td>
+<td align="left">光标以单词为单位移动</td>
+</tr>
+<tr>
+<td align="left">Ctrl + u</td>
+<td align="left">删除至行首</td>
+</tr>
+<tr>
+<td align="left">Ctrl + w</td>
+<td align="left">按单词往左删，删至空格处。（Alt + Backspaces删至特殊字符处）</td>
+</tr>
+<tr>
+<td align="left">Ctrl + h</td>
+<td align="left">按字符往左删</td>
+</tr>
+<tr>
+<td align="left">Ctrl + k</td>
+<td align="left">删除至行尾</td>
+</tr>
+<tr>
+<td align="left">Ctrl + d</td>
+<td align="left">按单词往右删</td>
+</tr>
+<tr>
+<td align="left">Ctrl + d</td>
+<td align="left">按字符往右删</td>
+</tr>
+<tr>
+<td align="left">ctrl + y</td>
+<td align="left">粘贴ctrl+u上次执行时删除的字符至光标后</td>
+</tr>
+<tr>
+<td align="left">Alt + u</td>
+<td align="left">从光标处更改为全部大写的单词</td>
+</tr>
+<tr>
+<td align="left">Alt + c</td>
+<td align="left">从光标处更改为首字母大写的单词</td>
+</tr>
+<tr>
+<td align="left">Alt + l(小写的L)</td>
+<td align="left">将当前单词改为全部小写</td>
+</tr>
+<tr>
+<td align="left">Alt + t</td>
+<td align="left">交换光标处和之前的单词</td>
+</tr>
+<tr>
+<td align="left">Ctrl + t</td>
+<td align="left">交换光标处和之前的字符</td>
+</tr>
+<tr>
+<td align="left">Ctrl + ?</td>
+<td align="left">撤消前一次输入</td>
+</tr>
+<tr>
+<td align="left">Ctrl + s</td>
+<td align="left">锁住终端</td>
+</tr>
+<tr>
+<td align="left">Ctrl + q</td>
+<td align="left">解锁终端</td>
+</tr>
+<tr>
+<td align="left">Alt  + 数字</td>
+<td align="left">切换到第N个标签页</td>
+</tr>
+<tr>
+<td align="left">Alt  + r</td>
+<td align="left">透明窗口切换</td>
+</tr>
+<tr>
+<td align="left">Shift + Home</td>
+<td align="left">顶部</td>
+</tr>
+<tr>
+<td align="left">Shift + End</td>
+<td align="left">底部</td>
+</tr>
+<tr>
+<td align="left">Shift + PgUp</td>
+<td align="left">向上翻页</td>
+</tr>
+<tr>
+<td align="left">Shift + PgDn</td>
+<td align="left">向下翻页</td>
+</tr>
+</tbody></table>
+<h1 id="控制命令"><a href="#控制命令" class="headerlink" title="控制命令"></a>控制命令</h1><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + r</td>
+<td>搜索历史命令</td>
+</tr>
+<tr>
+<td>Ctrl + p</td>
+<td>历史命令中的上一条</td>
+</tr>
+<tr>
+<td>Ctrl + n</td>
+<td>历史命令中的下一条</td>
+</tr>
+<tr>
+<td>Alt + .</td>
+<td>使用上一条命令中的最后一个参数，与<code>!$</code>效果相同</td>
+</tr>
+<tr>
+<td>Ctrl + l(小写L)</td>
+<td>清屏</td>
+</tr>
+<tr>
+<td>Ctrl + s</td>
+<td>阻止屏幕输出（实机键盘操作生效，只是不显示）</td>
+</tr>
+<tr>
+<td>Ctrl + q</td>
+<td>允许屏幕输出</td>
+</tr>
+</tbody></table>
+<h1 id="Bang-命令"><a href="#Bang-命令" class="headerlink" title="Bang(!)命令"></a>Bang(!)命令</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>!!</td>
+<td>再次执行最近一条命令</td>
+</tr>
+<tr>
+<td>!xxxx</td>
+<td>再次执行最近一条以xxx开头的命令</td>
+</tr>
+<tr>
+<td>!xxxx:p</td>
+<td>仅打印最近一条以xxxx开头的命令</td>
+</tr>
+<tr>
+<td>!*</td>
+<td>上一条命令的所有参数（包含回车）</td>
+</tr>
+<tr>
+<td>!*:p</td>
+<td>输出<code>!*</code>的内容</td>
+</tr>
+<tr>
+<td>!$</td>
+<td>上一条命令最后一个参数，与<code>Alt+.</code>效果相同</td>
+</tr>
+<tr>
+<td>^xxxx</td>
+<td>删除上一条命令中的xxxx</td>
+</tr>
+<tr>
+<td>^xxxx^yyyy</td>
+<td>将上一条命令中的xxxx替换为yyyy</td>
+</tr>
+<tr>
+<td>^xxxx^yyyy^</td>
+<td>将上一条命令中的xxxx全部替换为yyyy</td>
+</tr>
+</tbody></table>
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3MTI2NzkxMA==&mid=2247489340&idx=1&sn=c7707e49184df0ba6cbca5505b756e6f&chksm=eac53615ddb2bf03d350efb74fa7cedd81fa8a7886f3bca6918d8f5602ed54e899c318b587a4&scene=0&xtrack=1&key=e4392a9f794f9be2426e33aab082a3b391b98fe6efcab81480f230fc2d84f7053a622e54ccdaa0406e3ba59e266aa9496cebb06026461a5f4e89ff77be93a50d99d8103a861960ae7e86fa7aa194d2df&ascene=14&uin=MjU4NTIwODY2MA==&devicetype=Windows+10&version=62070158&lang=zh_CN&pass_ticket=RLo5MX2JTDHvbIbfvEmJrcchovMVEsBeRTjwY6KxzhMgup4hP5dP2VtNUqFttHkd">掌握这些提升命令行效率的快捷键后，让你的 SHELL 快得飞起来</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/bash-shortcut.html">Bash 快捷键大全</a></li>
+<li><a target="_blank" rel="noopener" href="https://linux.cn/article-9430-1.html">有用的 Bash 快捷键清单</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/private/wechatpay.jpg" alt="冷月无声 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/private/alipay.jpg" alt="冷月无声 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/bash/" rel="tag"># bash</a>
+              <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag"># 快捷键</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html" rel="prev" title="influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比">
+                  <i class="fa fa-chevron-left"></i> influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html" rel="next" title="confluence 自动备份策略不生效">
+                  confluence 自动备份策略不生效 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC8zNjE1Mi8xMjY4Nw"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冷月无声</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="/js/third-party/comments/livere.js"></script>
+
+</body>
+</html>
