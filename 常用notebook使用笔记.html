@@ -318,27 +318,34 @@
 
 <h1 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
 <li><p>安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyterthemes</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyterthemes</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>列出主题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jt -l</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jt -l</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>选择主题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jt -t grade3     #白</span><br><span class="line">jt -t solarizedl #浅土黄</span><br><span class="line">jt -t gruvboxl   #深土黄</span><br><span class="line">jt -t chesterish #深蓝</span><br><span class="line">jt -t solarizedd #深绿</span><br><span class="line">jt -t oceans16   #深灰</span><br><span class="line">jt -t monokai    #黑白</span><br><span class="line">jt -t gruvboxd   #黑黄</span><br><span class="line">jt -t onedork    #黑灰</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jt -t grade3     #白</span><br><span class="line">jt -t solarizedl #浅土黄</span><br><span class="line">jt -t gruvboxl   #深土黄</span><br><span class="line">jt -t chesterish #深蓝</span><br><span class="line">jt -t solarizedd #深绿</span><br><span class="line">jt -t oceans16   #深灰</span><br><span class="line">jt -t monokai    #黑白</span><br><span class="line">jt -t gruvboxd   #黑黄</span><br><span class="line">jt -t onedork    #黑灰</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>代码转PPT</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbconvert *.ipynb --to slides --post serve</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbconvert *.ipynb --to slides --post serve</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>绑定IP端口启动服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>指定目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001 nibilaoyedenotebook</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001 nibilaoyedenotebook</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>创建密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br><span class="line">jupyter notebook password --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br><span class="line">jupyter notebook password --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>插件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">debugger</span><br><span class="line">jupyterlab-chart-editor</span><br><span class="line">toc</span><br><span class="line">jupyterlab-drawio</span><br><span class="line">jupyterlab-execute-time</span><br><span class="line">jupyterlab_filetree</span><br><span class="line">jupyterlab_go_to_definition</span><br></pre></td></tr></table></figure>
-<p>列出插件列表</p>
+<p> 列出插件列表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jupyter --version</span><br><span class="line"></span><br><span class="line">jupyter labextension list</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="zeppelin"><a href="#zeppelin" class="headerlink" title="zeppelin"></a>zeppelin</h1><h2 id="ldap-认证"><a href="#ldap-认证" class="headerlink" title="ldap 认证"></a>ldap 认证</h2><ul>
 <li>userDnTemplate中的{0}表示登录时输入的用户名,</li>
-<li>conf/zeppelin-site.xml修改zeppelin.anonymous.allowed属性为false</li>
+<li>conf&#x2F;zeppelin-site.xml修改zeppelin.anonymous.allowed属性为false</li>
 <li>ldapRealm.contextFactory.authenticationMechanism后面的赋值选项<ul>
 <li>none</li>
 <li>simple</li>
@@ -352,7 +359,8 @@
 </ul>
 <h2 id="nginx代理关键配置"><a href="#nginx代理关键配置" class="headerlink" title="nginx代理关键配置"></a>nginx代理关键配置</h2><ul>
 <li><p>zeppelin</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat conf/zeppelin-site.xml</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;zeppelin.server.context.path&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/zeppelin/&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;Context Path of the Web Application&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat conf/zeppelin-site.xml</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;zeppelin.server.context.path&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/zeppelin/&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;Context Path of the Web Application&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>nginx</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">upstream zeppelin &#123;</span><br><span class="line">        server 10.0.0.1:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /zeppelin</span><br><span class="line">&#123;</span><br><span class="line">    proxy_pass http://zeppelin;</span><br><span class="line">    proxy_set_header Host $host;</span><br><span class="line">    proxy_set_header X-Forwarded-Host $host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">&#125;</span><br><span class="line">location /zeppelin/ws &#123;  # For websocket support</span><br><span class="line">    proxy_pass http://zeppelin;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_set_header Upgrade websocket;</span><br><span class="line">    proxy_set_header Connection upgrade;</span><br><span class="line">    proxy_read_timeout 86400;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>

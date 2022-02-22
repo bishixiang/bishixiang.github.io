@@ -159,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">报错信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">处理方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-unix%E4%B8%8B%E7%9A%84%E8%BF%9B%E7%A8%8B%E9%97%B4%E4%B8%A4%E7%B1%BB%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">linux&#x2F;unix下的进程间两类通信方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%96%87%E4%BB%B6%E7%9A%84IPC"><span class="nav-number">3.1.</span> <span class="nav-text">基于文件的IPC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AD%98%E7%9A%84IPC"><span class="nav-number">3.2.</span> <span class="nav-text">基于内存的IPC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">3.3.</span> <span class="nav-text">参考文档</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">报错信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">处理方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-x2F-unix%E4%B8%8B%E7%9A%84%E8%BF%9B%E7%A8%8B%E9%97%B4%E4%B8%A4%E7%B1%BB%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">linux&#x2F;unix下的进程间两类通信方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%96%87%E4%BB%B6%E7%9A%84IPC"><span class="nav-number">3.1.</span> <span class="nav-text">基于文件的IPC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AD%98%E7%9A%84IPC"><span class="nav-number">3.2.</span> <span class="nav-text">基于内存的IPC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">3.3.</span> <span class="nav-text">参考文档</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -328,7 +328,7 @@
 <h1 id="处理方案"><a href="#处理方案" class="headerlink" title="处理方案"></a>处理方案</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># for i in $(/usr/bin/ipcs -s | awk &#x27;/apache/ &#123;print $2&#125;&#x27;); do /usr/bin/ipcrm -s $i; done</span><br><span class="line"># ipcs -s</span><br><span class="line"></span><br><span class="line">------ Semaphore Arrays --------</span><br><span class="line">key        semid      owner      perms      nsems</span><br><span class="line">0x000000a7 0          root      600        1</span><br><span class="line">0x00000000 170524673  apache    600        1</span><br><span class="line">0x00000000 170557442  apache    600        1</span><br></pre></td></tr></table></figure>
 
 
-<h1 id="linux-unix下的进程间两类通信方式"><a href="#linux-unix下的进程间两类通信方式" class="headerlink" title="linux/unix下的进程间两类通信方式"></a>linux/unix下的进程间两类通信方式</h1><h2 id="基于文件的IPC"><a href="#基于文件的IPC" class="headerlink" title="基于文件的IPC"></a>基于文件的IPC</h2><ul>
+<h1 id="linux-x2F-unix下的进程间两类通信方式"><a href="#linux-x2F-unix下的进程间两类通信方式" class="headerlink" title="linux&#x2F;unix下的进程间两类通信方式"></a>linux&#x2F;unix下的进程间两类通信方式</h1><h2 id="基于文件的IPC"><a href="#基于文件的IPC" class="headerlink" title="基于文件的IPC"></a>基于文件的IPC</h2><ul>
 <li>基于普通文件的IPC</li>
 <li>基于管道文件的IPC<ul>
 <li>普通管道</li>
@@ -343,8 +343,8 @@
 <li>对等模型主要用于udp编程</li>
 </ul>
 </li>
-<li>C/S模型<ul>
-<li>C/S模型主要用于TCP编程</li>
+<li>C&#x2F;S模型<ul>
+<li>C&#x2F;S模型主要用于TCP编程</li>
 </ul>
 </li>
 </ul>

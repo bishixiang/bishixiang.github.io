@@ -847,14 +847,14 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/http/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/location/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/location/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/http/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -917,20 +917,6 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/MySQL/</loc>
-    <lastmod>2022-02-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.lengyuewusheng.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2022-02-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lengyuewusheng.com/tags/MediaWiki/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -939,6 +925,20 @@
   
   <url>
     <loc>https://www.lengyuewusheng.com/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2022-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lengyuewusheng.com/tags/MySQL/</loc>
+    <lastmod>2022-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lengyuewusheng.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -987,14 +987,14 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/%E5%8D%8F%E8%AE%AE/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/%E5%85%B1%E4%BA%AB/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/%E5%85%B1%E4%BA%AB/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/%E5%8D%8F%E8%AE%AE/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1274,6 +1274,13 @@
   </url>
   
   <url>
+    <loc>https://www.lengyuewusheng.com/tags/rsync/</loc>
+    <lastmod>2022-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lengyuewusheng.com/tags/alias/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -1289,13 +1296,6 @@
   
   <url>
     <loc>https://www.lengyuewusheng.com/tags/iptables/</loc>
-    <lastmod>2022-02-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.lengyuewusheng.com/tags/rsync/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1337,21 +1337,21 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/chkconfig/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/Apache/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/systemd/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/httpd/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/cpu/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/IPC/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1379,21 +1379,21 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/Apache/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/cpu/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/httpd/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/chkconfig/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/tags/IPC/</loc>
+    <loc>https://www.lengyuewusheng.com/tags/systemd/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1435,6 +1435,13 @@
   </url>
   
   <url>
+    <loc>https://www.lengyuewusheng.com/tags/crash/</loc>
+    <lastmod>2022-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lengyuewusheng.com/tags/openssl/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -1443,13 +1450,6 @@
   
   <url>
     <loc>https://www.lengyuewusheng.com/tags/https/</loc>
-    <lastmod>2022-02-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.lengyuewusheng.com/tags/crash/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1626,13 +1626,6 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/categories/chrome/</loc>
-    <lastmod>2022-02-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lengyuewusheng.com/categories/Windows/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -1640,7 +1633,7 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/categories/MySQL/</loc>
+    <loc>https://www.lengyuewusheng.com/categories/chrome/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1648,6 +1641,13 @@
   
   <url>
     <loc>https://www.lengyuewusheng.com/categories/MediaWiki/</loc>
+    <lastmod>2022-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lengyuewusheng.com/categories/MySQL/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1752,6 +1752,13 @@
   </url>
   
   <url>
+    <loc>https://www.lengyuewusheng.com/categories/rsync/</loc>
+    <lastmod>2022-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lengyuewusheng.com/categories/Linux/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -1760,13 +1767,6 @@
   
   <url>
     <loc>https://www.lengyuewusheng.com/categories/iptables/</loc>
-    <lastmod>2022-02-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.lengyuewusheng.com/categories/rsync/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1787,14 +1787,14 @@
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/categories/confluence/%E5%A1%AB%E5%9D%91%E6%8C%87%E5%8D%97/</loc>
+    <loc>https://www.lengyuewusheng.com/categories/IPC/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.lengyuewusheng.com/categories/IPC/</loc>
+    <loc>https://www.lengyuewusheng.com/categories/confluence/%E5%A1%AB%E5%9D%91%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2022-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

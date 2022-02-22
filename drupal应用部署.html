@@ -320,7 +320,7 @@
 
 <h2 id="以lightning为例部署"><a href="#以lightning为例部署" class="headerlink" title="以lightning为例部署"></a>以lightning为例部署</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">composer create-project acquia/lightning-project drupal</span><br><span class="line">chown -R nobody:nobody drupal</span><br></pre></td></tr></table></figure>
 <ul>
-<li>drupal/docroot为应用根目录</li>
+<li>drupal&#x2F;docroot为应用根目录</li>
 <li>drupal默认使用sqlite数据库不需要单独配置</li>
 </ul>
 <h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>以上方式部署完成后，用nginx的默认php应用配置会导致除了首页能访问，其它所有页面全部404，<br>根据drupal的路由特点需要简单配置rewrite规则，nginx应用的基本配置如下：</p>

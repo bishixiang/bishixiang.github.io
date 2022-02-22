@@ -159,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97%E6%AF%94%E8%BE%83%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">磁盘阵列比较表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">特点总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81RAID%E7%BA%A7%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">常见RAID级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-0"><span class="nav-number">3.1.</span> <span class="nav-text">RAID 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-1"><span class="nav-number">3.2.</span> <span class="nav-text">RAID 1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAID-5"><span class="nav-number">4.</span> <span class="nav-text">RAID 5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-6"><span class="nav-number">4.1.</span> <span class="nav-text">RAID 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-10-01"><span class="nav-number">4.2.</span> <span class="nav-text">RAID 10&#x2F;01</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-50"><span class="nav-number">4.3.</span> <span class="nav-text">RAID 50</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Raid%E7%A3%81%E7%9B%98%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="nav-number">5.</span> <span class="nav-text">Raid磁盘状态检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97%E6%AF%94%E8%BE%83%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">磁盘阵列比较表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">特点总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81RAID%E7%BA%A7%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">常见RAID级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-0"><span class="nav-number">3.1.</span> <span class="nav-text">RAID 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-1"><span class="nav-number">3.2.</span> <span class="nav-text">RAID 1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAID-5"><span class="nav-number">4.</span> <span class="nav-text">RAID 5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-6"><span class="nav-number">4.1.</span> <span class="nav-text">RAID 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-10-x2F-01"><span class="nav-number">4.2.</span> <span class="nav-text">RAID 10&#x2F;01</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAID-50"><span class="nav-number">4.3.</span> <span class="nav-text">RAID 50</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Raid%E7%A3%81%E7%9B%98%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="nav-number">5.</span> <span class="nav-text">Raid磁盘状态检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -343,7 +343,7 @@
 <td align="left">1</td>
 <td align="left">2</td>
 <td align="left">n-1</td>
-<td align="left">1/n</td>
+<td align="left">1&#x2F;n</td>
 <td align="left">n</td>
 <td align="left">1</td>
 <td align="left">最高，一个正常即可</td>
@@ -354,7 +354,7 @@
 <td align="left">5</td>
 <td align="left">3</td>
 <td align="left">1</td>
-<td align="left">(n-1)/n</td>
+<td align="left">(n-1)&#x2F;n</td>
 <td align="left">n-1</td>
 <td align="left">n-1</td>
 <td align="left">高</td>
@@ -365,7 +365,7 @@
 <td align="left">6</td>
 <td align="left">4</td>
 <td align="left">2</td>
-<td align="left">(n-2)/n</td>
+<td align="left">(n-2)&#x2F;n</td>
 <td align="left">n-2</td>
 <td align="left">n-2</td>
 <td align="left">安全性较RAID 5高</td>
@@ -375,21 +375,21 @@
 <tr>
 <td align="left">10</td>
 <td align="left">4</td>
-<td align="left">n/2</td>
+<td align="left">n&#x2F;2</td>
 <td align="left">50%</td>
-<td align="left">n/2</td>
-<td align="left">n/2</td>
+<td align="left">n&#x2F;2</td>
+<td align="left">n&#x2F;2</td>
 <td align="left">安全性高，但在同一个子组群中不能出现两颗毁损硬盘</td>
-<td align="left">综合RAID 0/1优点，理论速度较快</td>
+<td align="left">综合RAID 0&#x2F;1优点，理论速度较快</td>
 <td align="left">大型数据库、服务器</td>
 </tr>
 <tr>
 <td align="left">50</td>
 <td align="left">6</td>
-<td align="left">n/m</td>
-<td align="left">1-1/m</td>
-<td align="left">n-n/m</td>
-<td align="left">n-n/m</td>
+<td align="left">n&#x2F;m</td>
+<td align="left">1-1&#x2F;m</td>
+<td align="left">n-n&#x2F;m</td>
+<td align="left">n-n&#x2F;m</td>
 <td align="left">安全性高，但在同一个子组群中不能出现两颗毁损硬盘</td>
 <td align="left">高可靠性、高读取速度</td>
 <td align="left">事务处理</td>
@@ -401,7 +401,7 @@
 </ul>
 <h2 id="特点总结"><a href="#特点总结" class="headerlink" title="特点总结"></a>特点总结</h2><ul>
 <li>读写性能最高：RAID 0</li>
-<li>磁盘利用率最低：RAID 1 (1/n)</li>
+<li>磁盘利用率最低：RAID 1 (1&#x2F;n)</li>
 <li>可靠性最高：RAID 1</li>
 </ul>
 <h2 id="常见RAID级别"><a href="#常见RAID级别" class="headerlink" title="常见RAID级别"></a>常见RAID级别</h2><h3 id="RAID-0"><a href="#RAID-0" class="headerlink" title="RAID 0"></a>RAID 0</h3><p>RAID 0亦称为带区集。它将两个以上的磁盘并联起来，成为一个大容量的磁盘。</p>
@@ -433,7 +433,7 @@
 <li>磁盘利用率：可使用的容量为硬盘总数减去2的差，乘以最小容量。</li>
 <li>最多容许两个磁盘损坏。</li>
 </ul>
-<h3 id="RAID-10-01"><a href="#RAID-10-01" class="headerlink" title="RAID 10/01"></a>RAID 10/01</h3><p>RAID 10是先镜像再分区数据，再将所有硬盘分为两组，视为是RAID 0的最低组合，然后将这两组各自视为RAID 1运作。</p>
+<h3 id="RAID-10-x2F-01"><a href="#RAID-10-x2F-01" class="headerlink" title="RAID 10&#x2F;01"></a>RAID 10&#x2F;01</h3><p>RAID 10是先镜像再分区数据，再将所有硬盘分为两组，视为是RAID 0的最低组合，然后将这两组各自视为RAID 1运作。</p>
 <p>RAID 01则是先分区再将数据镜像到两组硬盘。它将所有的硬盘分为两组，变成RAID 1的最低组合，并将两组硬盘各自视为RAID 0运作。</p>
 <ul>
 <li>RAID 10有一个硬盘受损，其余硬盘会继续运作。</li>
@@ -445,7 +445,7 @@
 <li>RAID 50，至少需要6颗硬盘；</li>
 <li>数据可靠性：RAID 50在底层的任一组或多组RAID 5中出现1颗硬盘损坏时，仍能维持运作，不过如果任一组RAID 5中出现2颗或2颗以上硬盘损毁，整组RAID 50就会失效；</li>
 <li>读写性能：RAID 50由于在上层把多组RAID 5构成Stripe，性能比起单纯的RAID 5高；</li>
-<li>磁盘利用率：((n-m)/n)，比RAID5((n-1)/n)要低。</li>
+<li>磁盘利用率：((n-m)&#x2F;n)，比RAID5((n-1)&#x2F;n)要低。</li>
 </ul>
 <h2 id="Raid磁盘状态检查"><a href="#Raid磁盘状态检查" class="headerlink" title="Raid磁盘状态检查"></a>Raid磁盘状态检查</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum -y install MegaCli.noarch</span><br><span class="line"></span><br><span class="line">/opt/MegaRAID/MegaCli/MegaCli64  -LDInfo -Lall -aALL</span><br><span class="line"></span><br><span class="line">/opt/MegaRAID/MegaCli/MegaCli64 -PDList -aAll</span><br><span class="line"></span><br><span class="line">smartctl -d megaraid,1 -H /dev/sdc1</span><br><span class="line"></span><br><span class="line">smartctl -s on -a -d megaraid,0 /dev/sdc1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 

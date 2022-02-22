@@ -316,7 +316,7 @@
 <img data-src="https://lengyuewusheng.com/images/nginx.jpg" />
 </div-->
 <p><img data-src="https://lengyuewusheng.com/assets/images/nginx.png"></p>
-<p>nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.</p>
+<p>nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP&#x2F;UDP proxy server, originally written by Igor Sysoev.</p>
 
 </blockquote>
 
@@ -328,9 +328,11 @@
 
 <h1 id="nginx-Basic-认证"><a href="#nginx-Basic-认证" class="headerlink" title="nginx Basic 认证"></a>nginx Basic 认证</h1><ul>
 <li><p>生成用户密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htpasswd -c /usr/local/nginx/conf/nginx.passwd.db admin</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htpasswd -c /usr/local/nginx/conf/nginx.passwd.db admin</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>更新密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htpasswd /usr/local/nginx/conf/nginx.passwd.db admin</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htpasswd /usr/local/nginx/conf/nginx.passwd.db admin</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>配置内容</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    auth_basic &quot;View is cheap,show me the password!&quot;;</span><br><span class="line">    auth_basic_user_file nginx.passwd.db;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -368,7 +370,7 @@
 <li><p>keepalive_timeout: </p>
 <ul>
 <li>upstream中的keepalive_timeoute是ngx_http_upstream_module模块中的功能，是1.15.3后的新特性，设置空闲保持连接的超时时间。</li>
-<li>upstream外的keepalived是ngx_http_core_module模块中的功能,第一个参数是保持活动的客户机连接将在服务器端保持打开状态的超时时间。0表示禁用保持活动的客户端连接。可选的第二个参数在”Keep-Alive: timeout=time”响应头字段中设置一个值。两个参数可以不同。</li>
+<li>upstream外的keepalived是ngx_http_core_module模块中的功能,第一个参数是保持活动的客户机连接将在服务器端保持打开状态的超时时间。0表示禁用保持活动的客户端连接。可选的第二个参数在”Keep-Alive: timeout&#x3D;time”响应头字段中设置一个值。两个参数可以不同。</li>
 </ul>
 </li>
 </ul>
@@ -420,7 +422,7 @@
 
 <h1 id="default-type"><a href="#default-type" class="headerlink" title="default_type"></a>default_type</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ^~ / &#123;</span><br><span class="line">    default_type text/html;</span><br><span class="line">    return 200;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>直接return 200, 返回的Content-Type: application/octet-stream,浏览器默认会下载一个空文件，如果不希望浏览器下载，需要加<code>default_type text/html;</code>配置。</li>
+<li>直接return 200, 返回的Content-Type: application&#x2F;octet-stream,浏览器默认会下载一个空文件，如果不希望浏览器下载，需要加<code>default_type text/html;</code>配置。</li>
 </ul>
 <h1 id="nginx日志自动切分日志配置"><a href="#nginx日志自动切分日志配置" class="headerlink" title="nginx日志自动切分日志配置"></a>nginx日志自动切分日志配置</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if ( $time_iso8601 ~ &quot;^(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)T(\d&#123;2&#125;):(\d&#123;2&#125;):(\d&#123;2&#125;)&quot; ) &#123;</span><br><span class="line">    set $year $1;</span><br><span class="line">    set $month $2;</span><br><span class="line">    set $day $3;</span><br><span class="line">    set $hour $4;</span><br><span class="line">    set $minutes $5;</span><br><span class="line">    set $seconds $6;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">access_log  logs/$&#123;server_name&#125;.$year-$month-$day-$hour-access_log main;</span><br></pre></td></tr></table></figure>
 

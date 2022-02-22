@@ -159,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#etc-rc-local"><span class="nav-number">1.</span> <span class="nav-text">&#x2F;etc&#x2F;rc.local</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chkconfig"><span class="nav-number">2.</span> <span class="nav-text">chkconfig</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#etc-profile-d"><span class="nav-number">3.</span> <span class="nav-text">&#x2F;etc&#x2F;profile.d&#x2F;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#systemd"><span class="nav-number">4.</span> <span class="nav-text">systemd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crontab"><span class="nav-number">5.</span> <span class="nav-text">crontab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#x2F-etc-x2F-rc-local"><span class="nav-number">1.</span> <span class="nav-text">&#x2F;etc&#x2F;rc.local</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chkconfig"><span class="nav-number">2.</span> <span class="nav-text">chkconfig</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x2F-etc-x2F-profile-d-x2F"><span class="nav-number">3.</span> <span class="nav-text">&#x2F;etc&#x2F;profile.d&#x2F;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#systemd"><span class="nav-number">4.</span> <span class="nav-text">systemd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crontab"><span class="nav-number">5.</span> <span class="nav-text">crontab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -316,8 +316,8 @@
 
 <span id="more"></span>
 
-<h1 id="etc-rc-local"><a href="#etc-rc-local" class="headerlink" title="/etc/rc.local"></a>/etc/rc.local</h1><blockquote>
-<p>可将开机启动命令追加到/etc/rc.local中</p>
+<h1 id="x2F-etc-x2F-rc-local"><a href="#x2F-etc-x2F-rc-local" class="headerlink" title="&#x2F;etc&#x2F;rc.local"></a>&#x2F;etc&#x2F;rc.local</h1><blockquote>
+<p>可将开机启动命令追加到&#x2F;etc&#x2F;rc.local中</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># readlink /etc/rc.local</span><br><span class="line">rc.d/rc.local         // /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
 
@@ -325,13 +325,13 @@
 <h1 id="chkconfig"><a href="#chkconfig" class="headerlink" title="chkconfig"></a>chkconfig</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># readlink /etc/init.d</span><br><span class="line">rc.d/init.d           // /etc/rc.d/init.d/</span><br><span class="line"></span><br><span class="line">chkconfig --add servicename             # 使服务会被在/etc/rc.d/rcN.d中赋予K/S入口</span><br><span class="line">chkconfig --level 35 servicename on 或 sudo update-rc.d servicename defaults 95</span><br><span class="line">chkconfig --list</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>服务脚本必须存放在/etc/ini.d/目录下</p>
+<li><p>服务脚本必须存放在&#x2F;etc&#x2F;ini.d&#x2F;目录下</p>
 </li>
-<li><p>/etc/ini.d/下的脚本最开始必须包含以下三行</p>
+<li><p>&#x2F;etc&#x2F;ini.d&#x2F;下的脚本最开始必须包含以下三行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/sh</span><br><span class="line"># chkconfig: - 58 74    # 分别代表运行级别，启动优先权，关闭优先权，此行代码必须</span><br><span class="line"># description:</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="etc-profile-d"><a href="#etc-profile-d" class="headerlink" title="/etc/profile.d/"></a>/etc/profile.d/</h1><ul>
-<li><p>登陆自动执行(/etc/profile.d/)，不仅仅是开机自动执行。</p>
+<h1 id="x2F-etc-x2F-profile-d-x2F"><a href="#x2F-etc-x2F-profile-d-x2F" class="headerlink" title="&#x2F;etc&#x2F;profile.d&#x2F;"></a>&#x2F;etc&#x2F;profile.d&#x2F;</h1><ul>
+<li><p>登陆自动执行(&#x2F;etc&#x2F;profile.d&#x2F;)，不仅仅是开机自动执行。</p>
 </li>
 <li><p>必须是.sh后缀的脚本文件</p>
 </li>

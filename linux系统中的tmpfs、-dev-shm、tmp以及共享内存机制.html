@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tmpfs"><span class="nav-number">1.</span> <span class="nav-text">tmpfs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dev-shm"><span class="nav-number">2.</span> <span class="nav-text">&#x2F;dev&#x2F;shm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tmp%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">&#x2F;tmp目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">Linux的两种共享内存机制:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9tmpfs%E5%A4%A7%E5%B0%8F"><span class="nav-number">5.</span> <span class="nav-text">修改tmpfs大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tmpfs"><span class="nav-number">1.</span> <span class="nav-text">tmpfs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x2F-dev-x2F-shm"><span class="nav-number">2.</span> <span class="nav-text">&#x2F;dev&#x2F;shm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x2F-tmp%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">&#x2F;tmp目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">Linux的两种共享内存机制:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9tmpfs%E5%A4%A7%E5%B0%8F"><span class="nav-number">5.</span> <span class="nav-text">修改tmpfs大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">推荐文章（由hexo文章推荐插件驱动）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -319,8 +319,8 @@
 </ul>
 </li>
 </ul>
-<h1 id="dev-shm"><a href="#dev-shm" class="headerlink" title="/dev/shm"></a>/dev/shm</h1><p>是利用内存虚拟出来的磁盘空间。通常是内存空间大小的一半，该目录下创建的文件存取速度优于普通硬盘挂载的目录下的文件，该目录下的文件在机器重启时会丢失。</p>
-<h1 id="tmp目录"><a href="#tmp目录" class="headerlink" title="/tmp目录"></a>/tmp目录</h1><p>存放临时文件的目录。由于通常/dev/shm挂载在/tmp目录下，该目录会被不同用户读写，因此<strong>该目录的权限建议设置成777</strong>。<br>之前就在生产环境中遇到过/tmp目录权限被旁路流程误修改为755，导致普通用户启动的C++的应用无法写入共享内存，导致线上服务异常的惨痛教训。希望大家吸取教训。<br>这种目录权限导致的问题，恢复较为容易，但是定位问题原因较为复杂，由于之前的代码中没有调试逻辑，出现问题时，开发临时新上了一版代码增加了详细的错误输出，最后才定位到共享内存写入失败导致，此过程花费相对较长的时间。</p>
+<h1 id="x2F-dev-x2F-shm"><a href="#x2F-dev-x2F-shm" class="headerlink" title="&#x2F;dev&#x2F;shm"></a>&#x2F;dev&#x2F;shm</h1><p>是利用内存虚拟出来的磁盘空间。通常是内存空间大小的一半，该目录下创建的文件存取速度优于普通硬盘挂载的目录下的文件，该目录下的文件在机器重启时会丢失。</p>
+<h1 id="x2F-tmp目录"><a href="#x2F-tmp目录" class="headerlink" title="&#x2F;tmp目录"></a>&#x2F;tmp目录</h1><p>存放临时文件的目录。由于通常&#x2F;dev&#x2F;shm挂载在&#x2F;tmp目录下，该目录会被不同用户读写，因此<strong>该目录的权限建议设置成777</strong>。<br>之前就在生产环境中遇到过&#x2F;tmp目录权限被旁路流程误修改为755，导致普通用户启动的C++的应用无法写入共享内存，导致线上服务异常的惨痛教训。希望大家吸取教训。<br>这种目录权限导致的问题，恢复较为容易，但是定位问题原因较为复杂，由于之前的代码中没有调试逻辑，出现问题时，开发临时新上了一版代码增加了详细的错误输出，最后才定位到共享内存写入失败导致，此过程花费相对较长的时间。</p>
 <ul>
 <li>文件系统挂载关系<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cat /etc/fstab |egrep &quot;tmp|shm&quot;</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind         0 0</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -343,15 +343,16 @@
 </ul>
 </li>
 </ul>
-<p>虽然System V与POSIX共享内存都是通过tmpfs实现，但由于内核在mount tmpfs时，指定了MS_NOUSER，所以该tmpfs没有大小限制。因此/proc/sys/kernel/shmmax只会限制System V共享内存，/dev/shm只限制Posix共享内存,默认是物理内存的一半。</p>
+<p>虽然System V与POSIX共享内存都是通过tmpfs实现，但由于内核在mount tmpfs时，指定了MS_NOUSER，所以该tmpfs没有大小限制。因此&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;shmmax只会限制System V共享内存，&#x2F;dev&#x2F;shm只限制Posix共享内存,默认是物理内存的一半。</p>
 <ul>
 <li><p>System V共享内存的最大值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cat /proc/sys/kernel/shmmax</span><br><span class="line">68719476736</span><br></pre></td></tr></table></figure></li>
-<li><p>/dev/shm空间大小设定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cat /proc/sys/kernel/shmmax</span><br><span class="line">68719476736</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x2F;dev&#x2F;shm空间大小设定</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t tmpfs -o size=2G tmpfs -o remount /dev/shm</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="修改tmpfs大小"><a href="#修改tmpfs大小" class="headerlink" title="修改tmpfs大小"></a>修改tmpfs大小</h1><ul>
-<li><p>/etc/fstab 字段介绍</p>
+<li><p>&#x2F;etc&#x2F;fstab 字段介绍</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/fstab</span><br><span class="line"># &lt;file system&gt;            &lt;dir&gt;                        &lt;type&gt;    &lt;options&gt;             &lt;dump&gt; &lt;pass&gt;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>file system: 要挂载的分区或存储设备</li>
@@ -377,9 +378,11 @@
 </ul>
 </li>
 <li><p>centos5修改tmpfs大小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0            //修改这行不起作用</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind,size=55g         0 0</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>centos6/7修改tmpfs大小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs       /dev/shm      tmpfs   defaults,size=30g        0 0</span><br><span class="line">/dev/shm    /tmp          none     rw,bind                 0 0    // 修改这行不起作用</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0            //修改这行不起作用</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind,size=55g         0 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>centos6&#x2F;7修改tmpfs大小</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs       /dev/shm      tmpfs   defaults,size=30g        0 0</span><br><span class="line">/dev/shm    /tmp          none     rw,bind                 0 0    // 修改这行不起作用</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>挂载命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mount -a        //加载文件&quot;/etc/fstab&quot;中描述的所有文件系统。</span><br><span class="line">mount -o remount /dev/shm   //重新加载设备</span><br></pre></td></tr></table></figure>
 <ul>

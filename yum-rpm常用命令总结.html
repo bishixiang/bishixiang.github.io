@@ -319,57 +319,79 @@
 
 <h2 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h2><ul>
 <li><p>显示可用的yum仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>指定某一个repo内搜索某个rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* --enablerepo=xxx search xxxx</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* --enablerepo=xxx search xxxx</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>列出某个yum源中可用的rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum --disablerepo=&quot;*&quot; --enablerepo=&quot;xxxx&quot; list available</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum --disablerepo=&quot;*&quot; --enablerepo=&quot;xxxx&quot; list available</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查找某条命令的yum源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum whatprovides &quot;*/whoami&quot;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum whatprovides &quot;*/whoami&quot;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查找某条命令由什么包提供</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum provides $&#123;cmd&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum provides $&#123;cmd&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>替换安装某个rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install yum-plugin-replace</span><br><span class="line">yum replace php-common --replace-with=php56-common</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install yum-plugin-replace</span><br><span class="line">yum replace php-common --replace-with=php56-common</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>降级安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum downgrade packages</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum downgrade packages</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>安装程序组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &#x27;Development Tools’</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &#x27;Development Tools’</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>从yum源中下载rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install yum-utils</span><br><span class="line">yumdownloader xxxx</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install yum-utils</span><br><span class="line">yumdownloader xxxx</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>yum下载依赖文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">方法一：</span><br><span class="line">  yumdownloader 下载包名称 --resolve --destdir=/tmp/openresty</span><br><span class="line">  </span><br><span class="line">参考：</span><br><span class="line">  http://www.cnblogs.com/toSeek/p/6093679.html</span><br><span class="line"></span><br><span class="line">方法二：</span><br><span class="line">  1.安装yum-plugin-downloadonly</span><br><span class="line">    yum -y install ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/Virtualization:/Appliances/CentOS_CentOS-6/noarch/yum-plugin-downloadonly-1.1.31-2.2.noarch.rpm</span><br><span class="line">  2.下载：</span><br><span class="line">    yum install -y --downloadonly --downloaddir=/tmp/php  php</span><br><span class="line">    </span><br><span class="line">参考：</span><br><span class="line">  http://graybull.is-programmer.com/posts/37702.html</span><br><span class="line">  http://www.jianshu.com/p/5930545b5591</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">方法一：</span><br><span class="line">  yumdownloader 下载包名称 --resolve --destdir=/tmp/openresty</span><br><span class="line">  </span><br><span class="line">参考：</span><br><span class="line">  http://www.cnblogs.com/toSeek/p/6093679.html</span><br><span class="line"></span><br><span class="line">方法二：</span><br><span class="line">  1.安装yum-plugin-downloadonly</span><br><span class="line">    yum -y install ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/Virtualization:/Appliances/CentOS_CentOS-6/noarch/yum-plugin-downloadonly-1.1.31-2.2.noarch.rpm</span><br><span class="line">  2.下载：</span><br><span class="line">    yum install -y --downloadonly --downloaddir=/tmp/php  php</span><br><span class="line">    </span><br><span class="line">参考：</span><br><span class="line">  http://graybull.is-programmer.com/posts/37702.html</span><br><span class="line">  http://www.jianshu.com/p/5930545b5591</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>yum 查看so库文件所在的rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum whatprovides  libXpm.so.4</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum whatprovides  libXpm.so.4</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>Yum 事务完整的历史记录</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum history list all                # 查看历史yum命令</span><br><span class="line">yum history info nginx              # 查看yum涉及指定软件包的事务详情</span><br><span class="line">yum history summary nginx           # 查看yum涉及指定软件包的事务摘要</span><br><span class="line">yum history package-list nginx      # 查看yum涉及指定软件包的历史记录</span><br><span class="line">yum history addon-info              # 提供更多的信息来源</span><br><span class="line">yum history stats                   # 显示当前历史数据库的统计信息</span><br><span class="line">yum history sync                    # 更改为所有已安装软件包存储的rpmdb/yumdb数据</span><br><span class="line">yum history new                     # 创建新的历史文件</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="rpm常用命令"><a href="#rpm常用命令" class="headerlink" title="rpm常用命令"></a>rpm常用命令</h2><ul>
 <li><p>强制降级</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh oldpackage.rpm --oldpackage </span><br><span class="line">或</span><br><span class="line">rpm -Uvh oldpackage.rpm --force</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh oldpackage.rpm --oldpackage </span><br><span class="line">或</span><br><span class="line">rpm -Uvh oldpackage.rpm --force</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看rpm包安装前后执行的脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qp --scripts xxxx.rpm</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qp --scripts xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>rpm包安装前后执行脚本被传入参数$1的意义</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0:卸载</span><br><span class="line">1:安装、升级卸载</span><br><span class="line">2:升级</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0:卸载</span><br><span class="line">1:安装、升级卸载</span><br><span class="line">2:升级</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看rpm包提供的命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qp --provides xxxx.rpm</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qp --provides xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看rpm包注册的冲突信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qp --conflicts xxxx.rpm</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qp --conflicts xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看rpm包注册的依赖信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpR xxxx.rpm</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpR xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看rpm包中注册的配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpc xxxx.rpm</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpc xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看rpm包的打包信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpi xxxx.rpm</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpi xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看打包spec文件中的tag信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -q --qf %&#123;tag&#125; rpm_name</span><br><span class="line"></span><br><span class="line">tag list: Name|Version|Release|Summary|Group|License|URL</span><br><span class="line">eg：</span><br><span class="line">rpm -q --qf %&#123;Version&#125; rpm_name</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="内网yum源维护"><a href="#内网yum源维护" class="headerlink" title="内网yum源维护"></a>内网yum源维护</h2><ul>
 <li><p>创建repodata</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install createrepo</span><br><span class="line">createrepo /path/to/RPMS/epel/7/x86_64/</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install createrepo</span><br><span class="line">createrepo /path/to/RPMS/epel/7/x86_64/</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>更新repodata</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createrepo --update /path/to/RPMS/epel/7/x86_64</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createrepo --update /path/to/RPMS/epel/7/x86_64</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>镜像yum源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reposync -r &quot;repoid&quot;</span><br><span class="line">eg:</span><br><span class="line">reposync -r webtatic-archive -nu</span><br><span class="line"></span><br><span class="line">-r  指定镜像源</span><br><span class="line">-n 只下载最新镜像</span><br><span class="line">-u 只列出，不下载</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reposync -r &quot;repoid&quot;</span><br><span class="line">eg:</span><br><span class="line">reposync -r webtatic-archive -nu</span><br><span class="line"></span><br><span class="line">-r  指定镜像源</span><br><span class="line">-n 只下载最新镜像</span><br><span class="line">-u 只列出，不下载</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>自定义yum源配置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[epel.xxx]</span><br><span class="line">name=repo.xxx.xxx</span><br><span class="line">baseurl=http://repo.xxx/epel/$releasever/$basearch</span><br><span class="line">skip_if_unavailable=True        # 在CentOS7系统上测试当前yum源如果不可用，会直接跳过，默认False，提示错误.</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">[epel-archive.xxx]</span><br><span class="line">name=archive.xxx.xxx</span><br><span class="line">baseurl=http://repo.xxx/archive/$releasever/$basearch</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=0</span><br></pre></td></tr></table></figure></li>
 <li><p>配置文件中$releasever变量是取redhat-release-server(redhat)或centos-release(centos) rpm包的属性 %{version} 的值。验证方法:</p>

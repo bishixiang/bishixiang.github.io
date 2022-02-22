@@ -305,47 +305,47 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">-A/–user-agent</td>
+<td align="left">-A&#x2F;–user-agent</td>
 <td align="left">定义用户代理字符串</td>
 </tr>
 <tr>
-<td align="left">-H/–header</td>
+<td align="left">-H&#x2F;–header</td>
 <td align="left">自定义header头信息</td>
 </tr>
 <tr>
-<td align="left">-i/–include</td>
+<td align="left">-i&#x2F;–include</td>
 <td align="left">输出时包括protocol头信息</td>
 </tr>
 <tr>
-<td align="left">-I/–head</td>
+<td align="left">-I&#x2F;–head</td>
 <td align="left">只显示请求的头信息</td>
 </tr>
 <tr>
-<td align="left">-o/–output</td>
+<td align="left">-o&#x2F;–output</td>
 <td align="left">把输出写到该文件中</td>
 </tr>
 <tr>
-<td align="left">-s/–silent</td>
+<td align="left">-s&#x2F;–silent</td>
 <td align="left">静默模式</td>
 </tr>
 <tr>
-<td align="left">-w/–write-out [format]</td>
+<td align="left">-w&#x2F;–write-out [format]</td>
 <td align="left">在一次完整且成功的操作后输出指定格式的内容到标准输出</td>
 </tr>
 <tr>
-<td align="left">-X/–request</td>
+<td align="left">-X&#x2F;–request</td>
 <td align="left">指定请求方式</td>
 </tr>
 <tr>
-<td align="left">-u/–user</td>
+<td align="left">-u&#x2F;–user</td>
 <td align="left">设置服务器的用户和密码</td>
 </tr>
 <tr>
-<td align="left">-T/–upload-file</td>
+<td align="left">-T&#x2F;–upload-file</td>
 <td align="left">上传文件</td>
 </tr>
 <tr>
-<td align="left">-l/–list-only</td>
+<td align="left">-l&#x2F;–list-only</td>
 <td align="left">列出ftp目录下的文件名称</td>
 </tr>
 <tr>
@@ -353,21 +353,25 @@
 <td align="left">设置传输速度</td>
 </tr>
 <tr>
-<td align="left">-m/–max-time</td>
+<td align="left">-m&#x2F;–max-time</td>
 <td align="left">设置最大传输时间</td>
 </tr>
 </tbody></table>
 <h1 id="常用范例-纯shell命令-："><a href="#常用范例-纯shell命令-：" class="headerlink" title="常用范例(纯shell命令)："></a>常用范例(纯shell命令)：</h1><ul>
 <li><p>伪造UA绑host请求:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --user-agent &quot;curl-test-agent&quot; -H &quot;Host:www.lengyuewusheng.com&quot; -I &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --user-agent &quot;curl-test-agent&quot; -H &quot;Host:www.lengyuewusheng.com&quot; -I &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>伪造X-Real-IP：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H &quot;X-Real-IP:1.1.1.1&quot; -H &quot;Host:www.lengyuwusheng.com&quot; &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H &quot;X-Real-IP:1.1.1.1&quot; -H &quot;Host:www.lengyuwusheng.com&quot; &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>获取请求的状态码字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;%&#123;http_code&#125;\n&quot; -H &quot;Host:www.lengyuewusheng.com&quot; &quot;http://10.0.0.1/index.php&quot; </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;%&#123;http_code&#125;\n&quot; -H &quot;Host:www.lengyuewusheng.com&quot; &quot;http://10.0.0.1/index.php&quot; </span><br></pre></td></tr></table></figure>
+</li>
 <li><p>向服务器端POST数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -d &quot;a=1&amp;b=2&amp;c=3&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure></li>
 <li><p>指定请求的超时时间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --connect-timeout 5 -m 90 -o /dev/null -s -w &quot;%&#123;http_code&#125;&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --connect-timeout 5 -m 90 -o /dev/null -s -w &quot;%&#123;http_code&#125;&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>通过curl向ftp服务器上传文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -u &quot;$&#123;USER&#125;:$&#123;PASSWD&#125;&quot; -T &quot;$&#123;DATADIR&#125;/$&#123;FILE&#125;&quot; &quot;ftp://$&#123;FTPSERVER&#125;&quot;</span><br><span class="line"># eg: curl -u &quot;admin:123456&quot; -T &quot;/tmp/logs/test.log&quot; &quot;ftp://10.0.0.1&quot;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -523,7 +527,7 @@
 <tr>
 <td align="left">$uri</td>
 <td align="left">请求中的当前URI(不带请求参数，参数位于$args)</td>
-<td align="left">不同于浏览器传递的$request_uri的值，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如/foo/bar.html</td>
+<td align="left">不同于浏览器传递的$request_uri的值，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如&#x2F;foo&#x2F;bar.html</td>
 </tr>
 <tr>
 <td align="left">$document_uri</td>
@@ -533,7 +537,7 @@
 <tr>
 <td align="left">$args</td>
 <td align="left">GET请求中的参数</td>
-<td align="left">eg: foo=123&amp;bar=abc;</td>
+<td align="left">eg: foo&#x3D;123&amp;bar&#x3D;abc;</td>
 </tr>
 <tr>
 <td align="left">$arg_name</td>
@@ -567,7 +571,7 @@
 </tr>
 </tbody></table>
 <ul>
-<li>通常情况下：$request_uri=$document_uri($uri)+$query_string($args)</li>
+<li>通常情况下：$request_uri&#x3D;$document_uri($uri)+$query_string($args)</li>
 <li>$uri和$document_uri表示的是解码以后的请求路径,不带参数</li>
 <li>$request_uri表示的是完整的URI(没有解码),在return、rewrite、add_header、p roxy_set_header、proxy_pass之后使用$request_uri,避免CRLF漏洞。</li>
 </ul>
@@ -657,23 +661,32 @@
     <div class="post-body" itemprop="articleBody">
           <ul>
 <li><p>查看历史命令（快捷键：F7）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>自动关机</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>文件系统转换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>磁盘检查</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>修改文件属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>内网主机名IP互查</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>组策略</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
 <ul>
@@ -785,7 +798,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo-theme-next\source\css\_variables\custom.styl</span><br><span class="line">$content-desktop = 700px</span><br><span class="line">$content-desktop-large = 900px</span><br><span class="line"># 此方法不适用于 Pisces Scheme</span><br><span class="line"># 移动设备下，宽度自适应</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="替换文章标签图标"><a href="#替换文章标签图标" class="headerlink" title="替换文章标签图标"></a>替换文章标签图标</h2><ul>
-<li>themes/hexo-theme-next-6.7.0/layout/_macro/post.swig</li>
+<li>themes&#x2F;hexo-theme-next-6.7.0&#x2F;layout&#x2F;_macro&#x2F;post.swig</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将</span><br><span class="line">rel=&quot;tag&quot;&gt;#</span><br><span class="line">替换为</span><br><span class="line">rel=&quot;tag&quot;&gt;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
 
@@ -804,35 +817,35 @@
 </li>
 </ul>
 <h2 id="文章结尾增加版权声明"><a href="#文章结尾增加版权声明" class="headerlink" title="文章结尾增加版权声明"></a>文章结尾增加版权声明</h2><ul>
-<li>themes/hexo-theme-next-6.7.0/layout/_macro/ 目录下创建 my-copyright.swig</li>
+<li>themes&#x2F;hexo-theme-next-6.7.0&#x2F;layout&#x2F;_macro&#x2F; 目录下创建 my-copyright.swig</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.copyright %&#125;</span><br><span class="line">&lt;div class=&quot;my_post_copyright&quot;&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- JS库 sweetalert 可修改路径 --&gt;</span><br><span class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&quot;&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;&lt;a href=&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot;&gt;&#123;&#123; page.title &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;&lt;a href=&quot;/&quot; title=&quot;访问 &#123;&#123; theme.author &#125;&#125; 的个人博客&quot;&gt;&#123;&#123; theme.author &#125;&#125;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;&#123;&#123; page.date.format(&quot;YYYY年MM月DD日 - HH:MM&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;最后更新:&lt;/span&gt;&#123;&#123; page.updated.format(&quot;YYYY年MM月DD日 - HH:MM&quot;) &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;原始链接:&lt;/span&gt;&lt;a href=&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot; title=&quot;&#123;&#123; page.title &#125;&#125;&quot;&gt;&#123;&#123; page.permalink &#125;&#125;&lt;/a&gt;</span><br><span class="line">    &lt;span class=&quot;copy-path&quot;  title=&quot;点击复制文章链接&quot;&gt;&lt;i class=&quot;fa fa-clipboard&quot; data-clipboard-text=&quot;&#123;&#123; page.permalink &#125;&#125;&quot;  aria-label=&quot;复制成功！&quot;&gt;&lt;/i&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;!-- p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class=&quot;fa fa-creative-commons&quot;&gt;&lt;/i&gt; &lt;a rel=&quot;license&quot; href=&quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot; title=&quot;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&quot;&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p --&gt;</span><br><span class="line">  &lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;本博客所有文章除特别声明外，均采用&lt;i class=&quot;fa fa-creative-commons&quot;&gt;&lt;/i&gt;&lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/3.0/&quot; rel=&quot;external nofollow&quot; target=&quot;_blank&quot;&gt; BY-NC-SA 3.0&lt;/a&gt;许可协议。转载请注明出处！&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var clipboard = new Clipboard(&#x27;.fa-clipboard&#x27;);</span><br><span class="line">    clipboard.on(&#x27;success&#x27;, $(function()&#123;</span><br><span class="line">      $(&quot;.fa-clipboard&quot;).click(function()&#123;</span><br><span class="line">        swal(&#123;</span><br><span class="line">          title: &quot;&quot;,</span><br><span class="line">          text: &#x27;复制成功&#x27;,</span><br><span class="line">          html: false,</span><br><span class="line">          timer: 500,</span><br><span class="line">          showConfirmButton: false</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;));</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>themes/hexo-theme-next-6.7.0/source/css/_common/components/post/ 目录下创建 my-post-copyright.styl</li>
+<li>themes&#x2F;hexo-theme-next-6.7.0&#x2F;source&#x2F;css&#x2F;_common&#x2F;components&#x2F;post&#x2F; 目录下创建 my-post-copyright.styl</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">.my_post_copyright &#123;</span><br><span class="line">  width: 85%;</span><br><span class="line">  max-width: 45em;</span><br><span class="line">  margin: 2.8em auto 0;</span><br><span class="line">  padding: 0.5em 1.0em;</span><br><span class="line">  border: 1px solid #d3d3d3;</span><br><span class="line">  font-size: 0.93rem;</span><br><span class="line">  line-height: 1.6em;</span><br><span class="line">  word-break: break-all;</span><br><span class="line">  background: rgba(255,255,255,0.4);</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright p&#123;margin:0;&#125;</span><br><span class="line">.my_post_copyright span &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  width: 5.2em;</span><br><span class="line">  color: #b5b5b5;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright .raw &#123;</span><br><span class="line">  margin-left: 1em;</span><br><span class="line">  width: 5em;</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright a &#123;</span><br><span class="line">  color: #808080;</span><br><span class="line">  border-bottom:0;</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright a:hover &#123;</span><br><span class="line">  color: #a3d2a3;</span><br><span class="line">  text-decoration: underline;</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright:hover .fa-clipboard &#123;</span><br><span class="line">  color: #000;</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright .post-url:hover &#123;</span><br><span class="line">  font-weight: normal;</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright .copy-path &#123;</span><br><span class="line">  margin-left: 1em;</span><br><span class="line">  width: 1em;</span><br><span class="line">  +mobile()&#123;display:none;&#125;</span><br><span class="line">&#125;</span><br><span class="line">.my_post_copyright .copy-path:hover &#123;</span><br><span class="line">  color: #808080;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 <ul>
-<li>修改 themes/hexo-theme-next-6.7.0/layout/_macro/post.swig</li>
+<li>修改 themes&#x2F;hexo-theme-next-6.7.0&#x2F;layout&#x2F;_macro&#x2F;post.swig</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> &#123;% if theme.wechat_subscriber.enabled and not is_index %&#125;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &#123;% include &#x27;../_partials/post/wechat-subscriber.swig&#x27; %&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">#========在include ../_partials/post/wechat-subscriber.swig逻辑下追加以下内容=============</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#123;% if not is_index %&#125;</span><br><span class="line">  &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">        &#123;% if not is_index %&#125;</span><br><span class="line">          &#123;% include &#x27;my-copyright.swig&#x27; %&#125;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">  &lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 
 <ul>
-<li>themes/hexo-theme-next-6.7.0/source/css/_common/components/post/post.styl追加一行</li>
+<li>themes&#x2F;hexo-theme-next-6.7.0&#x2F;source&#x2F;css&#x2F;_common&#x2F;components&#x2F;post&#x2F;post.styl追加一行</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;my-post-copyright&quot;</span><br></pre></td></tr></table></figure>
 
 
 <ul>
-<li>themes/hexo-theme-next-6.7.0/layout/_macro/ 目录下新建 passage-end-tag.swig</li>
+<li>themes&#x2F;hexo-theme-next-6.7.0&#x2F;layout&#x2F;_macro&#x2F; 目录下新建 passage-end-tag.swig</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        &lt;div style=&quot;text-align:center;color: #ccc;font-size:14px;&quot;&gt;-------------End of article. &lt;i class=&quot;fa fa-paw&quot;&gt;&lt;/i&gt; I appreciate whoever read and leave commends on articles.-------------&lt;/div&gt;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>themes/hexo-theme-next-6.7.0/_config.yml中追加</li>
+<li>themes&#x2F;hexo-theme-next-6.7.0&#x2F;_config.yml中追加</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passage_end_tag:</span><br><span class="line">  enabled: true</span><br></pre></td></tr></table></figure>
 
@@ -844,7 +857,7 @@
 
 <ul>
 <li><p>定制草稿模板</p>
-<p>  修改lengyuewusheng.com/scaffolds/draft.md</p>
+<p>  修改lengyuewusheng.com&#x2F;scaffolds&#x2F;draft.md</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">categories:</span><br><span class="line">-</span><br><span class="line">copyright: true</span><br><span class="line">keywords: Blog,lengyuewusheng</span><br><span class="line">description: Describe briefly.</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&#123;% cq %&#125;</span><br><span class="line">摘要内容</span><br><span class="line">&#123;% endcq %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">正文</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="访问加速"><a href="#访问加速" class="headerlink" title="访问加速"></a>访问加速</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.netlify.com/</span><br></pre></td></tr></table></figure>
@@ -876,12 +889,14 @@
 
 <ul>
 <li><p>报错内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">found 5 vulnerabilities (2 low, 3 high)</span><br><span class="line">  run `npm audit fix` to fix them, or `npm audit` for details</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">found 5 vulnerabilities (2 low, 3 high)</span><br><span class="line">  run `npm audit fix` to fix them, or `npm audit` for details</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>处理方案：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo-asset-image hexo-generator-seo-friendly-sitemap</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>报错内容：</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo-asset-image hexo-generator-seo-friendly-sitemap</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>报错内容：</p>
+</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">ERROR path.substring is not a function</span><br><span class="line">TypeError: path.substring is not a function</span><br><span class="line">    at Object.urlForHelper (H:\hexo-Blog\node_modules\hexo\lib\plugins\helper\url_for.js:9:31)</span><br><span class="line">    at wrapper (H:\hexo-Blog\node_modules\lodash\lodash.js:4941:19)</span><br><span class="line">    at Object.eval [as tpl] (eval at precompile (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:497:13), &lt;anonymous&gt;:125:119)</span><br><span class="line">    at compiled (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:618:18)</span><br><span class="line">    at Object.eval [as tpl] (eval at precompile (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:497:13), &lt;anonymous&gt;:263:126)</span><br><span class="line">    at compiled (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:618:18)</span><br><span class="line">    at Theme._View.View._compiled (H:\hexo-Blog\node_modules\hexo\lib\theme\view.js:127:30)</span><br><span class="line">    at Theme._View.View.View.render (H:\hexo-Blog\node_modules\hexo\lib\theme\view.js:29:15)</span><br><span class="line">    at H:\hexo-Blog\node_modules\hexo\lib\hexo\index.js:390:29</span><br><span class="line">    at tryCatcher (H:\hexo-Blog\node_modules\bluebird\js\release\util.js:16:23)</span><br><span class="line">    at H:\hexo-Blog\node_modules\bluebird\js\release\method.js:15:34</span><br><span class="line">    at RouteStream._read (H:\hexo-Blog\node_modules\hexo\lib\hexo\router.js:134:3)</span><br><span class="line">    at RouteStream.Readable.read (_stream_readable.js:442:10)</span><br><span class="line">    at resume_ (_stream_readable.js:822:12)</span><br><span class="line">    at _combinedTickCallback (internal/process/next_tick.js:138:11)</span><br><span class="line">    at process._tickCallback (internal/process/next_tick.js:180:9)</span><br><span class="line">ERROR path.substring is not a function</span><br><span class="line">TypeError: path.substring is not a function</span><br><span class="line">    at Object.urlForHelper (H:\hexo-Blog\node_modules\hexo\lib\plugins\helper\url_for.js:9:31)</span><br><span class="line">    at wrapper (H:\hexo-Blog\node_modules\lodash\lodash.js:4941:19)</span><br><span class="line">    at Object.eval [as tpl] (eval at precompile (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:497:13), &lt;anonymous&gt;:125:119)</span><br><span class="line">    at compiled (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:618:18)</span><br><span class="line">    at Object.eval [as tpl] (eval at precompile (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:497:13), &lt;anonymous&gt;:263:126)</span><br><span class="line">    at compiled (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:618:18)</span><br><span class="line">    at Theme._View.View._compiled (H:\hexo-Blog\node_modules\hexo\lib\theme\view.js:127:30)</span><br><span class="line">    at Theme._View.View.View.render (H:\hexo-Blog\node_modules\hexo\lib\theme\view.js:29:15)</span><br><span class="line">    at H:\hexo-Blog\node_modules\hexo\lib\hexo\index.js:390:29</span><br><span class="line">    at tryCatcher (H:\hexo-Blog\node_modules\bluebird\js\release\util.js:16:23)</span><br><span class="line">    at H:\hexo-Blog\node_modules\bluebird\js\release\method.js:15:34</span><br><span class="line">    at RouteStream._read (H:\hexo-Blog\node_modules\hexo\lib\hexo\router.js:134:3)</span><br><span class="line">    at RouteStream.Readable.read (_stream_readable.js:442:10)</span><br><span class="line">    at resume_ (_stream_readable.js:822:12)</span><br><span class="line">    at _combinedTickCallback (internal/process/next_tick.js:138:11)</span><br><span class="line">    at process._tickCallback (internal/process/next_tick.js:180:9)</span><br><span class="line">ERROR path.substring is not a function</span><br><span class="line">TypeError: path.substring is not a function</span><br><span class="line">    at Object.urlForHelper (H:\hexo-Blog\node_modules\hexo\lib\plugins\helper\url_for.js:9:31)</span><br><span class="line">    at wrapper (H:\hexo-Blog\node_modules\lodash\lodash.js:4941:19)</span><br><span class="line">    at Object.eval [as tpl] (eval at precompile (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:497:13), &lt;anonymous&gt;:125:119)</span><br><span class="line">    at compiled (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:618:18)</span><br><span class="line">    at Object.eval [as tpl] (eval at precompile (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:497:13), &lt;anonymous&gt;:263:126)</span><br><span class="line">    at compiled (H:\hexo-Blog\node_modules\swig-templates\lib\swig.js:618:18)</span><br><span class="line">    at Theme._View.View._compiled (H:\hexo-Blog\node_modules\hexo\lib\theme\view.js:127:30)</span><br><span class="line">    at Theme._View.View.View.render (H:\hexo-Blog\node_modules\hexo\lib\theme\view.js:29:15)</span><br><span class="line">    at H:\hexo-Blog\node_modules\hexo\lib\hexo\index.js:390:29</span><br><span class="line">    at tryCatcher (H:\hexo-Blog\node_modules\bluebird\js\release\util.js:16:23)</span><br><span class="line">    at H:\hexo-Blog\node_modules\bluebird\js\release\method.js:15:34</span><br><span class="line">    at RouteStream._read (H:\hexo-Blog\node_modules\hexo\lib\hexo\router.js:134:3)</span><br><span class="line">    at RouteStream.Readable.read (_stream_readable.js:442:10)</span><br><span class="line">    at resume_ (_stream_readable.js:822:12)</span><br><span class="line">    at _combinedTickCallback (internal/process/next_tick.js:138:11)</span><br><span class="line">    at process._tickCallback (internal/process/next_tick.js:180:9)</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
 

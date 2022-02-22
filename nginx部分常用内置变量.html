@@ -380,7 +380,7 @@
 <tr>
 <td align="left">$uri</td>
 <td align="left">请求中的当前URI(不带请求参数，参数位于$args)</td>
-<td align="left">不同于浏览器传递的$request_uri的值，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如/foo/bar.html</td>
+<td align="left">不同于浏览器传递的$request_uri的值，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如&#x2F;foo&#x2F;bar.html</td>
 </tr>
 <tr>
 <td align="left">$document_uri</td>
@@ -390,7 +390,7 @@
 <tr>
 <td align="left">$args</td>
 <td align="left">GET请求中的参数</td>
-<td align="left">eg: foo=123&amp;bar=abc;</td>
+<td align="left">eg: foo&#x3D;123&amp;bar&#x3D;abc;</td>
 </tr>
 <tr>
 <td align="left">$arg_name</td>
@@ -424,7 +424,7 @@
 </tr>
 </tbody></table>
 <ul>
-<li>通常情况下：$request_uri=$document_uri($uri)+$query_string($args)</li>
+<li>通常情况下：$request_uri&#x3D;$document_uri($uri)+$query_string($args)</li>
 <li>$uri和$document_uri表示的是解码以后的请求路径,不带参数</li>
 <li>$request_uri表示的是完整的URI(没有解码),在return、rewrite、add_header、p roxy_set_header、proxy_pass之后使用$request_uri,避免CRLF漏洞。</li>
 </ul>

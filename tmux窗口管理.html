@@ -340,8 +340,8 @@
 <li>挂起当前会话：<code>Ctrl + z</code></li>
 <li>列出提示信息缓存：<code>Ctrl + b,~</code>，含tmux返回的各种提示信息</li>
 <li>进入命令行模式：<code>Ctrl + b,:</code>，可输入tmux命令，如kill-server</li>
-<li>复制模式：<code>Ctrl + b,[</code>，光标移动到复制内容位置，空格键开始，方向键选择复制，回车确认，q/Esc退出</li>
-<li>粘贴模式：<code>Ctrl + b,]</code>，粘贴在复制模式中复制的内容，按q/Esc退出</li>
+<li>复制模式：<code>Ctrl + b,[</code>，光标移动到复制内容位置，空格键开始，方向键选择复制，回车确认，q&#x2F;Esc退出</li>
+<li>粘贴模式：<code>Ctrl + b,]</code>，粘贴在复制模式中复制的内容，按q&#x2F;Esc退出</li>
 <li>显示当前的时间：<code>ctrl + b,t</code></li>
 </ul>
 <h1 id="窗口（Window）"><a href="#窗口（Window）" class="headerlink" title="窗口（Window）"></a>窗口（Window）</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>窗口：窗口的概念，可以类比于 Windows 里面的窗口的概念。<br/>之前我们连服务器的时候，终端工具每次连接只有一个界面，当我们需要同时操作多个过程的时候，我们就需要建立新的连接。这样很不方便。<br/>Tmux 里面的窗口的概念，就可以让我们在一个会话里有多个界面，就不需要去建立的一个会话。</p>
@@ -388,24 +388,31 @@
 <li>最大化当前所在面板：<code>Ctrl + b,z</code>，tmux 1.8新特性</li>
 </ul>
 <h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><ul>
-<li>列出所有tmux命令及其参数：<code>tmux list-commands</code></li>
-<li>列出所有可以的快捷键和其运行的 tmux 命令：<code>tmux list-keys</code></li>
-<li>流出所有的 session、window、pane、运行的进程号：<code>tmux info</code></li>
-<li>变更配置文件后重新加载配置文件：<code>tmux source-file ~/.tmux.conf</code></li>
-<li>重命名会话<code>tmux rename -t 原会话名  新会话名</code></li>
-<li>会话间移动窗口：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`Ctrl + b,:`  进入命令行模式;</span><br><span class="line">move-window -s 源会话名:窗口号 -t 目标会话名        //move-window可以简写为movew</span><br><span class="line">movew -d 源会话名:窗口号                            //将某个窗口移动到当前会话</span><br></pre></td></tr></table></figure></li>
-<li>复制模式  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">`Ctrl+b	[`进入复制模式，按`q`退出</span><br><span class="line">按下`空格键`开始复制，移动光标选择复制区域</span><br><span class="line">按下`回车键`复制选中文本并退出复制模式</span><br><span class="line">按下`Ctrl+b	]`粘贴复制模式中复制的文本</span><br></pre></td></tr></table></figure>
+<li><p>列出所有tmux命令及其参数：<code>tmux list-commands</code></p>
+</li>
+<li><p>列出所有可以的快捷键和其运行的 tmux 命令：<code>tmux list-keys</code></p>
+</li>
+<li><p>流出所有的 session、window、pane、运行的进程号：<code>tmux info</code></p>
+</li>
+<li><p>变更配置文件后重新加载配置文件：<code>tmux source-file ~/.tmux.conf</code></p>
+</li>
+<li><p>重命名会话<code>tmux rename -t 原会话名  新会话名</code></p>
+</li>
+<li><p>会话间移动窗口：</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`Ctrl + b,:`  进入命令行模式;</span><br><span class="line">move-window -s 源会话名:窗口号 -t 目标会话名        //move-window可以简写为movew</span><br><span class="line">movew -d 源会话名:窗口号                            //将某个窗口移动到当前会话</span><br></pre></td></tr></table></figure></li>
+<li><p>复制模式</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">`Ctrl+b	[`进入复制模式，按`q`退出</span><br><span class="line">按下`空格键`开始复制，移动光标选择复制区域</span><br><span class="line">按下`回车键`复制选中文本并退出复制模式</span><br><span class="line">按下`Ctrl+b	]`粘贴复制模式中复制的文本</span><br></pre></td></tr></table></figure>
 <ul>
 <li>复制模式中不接受键盘的字符输入，如果误入复制模式，可以直接按<code>q</code>键退出复制模式。</li>
 <li>另外复制模式中可以上翻查看在普通模式下无法查看的屏幕输出内容。</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>窗口自动调整大小问题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> tmux默认会同步同一个会话的操作到所有会话连接的终端窗口中，这种同步机制，限制了窗口的大小为最小的会话连接。</span><br><span class="line"> 为了避免窗口自动调整大小，终端剩余空间填充小圆点可以执行</span><br><span class="line"> tmux a -d</span><br><span class="line">或在会话命令行模式下执行</span><br><span class="line">: a -d</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> tmux默认会同步同一个会话的操作到所有会话连接的终端窗口中，这种同步机制，限制了窗口的大小为最小的会话连接。</span><br><span class="line"> 为了避免窗口自动调整大小，终端剩余空间填充小圆点可以执行</span><br><span class="line"> tmux a -d</span><br><span class="line">或在会话命令行模式下执行</span><br><span class="line">: a -d</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>调整窗口排序顺序</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令行模式下</span><br><span class="line">swap-window -s 1 -t 2  交换1、2窗口</span><br><span class="line">swap-window -t 1       当前窗口和1号窗口交换</span><br><span class="line">move-window -t 1       将当前窗口移动到1号窗口位置</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令行模式下</span><br><span class="line">swap-window -s 1 -t 2  交换1、2窗口</span><br><span class="line">swap-window -t 1       当前窗口和1号窗口交换</span><br><span class="line">move-window -t 1       将当前窗口移动到1号窗口位置</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>终端类型与配色方案</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ncurses库包名</span><br><span class="line">    CentOS 5:</span><br><span class="line">    ncurses-5.5-24.20060715</span><br><span class="line">    CentOS 6/7:</span><br><span class="line">    ncurses-base-5.9-13.20130511.el7.noarch</span><br><span class="line">文件路径</span><br><span class="line">    /usr/share/terminfo/</span><br><span class="line">    eg:</span><br><span class="line">    /usr/share/terminfo/s/screen-256color</span><br><span class="line">    /usr/share/terminfo/x/xterm-256color</span><br><span class="line">终端配置</span><br><span class="line">    echo $TERM</span><br><span class="line">    echo $TERMINFO</span><br><span class="line">    export TERM=screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">    export TERMINFO=/user/share/terminfo</span><br><span class="line">tmux 临时设置默认终端类型</span><br><span class="line">    set -g default-terminal &quot;xterm&quot;</span><br><span class="line">当终端不支持screen-256color，vim编辑文件报错时，将TERM修改为xterm</span><br><span class="line">    # echo $TERM</span><br><span class="line">    screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">备注：</span><br><span class="line">    vim ~/.tmux.conf</span><br><span class="line">    必须设置成</span><br><span class="line">    set -g default-terminal &quot;screen-256color&quot;</span><br><span class="line">    不能设置成</span><br><span class="line">    set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">    否则tmux新开的窗口中默认的$TERM就是xterm-256color，</span><br><span class="line">    开启omnitty 会有阴影，显示会有问题。也可以手动修改窗口中的$TERM环境变量消除阴影。</span><br></pre></td></tr></table></figure></li>
 <li><p>screen-256color和xterm-256color的区别？</p>
@@ -415,7 +422,7 @@
 <li><a target="_blank" rel="noopener" href="http://linuxwiki.github.io/ProductivityTools/tmux.html">tmux wiki</a></li>
 <li><a target="_blank" rel="noopener" href="http://louiszhai.github.io/2017/09/30/tmux/#Tmux%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4">Tmux使用手册</a></li>
 <li><a target="_blank" rel="noopener" href="https://linux.cn/blog-17704-5941.html">linux term</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.kbase101.com/question/26581.html">zsh：在tmux中设置TERM = screen-256color，但在没有tmux的情况下设置xterm-256color</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.kbase101.com/question/26581.html">zsh：在tmux中设置TERM &#x3D; screen-256color，但在没有tmux的情况下设置xterm-256color</a></li>
 <li><a target="_blank" rel="noopener" href="https://better-coding.com/solved-xterm-256color-unknown-terminal-type/">xterm-256color’: unknown terminal type.</a></li>
 <li><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/GNU_Screen_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BD%BF%E7%94%A8_256_%E8%89%B2">GNU Screen</a></li>
 </ul>

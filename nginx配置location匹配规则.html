@@ -338,7 +338,7 @@
 <td align="left">普通字符（相对于正则）匹配，一般用来匹配目录</td>
 </tr>
 <tr>
-<td align="left">=</td>
+<td align="left">&#x3D;</td>
 <td align="left">进行普通字符精确匹配</td>
 </tr>
 <tr>
@@ -347,16 +347,16 @@
 </tr>
 </tbody></table>
 <ul>
-<li>location 匹配的优先级<ul>
-<li>= 精确匹配会第一个被处理。如果发现精确匹配，nginx停止搜索其他匹配；</li>
+<li><p>location 匹配的优先级</p>
+<ul>
+<li>&#x3D; 精确匹配会第一个被处理。如果发现精确匹配，nginx停止搜索其他匹配；</li>
 <li>Nginx首先检查最长前缀字符串匹配，其次检查正则表达式的匹配程度；</li>
 <li>最长前缀匹配如果使用”^~”，则不检查正则表达式；</li>
 <li>当没有正则表达式或者没有正则表达式被匹配的情况下，那么匹配程度最高的前缀匹配规则会被应用。</li>
 </ul>
 </li>
-</ul>
+<li><p>参考文档</p>
 <ul>
-<li>参考文档<ul>
 <li><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">nginx官方文档location部分</a></li>
 </ul>
 </li>

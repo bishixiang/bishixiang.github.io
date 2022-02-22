@@ -313,45 +313,49 @@
 
 <h1 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a>查看数据库</h1><ul>
 <li><p>显示数据库线程信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW FULL PROCESSLIST;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW FULL PROCESSLIST;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>输出用户信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT now(), user(), version();</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT now(), user(), version();</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看数据库变量信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>过滤字段</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#x27;char%&#x27;;</span><br><span class="line">SHOW VARIABLES LIKE &#x27;character_set_%&#x27;;</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#x27;char%&#x27;;</span><br><span class="line">SHOW VARIABLES LIKE &#x27;character_set_%&#x27;;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看慢查询状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show global status like ‘%slow%’;</span><br><span class="line">show variables like &#x27;%slow%&#x27;;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show global status like ‘%slow%’;</span><br><span class="line">show variables like &#x27;%slow%&#x27;;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>输出数据库信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES LIKE &#x27;%wiki%&#x27;;</span><br><span class="line">SHOW CREATE DATABASE mediawiki;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="修改数据库配置"><a href="#修改数据库配置" class="headerlink" title="修改数据库配置"></a>修改数据库配置</h1><ul>
 <li><p>修改数据库的默认排序规则</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER DATABASE wiki CHARACTER SET utf8 COLLATE utf8_bin;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER DATABASE wiki CHARACTER SET utf8 COLLATE utf8_bin;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>授权所有主机远程连接数据库</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &#x27;myuser&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;passwd&#x27;;</span><br><span class="line">UPDATE mysql.user SET Grant_priv=&#x27;Y&#x27;, Super_priv=&#x27;Y&#x27; WHERE User=&#x27;root&#x27;;  # 打开授权</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;myuser&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;mypassword&#x27; WITH GRANT OPTION;</span><br><span class="line">eg: GRANT ALL PRIVILEGES ON dbname.* TO &#x27;username&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;passwd&#x27; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>mysqladmin -u用户名 -p旧密码 password 新密码</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>MySQL强制重置密码方法一</p>
 <ul>
 <li><p>停掉mysql服务</p>
-<p>/etc/init.d/mysqld stop</p>
+<p>&#x2F;etc&#x2F;init.d&#x2F;mysqld stop</p>
 </li>
 <li><p>强制以root身份免认证登录</p>
-<p>/usr/sbin/mysqld –user=root –skip-grant-tables &amp;</p>
+<p>&#x2F;usr&#x2F;sbin&#x2F;mysqld –user&#x3D;root –skip-grant-tables &amp;</p>
 </li>
 <li><p>重置密码：</p>
-<p>update mysql.user set password=PASSWORD(‘123456’) where User=’root’;</p>
+<p>update mysql.user set password&#x3D;PASSWORD(‘123456’) where User&#x3D;’root’;</p>
 <p>flush privileges;</p>
 <p>quit;</p>
 <ul>
 <li>启动MySQL</li>
 </ul>
-<p>/etc/init.d/mysql start</p>
+<p>&#x2F;etc&#x2F;init.d&#x2F;mysql start</p>
 </li>
 </ul>
 </li>
@@ -359,32 +363,30 @@
 <p>mysqld –skip-grant-tables</p>
 <p>mysql</p>
 <p>use mysql;</p>
-<p>update user set password=password(“admin10000.com”) where user=”root”;</p>
+<p>update user set password&#x3D;password(“admin10000.com”) where user&#x3D;”root”;</p>
 <p>flush privileges;</p>
 </li>
-</ul>
-<ul>
 <li><p>修改root密码</p>
 <ul>
 <li><p>方法一</p>
 <p>mysqladmin -u用户名 -p旧密码 password 新密码</p>
 </li>
 <li><p>方法二</p>
-<p>set password for 用户名@localhost = password(‘新密码’);</p>
+<p>set password for 用户名@localhost &#x3D; password(‘新密码’);</p>
 </li>
 <li><p>方法三</p>
 <p>use mysql;</p>
-<p>update user set password=password(‘新密码’) where user=’root’ and host=’localhost’;</p>
+<p>update user set password&#x3D;password(‘新密码’) where user&#x3D;’root’ and host&#x3D;’localhost’;</p>
 <p>flush privileges;</p>
 </li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>MySQL5.7 关闭密码策略</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password_policy=0;</span><br><span class="line"></span><br><span class="line">update mysql.user set authentication_string=PASSWORD(&#x27;123456&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line"></span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;passwd&#x27;;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password_policy=0;</span><br><span class="line"></span><br><span class="line">update mysql.user set authentication_string=PASSWORD(&#x27;123456&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line"></span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;passwd&#x27;;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>设置密码永不过期</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE NEVER;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; PASSWORD EXPIRE NEVER;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>远程授权：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on DBName.* to &#x27;myuser&#x27;@&#x27;%&#x27; identified by &#x27;passwd&#x27;;</span><br></pre></td></tr></table></figure></li>
 </ul>

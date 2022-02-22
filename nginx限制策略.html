@@ -331,20 +331,20 @@
 <li><p>limit_req_zone</p>
 <ul>
 <li>第一个字段定义为key，限制对象。$binary_remote_addr(\x0A\x64\xCE\x10)是4字节的IPv4地址，或者16字节的IPv6地址，32位系统上占用32或64个字节，64位系统上占用128字节，占用空间比$remote_addr少64字节。10M大概可以保存160,000条记录。<br>*limit_req_zone中如果key为””表示不对其进行频率限制，所以白名单将用户的key设置为””。</li>
-<li>zone=reqzone1:10m，定义名为reqzone1大小为10M(漏桶算法桶的大小)的zone存储访问频率.共享内存空间被耗尽后则服务器将会对后续所有的请求返回503(Service Temporarily Unavailable)错误。</li>
-<li>rate=20r/s，定义访问速率阈值，单位可以是r/s(次/秒)或者r/m(次/分钟)</li>
+<li>zone&#x3D;reqzone1:10m，定义名为reqzone1大小为10M(漏桶算法桶的大小)的zone存储访问频率.共享内存空间被耗尽后则服务器将会对后续所有的请求返回503(Service Temporarily Unavailable)错误。</li>
+<li>rate&#x3D;20r&#x2F;s，定义访问速率阈值，单位可以是r&#x2F;s(次&#x2F;秒)或者r&#x2F;m(次&#x2F;分钟)</li>
 </ul>
 </li>
 <li><p>limit_req</p>
 <ul>
-<li>zone=reqzone1，选择应用的限制策略zone名称</li>
-<li>burst=20，可选字段，缓冲请求数(特权令牌数，拥有特权令牌可以直接访问服务)</li>
+<li>zone&#x3D;reqzone1，选择应用的限制策略zone名称</li>
+<li>burst&#x3D;20，可选字段，缓冲请求数(特权令牌数，拥有特权令牌可以直接访问服务)</li>
 <li>nodelay，可选字段，加入该字段后超出令牌数的请求直接返回503</li>
 </ul>
 </li>
 <li><p>burst和rate的关系</p>
 <ul>
-<li>rate是限制的总并发数，burst是限制的并发用户数，如果rate=10r/s,burst=10,那么当某一秒钟有10个用户同时访问，一个用户在一秒内请求了10次，9个用户在一秒内请求了1次，则访问最多的那个用户的9个请求会被503</li>
+<li>rate是限制的总并发数，burst是限制的并发用户数，如果rate&#x3D;10r&#x2F;s,burst&#x3D;10,那么当某一秒钟有10个用户同时访问，一个用户在一秒内请求了10次，9个用户在一秒内请求了1次，则访问最多的那个用户的9个请求会被503</li>
 </ul>
 </li>
 </ul>

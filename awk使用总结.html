@@ -324,17 +324,17 @@
 </thead>
 <tbody><tr>
 <td align="left">-F fs</td>
-<td align="left">–field-separator=fs</td>
+<td align="left">–field-separator&#x3D;fs</td>
 <td align="left">指定输入文件折分隔符，fs是一个字符串或者是一个正则表达式，如-F:</td>
 </tr>
 <tr>
-<td align="left">-v var=val</td>
-<td align="left">–assign=var=val</td>
+<td align="left">-v var&#x3D;val</td>
+<td align="left">–assign&#x3D;var&#x3D;val</td>
 <td align="left">赋值一个用户定义变量</td>
 </tr>
 <tr>
 <td align="left">-f 脚本文件</td>
-<td align="left">–file=脚本文件</td>
+<td align="left">–file&#x3D;脚本文件</td>
 <td align="left">从脚本文件中读取awk命令</td>
 </tr>
 <tr>
@@ -355,7 +355,7 @@
 <tr>
 <td align="left">-W posix</td>
 <td align="left">–posix</td>
-<td align="left">打开兼容模式。但有以下限制，不识别：/x、函数关键字、func、换码序列以及当fs是一个空格时，将新行作为一个域分隔符；操作符<strong>和</strong>=不能代替^和^=；fflush无效</td>
+<td align="left">打开兼容模式。但有以下限制，不识别：&#x2F;x、函数关键字、func、换码序列以及当fs是一个空格时，将新行作为一个域分隔符；操作符<strong>和</strong>&#x3D;不能代替^和^&#x3D;；fflush无效</td>
 </tr>
 <tr>
 <td align="left">-W re-interval</td>
@@ -363,13 +363,13 @@
 <td align="left">允许间隔正则表达式的使用，参考(grep中的Posix字符类)，如括号表达式[[:alpha:]]</td>
 </tr>
 <tr>
-<td align="left">-W source=program-text</td>
-<td align="left">–source=program-text</td>
+<td align="left">-W source&#x3D;program-text</td>
+<td align="left">–source&#x3D;program-text</td>
 <td align="left">使用program-text作为源代码，可与-f命令混用</td>
 </tr>
 <tr>
-<td align="left">-W lint[=fatal]</td>
-<td align="left">–lint[=fatal]</td>
+<td align="left">-W lint[&#x3D;fatal]</td>
+<td align="left">–lint[&#x3D;fatal]</td>
 <td align="left">打印不能向传统unix平台移植的结构的警告</td>
 </tr>
 <tr>
@@ -503,7 +503,7 @@
 </tr>
 <tr>
 <td align="left">SUBSEP</td>
-<td align="left">数组下标分隔符(默认值是/034)</td>
+<td align="left">数组下标分隔符(默认值是&#x2F;034)</td>
 </tr>
 <tr>
 <td align="left">ERRNO</td>
@@ -523,12 +523,12 @@
 <tbody><tr>
 <td align="left">sub(regexp, replacement [, target])</td>
 <td align="left">匹配记录中最大、最靠左边的子字符串的正则表达式，并用替换字符串替换这些字符串。<br/>如果没有指定目标字符串就默认使用整个记录。替换只发生在第一次匹配时</td>
-<td align="left">awk ‘BEGIN { str = “water, water, everywhere”;sub(/at/, “ith”, str);print str}’</td>
+<td align="left">awk ‘BEGIN { str &#x3D; “water, water, everywhere”;sub(&#x2F;at&#x2F;, “ith”, str);print str}’</td>
 </tr>
 <tr>
 <td align="left">gsub(regexp, replacement [, target])</td>
 <td align="left">整个文档中进行匹配</td>
-<td align="left">{ gsub(/Britain/, “United Kingdom”); print }</td>
+<td align="left">{ gsub(&#x2F;Britain&#x2F;, “United Kingdom”); print }</td>
 </tr>
 <tr>
 <td align="left">index(in, find)</td>
@@ -538,7 +538,7 @@
 <tr>
 <td align="left">substr(string, start [, length ])</td>
 <td align="left">返回从位置1开始的子字符串，如果指定长度超过实际长度，就返回整个字符串</td>
-<td align="left">awk ‘BEGIN {string = “abcdef”;string = substr(string, 1, 2) “CDE” substr(string, 6);print string}’</td>
+<td align="left">awk ‘BEGIN {string &#x3D; “abcdef”;string &#x3D; substr(string, 1, 2) “CDE” substr(string, 6);print string}’</td>
 </tr>
 <tr>
 <td align="left">split(string, array [, fieldsep [, seps ] ])</td>
@@ -581,11 +581,11 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">&lt; <br/> &lt;= <br/> &gt; <br/> &gt;= <br/> != <br/> ==</td>
+<td align="left">&lt; <br/> &lt;&#x3D; <br/> &gt; <br/> &gt;&#x3D; <br/> !&#x3D; <br/> &#x3D;&#x3D;</td>
 <td align="left">关系运算符</td>
 </tr>
 <tr>
-<td align="left">= <br/> += <br/> -= <br/> *= <br/> /= <br/> %= <br/> ^= <br/> **=</td>
+<td align="left">&#x3D; <br/> +&#x3D; <br/> -&#x3D; <br/> *&#x3D; <br/> &#x2F;&#x3D; <br/> %&#x3D; <br/> ^&#x3D; <br/> **&#x3D;</td>
 <td align="left">赋值</td>
 </tr>
 <tr>
@@ -593,7 +593,7 @@
 <td align="left">逻辑与</td>
 </tr>
 <tr>
-<td align="left">&#124;&#124;</td>
+<td align="left">&amp;#124;&amp;#124;</td>
 <td align="left">逻辑或</td>
 </tr>
 <tr>
@@ -625,7 +625,7 @@
 <td align="left">加<br/>减</td>
 </tr>
 <tr>
-<td align="left">* <br/> / <br/> &amp;</td>
+<td align="left">* <br/> &#x2F; <br/> &amp;</td>
 <td align="left">乘 <br/> 除 <br/> 求余</td>
 </tr>
 <tr>
@@ -735,13 +735,17 @@
 </tbody></table>
 <h1 id="应用范例"><a href="#应用范例" class="headerlink" title="应用范例"></a>应用范例</h1><ul>
 <li><p>格式化输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># echo 99 | awk &#x27;BEGIN&#123; n=100 &#125;&#123; printf(&quot;%s %s &lt; &quot;n&quot;\n&quot;,$1,($1 &lt; n ? &quot;is&quot; : &quot;is not&quot;)) &#125;&#x27;</span><br><span class="line">99 is &lt; 100</span><br><span class="line"># echo 199 | awk &#x27;BEGIN&#123; n=100 &#125;&#123; printf(&quot;%s %s &lt; &quot;n&quot;\n&quot;,$1,($1 &lt; n ? &quot;is&quot; : &quot;is not&quot;)) &#125;&#x27;</span><br><span class="line">199 is not &lt; 100</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># echo 99 | awk &#x27;BEGIN&#123; n=100 &#125;&#123; printf(&quot;%s %s &lt; &quot;n&quot;\n&quot;,$1,($1 &lt; n ? &quot;is&quot; : &quot;is not&quot;)) &#125;&#x27;</span><br><span class="line">99 is &lt; 100</span><br><span class="line"># echo 199 | awk &#x27;BEGIN&#123; n=100 &#125;&#123; printf(&quot;%s %s &lt; &quot;n&quot;\n&quot;,$1,($1 &lt; n ? &quot;is&quot; : &quot;is not&quot;)) &#125;&#x27;</span><br><span class="line">199 is not &lt; 100</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>使用正则，字符串匹配</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># awk &#x27;$9 ~ /500/ &#123;print $1,$7&#125;&#x27; nginx_access_log</span><br><span class="line"># awk &#x27;$9 !~ /200/ &#123;print $1,$7&#125;&#x27; nginx_access_log</span><br><span class="line"># awk &#x27;!/200/ &#123;print $1,$7&#125;&#x27; nginx_access_log</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># awk &#x27;$9 ~ /500/ &#123;print $1,$7&#125;&#x27; nginx_access_log</span><br><span class="line"># awk &#x27;$9 !~ /200/ &#123;print $1,$7&#125;&#x27; nginx_access_log</span><br><span class="line"># awk &#x27;!/200/ &#123;print $1,$7&#125;&#x27; nginx_access_log</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>if复合条件判断</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">cat nginx_access_log |awk &#x27;&#123;if($9!=&quot;\&quot;200\&quot;&quot; &amp;&amp; $9 != &quot;\&quot;304\&quot;&quot; &amp;&amp; $9 != &quot;\&quot;302\&quot;&quot; &amp;&amp; $9 != &quot;\&quot;403\&quot;&quot;) &#123;print $9&quot;:&quot;$11&quot;:&quot;$7&#125;&#125;&#x27; |sort |uniq -c |sort -rn |head</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">cat nginx_access_log |awk &#x27;&#123;if($9!=&quot;\&quot;200\&quot;&quot; &amp;&amp; $9 != &quot;\&quot;304\&quot;&quot; &amp;&amp; $9 != &quot;\&quot;302\&quot;&quot; &amp;&amp; $9 != &quot;\&quot;403\&quot;&quot;) &#123;print $9&quot;:&quot;$11&quot;:&quot;$7&#125;&#125;&#x27; |sort |uniq -c |sort -rn |head</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>使用数组进行分类汇总</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line"># netstat -ant | awk &#x27;/^tcp/ &#123;state[$NF]++&#125; END &#123;for(s in state)&#123;if(state[s]&gt;10)print s,state[s]&#125;&#125;&#x27;</span><br><span class="line"># tail -n 1000 nginx_access_log| awk &#x27;&#123;stat[$9]++&#125; END &#123;for(c in stat)&#123;if(c !~ 200)print c,stat[c]&#125;&#125;&#x27;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line"># netstat -ant | awk &#x27;/^tcp/ &#123;state[$NF]++&#125; END &#123;for(s in state)&#123;if(state[s]&gt;10)print s,state[s]&#125;&#125;&#x27;</span><br><span class="line"># tail -n 1000 nginx_access_log| awk &#x27;&#123;stat[$9]++&#125; END &#123;for(c in stat)&#123;if(c !~ 200)print c,stat[c]&#125;&#125;&#x27;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>awk 去掉最后一列</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F / &#x27;BEGIN&#123;OFS=&quot;/&quot;&#125;&#123;$NF=null;print $0&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>

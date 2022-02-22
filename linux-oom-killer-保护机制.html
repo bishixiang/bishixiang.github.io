@@ -313,23 +313,24 @@
 <span id="more"></span>
 
 <blockquote>
-<p>linux下允许程序申请比系统可用内存更多的内存，这个特性叫Overcommit（过度分配）。在系统内存耗尽的情况下，OOM killer机制选择性的干掉一些进程以求释放一些内存。默认具体的记录日志是在/var/log/messages中。</p>
+<p>linux下允许程序申请比系统可用内存更多的内存，这个特性叫Overcommit（过度分配）。在系统内存耗尽的情况下，OOM killer机制选择性的干掉一些进程以求释放一些内存。默认具体的记录日志是在&#x2F;var&#x2F;log&#x2F;messages中。</p>
 </blockquote>
 <h1 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h1><ul>
-<li>参数/proc/sys/vm/overcommit_memory可以控制进程对内存过量使用的应对策略</li>
+<li>参数&#x2F;proc&#x2F;sys&#x2F;vm&#x2F;overcommit_memory可以控制进程对内存过量使用的应对策略</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">overcommit_memory=0，这是缺省值，表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。</span><br><span class="line">overcommit_memory=1，内核会永远认为有充足的内存可用，进程申请内存时总是允许。</span><br><span class="line">overcommit_memory=2，表示系统所能分配的内存不会超过swap+RAM*系数（/proc/sys/vm/overcommit_ratio，默认50%，可以调整），如果这么多资源已经用光，那么后面任何尝试申请内存的行为都会返回错误，这通常意味着此时没法运行任何新程序。</span><br></pre></td></tr></table></figure>
 
 
 <h1 id="内核决策依据"><a href="#内核决策依据" class="headerlink" title="内核决策依据"></a>内核决策依据</h1><ul>
-<li><p>/proc/[pid]/oom_adj，该pid进程被oom killer杀掉的权重，一般介于 [-17,15]（具体具体权重的范围需要查看内核确认）之间，越高的权重，意味着更可能被oom killer选中，-17表示禁止被kill掉。</p>
+<li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_adj，该pid进程被oom killer杀掉的权重，一般介于 [-17,15]（具体具体权重的范围需要查看内核确认）之间，越高的权重，意味着更可能被oom killer选中，-17表示禁止被kill掉。</p>
 </li>
-<li><p>/proc/[pid]/oom_score，当前该pid进程的被kill的分数，越高的分数意味着越可能被kill，这个数值是根据oom_adj运算（2ⁿ，n就是oom_adj的值）后的结果，本身oom_score是不能修改值。</p>
+<li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_score，当前该pid进程的被kill的分数，越高的分数意味着越可能被kill，这个数值是根据oom_adj运算（2ⁿ，n就是oom_adj的值）后的结果，本身oom_score是不能修改值。</p>
 </li>
 </ul>
 <h1 id="两种进程保护措施"><a href="#两种进程保护措施" class="headerlink" title="两种进程保护措施"></a>两种进程保护措施</h1><ul>
 <li><p>修改权重</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -17 &gt; /proc/[PID]/oom_adj（输入-17，禁止被OOM机制处理）</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -17 &gt; /proc/[PID]/oom_adj（输入-17，禁止被OOM机制处理）</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>开启OOM较为的保险机制</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo “vm.panic_on_oom=2” &gt;&gt; /etc/sysctl.conf</span><br><span class="line">systcl -p</span><br></pre></td></tr></table></figure></li>
 </ul>

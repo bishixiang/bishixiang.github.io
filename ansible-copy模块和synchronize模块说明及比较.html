@@ -327,7 +327,7 @@
 <td align="left">backup</td>
 <td align="left">no</td>
 <td align="left">no</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">是否备份被修改的文件</td>
 </tr>
 <tr>
@@ -335,7 +335,7 @@
 <td align="left">no</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">本地路径；可以是绝对路径也可以是相对路径。如果是目录，则递归地复制。此种情况下，类似于rsync，如果路径以“/”结尾，则只有该目录下的文件或子目录被复制。如果不以“/”结尾，则同时复制该目录。</td>
+<td align="left">本地路径；可以是绝对路径也可以是相对路径。如果是目录，则递归地复制。此种情况下，类似于rsync，如果路径以“&#x2F;”结尾，则只有该目录下的文件或子目录被复制。如果不以“&#x2F;”结尾，则同时复制该目录。</td>
 </tr>
 <tr>
 <td align="left">content</td>
@@ -355,14 +355,14 @@
 <td align="left">follow</td>
 <td align="left">no</td>
 <td align="left">no</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">保留软链属性(added in 1.8)</td>
 </tr>
 <tr>
 <td align="left">force</td>
 <td align="left">no</td>
 <td align="left">yes</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">如果文件已存在，默认强制覆盖，如果设置为no,则只有当文件不存在时才会被传输 aliases: thirsty</td>
 </tr>
 <tr>
@@ -390,7 +390,7 @@
 <td align="left">remote_src</td>
 <td align="left">no</td>
 <td align="left">False</td>
-<td align="left">True/False</td>
+<td align="left">True&#x2F;False</td>
 <td align="left">如果是true，将从远端往远端服务，相当于在远端服务器上执行copy操作。如果为false，则从本地复制到远程，默认是false。remote_src不支持递归复制。(added in 2.0)</td>
 </tr>
 </tbody></table>
@@ -410,71 +410,71 @@
 <td align="left">archive</td>
 <td align="left">no</td>
 <td align="left">yes</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">递归保留源目录中的软链、权限、时间戳、所属用户等属性</td>
 </tr>
 <tr>
 <td align="left">recursive</td>
 <td align="left">no</td>
 <td align="left">选项archive的值</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">目录递归</td>
 </tr>
 <tr>
 <td align="left">group</td>
 <td align="left">no</td>
 <td align="left">选项archive的值</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">指定所属用户组</td>
 </tr>
 <tr>
 <td align="left">owner</td>
 <td align="left">no</td>
 <td align="left">选项archive的值</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">指定所属用户</td>
 </tr>
 <tr>
 <td align="left">links</td>
 <td align="left">no</td>
 <td align="left">选项archive的值</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">保留软链接</td>
 </tr>
 <tr>
 <td align="left">perms</td>
 <td align="left">no</td>
 <td align="left">选项archive的值</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">保留权限设置</td>
 </tr>
 <tr>
 <td align="left">times</td>
 <td align="left">no</td>
 <td align="left">选项archive的值</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">保留时间戳</td>
 </tr>
 <tr>
 <td align="left">compress</td>
 <td align="left">no</td>
 <td align="left">yes</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">压缩传输，除非会导致异常，多数情况下建议开启(added in 1.7)</td>
 </tr>
 <tr>
 <td align="left">copy_links</td>
 <td align="left">no</td>
 <td align="left">no</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">复制软链指向的内容而不是软链本身</td>
 </tr>
 <tr>
 <td align="left">delete</td>
 <td align="left">no</td>
 <td align="left">no</td>
-<td align="left">yes/no</td>
-<td align="left">传输完成后，删除目标路径下，源目录中不存在的文件This option requires recursive=yes.</td>
+<td align="left">yes&#x2F;no</td>
+<td align="left">传输完成后，删除目标路径下，源目录中不存在的文件This option requires recursive&#x3D;yes.</td>
 </tr>
 <tr>
 <td align="left">src</td>
@@ -494,21 +494,21 @@
 <td align="left">dirs</td>
 <td align="left">no</td>
 <td align="left">no</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">不递归传输</td>
 </tr>
 <tr>
 <td align="left">existing_only</td>
 <td align="left">no</td>
 <td align="left">no</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">跳过目标端不存在的目录或文件(added in 1.5)</td>
 </tr>
 <tr>
 <td align="left">mode</td>
 <td align="left">no</td>
 <td align="left">push</td>
-<td align="left">push/pull</td>
+<td align="left">push&#x2F;pull</td>
 <td align="left">指定推送方式，拉取或者推送，默认是push模式，push模式下src是源，pull模式下dest是源</td>
 </tr>
 <tr>
@@ -543,7 +543,7 @@
 <td align="left">use_ssh_args</td>
 <td align="left">no</td>
 <td align="left">no</td>
-<td align="left">yes/no</td>
+<td align="left">yes&#x2F;no</td>
 <td align="left">使用ansible.cfg中指定的ssh_args参数(added in 2.0)</td>
 </tr>
 <tr>

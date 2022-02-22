@@ -318,13 +318,17 @@
 
 <h1 id="常见用例"><a href="#常见用例" class="headerlink" title="常见用例"></a>常见用例</h1><ul>
 <li><p>文件最后追加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed &#x27;$ a\00 08 * * * /sbin/clock -w &gt;/dev/null 2&gt;&amp;1&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed &#x27;$ a\00 08 * * * /sbin/clock -w &gt;/dev/null 2&gt;&amp;1&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>输出满足正则的记录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n &#x27;/正则表达式/p&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n &#x27;/正则表达式/p&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>删除满足正则的记录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;/正则表达式/d&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;/正则表达式/d&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>sed删除多行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;/START/,/END/d&#x27; /etc/rsyncd.conf</span><br><span class="line">eg:</span><br><span class="line">sed -i &#x27;/\[root\]\s*/,/\s*hosts\s*allow\s*=\s*10.0.0.0\/8\s*192.168.0.0\/16\s*/d&#x27; rsyncd.conf</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;/START/,/END/d&#x27; /etc/rsyncd.conf</span><br><span class="line">eg:</span><br><span class="line">sed -i &#x27;/\[root\]\s*/,/\s*hosts\s*allow\s*=\s*10.0.0.0\/8\s*192.168.0.0\/16\s*/d&#x27; rsyncd.conf</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>将所有数字版本号统一</p>
 <ul>
 <li><strong>sed正则中{}()需要加转义，[]则不用。<code>|</code>和<code>+</code>也需要转义，<code>$</code>不需要转义。</strong></li>

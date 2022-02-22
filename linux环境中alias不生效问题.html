@@ -322,7 +322,8 @@
 <h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>alias 在非交互shell环境中不生效，除非手动设置<code>shopt -s expand_aliases</code></p>
 <h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><ul>
 <li><p><code>cat aliasVerifi.sh</code></p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#/bin/bash</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br><span class="line">echo &quot;================&quot;</span><br><span class="line">shopt -s expand_aliases</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">alias whoami=&#x27;date &quot;+%Y-%m-%d %H:%M:%S&quot;&#x27;</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#/bin/bash</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br><span class="line">echo &quot;================&quot;</span><br><span class="line">shopt -s expand_aliases</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">alias whoami=&#x27;date &quot;+%Y-%m-%d %H:%M:%S&quot;&#x27;</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>通过cron调用脚本并将输出写入log文件aliasVerifi.log</p>
 </li>
 <li><p><code>cat aliasVerifi.log</code></p>
@@ -354,7 +355,8 @@
 <li><p>在sshpass命令后命令别名同样不生效</p>
 <ul>
 <li><p>以下情况不生效alias rsync不生效</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">sshpass -e rsync ...</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">sshpass -e rsync ...</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>可用以下方式变相实现</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;sshpass -e rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">rsync ...</span><br></pre></td></tr></table></figure></li>
 </ul>

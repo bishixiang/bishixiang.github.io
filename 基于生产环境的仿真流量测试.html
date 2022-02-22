@@ -325,9 +325,8 @@
 <li>资源消耗少</li>
 </ul>
 </li>
-</ul>
+<li><p>简单用例</p>
 <ul>
-<li>简单用例<ul>
 <li>将本地8080端口流量复制到 10.0.0.2 的80端口<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./goreplay --http-original-host --input-raw :8080 --input-raw-realip-header &quot;X-Real-IP&quot; --output-http &quot;http://10.0.0.2:80&quot; --exit-after 259200s</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -344,7 +343,7 @@
 <ul>
 <li>C语言编写</li>
 <li>使用复杂</li>
-<li>依赖root权限或CAP_NET_RAW capability(e.g. setcap CAP_NET_RAW=ep tcpcopy)</li>
+<li>依赖root权限或CAP_NET_RAW capability(e.g. setcap CAP_NET_RAW&#x3D;ep tcpcopy)</li>
 <li>依赖于 assistant server的intercept截获应答</li>
 </ul>
 </li>
