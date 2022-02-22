@@ -26,55 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title>DOS常用命令总结</title>
-    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
-    <content><![CDATA[<ul>
-<li><p>查看历史命令（快捷键：F7）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自动关机</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件系统转换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>磁盘检查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改文件属性</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内网主机名IP互查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>组策略</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
-</ul>
-</li>
-<li><p>help</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
-      <categories>
-        <category>DOS</category>
-      </categories>
-      <tags>
-        <tag>DOS</tag>
-        <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo(Next)+GitHub Pages搭建开源博客</title>
     <url>/hexo-next-github-pages%E6%90%AD%E5%BB%BA%E5%BC%80%E6%BA%90%E5%8D%9A%E5%AE%A2.html</url>
     <content><![CDATA[<h1 id="node环境"><a href="#node环境" class="headerlink" title="node环境"></a>node环境</h1><p>  略</p>
@@ -237,6 +188,55 @@
       <tags>
         <tag>hexo</tag>
         <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOS常用命令总结</title>
+    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
+    <content><![CDATA[<ul>
+<li><p>查看历史命令（快捷键：F7）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动关机</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件系统转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>磁盘检查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改文件属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内网主机名IP互查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组策略</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
+</ul>
+</li>
+<li><p>help</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
+      <categories>
+        <category>DOS</category>
+      </categories>
+      <tags>
+        <tag>DOS</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -538,196 +538,6 @@
       </tags>
   </entry>
   <entry>
-    <title>shell printf格式化输出</title>
-    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
-    <content><![CDATA[<p>shell也可以优雅的输出。</p>
-<span id="more"></span>
-
-<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
-
-<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
-
-<table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">%s</td>
-<td align="left">字符串</td>
-</tr>
-<tr>
-<td align="left">%d,%i</td>
-<td align="left">十进制整数</td>
-</tr>
-<tr>
-<td align="left">%u</td>
-<td align="left">不带正负号的十进制值</td>
-</tr>
-<tr>
-<td align="left">%o</td>
-<td align="left">不带正负号的八进制值</td>
-</tr>
-<tr>
-<td align="left">%x</td>
-<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
-</tr>
-<tr>
-<td align="left">%X</td>
-<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
-</tr>
-<tr>
-<td align="left">%e,%E,%f</td>
-<td align="left">浮点格式</td>
-</tr>
-<tr>
-<td align="left">%g</td>
-<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%G</td>
-<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%b</td>
-<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
-</tr>
-<tr>
-<td align="left">%c</td>
-<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
-</tr>
-<tr>
-<td align="left">%%</td>
-<td align="left">字面意义的%</td>
-</tr>
-</tbody></table>
-<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\f</td>
-<td align="left">换页（formfeed）</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">换行</td>
-</tr>
-<tr>
-<td align="left">\r</td>
-<td align="left">回车（Carriage return）</td>
-</tr>
-<tr>
-<td align="left">\t</td>
-<td align="left">水平制表符</td>
-</tr>
-<tr>
-<td align="left">\v</td>
-<td align="left">垂直制表符</td>
-</tr>
-<tr>
-<td align="left">\</td>
-<td align="left">一个字面上的反斜杠字符</td>
-</tr>
-<tr>
-<td align="left">\ddd</td>
-<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
-</tr>
-<tr>
-<td align="left">\0ddd</td>
-<td align="left">表示1到3位的八进制值字符</td>
-</tr>
-</tbody></table>
-<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
-<li>默认printf没有换行，需要手动添加\n；</li>
-<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
-<li>-表示左对齐，+或者空则表示右对齐；</li>
-<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
-<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
-<li>格式控制中也可以引入字体颜色。</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>printf</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx-rewrite指令中的flag参数</title>
-    <url>/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html</url>
-    <content><![CDATA[<blockquote>
-<p>Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。</p>
-</blockquote>
-<span id="more"></span>
-
-<style> table th:nth-of-type(2){width: 80%;}</style>
-
-<ul>
-<li>flag 参数</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">flag参数</th>
-<th align="left">意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">last</td>
-<td align="left">终止rewrite指令匹配，然后对当前重写的新URI在rewrite指令集上重新查找</td>
-</tr>
-<tr>
-<td align="left">break</td>
-<td align="left">停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行</td>
-</tr>
-<tr>
-<td align="left">permant</td>
-<td align="left">返回301永久重定向，地址栏显示跳转后的地址</td>
-</tr>
-<tr>
-<td align="left">redirect</td>
-<td align="left">返回302临时重定向，地址栏显示跳转后的地址</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>说明</p>
-<ul>
-<li>nginx可以通过增加<code>rewrite_log on; error_log logs/error.log notice;</code>调试 rewrite；</li>
-<li>last：将rewrite后的地址重新在server标签执行；</li>
-<li>break：将rewrite后地址重新在当前的location标签执行；</li>
-<li>last和break正常返回200状态码；</li>
-<li>last一般写在server和if中，而break一般使用在location中；</li>
-<li>last不终止重写后的url匹配，而break终止重写后的匹配；</li>
-<li>一般使用302重定向是在一个网站或网页在24到48小时之内临时移到其它位置，建议尽量采用301重定向；</li>
-<li>rewrite指令执行过程中如果循环超过10次，则返回500 Internal Server Error错误；</li>
-<li>rewrite正则表达regex式中包含 “}” 或 “;”时整个表达式需要用双引号或单引号引起来；</li>
-</ul>
-</li>
-<li><p>参考文档</p>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li></ul></div>]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>rewrite</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ansible copy模块和synchronize模块说明及比较</title>
     <url>/ansible-copy%E6%A8%A1%E5%9D%97%E5%92%8Csynchronize%E6%A8%A1%E5%9D%97%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%AF%94%E8%BE%83.html</url>
     <content><![CDATA[<p>对文件的批量变更是运维自动化领域中很常见的需求之一.Ansible官方针对文件操作部分提供了很多<a href="http://docs.ansible.com/ansible/latest/list_of_files_modules.html">模块</a>,这里仅对最常用的copy和synchronize模块进行一个简单的比较。</p>
@@ -1007,6 +817,130 @@
       </tags>
   </entry>
   <entry>
+    <title>shell printf格式化输出</title>
+    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
+    <content><![CDATA[<p>shell也可以优雅的输出。</p>
+<span id="more"></span>
+
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
+
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
+
+<table>
+<thead>
+<tr>
+<th align="left">格式符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">%s</td>
+<td align="left">字符串</td>
+</tr>
+<tr>
+<td align="left">%d,%i</td>
+<td align="left">十进制整数</td>
+</tr>
+<tr>
+<td align="left">%u</td>
+<td align="left">不带正负号的十进制值</td>
+</tr>
+<tr>
+<td align="left">%o</td>
+<td align="left">不带正负号的八进制值</td>
+</tr>
+<tr>
+<td align="left">%x</td>
+<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
+</tr>
+<tr>
+<td align="left">%X</td>
+<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
+</tr>
+<tr>
+<td align="left">%e,%E,%f</td>
+<td align="left">浮点格式</td>
+</tr>
+<tr>
+<td align="left">%g</td>
+<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%G</td>
+<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%b</td>
+<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
+</tr>
+<tr>
+<td align="left">%c</td>
+<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
+</tr>
+<tr>
+<td align="left">%%</td>
+<td align="left">字面意义的%</td>
+</tr>
+</tbody></table>
+<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
+<thead>
+<tr>
+<th align="left">格式符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\f</td>
+<td align="left">换页（formfeed）</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车（Carriage return）</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">水平制表符</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">垂直制表符</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">一个字面上的反斜杠字符</td>
+</tr>
+<tr>
+<td align="left">\ddd</td>
+<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
+</tr>
+<tr>
+<td align="left">\0ddd</td>
+<td align="left">表示1到3位的八进制值字符</td>
+</tr>
+</tbody></table>
+<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
+<li>默认printf没有换行，需要手动添加\n；</li>
+<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
+<li>-表示左对齐，+或者空则表示右对齐；</li>
+<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
+<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
+<li>格式控制中也可以引入字体颜色。</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>printf</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx配置中的if指令</title>
     <url>/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html</url>
     <content><![CDATA[<blockquote>
@@ -1074,6 +1008,72 @@
 </li>
 </ul>
 <div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>rewrite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx-rewrite指令中的flag参数</title>
+    <url>/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html</url>
+    <content><![CDATA[<blockquote>
+<p>Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。</p>
+</blockquote>
+<span id="more"></span>
+
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<ul>
+<li>flag 参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">flag参数</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">last</td>
+<td align="left">终止rewrite指令匹配，然后对当前重写的新URI在rewrite指令集上重新查找</td>
+</tr>
+<tr>
+<td align="left">break</td>
+<td align="left">停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行</td>
+</tr>
+<tr>
+<td align="left">permant</td>
+<td align="left">返回301永久重定向，地址栏显示跳转后的地址</td>
+</tr>
+<tr>
+<td align="left">redirect</td>
+<td align="left">返回302临时重定向，地址栏显示跳转后的地址</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>说明</p>
+<ul>
+<li>nginx可以通过增加<code>rewrite_log on; error_log logs/error.log notice;</code>调试 rewrite；</li>
+<li>last：将rewrite后的地址重新在server标签执行；</li>
+<li>break：将rewrite后地址重新在当前的location标签执行；</li>
+<li>last和break正常返回200状态码；</li>
+<li>last一般写在server和if中，而break一般使用在location中；</li>
+<li>last不终止重写后的url匹配，而break终止重写后的匹配；</li>
+<li>一般使用302重定向是在一个网站或网页在24到48小时之内临时移到其它位置，建议尽量采用301重定向；</li>
+<li>rewrite指令执行过程中如果循环超过10次，则返回500 Internal Server Error错误；</li>
+<li>rewrite正则表达regex式中包含 “}” 或 “;”时整个表达式需要用双引号或单引号引起来；</li>
+</ul>
+</li>
+<li><p>参考文档</p>
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li></ul></div>]]></content>
       <categories>
         <category>nginx</category>
       </categories>
@@ -1537,6 +1537,40 @@
       </tags>
   </entry>
   <entry>
+    <title>存储空间计算</title>
+    <url>/%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E8%AE%A1%E7%AE%97.html</url>
+    <content><![CDATA[<p>最基础的知识往往是最容易被忽略的点，放低姿态，夯实基础，才能行稳致远。</p>
+<span id="more"></span>
+
+<h1 id="存储空间单位换算"><a href="#存储空间单位换算" class="headerlink" title="存储空间单位换算"></a>存储空间单位换算</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 B = 8 bit</span><br><span class="line">1 KB = 1024 B = 8192 bit</span><br><span class="line">1 MB = 1024 KB = 1048576 B = 8388608 bit</span><br><span class="line">1 GB = 1024 MB = 1048576 KB = 1073741824 B = 8589934592 bit</span><br><span class="line">1 TB = 1024 GB = 1048576 MB = 1073741824 KB = 1099511627776 B = 8796093022208 bit</span><br><span class="line">1 PB = 1024 TB = 1048576 GB = 1073741824 MB = 1099511627776 KB = 1125899906842624 B = 9007199254740992 bit</span><br><span class="line">1 EB = 1024 PB = 1048576 TB = 1073741824 GB = 1099511627776 MB = 1125899906842624 KB = 1.152921504606847e+18 B = 9.223372036854776e+18 bit</span><br></pre></td></tr></table></figure>
+
+<h1 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="ASCII编码"></a>ASCII编码</h1><ul>
+<li>一个ASCII码占一个字节</li>
+<li>一个英文字母占一个字节</li>
+<li>一个中文汉字占两个字节</li>
+</ul>
+<h1 id="UTF-8编码"><a href="#UTF-8编码" class="headerlink" title="UTF-8编码"></a>UTF-8编码</h1><ul>
+<li>一个英文字符等于一个字节</li>
+<li>一个中文（含繁体）占三个字节</li>
+</ul>
+<h1 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h1><ul>
+<li>一个英文字占两个字节</li>
+<li>一个中文（含繁体）占两个字节</li>
+</ul>
+<h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><ul>
+<li>英文标点占一个字节</li>
+<li>中文标点占两个字节</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>磁盘存储</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</title>
     <url>/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84tmpfs%E3%80%81-dev-shm%E3%80%81tmp%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6.html</url>
     <content><![CDATA[<p>共享内存允许两个或更多进程访问同一块内存。</p>
@@ -1629,8 +1663,8 @@
         <category>操作系统</category>
       </categories>
       <tags>
-        <tag>共享内存</tag>
         <tag>Linux</tag>
+        <tag>共享内存</tag>
       </tags>
   </entry>
   <entry>
@@ -1707,40 +1741,6 @@
       <tags>
         <tag>nginx</tag>
         <tag>仿真测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>存储空间计算</title>
-    <url>/%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E8%AE%A1%E7%AE%97.html</url>
-    <content><![CDATA[<p>最基础的知识往往是最容易被忽略的点，放低姿态，夯实基础，才能行稳致远。</p>
-<span id="more"></span>
-
-<h1 id="存储空间单位换算"><a href="#存储空间单位换算" class="headerlink" title="存储空间单位换算"></a>存储空间单位换算</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 B = 8 bit</span><br><span class="line">1 KB = 1024 B = 8192 bit</span><br><span class="line">1 MB = 1024 KB = 1048576 B = 8388608 bit</span><br><span class="line">1 GB = 1024 MB = 1048576 KB = 1073741824 B = 8589934592 bit</span><br><span class="line">1 TB = 1024 GB = 1048576 MB = 1073741824 KB = 1099511627776 B = 8796093022208 bit</span><br><span class="line">1 PB = 1024 TB = 1048576 GB = 1073741824 MB = 1099511627776 KB = 1125899906842624 B = 9007199254740992 bit</span><br><span class="line">1 EB = 1024 PB = 1048576 TB = 1073741824 GB = 1099511627776 MB = 1125899906842624 KB = 1.152921504606847e+18 B = 9.223372036854776e+18 bit</span><br></pre></td></tr></table></figure>
-
-<h1 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="ASCII编码"></a>ASCII编码</h1><ul>
-<li>一个ASCII码占一个字节</li>
-<li>一个英文字母占一个字节</li>
-<li>一个中文汉字占两个字节</li>
-</ul>
-<h1 id="UTF-8编码"><a href="#UTF-8编码" class="headerlink" title="UTF-8编码"></a>UTF-8编码</h1><ul>
-<li>一个英文字符等于一个字节</li>
-<li>一个中文（含繁体）占三个字节</li>
-</ul>
-<h1 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h1><ul>
-<li>一个英文字占两个字节</li>
-<li>一个中文（含繁体）占两个字节</li>
-</ul>
-<h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><ul>
-<li>英文标点占一个字节</li>
-<li>中文标点占两个字节</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>磁盘存储</tag>
       </tags>
   </entry>
   <entry>
@@ -3261,34 +3261,6 @@
       </tags>
   </entry>
   <entry>
-    <title>confluence 自动备份策略不生效</title>
-    <url>/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>一切问题都有答案。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<p>##问题现象</p>
-<p>confluence从备份文件中降级恢复后，配置没有任何错误提示，但是发现备份策略不生效，备份目录为空。查看日志后发现，没有取到backupPath，但是实际配置中是有显示配置路径的。</p>
-<h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backupAttachmentsDaily = true</span><br><span class="line">dailyBackupFilePrefix = backup-</span><br><span class="line">backupDaily = true</span><br><span class="line">backupPath = null</span><br><span class="line">2018-03-20 02:00:00,022 WARN [Caesium-1-2] [confluence.importexport.impl.BackupJob] runJob No daily backup directory specified to store the backups. Taking no action!</span><br><span class="line">2018-03-20 02:00:00,038 WARN [Caesium-1-2] [impl.schedule.caesium.JobRunnerWrapper] runJob Scheduled job BackupJob#BackupJob completed unsuccessfully with response JobRunnerResponse[runOutcome=ABORTED,message=&#x27;No daily backup directory specified to store the backups. Taking no action!&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>参考了一些<a href="https://confluence.atlassian.com/confkb/cannot-create-xml-backup-with-the-warn-message-no-daily-backup-directory-specified-to-store-the-backups-in-the-logs-737772474.html">官网给出的case</a>,<br>将 ${CONFLUENCE_HOME}目录下的配置文件confluence.cfg.xml中的<code>&lt;property name=&quot;admin.ui.allow.daily.backup.custom.location&quot;&gt;false&lt;/property&gt;</code>属性值变更为<code>true</code>,<br>重启confluence，<br>然后将<code>每日备份管理-&gt;备份设置-&gt;备份路径</code>设置为<code>默认</code>,<br>最后重新手动触发备份任务，<br>成功生成备份文件。</p>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>由于之前有过confluence从备份文件中降级恢复操作，怀疑是由于恢复操作，导致备份路径没有生效，猜测不用修改confluence.cfg.xml，直接重新提交一下备份路径设置也是可以的，因为问题的根本原因是<code>backupPath = null</code>。由于生产环境不便于验证，反复修改验证。有兴趣的读者可以验证一下，以后有机会也会再做验证。</p>
-<p>confluence的备份恢复机制还是很好用的。wiki作为团队的重要资源，做好备份恢复还是非常重要和必要的。</p>
-]]></content>
-      <categories>
-        <category>confluence</category>
-        <category>填坑指南</category>
-      </categories>
-      <tags>
-        <tag>confluence</tag>
-        <tag>wiki</tag>
-        <tag>备份</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</title>
     <url>/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -3692,6 +3664,34 @@
       <tags>
         <tag>bash</tag>
         <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>confluence 自动备份策略不生效</title>
+    <url>/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>一切问题都有答案。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<p>##问题现象</p>
+<p>confluence从备份文件中降级恢复后，配置没有任何错误提示，但是发现备份策略不生效，备份目录为空。查看日志后发现，没有取到backupPath，但是实际配置中是有显示配置路径的。</p>
+<h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backupAttachmentsDaily = true</span><br><span class="line">dailyBackupFilePrefix = backup-</span><br><span class="line">backupDaily = true</span><br><span class="line">backupPath = null</span><br><span class="line">2018-03-20 02:00:00,022 WARN [Caesium-1-2] [confluence.importexport.impl.BackupJob] runJob No daily backup directory specified to store the backups. Taking no action!</span><br><span class="line">2018-03-20 02:00:00,038 WARN [Caesium-1-2] [impl.schedule.caesium.JobRunnerWrapper] runJob Scheduled job BackupJob#BackupJob completed unsuccessfully with response JobRunnerResponse[runOutcome=ABORTED,message=&#x27;No daily backup directory specified to store the backups. Taking no action!&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>参考了一些<a href="https://confluence.atlassian.com/confkb/cannot-create-xml-backup-with-the-warn-message-no-daily-backup-directory-specified-to-store-the-backups-in-the-logs-737772474.html">官网给出的case</a>,<br>将 ${CONFLUENCE_HOME}目录下的配置文件confluence.cfg.xml中的<code>&lt;property name=&quot;admin.ui.allow.daily.backup.custom.location&quot;&gt;false&lt;/property&gt;</code>属性值变更为<code>true</code>,<br>重启confluence，<br>然后将<code>每日备份管理-&gt;备份设置-&gt;备份路径</code>设置为<code>默认</code>,<br>最后重新手动触发备份任务，<br>成功生成备份文件。</p>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>由于之前有过confluence从备份文件中降级恢复操作，怀疑是由于恢复操作，导致备份路径没有生效，猜测不用修改confluence.cfg.xml，直接重新提交一下备份路径设置也是可以的，因为问题的根本原因是<code>backupPath = null</code>。由于生产环境不便于验证，反复修改验证。有兴趣的读者可以验证一下，以后有机会也会再做验证。</p>
+<p>confluence的备份恢复机制还是很好用的。wiki作为团队的重要资源，做好备份恢复还是非常重要和必要的。</p>
+]]></content>
+      <categories>
+        <category>confluence</category>
+        <category>填坑指南</category>
+      </categories>
+      <tags>
+        <tag>confluence</tag>
+        <tag>wiki</tag>
+        <tag>备份</tag>
       </tags>
   </entry>
   <entry>
@@ -4591,7 +4591,7 @@
 <tr>
 <td align="left">From</td>
 <td align="left">发起此请求的用户的邮件地址。</td>
-<td align="left">From: <a href="mailto:&#x75;&#115;&#x65;&#114;&#x40;&#x65;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#111;&#x6d;">&#x75;&#115;&#x65;&#114;&#x40;&#x65;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#99;&#111;&#x6d;</a></td>
+<td align="left">From: <a href="mailto:&#x75;&#x73;&#x65;&#x72;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x75;&#x73;&#x65;&#x72;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td align="left">Host</td>
@@ -5079,68 +5079,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx限制策略</title>
-    <url>/nginx%E9%99%90%E5%88%B6%E7%AD%96%E7%95%A5.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>在nginx服务中通过限制访问频率的策略可以在一定程度上抵御DDoS攻击。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="nginx访问频率限制"><a href="#nginx访问频率限制" class="headerlink" title="nginx访问频率限制"></a>nginx访问频率限制</h1><h2 id="配置范例"><a href="#配置范例" class="headerlink" title="配置范例"></a>配置范例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 白名单</span><br><span class="line"># geo $remote_addr $limited</span><br><span class="line">geo $limited</span><br><span class="line">&#123;</span><br><span class="line">    default 1;</span><br><span class="line">    10.0.0.0/8 0;</span><br><span class="line">    123.207.144.100/32 0;</span><br><span class="line">    123.123.123.248/30 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map $limited $limit &#123;</span><br><span class="line">    1 $binary_remote_addr;</span><br><span class="line">    0 &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># nginx.conf 中的http模块中定义limit_req_zone</span><br><span class="line">limit_req_zone $limit zone=reqzone1:10m rate=20r/s;</span><br><span class="line"></span><br><span class="line"># server模块中的location规则中应用limit_req_zone(也可以直接应用到server或者http模块中)</span><br><span class="line">server&#123;</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        #limit_req zone=reqzone3 burst=20 nodelay;</span><br><span class="line">        limit_req zone=reqzone3 burst=20;</span><br><span class="line">        location xxx1 &#123;</span><br><span class="line">            ...</span><br><span class="line">            #limit_req zone=reqzone1 burst=20 nodelay;</span><br><span class="line">            limit_req zone=reqzone1 burst=20;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">        location xxx2 &#123;</span><br><span class="line">            ...</span><br><span class="line">            #limit_req zone=reqzone2 burst=20 nodelay;</span><br><span class="line">            limit_req zone=reqzone2 burst=20;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"># 在http, server, location中均可定义limit_req_status code，默认503；</span><br></pre></td></tr></table></figure>
-
-<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><ul>
-<li><p>geo</p>
-<ul>
-<li>geo [$address] $variable { … } 定义从指定的变量获取客户端的IP地址。默认情况下，nginx从$remote_addr变量取得客户端IP地址，但也可以从其他变量获得。</li>
-</ul>
-</li>
-<li><p>map</p>
-<ul>
-<li>map为一个变量设置的映射表，用来创建变量，映射表由两列组成，匹配模式和对应的值。但是仅在变量被接受的时候执行视图映射操作，对于处理没有引用变量的请求时，这个模块并没有性能上的缺失。</li>
-</ul>
-</li>
-<li><p>limit_req_zone</p>
-<ul>
-<li>第一个字段定义为key，限制对象。$binary_remote_addr(\x0A\x64\xCE\x10)是4字节的IPv4地址，或者16字节的IPv6地址，32位系统上占用32或64个字节，64位系统上占用128字节，占用空间比$remote_addr少64字节。10M大概可以保存160,000条记录。<br>*limit_req_zone中如果key为””表示不对其进行频率限制，所以白名单将用户的key设置为””。</li>
-<li>zone&#x3D;reqzone1:10m，定义名为reqzone1大小为10M(漏桶算法桶的大小)的zone存储访问频率.共享内存空间被耗尽后则服务器将会对后续所有的请求返回503(Service Temporarily Unavailable)错误。</li>
-<li>rate&#x3D;20r&#x2F;s，定义访问速率阈值，单位可以是r&#x2F;s(次&#x2F;秒)或者r&#x2F;m(次&#x2F;分钟)</li>
-</ul>
-</li>
-<li><p>limit_req</p>
-<ul>
-<li>zone&#x3D;reqzone1，选择应用的限制策略zone名称</li>
-<li>burst&#x3D;20，可选字段，缓冲请求数(特权令牌数，拥有特权令牌可以直接访问服务)</li>
-<li>nodelay，可选字段，加入该字段后超出令牌数的请求直接返回503</li>
-</ul>
-</li>
-<li><p>burst和rate的关系</p>
-<ul>
-<li>rate是限制的总并发数，burst是限制的并发用户数，如果rate&#x3D;10r&#x2F;s,burst&#x3D;10,那么当某一秒钟有10个用户同时访问，一个用户在一秒内请求了10次，9个用户在一秒内请求了1次，则访问最多的那个用户的9个请求会被503</li>
-</ul>
-</li>
-</ul>
-<h1 id="nginx限制并发连接数"><a href="#nginx限制并发连接数" class="headerlink" title="nginx限制并发连接数"></a>nginx限制并发连接数</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    limit_conn_zone $binary_remote_addr zone=addr:10m;</span><br><span class="line">    limit_conn_zone $binary_remote_addr zone=perip:10m;</span><br><span class="line">    limit_conn_zone $server_name zone=perserver:10m;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line"></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        location /download/ &#123;</span><br><span class="line">            limit_conn addr 1;  # 限制统一客户端最大连接数为 1</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html">Module ngx_http_limit_conn_module</a></li>
-</ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_limit_req_module.html">nginx Module ngx_http_limit_req_module</a></li>
-<li><a href="https://www.w3cschool.cn/nginxsysc/nginxsysc-limit-req.html">w3cschool·Nginx 限制IP访问频率</a></li>
-<li><a href="http://www.nginx.cn/446.html">nginx限制某个IP同一时间段的访问次数</a></li>
-<li><a href="https://www.cnblogs.com/biglittleant/p/8979915.html">死磕nginx系列–nginx 限流配置</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>DDoS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>关于用户评价功能的使用感受和设计思考</title>
     <url>/%E5%85%B3%E4%BA%8E%E7%94%A8%E6%88%B7%E8%AF%84%E4%BB%B7%E5%8A%9F%E8%83%BD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -5204,6 +5142,68 @@
       </categories>
       <tags>
         <tag>设计思路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx限制策略</title>
+    <url>/nginx%E9%99%90%E5%88%B6%E7%AD%96%E7%95%A5.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>在nginx服务中通过限制访问频率的策略可以在一定程度上抵御DDoS攻击。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="nginx访问频率限制"><a href="#nginx访问频率限制" class="headerlink" title="nginx访问频率限制"></a>nginx访问频率限制</h1><h2 id="配置范例"><a href="#配置范例" class="headerlink" title="配置范例"></a>配置范例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 白名单</span><br><span class="line"># geo $remote_addr $limited</span><br><span class="line">geo $limited</span><br><span class="line">&#123;</span><br><span class="line">    default 1;</span><br><span class="line">    10.0.0.0/8 0;</span><br><span class="line">    123.207.144.100/32 0;</span><br><span class="line">    123.123.123.248/30 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map $limited $limit &#123;</span><br><span class="line">    1 $binary_remote_addr;</span><br><span class="line">    0 &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># nginx.conf 中的http模块中定义limit_req_zone</span><br><span class="line">limit_req_zone $limit zone=reqzone1:10m rate=20r/s;</span><br><span class="line"></span><br><span class="line"># server模块中的location规则中应用limit_req_zone(也可以直接应用到server或者http模块中)</span><br><span class="line">server&#123;</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        #limit_req zone=reqzone3 burst=20 nodelay;</span><br><span class="line">        limit_req zone=reqzone3 burst=20;</span><br><span class="line">        location xxx1 &#123;</span><br><span class="line">            ...</span><br><span class="line">            #limit_req zone=reqzone1 burst=20 nodelay;</span><br><span class="line">            limit_req zone=reqzone1 burst=20;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">        location xxx2 &#123;</span><br><span class="line">            ...</span><br><span class="line">            #limit_req zone=reqzone2 burst=20 nodelay;</span><br><span class="line">            limit_req zone=reqzone2 burst=20;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"># 在http, server, location中均可定义limit_req_status code，默认503；</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><ul>
+<li><p>geo</p>
+<ul>
+<li>geo [$address] $variable { … } 定义从指定的变量获取客户端的IP地址。默认情况下，nginx从$remote_addr变量取得客户端IP地址，但也可以从其他变量获得。</li>
+</ul>
+</li>
+<li><p>map</p>
+<ul>
+<li>map为一个变量设置的映射表，用来创建变量，映射表由两列组成，匹配模式和对应的值。但是仅在变量被接受的时候执行视图映射操作，对于处理没有引用变量的请求时，这个模块并没有性能上的缺失。</li>
+</ul>
+</li>
+<li><p>limit_req_zone</p>
+<ul>
+<li>第一个字段定义为key，限制对象。$binary_remote_addr(\x0A\x64\xCE\x10)是4字节的IPv4地址，或者16字节的IPv6地址，32位系统上占用32或64个字节，64位系统上占用128字节，占用空间比$remote_addr少64字节。10M大概可以保存160,000条记录。<br>*limit_req_zone中如果key为””表示不对其进行频率限制，所以白名单将用户的key设置为””。</li>
+<li>zone&#x3D;reqzone1:10m，定义名为reqzone1大小为10M(漏桶算法桶的大小)的zone存储访问频率.共享内存空间被耗尽后则服务器将会对后续所有的请求返回503(Service Temporarily Unavailable)错误。</li>
+<li>rate&#x3D;20r&#x2F;s，定义访问速率阈值，单位可以是r&#x2F;s(次&#x2F;秒)或者r&#x2F;m(次&#x2F;分钟)</li>
+</ul>
+</li>
+<li><p>limit_req</p>
+<ul>
+<li>zone&#x3D;reqzone1，选择应用的限制策略zone名称</li>
+<li>burst&#x3D;20，可选字段，缓冲请求数(特权令牌数，拥有特权令牌可以直接访问服务)</li>
+<li>nodelay，可选字段，加入该字段后超出令牌数的请求直接返回503</li>
+</ul>
+</li>
+<li><p>burst和rate的关系</p>
+<ul>
+<li>rate是限制的总并发数，burst是限制的并发用户数，如果rate&#x3D;10r&#x2F;s,burst&#x3D;10,那么当某一秒钟有10个用户同时访问，一个用户在一秒内请求了10次，9个用户在一秒内请求了1次，则访问最多的那个用户的9个请求会被503</li>
+</ul>
+</li>
+</ul>
+<h1 id="nginx限制并发连接数"><a href="#nginx限制并发连接数" class="headerlink" title="nginx限制并发连接数"></a>nginx限制并发连接数</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    limit_conn_zone $binary_remote_addr zone=addr:10m;</span><br><span class="line">    limit_conn_zone $binary_remote_addr zone=perip:10m;</span><br><span class="line">    limit_conn_zone $server_name zone=perserver:10m;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line"></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        location /download/ &#123;</span><br><span class="line">            limit_conn addr 1;  # 限制统一客户端最大连接数为 1</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html">Module ngx_http_limit_conn_module</a></li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_limit_req_module.html">nginx Module ngx_http_limit_req_module</a></li>
+<li><a href="https://www.w3cschool.cn/nginxsysc/nginxsysc-limit-req.html">w3cschool·Nginx 限制IP访问频率</a></li>
+<li><a href="http://www.nginx.cn/446.html">nginx限制某个IP同一时间段的访问次数</a></li>
+<li><a href="https://www.cnblogs.com/biglittleant/p/8979915.html">死磕nginx系列–nginx 限流配置</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>DDoS</tag>
       </tags>
   </entry>
   <entry>
@@ -5474,6 +5474,79 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux环境中alias不生效问题</title>
+    <url>/linux%E7%8E%AF%E5%A2%83%E4%B8%ADalias%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>很多时候，实际结果往往和我们的预期不一致，其中必有蹊跷。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>由于公司hadoop集群迁移，需要对线上几百台历史遗留的脚本进行改造，变更hadoop客户端环境。</p>
+<p>思虑再三，借鉴python装饰器的思想，部署一个绿色版的hadoop客户端环境。再将线上各式各样的脚本统一加一行<code>alias hadoop=&quot;/path/to/hadoop&quot;</code>成本最低。</p>
+<p>无奈alias貌似并没有生效，实际操作结果和预期不一致。。。</p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>alias 在非交互shell环境中不生效，除非手动设置<code>shopt -s expand_aliases</code></p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><ul>
+<li><p><code>cat aliasVerifi.sh</code></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#/bin/bash</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br><span class="line">echo &quot;================&quot;</span><br><span class="line">shopt -s expand_aliases</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">alias whoami=&#x27;date &quot;+%Y-%m-%d %H:%M:%S&quot;&#x27;</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过cron调用脚本并将输出写入log文件aliasVerifi.log</p>
+</li>
+<li><p><code>cat aliasVerifi.log</code></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expand_aliases 	off</span><br><span class="line">root</span><br><span class="line">/usr/bin/whoami</span><br><span class="line">================</span><br><span class="line">expand_aliases 	on</span><br><span class="line">2018-11-06 22:20:01</span><br><span class="line">/usr/bin/whoami</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此处我们注意到expand_aliases在非交互shell中默认关闭，并且用which获取该命令的绝对路径并没有发生改变，但是执行结果已经符合预期。</li>
+</ul>
+</li>
+</ul>
+<h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><ul>
+<li><p>当alias的命令和sudo一起使用时alias命令不生效，此时将sudo加入alias中即可生效。</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mkdir=&#x27;mkdir -p&#x27;</span><br><span class="line">$ sudo mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1/2/3’: No such file or directory</span><br><span class="line">$ mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1’: Permission denied</span><br><span class="line">$ alias mkdir=&#x27;sudo mkdir -p&#x27;</span><br><span class="line">$ mkdir 1/2/3</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mv=&#x27;/usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ sudo mv a.sh  b.sh</span><br><span class="line">$ alias mv=&#x27;sudo /usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ mv a.sh  b.sh</span><br><span class="line">‘a.sh’ -&gt; ‘b.sh’</span><br></pre></td></tr></table></figure>
+<ul>
+<li>前提，mkdir,mv命令已加入sudoers</li>
+</ul>
+</li>
+<li><p>在xargs命令后命令别名也不生效，因为xargs是一个单独的应用程序，它不是shell，因此没有别名或函数的概念。但可以通过以下两种方式变相使用alias</p>
+<ul>
+<li>xargs ${BASH_ALIASES[alias_command]}<ul>
+<li>${BASH_ALIASES[alias_command]}前后不能有引号</li>
+</ul>
+</li>
+<li>xargs -t -i bash -ic “alias_command }”</li>
+<li>ansible script中可以使用alias，但是xargs后面的变量${BASH_ALIASES[alias_command]}为空，不能被使用。</li>
+</ul>
+</li>
+<li><p>在sshpass命令后命令别名同样不生效</p>
+<ul>
+<li><p>以下情况不生效alias rsync不生效</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">sshpass -e rsync ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可用以下方式变相实现</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;sshpass -e rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">rsync ...</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>脚本中使用alias命令别名，通过eval调用命令别名可以生效。</p>
+</li>
+</ul>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://ss64.com/bash/alias.html">alias</a></li>
+<li><a href="https://unix.stackexchange.com/questions/141367/have-xargs-use-alias-instead-of-binary">stackoverflow·Have xargs use alias instead of binary</a></li>
+<li><a href="https://stackoverflow.com/questions/979453/how-can-i-use-aliased-commands-with-xargs">stackoverflow·How can I use aliased commands with xargs?</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>alias</tag>
+        <tag>cron</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>rsync经典用例总结</title>
     <url>/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html</url>
     <content><![CDATA[<p>rsync是经典的数据传输工具，但本篇博客总结的既不细致，也不全面。惭愧，惭愧。。。</p>
@@ -5573,76 +5646,42 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux环境中alias不生效问题</title>
-    <url>/linux%E7%8E%AF%E5%A2%83%E4%B8%ADalias%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>很多时候，实际结果往往和我们的预期不一致，其中必有蹊跷。。。</p>
-
-</blockquote>
-
+    <title>Linux OOM Killer 保护机制</title>
+    <url>/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html</url>
+    <content><![CDATA[<p>OOM killer（Out Of Memory killer）</p>
 <span id="more"></span>
 
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>由于公司hadoop集群迁移，需要对线上几百台历史遗留的脚本进行改造，变更hadoop客户端环境。</p>
-<p>思虑再三，借鉴python装饰器的思想，部署一个绿色版的hadoop客户端环境。再将线上各式各样的脚本统一加一行<code>alias hadoop=&quot;/path/to/hadoop&quot;</code>成本最低。</p>
-<p>无奈alias貌似并没有生效，实际操作结果和预期不一致。。。</p>
-<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>alias 在非交互shell环境中不生效，除非手动设置<code>shopt -s expand_aliases</code></p>
-<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><ul>
-<li><p><code>cat aliasVerifi.sh</code></p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#/bin/bash</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br><span class="line">echo &quot;================&quot;</span><br><span class="line">shopt -s expand_aliases</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">alias whoami=&#x27;date &quot;+%Y-%m-%d %H:%M:%S&quot;&#x27;</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过cron调用脚本并将输出写入log文件aliasVerifi.log</p>
-</li>
-<li><p><code>cat aliasVerifi.log</code></p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expand_aliases 	off</span><br><span class="line">root</span><br><span class="line">/usr/bin/whoami</span><br><span class="line">================</span><br><span class="line">expand_aliases 	on</span><br><span class="line">2018-11-06 22:20:01</span><br><span class="line">/usr/bin/whoami</span><br></pre></td></tr></table></figure>
-<ul>
-<li>此处我们注意到expand_aliases在非交互shell中默认关闭，并且用which获取该命令的绝对路径并没有发生改变，但是执行结果已经符合预期。</li>
+<blockquote>
+<p>linux下允许程序申请比系统可用内存更多的内存，这个特性叫Overcommit（过度分配）。在系统内存耗尽的情况下，OOM killer机制选择性的干掉一些进程以求释放一些内存。默认具体的记录日志是在&#x2F;var&#x2F;log&#x2F;messages中。</p>
+</blockquote>
+<h1 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h1><ul>
+<li>参数&#x2F;proc&#x2F;sys&#x2F;vm&#x2F;overcommit_memory可以控制进程对内存过量使用的应对策略</li>
 </ul>
-</li>
-</ul>
-<h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><ul>
-<li><p>当alias的命令和sudo一起使用时alias命令不生效，此时将sudo加入alias中即可生效。</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mkdir=&#x27;mkdir -p&#x27;</span><br><span class="line">$ sudo mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1/2/3’: No such file or directory</span><br><span class="line">$ mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1’: Permission denied</span><br><span class="line">$ alias mkdir=&#x27;sudo mkdir -p&#x27;</span><br><span class="line">$ mkdir 1/2/3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">overcommit_memory=0，这是缺省值，表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。</span><br><span class="line">overcommit_memory=1，内核会永远认为有充足的内存可用，进程申请内存时总是允许。</span><br><span class="line">overcommit_memory=2，表示系统所能分配的内存不会超过swap+RAM*系数（/proc/sys/vm/overcommit_ratio，默认50%，可以调整），如果这么多资源已经用光，那么后面任何尝试申请内存的行为都会返回错误，这通常意味着此时没法运行任何新程序。</span><br></pre></td></tr></table></figure>
 
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mv=&#x27;/usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ sudo mv a.sh  b.sh</span><br><span class="line">$ alias mv=&#x27;sudo /usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ mv a.sh  b.sh</span><br><span class="line">‘a.sh’ -&gt; ‘b.sh’</span><br></pre></td></tr></table></figure>
-<ul>
-<li>前提，mkdir,mv命令已加入sudoers</li>
-</ul>
+
+<h1 id="内核决策依据"><a href="#内核决策依据" class="headerlink" title="内核决策依据"></a>内核决策依据</h1><ul>
+<li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_adj，该pid进程被oom killer杀掉的权重，一般介于 [-17,15]（具体具体权重的范围需要查看内核确认）之间，越高的权重，意味着更可能被oom killer选中，-17表示禁止被kill掉。</p>
 </li>
-<li><p>在xargs命令后命令别名也不生效，因为xargs是一个单独的应用程序，它不是shell，因此没有别名或函数的概念。但可以通过以下两种方式变相使用alias</p>
-<ul>
-<li>xargs ${BASH_ALIASES[alias_command]}<ul>
-<li>${BASH_ALIASES[alias_command]}前后不能有引号</li>
-</ul>
-</li>
-<li>xargs -t -i bash -ic “alias_command }”</li>
-<li>ansible script中可以使用alias，但是xargs后面的变量${BASH_ALIASES[alias_command]}为空，不能被使用。</li>
-</ul>
-</li>
-<li><p>在sshpass命令后命令别名同样不生效</p>
-<ul>
-<li><p>以下情况不生效alias rsync不生效</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">sshpass -e rsync ...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可用以下方式变相实现</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;sshpass -e rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">rsync ...</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>脚本中使用alias命令别名，通过eval调用命令别名可以生效。</p>
+<li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_score，当前该pid进程的被kill的分数，越高的分数意味着越可能被kill，这个数值是根据oom_adj运算（2ⁿ，n就是oom_adj的值）后的结果，本身oom_score是不能修改值。</p>
 </li>
 </ul>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://ss64.com/bash/alias.html">alias</a></li>
-<li><a href="https://unix.stackexchange.com/questions/141367/have-xargs-use-alias-instead-of-binary">stackoverflow·Have xargs use alias instead of binary</a></li>
-<li><a href="https://stackoverflow.com/questions/979453/how-can-i-use-aliased-commands-with-xargs">stackoverflow·How can I use aliased commands with xargs?</a></li>
+<h1 id="两种进程保护措施"><a href="#两种进程保护措施" class="headerlink" title="两种进程保护措施"></a>两种进程保护措施</h1><ul>
+<li><p>修改权重</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -17 &gt; /proc/[PID]/oom_adj（输入-17，禁止被OOM机制处理）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启OOM较为的保险机制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo “vm.panic_on_oom=2” &gt;&gt; /etc/sysctl.conf</span><br><span class="line">systcl -p</span><br></pre></td></tr></table></figure></li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.linuxba.com/archives/7744">https://www.linuxba.com/archives/7744</a></p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>alias</tag>
-        <tag>cron</tag>
+        <tag>OOM</tag>
+        <tag>kernel</tag>
       </tags>
   </entry>
   <entry>
@@ -5846,45 +5885,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>iptables</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux OOM Killer 保护机制</title>
-    <url>/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html</url>
-    <content><![CDATA[<p>OOM killer（Out Of Memory killer）</p>
-<span id="more"></span>
-
-<blockquote>
-<p>linux下允许程序申请比系统可用内存更多的内存，这个特性叫Overcommit（过度分配）。在系统内存耗尽的情况下，OOM killer机制选择性的干掉一些进程以求释放一些内存。默认具体的记录日志是在&#x2F;var&#x2F;log&#x2F;messages中。</p>
-</blockquote>
-<h1 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h1><ul>
-<li>参数&#x2F;proc&#x2F;sys&#x2F;vm&#x2F;overcommit_memory可以控制进程对内存过量使用的应对策略</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">overcommit_memory=0，这是缺省值，表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。</span><br><span class="line">overcommit_memory=1，内核会永远认为有充足的内存可用，进程申请内存时总是允许。</span><br><span class="line">overcommit_memory=2，表示系统所能分配的内存不会超过swap+RAM*系数（/proc/sys/vm/overcommit_ratio，默认50%，可以调整），如果这么多资源已经用光，那么后面任何尝试申请内存的行为都会返回错误，这通常意味着此时没法运行任何新程序。</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="内核决策依据"><a href="#内核决策依据" class="headerlink" title="内核决策依据"></a>内核决策依据</h1><ul>
-<li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_adj，该pid进程被oom killer杀掉的权重，一般介于 [-17,15]（具体具体权重的范围需要查看内核确认）之间，越高的权重，意味着更可能被oom killer选中，-17表示禁止被kill掉。</p>
-</li>
-<li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_score，当前该pid进程的被kill的分数，越高的分数意味着越可能被kill，这个数值是根据oom_adj运算（2ⁿ，n就是oom_adj的值）后的结果，本身oom_score是不能修改值。</p>
-</li>
-</ul>
-<h1 id="两种进程保护措施"><a href="#两种进程保护措施" class="headerlink" title="两种进程保护措施"></a>两种进程保护措施</h1><ul>
-<li><p>修改权重</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -17 &gt; /proc/[PID]/oom_adj（输入-17，禁止被OOM机制处理）</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>开启OOM较为的保险机制</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo “vm.panic_on_oom=2” &gt;&gt; /etc/sysctl.conf</span><br><span class="line">systcl -p</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.linuxba.com/archives/7744">https://www.linuxba.com/archives/7744</a></p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>OOM</tag>
-        <tag>kernel</tag>
       </tags>
   </entry>
   <entry>
@@ -6553,6 +6553,128 @@
       </tags>
   </entry>
   <entry>
+    <title>常用Notebook使用笔记</title>
+    <url>/%E5%B8%B8%E7%94%A8notebook%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>基础备忘</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h1 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li><p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyterthemes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出主题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jt -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择主题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jt -t grade3     #白</span><br><span class="line">jt -t solarizedl #浅土黄</span><br><span class="line">jt -t gruvboxl   #深土黄</span><br><span class="line">jt -t chesterish #深蓝</span><br><span class="line">jt -t solarizedd #深绿</span><br><span class="line">jt -t oceans16   #深灰</span><br><span class="line">jt -t monokai    #黑白</span><br><span class="line">jt -t gruvboxd   #黑黄</span><br><span class="line">jt -t onedork    #黑灰</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码转PPT</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter nbconvert *.ipynb --to slides --post serve</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绑定IP端口启动服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001 nibilaoyedenotebook</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br><span class="line">jupyter notebook password --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">debugger</span><br><span class="line">jupyterlab-chart-editor</span><br><span class="line">toc</span><br><span class="line">jupyterlab-drawio</span><br><span class="line">jupyterlab-execute-time</span><br><span class="line">jupyterlab_filetree</span><br><span class="line">jupyterlab_go_to_definition</span><br></pre></td></tr></table></figure>
+<p> 列出插件列表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter --version</span><br><span class="line"></span><br><span class="line">jupyter labextension list</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="zeppelin"><a href="#zeppelin" class="headerlink" title="zeppelin"></a>zeppelin</h1><h2 id="ldap-认证"><a href="#ldap-认证" class="headerlink" title="ldap 认证"></a>ldap 认证</h2><ul>
+<li>userDnTemplate中的{0}表示登录时输入的用户名,</li>
+<li>conf&#x2F;zeppelin-site.xml修改zeppelin.anonymous.allowed属性为false</li>
+<li>ldapRealm.contextFactory.authenticationMechanism后面的赋值选项<ul>
+<li>none</li>
+<li>simple</li>
+<li>SASL</li>
+<li>DIGEST-MD5<ul>
+<li><a href="https://github.com/apache/zeppelin/pull/2331">https://github.com/apache/zeppelin/pull/2331</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="nginx代理关键配置"><a href="#nginx代理关键配置" class="headerlink" title="nginx代理关键配置"></a>nginx代理关键配置</h2><ul>
+<li><p>zeppelin</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat conf/zeppelin-site.xml</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;zeppelin.server.context.path&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/zeppelin/&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;Context Path of the Web Application&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream zeppelin &#123;</span><br><span class="line">        server 10.0.0.1:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /zeppelin</span><br><span class="line">&#123;</span><br><span class="line">    proxy_pass http://zeppelin;</span><br><span class="line">    proxy_set_header Host $host;</span><br><span class="line">    proxy_set_header X-Forwarded-Host $host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">&#125;</span><br><span class="line">location /zeppelin/ws &#123;  # For websocket support</span><br><span class="line">    proxy_pass http://zeppelin;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_set_header Upgrade websocket;</span><br><span class="line">    proxy_set_header Connection upgrade;</span><br><span class="line">    proxy_read_timeout 86400;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><p>-<a href="https://nbviewer.jupyter.org/">upyter Notebooks 共享社区</a></p>
+<ul>
+<li><p><a href="https://jupyter-notebook.readthedocs.io/en/stable/security.html#alternatives-to-token-authentication">https://jupyter-notebook.readthedocs.io/en/stable/security.html#alternatives-to-token-authentication</a></p>
+</li>
+<li><p><a href="https://zeppelin.apache.org/docs/0.8.0/setup/security/shiro_authentication.html">https://zeppelin.apache.org/docs/0.8.0/setup/security/shiro_authentication.html</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>开源技术栈</category>
+      </categories>
+      <tags>
+        <tag>jupyter</tag>
+        <tag>zeppelin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自签SSL证书</title>
+    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
+</div>
+
+<p>devops 必备技能</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<ul>
+<li><p>查看当前系统使用的 OpenSSL 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取完整的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
+</blockquote>
+<ul>
+<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
+<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
+<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
+</ul>
+<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
+
+<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
+<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
+<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
+<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>openssl</tag>
+        <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux内核崩溃分析</title>
     <url>/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -6605,53 +6727,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>crash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自签SSL证书</title>
-    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
-</div>
-
-<p>devops 必备技能</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<ul>
-<li><p>查看当前系统使用的 OpenSSL 版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取完整的版本信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
-</blockquote>
-<ul>
-<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
-<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
-<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
-</ul>
-<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
-
-<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
-<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
-<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
-<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
-<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>openssl</tag>
-        <tag>https</tag>
       </tags>
   </entry>
   <entry>
@@ -6808,81 +6883,6 @@
       <tags>
         <tag>MongoDB</tag>
         <tag>nosql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用Notebook使用笔记</title>
-    <url>/%E5%B8%B8%E7%94%A8notebook%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>基础备忘</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<h1 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
-<li><p>安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyterthemes</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>列出主题</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jt -l</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选择主题</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jt -t grade3     #白</span><br><span class="line">jt -t solarizedl #浅土黄</span><br><span class="line">jt -t gruvboxl   #深土黄</span><br><span class="line">jt -t chesterish #深蓝</span><br><span class="line">jt -t solarizedd #深绿</span><br><span class="line">jt -t oceans16   #深灰</span><br><span class="line">jt -t monokai    #黑白</span><br><span class="line">jt -t gruvboxd   #黑黄</span><br><span class="line">jt -t onedork    #黑灰</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>代码转PPT</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter nbconvert *.ipynb --to slides --post serve</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>绑定IP端口启动服务</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>指定目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook --ip=10.0.0.1 --port=10001 nibilaoyedenotebook</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建密码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br><span class="line">jupyter notebook password --ip=10.0.0.1 --port=10001</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>插件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">debugger</span><br><span class="line">jupyterlab-chart-editor</span><br><span class="line">toc</span><br><span class="line">jupyterlab-drawio</span><br><span class="line">jupyterlab-execute-time</span><br><span class="line">jupyterlab_filetree</span><br><span class="line">jupyterlab_go_to_definition</span><br></pre></td></tr></table></figure>
-<p> 列出插件列表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter --version</span><br><span class="line"></span><br><span class="line">jupyter labextension list</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="zeppelin"><a href="#zeppelin" class="headerlink" title="zeppelin"></a>zeppelin</h1><h2 id="ldap-认证"><a href="#ldap-认证" class="headerlink" title="ldap 认证"></a>ldap 认证</h2><ul>
-<li>userDnTemplate中的{0}表示登录时输入的用户名,</li>
-<li>conf&#x2F;zeppelin-site.xml修改zeppelin.anonymous.allowed属性为false</li>
-<li>ldapRealm.contextFactory.authenticationMechanism后面的赋值选项<ul>
-<li>none</li>
-<li>simple</li>
-<li>SASL</li>
-<li>DIGEST-MD5<ul>
-<li><a href="https://github.com/apache/zeppelin/pull/2331">https://github.com/apache/zeppelin/pull/2331</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="nginx代理关键配置"><a href="#nginx代理关键配置" class="headerlink" title="nginx代理关键配置"></a>nginx代理关键配置</h2><ul>
-<li><p>zeppelin</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat conf/zeppelin-site.xml</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;zeppelin.server.context.path&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/zeppelin/&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;Context Path of the Web Application&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>nginx</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream zeppelin &#123;</span><br><span class="line">        server 10.0.0.1:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /zeppelin</span><br><span class="line">&#123;</span><br><span class="line">    proxy_pass http://zeppelin;</span><br><span class="line">    proxy_set_header Host $host;</span><br><span class="line">    proxy_set_header X-Forwarded-Host $host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">&#125;</span><br><span class="line">location /zeppelin/ws &#123;  # For websocket support</span><br><span class="line">    proxy_pass http://zeppelin;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_set_header Upgrade websocket;</span><br><span class="line">    proxy_set_header Connection upgrade;</span><br><span class="line">    proxy_read_timeout 86400;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><p>-<a href="https://nbviewer.jupyter.org/">upyter Notebooks 共享社区</a></p>
-<ul>
-<li><p><a href="https://jupyter-notebook.readthedocs.io/en/stable/security.html#alternatives-to-token-authentication">https://jupyter-notebook.readthedocs.io/en/stable/security.html#alternatives-to-token-authentication</a></p>
-</li>
-<li><p><a href="https://zeppelin.apache.org/docs/0.8.0/setup/security/shiro_authentication.html">https://zeppelin.apache.org/docs/0.8.0/setup/security/shiro_authentication.html</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>开源技术栈</category>
-      </categories>
-      <tags>
-        <tag>jupyter</tag>
-        <tag>zeppelin</tag>
       </tags>
   </entry>
   <entry>
