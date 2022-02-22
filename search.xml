@@ -191,6 +191,55 @@
       </tags>
   </entry>
   <entry>
+    <title>DOS常用命令总结</title>
+    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
+    <content><![CDATA[<ul>
+<li><p>查看历史命令（快捷键：F7）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动关机</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件系统转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>磁盘检查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改文件属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内网主机名IP互查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组策略</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
+</ul>
+</li>
+<li><p>help</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
+      <categories>
+        <category>DOS</category>
+      </categories>
+      <tags>
+        <tag>DOS</tag>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx部分常用内置变量</title>
     <url>/nginx%E9%83%A8%E5%88%86%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F.html</url>
     <content><![CDATA[<style> table th:nth-of-type(1){width: 15%;} nth-of-type(2){width: 45%;} nth-of-type(3){width: 40%;}</style>
@@ -465,55 +514,6 @@
       </tags>
   </entry>
   <entry>
-    <title>DOS常用命令总结</title>
-    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
-    <content><![CDATA[<ul>
-<li><p>查看历史命令（快捷键：F7）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自动关机</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件系统转换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>磁盘检查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改文件属性</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内网主机名IP互查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>组策略</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
-</ul>
-</li>
-<li><p>help</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
-      <categories>
-        <category>DOS</category>
-      </categories>
-      <tags>
-        <tag>DOS</tag>
-        <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>shell的分批并发操作的简单实现</title>
     <url>/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html</url>
     <content><![CDATA[<blockquote>
@@ -535,130 +535,6 @@
       <tags>
         <tag>shell</tag>
         <tag>并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell printf格式化输出</title>
-    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
-    <content><![CDATA[<p>shell也可以优雅的输出。</p>
-<span id="more"></span>
-
-<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
-
-<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
-
-<table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">%s</td>
-<td align="left">字符串</td>
-</tr>
-<tr>
-<td align="left">%d,%i</td>
-<td align="left">十进制整数</td>
-</tr>
-<tr>
-<td align="left">%u</td>
-<td align="left">不带正负号的十进制值</td>
-</tr>
-<tr>
-<td align="left">%o</td>
-<td align="left">不带正负号的八进制值</td>
-</tr>
-<tr>
-<td align="left">%x</td>
-<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
-</tr>
-<tr>
-<td align="left">%X</td>
-<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
-</tr>
-<tr>
-<td align="left">%e,%E,%f</td>
-<td align="left">浮点格式</td>
-</tr>
-<tr>
-<td align="left">%g</td>
-<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%G</td>
-<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%b</td>
-<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
-</tr>
-<tr>
-<td align="left">%c</td>
-<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
-</tr>
-<tr>
-<td align="left">%%</td>
-<td align="left">字面意义的%</td>
-</tr>
-</tbody></table>
-<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\f</td>
-<td align="left">换页（formfeed）</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">换行</td>
-</tr>
-<tr>
-<td align="left">\r</td>
-<td align="left">回车（Carriage return）</td>
-</tr>
-<tr>
-<td align="left">\t</td>
-<td align="left">水平制表符</td>
-</tr>
-<tr>
-<td align="left">\v</td>
-<td align="left">垂直制表符</td>
-</tr>
-<tr>
-<td align="left">\</td>
-<td align="left">一个字面上的反斜杠字符</td>
-</tr>
-<tr>
-<td align="left">\ddd</td>
-<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
-</tr>
-<tr>
-<td align="left">\0ddd</td>
-<td align="left">表示1到3位的八进制值字符</td>
-</tr>
-</tbody></table>
-<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
-<li>默认printf没有换行，需要手动添加\n；</li>
-<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
-<li>-表示左对齐，+或者空则表示右对齐；</li>
-<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
-<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
-<li>格式控制中也可以引入字体颜色。</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>printf</tag>
       </tags>
   </entry>
   <entry>
@@ -941,6 +817,130 @@
       </tags>
   </entry>
   <entry>
+    <title>shell printf格式化输出</title>
+    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
+    <content><![CDATA[<p>shell也可以优雅的输出。</p>
+<span id="more"></span>
+
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
+
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
+
+<table>
+<thead>
+<tr>
+<th align="left">格式符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">%s</td>
+<td align="left">字符串</td>
+</tr>
+<tr>
+<td align="left">%d,%i</td>
+<td align="left">十进制整数</td>
+</tr>
+<tr>
+<td align="left">%u</td>
+<td align="left">不带正负号的十进制值</td>
+</tr>
+<tr>
+<td align="left">%o</td>
+<td align="left">不带正负号的八进制值</td>
+</tr>
+<tr>
+<td align="left">%x</td>
+<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
+</tr>
+<tr>
+<td align="left">%X</td>
+<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
+</tr>
+<tr>
+<td align="left">%e,%E,%f</td>
+<td align="left">浮点格式</td>
+</tr>
+<tr>
+<td align="left">%g</td>
+<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%G</td>
+<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%b</td>
+<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
+</tr>
+<tr>
+<td align="left">%c</td>
+<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
+</tr>
+<tr>
+<td align="left">%%</td>
+<td align="left">字面意义的%</td>
+</tr>
+</tbody></table>
+<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
+<thead>
+<tr>
+<th align="left">格式符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\f</td>
+<td align="left">换页（formfeed）</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车（Carriage return）</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">水平制表符</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">垂直制表符</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">一个字面上的反斜杠字符</td>
+</tr>
+<tr>
+<td align="left">\ddd</td>
+<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
+</tr>
+<tr>
+<td align="left">\0ddd</td>
+<td align="left">表示1到3位的八进制值字符</td>
+</tr>
+</tbody></table>
+<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
+<li>默认printf没有换行，需要手动添加\n；</li>
+<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
+<li>-表示左对齐，+或者空则表示右对齐；</li>
+<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
+<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
+<li>格式控制中也可以引入字体颜色。</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>printf</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx-rewrite指令中的flag参数</title>
     <url>/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html</url>
     <content><![CDATA[<blockquote>
@@ -1083,6 +1083,71 @@
       </tags>
   </entry>
   <entry>
+    <title>nginx配置location匹配规则</title>
+    <url>/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html</url>
+    <content><![CDATA[<blockquote>
+<p>请求路由定位是Nginx的核心功能，位于ngx_http_core_module模块中。</p>
+</blockquote>
+<span id="more"></span>
+
+<ul>
+<li>location匹配模式</li>
+</ul>
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<table>
+<thead>
+<tr>
+<th align="left">判断条件</th>
+<th align="left">符号意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">~</td>
+<td align="left">区分大小写地匹配正则</td>
+</tr>
+<tr>
+<td align="left">~*</td>
+<td align="left">不区分大小写地匹配正则</td>
+</tr>
+<tr>
+<td align="left">^~</td>
+<td align="left">普通字符（相对于正则）匹配，一般用来匹配目录</td>
+</tr>
+<tr>
+<td align="left">&#x3D;</td>
+<td align="left">进行普通字符精确匹配</td>
+</tr>
+<tr>
+<td align="left">@</td>
+<td align="left">“@”定义一个命名的 location,用于内部重定向，不能被嵌套，不能包含嵌套的location。例如 error_page, try_files</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>location 匹配的优先级</p>
+<ul>
+<li>&#x3D; 精确匹配会第一个被处理。如果发现精确匹配，nginx停止搜索其他匹配；</li>
+<li>Nginx首先检查最长前缀字符串匹配，其次检查正则表达式的匹配程度；</li>
+<li>最长前缀匹配如果使用”^~”，则不检查正则表达式；</li>
+<li>当没有正则表达式或者没有正则表达式被匹配的情况下，那么匹配程度最高的前缀匹配规则会被应用。</li>
+</ul>
+</li>
+<li><p>参考文档</p>
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">nginx官方文档location部分</a></li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>location</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>http不同版本及特性概括</title>
     <url>/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%8F%8A%E7%89%B9%E6%80%A7%E6%A6%82%E6%8B%AC.html</url>
     <content><![CDATA[<p>HTTP（HyperText Transfer Protocol）是互联网应用中最常见的一种协议。</p>
@@ -1152,71 +1217,6 @@
       </categories>
       <tags>
         <tag>http</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx配置location匹配规则</title>
-    <url>/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html</url>
-    <content><![CDATA[<blockquote>
-<p>请求路由定位是Nginx的核心功能，位于ngx_http_core_module模块中。</p>
-</blockquote>
-<span id="more"></span>
-
-<ul>
-<li>location匹配模式</li>
-</ul>
-<style> table th:nth-of-type(2){width: 80%;}</style>
-
-<table>
-<thead>
-<tr>
-<th align="left">判断条件</th>
-<th align="left">符号意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">~</td>
-<td align="left">区分大小写地匹配正则</td>
-</tr>
-<tr>
-<td align="left">~*</td>
-<td align="left">不区分大小写地匹配正则</td>
-</tr>
-<tr>
-<td align="left">^~</td>
-<td align="left">普通字符（相对于正则）匹配，一般用来匹配目录</td>
-</tr>
-<tr>
-<td align="left">&#x3D;</td>
-<td align="left">进行普通字符精确匹配</td>
-</tr>
-<tr>
-<td align="left">@</td>
-<td align="left">“@”定义一个命名的 location,用于内部重定向，不能被嵌套，不能包含嵌套的location。例如 error_page, try_files</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>location 匹配的优先级</p>
-<ul>
-<li>&#x3D; 精确匹配会第一个被处理。如果发现精确匹配，nginx停止搜索其他匹配；</li>
-<li>Nginx首先检查最长前缀字符串匹配，其次检查正则表达式的匹配程度；</li>
-<li>最长前缀匹配如果使用”^~”，则不检查正则表达式；</li>
-<li>当没有正则表达式或者没有正则表达式被匹配的情况下，那么匹配程度最高的前缀匹配规则会被应用。</li>
-</ul>
-</li>
-<li><p>参考文档</p>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">nginx官方文档location部分</a></li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>location</tag>
       </tags>
   </entry>
   <entry>
@@ -2386,51 +2386,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MediaWiki常见问题汇总</title>
-    <url>/mediawiki%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
-    <content><![CDATA[<p>MediaWiki是一个非常成熟完善的文档框架，也许是因为太过成熟，官方给出的文档太过全面，一些问题就连google都很难搜出有效信息。</p>
-<span id="more"></span>
-
-<h1 id="登录问题"><a href="#登录问题" class="headerlink" title="登录问题"></a>登录问题</h1><ul>
-<li><p>问题现象：</p>
-<ul>
-<li><p>现象描述：</p>
-<ul>
-<li><p>登录时报错：似乎您的登录会话有问题；为了防止会话劫持，这个操作已经被取消。请返回先前的页面，重新载入这个页面，然后重试。</p>
-<ul>
-<li>从服务器端看session文件写入为空，但是session配置、权限等都没有问题。报错如下图：</li>
-</ul>
-<p><img data-src="http://www.lengyuewusheng.com/assets/images/00025-01.png" alt="登录报错"></p>
-</li>
-</ul>
-</li>
-<li><p>解决方案：该问题一般是由于php 序列化导致，多数情况是由于服务器端环境缺少apcu扩展。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="访问问题"><a href="#访问问题" class="headerlink" title="访问问题"></a>访问问题</h1><ul>
-<li><p>问题现象：</p>
-<ul>
-<li><p>访问直接报错：Exception encountered, of type “InvalidArgumentException”</p>
-</li>
-<li><p>无任何其它的nginx或php层面的报错日志输出</p>
-</li>
-</ul>
-</li>
-<li><p>解决方案：MediaWiki要求服务器端php环境默认关闭session.auto_start属性，因此php.ini配置文件中session.auto_start &#x3D; 0 即可。</p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mediawiki%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">MediaWiki配置文件</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html">MediaWiki导航菜单设置</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C.html">MediaWiki管理控制台命令操作</a></li></ul></div>]]></content>
-      <categories>
-        <category>MediaWiki</category>
-        <category>填坑指南</category>
-      </categories>
-      <tags>
-        <tag>MediaWiki</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>tmux窗口管理</title>
     <url>/tmux%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86.html</url>
     <content><![CDATA[<p>工欲善其事必先利其器。。。</p>
@@ -2558,6 +2513,51 @@
       <tags>
         <tag>Linux</tag>
         <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MediaWiki常见问题汇总</title>
+    <url>/mediawiki%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
+    <content><![CDATA[<p>MediaWiki是一个非常成熟完善的文档框架，也许是因为太过成熟，官方给出的文档太过全面，一些问题就连google都很难搜出有效信息。</p>
+<span id="more"></span>
+
+<h1 id="登录问题"><a href="#登录问题" class="headerlink" title="登录问题"></a>登录问题</h1><ul>
+<li><p>问题现象：</p>
+<ul>
+<li><p>现象描述：</p>
+<ul>
+<li><p>登录时报错：似乎您的登录会话有问题；为了防止会话劫持，这个操作已经被取消。请返回先前的页面，重新载入这个页面，然后重试。</p>
+<ul>
+<li>从服务器端看session文件写入为空，但是session配置、权限等都没有问题。报错如下图：</li>
+</ul>
+<p><img data-src="http://www.lengyuewusheng.com/assets/images/00025-01.png" alt="登录报错"></p>
+</li>
+</ul>
+</li>
+<li><p>解决方案：该问题一般是由于php 序列化导致，多数情况是由于服务器端环境缺少apcu扩展。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="访问问题"><a href="#访问问题" class="headerlink" title="访问问题"></a>访问问题</h1><ul>
+<li><p>问题现象：</p>
+<ul>
+<li><p>访问直接报错：Exception encountered, of type “InvalidArgumentException”</p>
+</li>
+<li><p>无任何其它的nginx或php层面的报错日志输出</p>
+</li>
+</ul>
+</li>
+<li><p>解决方案：MediaWiki要求服务器端php环境默认关闭session.auto_start属性，因此php.ini配置文件中session.auto_start &#x3D; 0 即可。</p>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mediawiki%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">MediaWiki配置文件</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html">MediaWiki导航菜单设置</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C.html">MediaWiki管理控制台命令操作</a></li></ul></div>]]></content>
+      <categories>
+        <category>MediaWiki</category>
+        <category>填坑指南</category>
+      </categories>
+      <tags>
+        <tag>MediaWiki</tag>
       </tags>
   </entry>
   <entry>
@@ -3126,6 +3126,141 @@
       </tags>
   </entry>
   <entry>
+    <title>redis数据结构</title>
+    <url>/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>只是redis的基本数据类型。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="5中数据结构"><a href="#5中数据结构" class="headerlink" title="5中数据结构"></a>5中数据结构</h1><style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 90%;}</style>
+
+<table>
+<thead>
+<tr>
+<th align="left">数据结构</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">String(字符串)</td>
+<td align="left">Strings 类型，可以完全实现目前Memcached的功能，并且效率更高。还可以享受 Redis 的定时持久化，操作日志及 Replication 等功能，并提供更多的操作命令支持。</td>
+</tr>
+<tr>
+<td align="left">Hash(字典)</td>
+<td align="left">可以像在数据库中Update一个属性一样只修改某一项属性值。</td>
+</tr>
+<tr>
+<td align="left">List(列表)</td>
+<td align="left">链表，可以轻松实现最新消息排行等功能。另一个应用就是消息队列，Redis提供了操作List中某一段元素的 API。</td>
+</tr>
+<tr>
+<td align="left">Set(集合)</td>
+<td align="left">集合的概念就是一堆不重复值的组合。利用 Redis 提供的 Set 数据结构，可以存储一些集合性的数据。</td>
+</tr>
+<tr>
+<td align="left">Sorted Set(有序集合)</td>
+<td align="left">和Sets相比，Sorted Sets是将Set中的元素增加了一个权重参数score，使得集合中的元素能够按 score 进行有序排列,适用于比较复杂的数据结构和带有权重的元素。</td>
+</tr>
+</tbody></table>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>缓存</li>
+<li>消息队列</li>
+<li>订阅-发布系统</li>
+<li>TimeLine</li>
+<li>加权元素</li>
+<li>事务处理(Transactions)</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.runoob.com/w3cnote/redis-use-scene.html">Redis 数据结构使用场景</a></li>
+<li><a href="http://www.redis.net.cn/tutorial/3501.html">Redis教程</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html">redis持久化策略</a></li></ul></div>]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>数据结构</tag>
+        <tag>kv</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>七层网络协议</title>
+    <url>/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html</url>
+    <content><![CDATA[<p>简单概括,不一定准确。。。</p>
+<span id="more"></span>
+
+<style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 10%;} nth-of-type(3){width: 30%;} nth-of-type(4){width: 50%;}</style>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><table>
+<thead>
+<tr>
+<th align="left">TCP&#x2F;IP模型</th>
+<th align="left">OSI模型</th>
+<th align="left">分布的应用</th>
+<th align="left">协议说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">应用层</td>
+<td align="left">应用层</td>
+<td align="left">nginx、Apache、HAProxy、LVS、keepalived</td>
+<td align="left">DHCP(v6)、DNS、FTP、Gopher、HTTP(SPDY、HTTP&#x2F;2)、IMAP4、IRC、NNTP、XMPP、POP3、SIP、SMTP、SNMP、SSH、TELNET、RPC、SOAP、NTP、等</td>
+</tr>
+<tr>
+<td align="left">应用层</td>
+<td align="left">表示层</td>
+<td align="left">-</td>
+<td align="left">该层被弃用。应用层的HTTP、FTP、Telnet等协议有类似的功能。传输层的TLS&#x2F;SSL也有类似功能。</td>
+</tr>
+<tr>
+<td align="left">应用层</td>
+<td align="left">会话层</td>
+<td align="left">-</td>
+<td align="left">该层被弃用。应用层的HTTP、RPC、SDP、RTCP等协议有类似的功能。</td>
+</tr>
+<tr>
+<td align="left">传输层</td>
+<td align="left">传输层</td>
+<td align="left">LVS、keepalived</td>
+<td align="left">TCP、UDP、DCCP、RSVP、PPTP、TLS&#x2F;SSL等。IP+端口</td>
+</tr>
+<tr>
+<td align="left">网际互连层</td>
+<td align="left">网络层</td>
+<td align="left">keepalived</td>
+<td align="left">IP(v4·v6)、ICMP(v6)、IGMP、IPsec、BGP、RIP、OSPF、RARP等</td>
+</tr>
+<tr>
+<td align="left">网络接口层</td>
+<td align="left">数据链路层</td>
+<td align="left">-</td>
+<td align="left">Wi-Fi(IEEE 802.11)、ARP、ATM、令牌环、以太网、FDDI、帧中继、GPRS、HDLC、PPP、PPPoE、L2TP、ISDN、SPB、STP等</td>
+</tr>
+<tr>
+<td align="left">网络接口层</td>
+<td align="left">物理层</td>
+<td align="left">-</td>
+<td align="left">以太网、调制解调器、电力线通信、同步光网络、光导纤维、同轴电缆、双绞线等</td>
+</tr>
+</tbody></table>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><ul>
+<li>heartbeat工作在几层？</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html">TCP连接过程</a></li><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html">http协议头字段说明</a></li><li><a href="https://www.lengyuewusheng.com/http%E8%AF%B7%E6%B1%82%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A%E8%A7%A3%E9%87%8A.html">http请求常见状态码及解释</a></li><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%848%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.html">HTTP协议中的8种请求方法</a></li></ul></div>]]></content>
+      <categories>
+        <category>TCP/IP</category>
+      </categories>
+      <tags>
+        <tag>协议</tag>
+        <tag>OSI</tag>
+        <tag>TCP/IP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</title>
     <url>/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -3303,141 +3438,6 @@
         <tag>监控</tag>
         <tag>influxdbdata</tag>
         <tag>zabbix</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redis数据结构</title>
-    <url>/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>只是redis的基本数据类型。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="5中数据结构"><a href="#5中数据结构" class="headerlink" title="5中数据结构"></a>5中数据结构</h1><style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 90%;}</style>
-
-<table>
-<thead>
-<tr>
-<th align="left">数据结构</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">String(字符串)</td>
-<td align="left">Strings 类型，可以完全实现目前Memcached的功能，并且效率更高。还可以享受 Redis 的定时持久化，操作日志及 Replication 等功能，并提供更多的操作命令支持。</td>
-</tr>
-<tr>
-<td align="left">Hash(字典)</td>
-<td align="left">可以像在数据库中Update一个属性一样只修改某一项属性值。</td>
-</tr>
-<tr>
-<td align="left">List(列表)</td>
-<td align="left">链表，可以轻松实现最新消息排行等功能。另一个应用就是消息队列，Redis提供了操作List中某一段元素的 API。</td>
-</tr>
-<tr>
-<td align="left">Set(集合)</td>
-<td align="left">集合的概念就是一堆不重复值的组合。利用 Redis 提供的 Set 数据结构，可以存储一些集合性的数据。</td>
-</tr>
-<tr>
-<td align="left">Sorted Set(有序集合)</td>
-<td align="left">和Sets相比，Sorted Sets是将Set中的元素增加了一个权重参数score，使得集合中的元素能够按 score 进行有序排列,适用于比较复杂的数据结构和带有权重的元素。</td>
-</tr>
-</tbody></table>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
-<li>缓存</li>
-<li>消息队列</li>
-<li>订阅-发布系统</li>
-<li>TimeLine</li>
-<li>加权元素</li>
-<li>事务处理(Transactions)</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://www.runoob.com/w3cnote/redis-use-scene.html">Redis 数据结构使用场景</a></li>
-<li><a href="http://www.redis.net.cn/tutorial/3501.html">Redis教程</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html">redis持久化策略</a></li></ul></div>]]></content>
-      <categories>
-        <category>redis</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>数据结构</tag>
-        <tag>kv</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>七层网络协议</title>
-    <url>/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html</url>
-    <content><![CDATA[<p>简单概括,不一定准确。。。</p>
-<span id="more"></span>
-
-<style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 10%;} nth-of-type(3){width: 30%;} nth-of-type(4){width: 50%;}</style>
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><table>
-<thead>
-<tr>
-<th align="left">TCP&#x2F;IP模型</th>
-<th align="left">OSI模型</th>
-<th align="left">分布的应用</th>
-<th align="left">协议说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">应用层</td>
-<td align="left">应用层</td>
-<td align="left">nginx、Apache、HAProxy、LVS、keepalived</td>
-<td align="left">DHCP(v6)、DNS、FTP、Gopher、HTTP(SPDY、HTTP&#x2F;2)、IMAP4、IRC、NNTP、XMPP、POP3、SIP、SMTP、SNMP、SSH、TELNET、RPC、SOAP、NTP、等</td>
-</tr>
-<tr>
-<td align="left">应用层</td>
-<td align="left">表示层</td>
-<td align="left">-</td>
-<td align="left">该层被弃用。应用层的HTTP、FTP、Telnet等协议有类似的功能。传输层的TLS&#x2F;SSL也有类似功能。</td>
-</tr>
-<tr>
-<td align="left">应用层</td>
-<td align="left">会话层</td>
-<td align="left">-</td>
-<td align="left">该层被弃用。应用层的HTTP、RPC、SDP、RTCP等协议有类似的功能。</td>
-</tr>
-<tr>
-<td align="left">传输层</td>
-<td align="left">传输层</td>
-<td align="left">LVS、keepalived</td>
-<td align="left">TCP、UDP、DCCP、RSVP、PPTP、TLS&#x2F;SSL等。IP+端口</td>
-</tr>
-<tr>
-<td align="left">网际互连层</td>
-<td align="left">网络层</td>
-<td align="left">keepalived</td>
-<td align="left">IP(v4·v6)、ICMP(v6)、IGMP、IPsec、BGP、RIP、OSPF、RARP等</td>
-</tr>
-<tr>
-<td align="left">网络接口层</td>
-<td align="left">数据链路层</td>
-<td align="left">-</td>
-<td align="left">Wi-Fi(IEEE 802.11)、ARP、ATM、令牌环、以太网、FDDI、帧中继、GPRS、HDLC、PPP、PPPoE、L2TP、ISDN、SPB、STP等</td>
-</tr>
-<tr>
-<td align="left">网络接口层</td>
-<td align="left">物理层</td>
-<td align="left">-</td>
-<td align="left">以太网、调制解调器、电力线通信、同步光网络、光导纤维、同轴电缆、双绞线等</td>
-</tr>
-</tbody></table>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><ul>
-<li>heartbeat工作在几层？</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html">TCP连接过程</a></li><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html">http协议头字段说明</a></li><li><a href="https://www.lengyuewusheng.com/http%E8%AF%B7%E6%B1%82%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A%E8%A7%A3%E9%87%8A.html">http请求常见状态码及解释</a></li><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%848%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.html">HTTP协议中的8种请求方法</a></li></ul></div>]]></content>
-      <categories>
-        <category>TCP/IP</category>
-      </categories>
-      <tags>
-        <tag>协议</tag>
-        <tag>OSI</tag>
-        <tag>TCP/IP</tag>
       </tags>
   </entry>
   <entry>
@@ -3839,47 +3839,6 @@
       </tags>
   </entry>
   <entry>
-    <title>zabbix表分区优化</title>
-    <url>/zabbix%E8%A1%A8%E5%88%86%E5%8C%BA%E4%BC%98%E5%8C%96.html</url>
-    <content><![CDATA[<p>Zabbix是一款非常优秀的开源监控系统。</p>
-<span id="more"></span>
-
-<h2 id="MySQL存储过程定义"><a href="#MySQL存储过程定义" class="headerlink" title="MySQL存储过程定义"></a>MySQL存储过程定义</h2><ul>
-<li>cat zabbixPartition.sql<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_create<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_create`(SCHEMANAME <span class="type">varchar</span>(<span class="number">64</span>), TABLENAME <span class="type">varchar</span>(<span class="number">64</span>), PARTITIONNAME <span class="type">varchar</span>(<span class="number">64</span>), CLOCK <span class="type">int</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           SCHEMANAME = The DB schema in which to make changes</span></span><br><span class="line"><span class="comment">           TABLENAME = The table with partitions to potentially delete</span></span><br><span class="line"><span class="comment">           PARTITIONNAME = The name of the partition to create</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Verify that the partition does not already exist</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">DECLARE</span> RETROWS <span class="type">INT</span>;</span><br><span class="line">        <span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="number">1</span>) <span class="keyword">INTO</span> RETROWS</span><br><span class="line">        <span class="keyword">FROM</span> information_schema.partitions</span><br><span class="line">        <span class="keyword">WHERE</span> table_schema <span class="operator">=</span> SCHEMANAME <span class="keyword">AND</span> table_name <span class="operator">=</span> TABLENAME <span class="keyword">AND</span> partition_description <span class="operator">&gt;=</span> CLOCK;</span><br><span class="line"></span><br><span class="line">        IF RETROWS <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                   1. Print a message indicating that a partition was created.</span></span><br><span class="line"><span class="comment">                   2. Create the SQL to create the partition.</span></span><br><span class="line"><span class="comment">                   3. Execute the SQL from #2.</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                <span class="keyword">SELECT</span> CONCAT( &quot;partition_create(&quot;, SCHEMANAME, &quot;,&quot;, TABLENAME, &quot;,&quot;, PARTITIONNAME, &quot;,&quot;, CLOCK, &quot;)&quot; ) <span class="keyword">AS</span> msg;</span><br><span class="line">                <span class="keyword">SET</span> <span class="variable">@sql</span> <span class="operator">=</span> CONCAT( <span class="string">&#x27;ALTER TABLE &#x27;</span>, SCHEMANAME, <span class="string">&#x27;.&#x27;</span>, TABLENAME, <span class="string">&#x27; ADD PARTITION (PARTITION &#x27;</span>, PARTITIONNAME, <span class="string">&#x27; VALUES LESS THAN (&#x27;</span>, CLOCK, <span class="string">&#x27;));&#x27;</span> );</span><br><span class="line">                <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> <span class="variable">@sql</span>;</span><br><span class="line">                <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">                <span class="keyword">DEALLOCATE</span> <span class="keyword">PREPARE</span> STMT;</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_drop<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_drop`(SCHEMANAME <span class="type">VARCHAR</span>(<span class="number">64</span>), TABLENAME <span class="type">VARCHAR</span>(<span class="number">64</span>), DELETE_BELOW_PARTITION_DATE <span class="type">BIGINT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           SCHEMANAME = The DB schema in which to make changes</span></span><br><span class="line"><span class="comment">           TABLENAME = The table with partitions to potentially delete</span></span><br><span class="line"><span class="comment">           DELETE_BELOW_PARTITION_DATE = Delete any partitions with names that are dates older than this one (yyyy-mm-dd)</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">DECLARE</span> done <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="literal">FALSE</span>;</span><br><span class="line">        <span class="keyword">DECLARE</span> drop_part_name <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Get a list of all the partitions that are older than the date</span></span><br><span class="line"><span class="comment">           in DELETE_BELOW_PARTITION_DATE.  All partitions are prefixed with</span></span><br><span class="line"><span class="comment">           a &quot;p&quot;, so use SUBSTRING TO get rid of that character.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">DECLARE</span> myCursor <span class="keyword">CURSOR</span> <span class="keyword">FOR</span></span><br><span class="line">                <span class="keyword">SELECT</span> partition_name</span><br><span class="line">                <span class="keyword">FROM</span> information_schema.partitions</span><br><span class="line">                <span class="keyword">WHERE</span> table_schema <span class="operator">=</span> SCHEMANAME <span class="keyword">AND</span> table_name <span class="operator">=</span> TABLENAME <span class="keyword">AND</span> <span class="built_in">CAST</span>(<span class="built_in">SUBSTRING</span>(partition_name <span class="keyword">FROM</span> <span class="number">2</span>) <span class="keyword">AS</span> UNSIGNED) <span class="operator">&lt;</span> DELETE_BELOW_PARTITION_DATE;</span><br><span class="line">        <span class="keyword">DECLARE</span> CONTINUE HANDLER <span class="keyword">FOR</span> <span class="keyword">NOT</span> FOUND <span class="keyword">SET</span> done <span class="operator">=</span> <span class="literal">TRUE</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Create the basics for when we need to drop the partition.  Also, create</span></span><br><span class="line"><span class="comment">           @drop_partitions to hold a comma-delimited list of all partitions that</span></span><br><span class="line"><span class="comment">           should be deleted.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">SET</span> <span class="variable">@alter</span>_header <span class="operator">=</span> CONCAT(&quot;ALTER TABLE &quot;, SCHEMANAME, &quot;.&quot;, TABLENAME, &quot; DROP PARTITION &quot;);</span><br><span class="line">        <span class="keyword">SET</span> <span class="variable">@drop</span>_partitions <span class="operator">=</span> &quot;&quot;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Start looping through all the partitions that are too old.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">OPEN</span> myCursor;</span><br><span class="line">        read_loop: LOOP</span><br><span class="line">                <span class="keyword">FETCH</span> myCursor <span class="keyword">INTO</span> drop_part_name;</span><br><span class="line">                IF done <span class="keyword">THEN</span></span><br><span class="line">                        LEAVE read_loop;</span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line">                <span class="keyword">SET</span> <span class="variable">@drop</span>_partitions <span class="operator">=</span> IF(<span class="variable">@drop</span>_partitions <span class="operator">=</span> &quot;&quot;, drop_part_name, CONCAT(<span class="variable">@drop</span>_partitions, &quot;,&quot;, drop_part_name));</span><br><span class="line">        <span class="keyword">END</span> LOOP;</span><br><span class="line">        IF <span class="variable">@drop</span>_partitions <span class="operator">!=</span> &quot;&quot; <span class="keyword">THEN</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                   1. Build the SQL to drop all the necessary partitions.</span></span><br><span class="line"><span class="comment">                   2. Run the SQL to drop the partitions.</span></span><br><span class="line"><span class="comment">                   3. Print out the table partitions that were deleted.</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                <span class="keyword">SET</span> <span class="variable">@full</span>_sql <span class="operator">=</span> CONCAT(<span class="variable">@alter</span>_header, <span class="variable">@drop</span>_partitions, &quot;;&quot;);</span><br><span class="line">                <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> <span class="variable">@full</span>_sql;</span><br><span class="line">                <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">                <span class="keyword">DEALLOCATE</span> <span class="keyword">PREPARE</span> STMT;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">SELECT</span> CONCAT(SCHEMANAME, &quot;.&quot;, TABLENAME) <span class="keyword">AS</span> `<span class="keyword">table</span>`, <span class="variable">@drop</span>_partitions <span class="keyword">AS</span> `partitions_deleted`;</span><br><span class="line">        <span class="keyword">ELSE</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                   No partitions are being deleted, so print out &quot;N/A&quot; (Not applicable) to indicate</span></span><br><span class="line"><span class="comment">                   that no changes were made.</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                <span class="keyword">SELECT</span> CONCAT(SCHEMANAME, &quot;.&quot;, TABLENAME) <span class="keyword">AS</span> `<span class="keyword">table</span>`, &quot;N/A&quot; <span class="keyword">AS</span> `partitions_deleted`;</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_maintenance<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_maintenance`(SCHEMA_NAME <span class="type">VARCHAR</span>(<span class="number">32</span>), TABLE_NAME <span class="type">VARCHAR</span>(<span class="number">32</span>), KEEP_DATA_DAYS <span class="type">INT</span>, HOURLY_INTERVAL <span class="type">INT</span>, CREATE_NEXT_INTERVALS <span class="type">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="keyword">DECLARE</span> OLDER_THAN_PARTITION_DATE <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> PARTITION_NAME <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> OLD_PARTITION_NAME <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> LESS_THAN_TIMESTAMP <span class="type">INT</span>;</span><br><span class="line">        <span class="keyword">DECLARE</span> CUR_TIME <span class="type">INT</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">CALL</span> partition_verify(SCHEMA_NAME, TABLE_NAME, HOURLY_INTERVAL);</span><br><span class="line">        <span class="keyword">SET</span> CUR_TIME <span class="operator">=</span> UNIX_TIMESTAMP(DATE_FORMAT(NOW(), <span class="string">&#x27;%Y-%m-%d 00:00:00&#x27;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">SET</span> @__interval <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        create_loop: LOOP</span><br><span class="line">                IF @__interval <span class="operator">&gt;</span> CREATE_NEXT_INTERVALS <span class="keyword">THEN</span></span><br><span class="line">                        LEAVE create_loop;</span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">SET</span> LESS_THAN_TIMESTAMP <span class="operator">=</span> CUR_TIME <span class="operator">+</span> (HOURLY_INTERVAL <span class="operator">*</span> @__interval <span class="operator">*</span> <span class="number">3600</span>);</span><br><span class="line">                <span class="keyword">SET</span> PARTITION_NAME <span class="operator">=</span> FROM_UNIXTIME(CUR_TIME <span class="operator">+</span> HOURLY_INTERVAL <span class="operator">*</span> (@__interval <span class="operator">-</span> <span class="number">1</span>) <span class="operator">*</span> <span class="number">3600</span>, <span class="string">&#x27;p%Y%m%d%H00&#x27;</span>);</span><br><span class="line">                IF(PARTITION_NAME <span class="operator">!=</span> OLD_PARTITION_NAME) <span class="keyword">THEN</span></span><br><span class="line">                        <span class="keyword">CALL</span> partition_create(SCHEMA_NAME, TABLE_NAME, PARTITION_NAME, LESS_THAN_TIMESTAMP);</span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line">                <span class="keyword">SET</span> @__interval<span class="operator">=</span>@__interval<span class="operator">+</span><span class="number">1</span>;</span><br><span class="line">                <span class="keyword">SET</span> OLD_PARTITION_NAME <span class="operator">=</span> PARTITION_NAME;</span><br><span class="line">        <span class="keyword">END</span> LOOP;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">SET</span> OLDER_THAN_PARTITION_DATE<span class="operator">=</span>DATE_FORMAT(DATE_SUB(NOW(), <span class="type">INTERVAL</span> KEEP_DATA_DAYS <span class="keyword">DAY</span>), <span class="string">&#x27;%Y%m%d0000&#x27;</span>);</span><br><span class="line">        <span class="keyword">CALL</span> partition_drop(SCHEMA_NAME, TABLE_NAME, OLDER_THAN_PARTITION_DATE);</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_verify<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_verify`(SCHEMANAME <span class="type">VARCHAR</span>(<span class="number">64</span>), TABLENAME <span class="type">VARCHAR</span>(<span class="number">64</span>), HOURLYINTERVAL <span class="type">INT</span>(<span class="number">11</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="keyword">DECLARE</span> PARTITION_NAME <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> RETROWS <span class="type">INT</span>(<span class="number">11</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> FUTURE_TIMESTAMP <span class="type">TIMESTAMP</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * Check if any partitions exist for the given SCHEMANAME.TABLENAME.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="number">1</span>) <span class="keyword">INTO</span> RETROWS</span><br><span class="line">        <span class="keyword">FROM</span> information_schema.partitions</span><br><span class="line">        <span class="keyword">WHERE</span> table_schema <span class="operator">=</span> SCHEMANAME <span class="keyword">AND</span> table_name <span class="operator">=</span> TABLENAME <span class="keyword">AND</span> partition_name <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * If partitions do not exist, go ahead and partition the table</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        IF RETROWS <span class="operator">=</span> <span class="number">1</span> <span class="keyword">THEN</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                 * Take the current date at 00:00:00 and add HOURLYINTERVAL to it.  This is the timestamp below which we will store values.</span></span><br><span class="line"><span class="comment">                 * We begin partitioning based on the beginning of a day.  This is because we don&#x27;t want to generate a random partition</span></span><br><span class="line"><span class="comment">                 * that won&#x27;t necessarily fall in line with the desired partition naming (ie: if the hour interval is 24 hours, we could</span></span><br><span class="line"><span class="comment">                 * end up creating a partition now named &quot;p201403270600&quot; when all other partitions will be like &quot;p201403280000&quot;).</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="keyword">SET</span> FUTURE_TIMESTAMP <span class="operator">=</span> TIMESTAMPADD(<span class="keyword">HOUR</span>, HOURLYINTERVAL, CONCAT(CURDATE(), &quot; &quot;, <span class="string">&#x27;00:00:00&#x27;</span>));</span><br><span class="line">                <span class="keyword">SET</span> PARTITION_NAME <span class="operator">=</span> DATE_FORMAT(CURDATE(), <span class="string">&#x27;p%Y%m%d%H00&#x27;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">-- Create the partitioning query</span></span><br><span class="line">                <span class="keyword">SET</span> @__PARTITION_SQL <span class="operator">=</span> CONCAT(&quot;ALTER TABLE &quot;, SCHEMANAME, &quot;.&quot;, TABLENAME, &quot; PARTITION BY RANGE(`clock`)&quot;);</span><br><span class="line">                <span class="keyword">SET</span> @__PARTITION_SQL <span class="operator">=</span> CONCAT(@__PARTITION_SQL, &quot;(PARTITION &quot;, PARTITION_NAME, &quot; VALUES LESS THAN (&quot;, UNIX_TIMESTAMP(FUTURE_TIMESTAMP), &quot;));&quot;);</span><br><span class="line"></span><br><span class="line">                <span class="comment">-- Run the partitioning query</span></span><br><span class="line">                <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> @__PARTITION_SQL;</span><br><span class="line">                <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">                <span class="keyword">DEALLOCATE</span> <span class="keyword">PREPARE</span> STMT;</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_maintenance_all<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_maintenance_all`(SCHEMA_NAME <span class="type">VARCHAR</span>(<span class="number">32</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_log&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_str&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_text&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_uint&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;trends&#x27;</span>, <span class="number">730</span>, <span class="number">24</span>, <span class="number">365</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;trends_uint&#x27;</span>, <span class="number">730</span>, <span class="number">24</span>, <span class="number">365</span>);</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure></li>
-<li>参数说明<ul>
-<li>SCHEMA_NAME &#x3D; 数据库</li>
-<li>TABLE_NAME &#x3D; 表</li>
-<li>KEEP_DATA_DAYS &#x3D; 要保留的分区的最大天数。所有超过此天数的分区将被删除。</li>
-<li>HOURLY_INTERVAL &#x3D; 分区的时间间隔(小时为单位)</li>
-<li>CREATE_NEXT_INTERVALS &#x3D; 创建的未来分区数</li>
-</ul>
-</li>
-</ul>
-<h2 id="Housekeeper配置修改"><a href="#Housekeeper配置修改" class="headerlink" title="Housekeeper配置修改"></a>Housekeeper配置修改</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Administration&quot;</span> -&gt; <span class="string">&quot;General&quot;</span> -&gt; <span class="string">&quot;Housekeeping&quot;</span></span><br><span class="line">将History&amp;Trends <span class="string">&quot;Enable internal housekeeping&quot;</span>取消，勾选<span class="string">&quot;Override item trend period&quot;</span>,</span><br><span class="line">将<span class="string">&quot;Data storage period (in days)&quot;</span>的值改成和存储过程中变量KEEP_DATA_DAYS的值一致。</span><br></pre></td></tr></table></figure>
-
-<h2 id="存储过程导入"><a href="#存储过程导入" class="headerlink" title="存储过程导入"></a>存储过程导入</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/bin/mysql -uroot -p zabbix &lt; zabbixPartition.sql</span><br></pre></td></tr></table></figure>
-
-<h2 id="crontab配置"><a href="#crontab配置" class="headerlink" title="crontab配置"></a>crontab配置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 01 01 * *  /usr/bin/mysql  -uroot -pPASSWD zabbix -e<span class="string">&quot;CALL partition_maintenance_all(&#x27;zabbix&#x27;)&quot;</span> &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看分区结果"><a href="#查看分区结果" class="headerlink" title="查看分区结果"></a>查看分区结果</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql&gt; use zabbix;</span><br><span class="line">mysql&gt; showcreate table <span class="built_in">history</span>;</span><br></pre></td></tr></table></figure>
-
-<p>以上在zabbix3.0.2版本上执行通过，其它版本根据实际情况判断是否微调。。。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://www.zabbix.org/wiki/Docs/howto/mysql_partition">Zabbix wiki</a></li>
-<li><a href="https://cloud.tencent.com/community/article/463810">Zabbix 分区优化</a></li>
-<li><a href="https://www.kancloud.cn/devops-centos/centos-linux-devops/375488">Zabbix数据库优化(Zabbix分区表)</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mysql%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html">MySQL基础实践</a></li><li><a href="https://www.lengyuewusheng.com/%E9%80%9A%E8%BF%87zabbix-api%E5%9C%A8%E5%91%8A%E8%AD%A6%E9%82%AE%E4%BB%B6%E4%B8%AD%E6%8F%92%E5%85%A5%E8%B6%8B%E5%8A%BF%E5%9B%BE.html">通过Zabbix API在告警邮件中插入趋势图</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA%E5%90%8D.html">zabbix实现自定义主机名</a></li><li><a href="https://www.lengyuewusheng.com/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html">influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</a></li><li><a href="https://www.lengyuewusheng.com/mysql%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%95%E6%93%8E%E6%AF%94%E8%BE%83.html">MySQL常见的两种数据库引擎比较</a></li></ul></div>]]></content>
-      <categories>
-        <category>zabbix</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>zabbix</tag>
-        <tag>表分区</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>zabbix实现自定义主机名</title>
     <url>/zabbix%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA%E5%90%8D.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -3945,6 +3904,47 @@
         <tag>监控</tag>
         <tag>zabbix</tag>
         <tag>告警</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>zabbix表分区优化</title>
+    <url>/zabbix%E8%A1%A8%E5%88%86%E5%8C%BA%E4%BC%98%E5%8C%96.html</url>
+    <content><![CDATA[<p>Zabbix是一款非常优秀的开源监控系统。</p>
+<span id="more"></span>
+
+<h2 id="MySQL存储过程定义"><a href="#MySQL存储过程定义" class="headerlink" title="MySQL存储过程定义"></a>MySQL存储过程定义</h2><ul>
+<li>cat zabbixPartition.sql<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_create<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_create`(SCHEMANAME <span class="type">varchar</span>(<span class="number">64</span>), TABLENAME <span class="type">varchar</span>(<span class="number">64</span>), PARTITIONNAME <span class="type">varchar</span>(<span class="number">64</span>), CLOCK <span class="type">int</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           SCHEMANAME = The DB schema in which to make changes</span></span><br><span class="line"><span class="comment">           TABLENAME = The table with partitions to potentially delete</span></span><br><span class="line"><span class="comment">           PARTITIONNAME = The name of the partition to create</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Verify that the partition does not already exist</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">DECLARE</span> RETROWS <span class="type">INT</span>;</span><br><span class="line">        <span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="number">1</span>) <span class="keyword">INTO</span> RETROWS</span><br><span class="line">        <span class="keyword">FROM</span> information_schema.partitions</span><br><span class="line">        <span class="keyword">WHERE</span> table_schema <span class="operator">=</span> SCHEMANAME <span class="keyword">AND</span> table_name <span class="operator">=</span> TABLENAME <span class="keyword">AND</span> partition_description <span class="operator">&gt;=</span> CLOCK;</span><br><span class="line"></span><br><span class="line">        IF RETROWS <span class="operator">=</span> <span class="number">0</span> <span class="keyword">THEN</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                   1. Print a message indicating that a partition was created.</span></span><br><span class="line"><span class="comment">                   2. Create the SQL to create the partition.</span></span><br><span class="line"><span class="comment">                   3. Execute the SQL from #2.</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                <span class="keyword">SELECT</span> CONCAT( &quot;partition_create(&quot;, SCHEMANAME, &quot;,&quot;, TABLENAME, &quot;,&quot;, PARTITIONNAME, &quot;,&quot;, CLOCK, &quot;)&quot; ) <span class="keyword">AS</span> msg;</span><br><span class="line">                <span class="keyword">SET</span> <span class="variable">@sql</span> <span class="operator">=</span> CONCAT( <span class="string">&#x27;ALTER TABLE &#x27;</span>, SCHEMANAME, <span class="string">&#x27;.&#x27;</span>, TABLENAME, <span class="string">&#x27; ADD PARTITION (PARTITION &#x27;</span>, PARTITIONNAME, <span class="string">&#x27; VALUES LESS THAN (&#x27;</span>, CLOCK, <span class="string">&#x27;));&#x27;</span> );</span><br><span class="line">                <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> <span class="variable">@sql</span>;</span><br><span class="line">                <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">                <span class="keyword">DEALLOCATE</span> <span class="keyword">PREPARE</span> STMT;</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_drop<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_drop`(SCHEMANAME <span class="type">VARCHAR</span>(<span class="number">64</span>), TABLENAME <span class="type">VARCHAR</span>(<span class="number">64</span>), DELETE_BELOW_PARTITION_DATE <span class="type">BIGINT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           SCHEMANAME = The DB schema in which to make changes</span></span><br><span class="line"><span class="comment">           TABLENAME = The table with partitions to potentially delete</span></span><br><span class="line"><span class="comment">           DELETE_BELOW_PARTITION_DATE = Delete any partitions with names that are dates older than this one (yyyy-mm-dd)</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">DECLARE</span> done <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="literal">FALSE</span>;</span><br><span class="line">        <span class="keyword">DECLARE</span> drop_part_name <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Get a list of all the partitions that are older than the date</span></span><br><span class="line"><span class="comment">           in DELETE_BELOW_PARTITION_DATE.  All partitions are prefixed with</span></span><br><span class="line"><span class="comment">           a &quot;p&quot;, so use SUBSTRING TO get rid of that character.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">DECLARE</span> myCursor <span class="keyword">CURSOR</span> <span class="keyword">FOR</span></span><br><span class="line">                <span class="keyword">SELECT</span> partition_name</span><br><span class="line">                <span class="keyword">FROM</span> information_schema.partitions</span><br><span class="line">                <span class="keyword">WHERE</span> table_schema <span class="operator">=</span> SCHEMANAME <span class="keyword">AND</span> table_name <span class="operator">=</span> TABLENAME <span class="keyword">AND</span> <span class="built_in">CAST</span>(<span class="built_in">SUBSTRING</span>(partition_name <span class="keyword">FROM</span> <span class="number">2</span>) <span class="keyword">AS</span> UNSIGNED) <span class="operator">&lt;</span> DELETE_BELOW_PARTITION_DATE;</span><br><span class="line">        <span class="keyword">DECLARE</span> CONTINUE HANDLER <span class="keyword">FOR</span> <span class="keyword">NOT</span> FOUND <span class="keyword">SET</span> done <span class="operator">=</span> <span class="literal">TRUE</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Create the basics for when we need to drop the partition.  Also, create</span></span><br><span class="line"><span class="comment">           @drop_partitions to hold a comma-delimited list of all partitions that</span></span><br><span class="line"><span class="comment">           should be deleted.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">SET</span> <span class="variable">@alter</span>_header <span class="operator">=</span> CONCAT(&quot;ALTER TABLE &quot;, SCHEMANAME, &quot;.&quot;, TABLENAME, &quot; DROP PARTITION &quot;);</span><br><span class="line">        <span class="keyword">SET</span> <span class="variable">@drop</span>_partitions <span class="operator">=</span> &quot;&quot;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           Start looping through all the partitions that are too old.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">OPEN</span> myCursor;</span><br><span class="line">        read_loop: LOOP</span><br><span class="line">                <span class="keyword">FETCH</span> myCursor <span class="keyword">INTO</span> drop_part_name;</span><br><span class="line">                IF done <span class="keyword">THEN</span></span><br><span class="line">                        LEAVE read_loop;</span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line">                <span class="keyword">SET</span> <span class="variable">@drop</span>_partitions <span class="operator">=</span> IF(<span class="variable">@drop</span>_partitions <span class="operator">=</span> &quot;&quot;, drop_part_name, CONCAT(<span class="variable">@drop</span>_partitions, &quot;,&quot;, drop_part_name));</span><br><span class="line">        <span class="keyword">END</span> LOOP;</span><br><span class="line">        IF <span class="variable">@drop</span>_partitions <span class="operator">!=</span> &quot;&quot; <span class="keyword">THEN</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                   1. Build the SQL to drop all the necessary partitions.</span></span><br><span class="line"><span class="comment">                   2. Run the SQL to drop the partitions.</span></span><br><span class="line"><span class="comment">                   3. Print out the table partitions that were deleted.</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                <span class="keyword">SET</span> <span class="variable">@full</span>_sql <span class="operator">=</span> CONCAT(<span class="variable">@alter</span>_header, <span class="variable">@drop</span>_partitions, &quot;;&quot;);</span><br><span class="line">                <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> <span class="variable">@full</span>_sql;</span><br><span class="line">                <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">                <span class="keyword">DEALLOCATE</span> <span class="keyword">PREPARE</span> STMT;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">SELECT</span> CONCAT(SCHEMANAME, &quot;.&quot;, TABLENAME) <span class="keyword">AS</span> `<span class="keyword">table</span>`, <span class="variable">@drop</span>_partitions <span class="keyword">AS</span> `partitions_deleted`;</span><br><span class="line">        <span class="keyword">ELSE</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                   No partitions are being deleted, so print out &quot;N/A&quot; (Not applicable) to indicate</span></span><br><span class="line"><span class="comment">                   that no changes were made.</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                <span class="keyword">SELECT</span> CONCAT(SCHEMANAME, &quot;.&quot;, TABLENAME) <span class="keyword">AS</span> `<span class="keyword">table</span>`, &quot;N/A&quot; <span class="keyword">AS</span> `partitions_deleted`;</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_maintenance<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_maintenance`(SCHEMA_NAME <span class="type">VARCHAR</span>(<span class="number">32</span>), TABLE_NAME <span class="type">VARCHAR</span>(<span class="number">32</span>), KEEP_DATA_DAYS <span class="type">INT</span>, HOURLY_INTERVAL <span class="type">INT</span>, CREATE_NEXT_INTERVALS <span class="type">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="keyword">DECLARE</span> OLDER_THAN_PARTITION_DATE <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> PARTITION_NAME <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> OLD_PARTITION_NAME <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> LESS_THAN_TIMESTAMP <span class="type">INT</span>;</span><br><span class="line">        <span class="keyword">DECLARE</span> CUR_TIME <span class="type">INT</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">CALL</span> partition_verify(SCHEMA_NAME, TABLE_NAME, HOURLY_INTERVAL);</span><br><span class="line">        <span class="keyword">SET</span> CUR_TIME <span class="operator">=</span> UNIX_TIMESTAMP(DATE_FORMAT(NOW(), <span class="string">&#x27;%Y-%m-%d 00:00:00&#x27;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">SET</span> @__interval <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        create_loop: LOOP</span><br><span class="line">                IF @__interval <span class="operator">&gt;</span> CREATE_NEXT_INTERVALS <span class="keyword">THEN</span></span><br><span class="line">                        LEAVE create_loop;</span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">SET</span> LESS_THAN_TIMESTAMP <span class="operator">=</span> CUR_TIME <span class="operator">+</span> (HOURLY_INTERVAL <span class="operator">*</span> @__interval <span class="operator">*</span> <span class="number">3600</span>);</span><br><span class="line">                <span class="keyword">SET</span> PARTITION_NAME <span class="operator">=</span> FROM_UNIXTIME(CUR_TIME <span class="operator">+</span> HOURLY_INTERVAL <span class="operator">*</span> (@__interval <span class="operator">-</span> <span class="number">1</span>) <span class="operator">*</span> <span class="number">3600</span>, <span class="string">&#x27;p%Y%m%d%H00&#x27;</span>);</span><br><span class="line">                IF(PARTITION_NAME <span class="operator">!=</span> OLD_PARTITION_NAME) <span class="keyword">THEN</span></span><br><span class="line">                        <span class="keyword">CALL</span> partition_create(SCHEMA_NAME, TABLE_NAME, PARTITION_NAME, LESS_THAN_TIMESTAMP);</span><br><span class="line">                <span class="keyword">END</span> IF;</span><br><span class="line">                <span class="keyword">SET</span> @__interval<span class="operator">=</span>@__interval<span class="operator">+</span><span class="number">1</span>;</span><br><span class="line">                <span class="keyword">SET</span> OLD_PARTITION_NAME <span class="operator">=</span> PARTITION_NAME;</span><br><span class="line">        <span class="keyword">END</span> LOOP;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">SET</span> OLDER_THAN_PARTITION_DATE<span class="operator">=</span>DATE_FORMAT(DATE_SUB(NOW(), <span class="type">INTERVAL</span> KEEP_DATA_DAYS <span class="keyword">DAY</span>), <span class="string">&#x27;%Y%m%d0000&#x27;</span>);</span><br><span class="line">        <span class="keyword">CALL</span> partition_drop(SCHEMA_NAME, TABLE_NAME, OLDER_THAN_PARTITION_DATE);</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"># <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_verify<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_verify`(SCHEMANAME <span class="type">VARCHAR</span>(<span class="number">64</span>), TABLENAME <span class="type">VARCHAR</span>(<span class="number">64</span>), HOURLYINTERVAL <span class="type">INT</span>(<span class="number">11</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">        <span class="keyword">DECLARE</span> PARTITION_NAME <span class="type">VARCHAR</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> RETROWS <span class="type">INT</span>(<span class="number">11</span>);</span><br><span class="line">        <span class="keyword">DECLARE</span> FUTURE_TIMESTAMP <span class="type">TIMESTAMP</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * Check if any partitions exist for the given SCHEMANAME.TABLENAME.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="number">1</span>) <span class="keyword">INTO</span> RETROWS</span><br><span class="line">        <span class="keyword">FROM</span> information_schema.partitions</span><br><span class="line">        <span class="keyword">WHERE</span> table_schema <span class="operator">=</span> SCHEMANAME <span class="keyword">AND</span> table_name <span class="operator">=</span> TABLENAME <span class="keyword">AND</span> partition_name <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * If partitions do not exist, go ahead and partition the table</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        IF RETROWS <span class="operator">=</span> <span class="number">1</span> <span class="keyword">THEN</span></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                 * Take the current date at 00:00:00 and add HOURLYINTERVAL to it.  This is the timestamp below which we will store values.</span></span><br><span class="line"><span class="comment">                 * We begin partitioning based on the beginning of a day.  This is because we don&#x27;t want to generate a random partition</span></span><br><span class="line"><span class="comment">                 * that won&#x27;t necessarily fall in line with the desired partition naming (ie: if the hour interval is 24 hours, we could</span></span><br><span class="line"><span class="comment">                 * end up creating a partition now named &quot;p201403270600&quot; when all other partitions will be like &quot;p201403280000&quot;).</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="keyword">SET</span> FUTURE_TIMESTAMP <span class="operator">=</span> TIMESTAMPADD(<span class="keyword">HOUR</span>, HOURLYINTERVAL, CONCAT(CURDATE(), &quot; &quot;, <span class="string">&#x27;00:00:00&#x27;</span>));</span><br><span class="line">                <span class="keyword">SET</span> PARTITION_NAME <span class="operator">=</span> DATE_FORMAT(CURDATE(), <span class="string">&#x27;p%Y%m%d%H00&#x27;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">-- Create the partitioning query</span></span><br><span class="line">                <span class="keyword">SET</span> @__PARTITION_SQL <span class="operator">=</span> CONCAT(&quot;ALTER TABLE &quot;, SCHEMANAME, &quot;.&quot;, TABLENAME, &quot; PARTITION BY RANGE(`clock`)&quot;);</span><br><span class="line">                <span class="keyword">SET</span> @__PARTITION_SQL <span class="operator">=</span> CONCAT(@__PARTITION_SQL, &quot;(PARTITION &quot;, PARTITION_NAME, &quot; VALUES LESS THAN (&quot;, UNIX_TIMESTAMP(FUTURE_TIMESTAMP), &quot;));&quot;);</span><br><span class="line"></span><br><span class="line">                <span class="comment">-- Run the partitioning query</span></span><br><span class="line">                <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> @__PARTITION_SQL;</span><br><span class="line">                <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">                <span class="keyword">DEALLOCATE</span> <span class="keyword">PREPARE</span> STMT;</span><br><span class="line">        <span class="keyword">END</span> IF;</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">#<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span>partition_maintenance_all<span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> `partition_maintenance_all`(SCHEMA_NAME <span class="type">VARCHAR</span>(<span class="number">32</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_log&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_str&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_text&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;history_uint&#x27;</span>, <span class="number">180</span>, <span class="number">24</span>, <span class="number">90</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;trends&#x27;</span>, <span class="number">730</span>, <span class="number">24</span>, <span class="number">365</span>);</span><br><span class="line">                <span class="keyword">CALL</span> partition_maintenance(SCHEMA_NAME, <span class="string">&#x27;trends_uint&#x27;</span>, <span class="number">730</span>, <span class="number">24</span>, <span class="number">365</span>);</span><br><span class="line"><span class="keyword">END</span>$$</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure></li>
+<li>参数说明<ul>
+<li>SCHEMA_NAME &#x3D; 数据库</li>
+<li>TABLE_NAME &#x3D; 表</li>
+<li>KEEP_DATA_DAYS &#x3D; 要保留的分区的最大天数。所有超过此天数的分区将被删除。</li>
+<li>HOURLY_INTERVAL &#x3D; 分区的时间间隔(小时为单位)</li>
+<li>CREATE_NEXT_INTERVALS &#x3D; 创建的未来分区数</li>
+</ul>
+</li>
+</ul>
+<h2 id="Housekeeper配置修改"><a href="#Housekeeper配置修改" class="headerlink" title="Housekeeper配置修改"></a>Housekeeper配置修改</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;Administration&quot;</span> -&gt; <span class="string">&quot;General&quot;</span> -&gt; <span class="string">&quot;Housekeeping&quot;</span></span><br><span class="line">将History&amp;Trends <span class="string">&quot;Enable internal housekeeping&quot;</span>取消，勾选<span class="string">&quot;Override item trend period&quot;</span>,</span><br><span class="line">将<span class="string">&quot;Data storage period (in days)&quot;</span>的值改成和存储过程中变量KEEP_DATA_DAYS的值一致。</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储过程导入"><a href="#存储过程导入" class="headerlink" title="存储过程导入"></a>存储过程导入</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/bin/mysql -uroot -p zabbix &lt; zabbixPartition.sql</span><br></pre></td></tr></table></figure>
+
+<h2 id="crontab配置"><a href="#crontab配置" class="headerlink" title="crontab配置"></a>crontab配置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 01 01 * *  /usr/bin/mysql  -uroot -pPASSWD zabbix -e<span class="string">&quot;CALL partition_maintenance_all(&#x27;zabbix&#x27;)&quot;</span> &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看分区结果"><a href="#查看分区结果" class="headerlink" title="查看分区结果"></a>查看分区结果</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql&gt; use zabbix;</span><br><span class="line">mysql&gt; showcreate table <span class="built_in">history</span>;</span><br></pre></td></tr></table></figure>
+
+<p>以上在zabbix3.0.2版本上执行通过，其它版本根据实际情况判断是否微调。。。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.zabbix.org/wiki/Docs/howto/mysql_partition">Zabbix wiki</a></li>
+<li><a href="https://cloud.tencent.com/community/article/463810">Zabbix 分区优化</a></li>
+<li><a href="https://www.kancloud.cn/devops-centos/centos-linux-devops/375488">Zabbix数据库优化(Zabbix分区表)</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mysql%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html">MySQL基础实践</a></li><li><a href="https://www.lengyuewusheng.com/%E9%80%9A%E8%BF%87zabbix-api%E5%9C%A8%E5%91%8A%E8%AD%A6%E9%82%AE%E4%BB%B6%E4%B8%AD%E6%8F%92%E5%85%A5%E8%B6%8B%E5%8A%BF%E5%9B%BE.html">通过Zabbix API在告警邮件中插入趋势图</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA%E5%90%8D.html">zabbix实现自定义主机名</a></li><li><a href="https://www.lengyuewusheng.com/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html">influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</a></li><li><a href="https://www.lengyuewusheng.com/mysql%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%95%E6%93%8E%E6%AF%94%E8%BE%83.html">MySQL常见的两种数据库引擎比较</a></li></ul></div>]]></content>
+      <categories>
+        <category>zabbix</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>zabbix</tag>
+        <tag>表分区</tag>
       </tags>
   </entry>
   <entry>
@@ -4591,7 +4591,7 @@
 <tr>
 <td align="left">From</td>
 <td align="left">发起此请求的用户的邮件地址。</td>
-<td align="left">From: <a href="mailto:&#x75;&#x73;&#101;&#x72;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;">&#x75;&#x73;&#101;&#x72;&#64;&#x65;&#x78;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;</a></td>
+<td align="left">From: <a href="mailto:&#117;&#115;&#101;&#x72;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;">&#117;&#115;&#101;&#x72;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td align="left">Host</td>
@@ -6115,84 +6115,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Apache No space left on device</title>
-    <url>/apache-no-space-left-on-device.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>Inter-Process Communication，进程间通信</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /var/logs/httpd/error_log |grep -i device</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] sohudb_post_config begin</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] create_server_temp_conf begin</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] create_server_temp_conf end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] Digest: generating secret for digest authentication ...</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] Digest: done</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] sohudb_post_config begin</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_mc_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_qdb_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_socket_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_schat_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: for loop i=0, server_no:1,0,900,1000</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] sohudb_post_config end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [warn] pid file /etc/httpd/run/httpd.pid overwritten -- Unclean shutdown of previous Apache run?</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [emerg] (28)No space left on device: Couldn&#x27;t create accept lock (/etc/httpd/logs/accept.lock.23014) (5)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -s</span><br><span class="line"></span><br><span class="line">------ Semaphore Arrays --------</span><br><span class="line">key        semid      owner      perms      nsems</span><br><span class="line">0x000000a7 0          root      600        1</span><br><span class="line">0x00000000 65273857   apache    600        1</span><br><span class="line">0x00000000 65372162   apache    600        1</span><br><span class="line">0x00000000 65470467   apache    600        1</span><br><span class="line">0x00000000 65568772   apache    600        1</span><br><span class="line">0x00000000 65667077   apache    600        1</span><br><span class="line">0x00000000 65765382   apache    600        1</span><br><span class="line">0x00000000 65863687   apache    600        1</span><br><span class="line">0x00000000 65961992   apache    600        1</span><br><span class="line">0x00000000 66060297   apache    600        1</span><br><span class="line">0x00000000 66158602   apache    600        1</span><br><span class="line">0x00000000 66256907   apache    600        1</span><br><span class="line">0x00000000 66355212   apache    600        1</span><br><span class="line">0x00000000 66453517   apache    600        1</span><br><span class="line">0x00000000 66551822   apache    600        1</span><br><span class="line">0x00000000 66650127   apache    600        1</span><br><span class="line">0x00000000 66748432   apache    600        1</span><br><span class="line">0x00000000 66846737   apache    600        1</span><br><span class="line">0x00000000 66945042   apache    600        1</span><br><span class="line">0x00000000 67043347   apache    600        1</span><br><span class="line">0x00000000 67141652   apache    600        1</span><br><span class="line">0x00000000 67239957   apache    600        1</span><br><span class="line">0x00000000 67338262   apache    600        1</span><br><span class="line">0x00000000 67436567   apache    600        1</span><br><span class="line">0x00000000 67534872   apache    600        1</span><br><span class="line">0x00000000 67633177   apache    600        1</span><br><span class="line">0x00000000 67731482   apache    600        1</span><br><span class="line">0x00000000 67829787   apache    600        1</span><br><span class="line">0x00000000 67928092   apache    600        1</span><br><span class="line">0x00000000 68026397   apache    600        1</span><br><span class="line">0x00000000 68124702   apache    600        1</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -l</span><br><span class="line"></span><br><span class="line">------ Shared Memory Limits --------</span><br><span class="line">max number of segments = 4096</span><br><span class="line">max seg size (kbytes) = 67108864</span><br><span class="line">max total shared memory (kbytes) = 17179869184</span><br><span class="line">min seg size (bytes) = 1</span><br><span class="line"></span><br><span class="line">------ Semaphore Limits --------</span><br><span class="line">max number of arrays = 512</span><br><span class="line">max semaphores per array = 25032000</span><br><span class="line">max semaphores system wide = 32</span><br><span class="line">max ops per semop call = 512</span><br><span class="line">semaphore max value = 32767</span><br><span class="line"></span><br><span class="line">------ Messages: Limits --------</span><br><span class="line">max queues system wide = 16</span><br><span class="line">max size of message (bytes) = 65536</span><br><span class="line">default max size of queue (bytes) = 65536</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -a</span><br><span class="line"></span><br><span class="line">------ Shared Memory Segments --------</span><br><span class="line">key        shmid      owner      perms      bytes      nattch     status</span><br><span class="line">0x74008327 3440640    root      600        4          0</span><br><span class="line">0x740082fd 4128769    root      600        4          0</span><br><span class="line">0x00000000 4489218    root      644        80         2</span><br><span class="line">0x740082fc 4096003    root      600        4          0</span><br><span class="line">0x00000000 4521988    root      644        16384      2</span><br><span class="line">0x00000000 4554757    root      644        280        2</span><br><span class="line"></span><br><span class="line">------ Semaphore Arrays --------</span><br><span class="line">key        semid      owner      perms      nsems</span><br><span class="line">0x000000a7 0          root      600        1</span><br><span class="line">0x00000000 170524673  apache    600        1</span><br><span class="line">0x00000000 170557442  apache    600        1</span><br><span class="line"></span><br><span class="line">------ Message Queues --------</span><br><span class="line">key        msqid      owner      perms      used-bytes   messages</span><br></pre></td></tr></table></figure>
-
-<h1 id="处理方案"><a href="#处理方案" class="headerlink" title="处理方案"></a>处理方案</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># for i in $(/usr/bin/ipcs -s | awk &#x27;/apache/ &#123;print $2&#125;&#x27;); do /usr/bin/ipcrm -s $i; done</span><br><span class="line"># ipcs -s</span><br><span class="line"></span><br><span class="line">------ Semaphore Arrays --------</span><br><span class="line">key        semid      owner      perms      nsems</span><br><span class="line">0x000000a7 0          root      600        1</span><br><span class="line">0x00000000 170524673  apache    600        1</span><br><span class="line">0x00000000 170557442  apache    600        1</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="linux-x2F-unix下的进程间两类通信方式"><a href="#linux-x2F-unix下的进程间两类通信方式" class="headerlink" title="linux&#x2F;unix下的进程间两类通信方式"></a>linux&#x2F;unix下的进程间两类通信方式</h1><h2 id="基于文件的IPC"><a href="#基于文件的IPC" class="headerlink" title="基于文件的IPC"></a>基于文件的IPC</h2><ul>
-<li>基于普通文件的IPC</li>
-<li>基于管道文件的IPC<ul>
-<li>普通管道</li>
-<li>匿名管道<ul>
-<li>匿名管道只能使用在父子进程之间</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>基于socket文件的IPC<ul>
-<li>对等模型<ul>
-<li>对等模型主要用于udp编程</li>
-</ul>
-</li>
-<li>C&#x2F;S模型<ul>
-<li>C&#x2F;S模型主要用于TCP编程</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="基于内存的IPC"><a href="#基于内存的IPC" class="headerlink" title="基于内存的IPC"></a>基于内存的IPC</h2><ul>
-<li>基于共享内存的IPC，</li>
-<li>基于共享队列的IPC，</li>
-<li>基于信号量的IPC。</li>
-<li>内核内存的工具（ipcs）<blockquote>
-<p>ipcs命令往标准输出写入一些关于活动进程间通信设施的信息.</p>
-<ul>
-<li>ipcs可以指定查看的具体信息，<ul>
-<li>如ipcs -m 查看共享内存，</li>
-<li>-q：查看共享队列，</li>
-<li>ipcs -s查看共享信号量，</li>
-<li>以上3中都不指定时则是查看共享内存、共享队列和共享信号量</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><p><a href="https://major.io/2007/08/24/apache-no-space-left-on-device-couldnt-create-accept-lock/">Apache: No space left on device: Couldn’t create accept lock</a></p>
-</li>
-<li><p><a href="http://www.voidcn.com/article/p-xilljgvz-ms.html">ipcs命令详解</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>IPC</category>
-      </categories>
-      <tags>
-        <tag>Apache</tag>
-        <tag>httpd</tag>
-        <tag>IPC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>应用开发的12要素</title>
     <url>/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%8412%E8%A6%81%E7%B4%A0.html</url>
     <content><![CDATA[<p>12-Factor 为构建 SaaS 应用提供方法论。</p>
@@ -6269,6 +6191,84 @@
       </categories>
       <tags>
         <tag>12factor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Apache No space left on device</title>
+    <url>/apache-no-space-left-on-device.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>Inter-Process Communication，进程间通信</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /var/logs/httpd/error_log |grep -i device</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] sohudb_post_config begin</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] create_server_temp_conf begin</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] create_server_temp_conf end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] Digest: generating secret for digest authentication ...</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] Digest: done</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] sohudb_post_config begin</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_create: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_mc_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_qdb_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] qdb_cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_socket_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] socket_cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] set_schat_host_sc end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: begin 23014</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: for loop i=0, server_no:1</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: for loop i=0, server_no:1,0,900,1000</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] schat_cp_initialize: ok</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [notice] sohudb_post_config end</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [warn] pid file /etc/httpd/run/httpd.pid overwritten -- Unclean shutdown of previous Apache run?</span><br><span class="line">[Wed Nov 21 20:15:01 2018] [emerg] (28)No space left on device: Couldn&#x27;t create accept lock (/etc/httpd/logs/accept.lock.23014) (5)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -s</span><br><span class="line"></span><br><span class="line">------ Semaphore Arrays --------</span><br><span class="line">key        semid      owner      perms      nsems</span><br><span class="line">0x000000a7 0          root      600        1</span><br><span class="line">0x00000000 65273857   apache    600        1</span><br><span class="line">0x00000000 65372162   apache    600        1</span><br><span class="line">0x00000000 65470467   apache    600        1</span><br><span class="line">0x00000000 65568772   apache    600        1</span><br><span class="line">0x00000000 65667077   apache    600        1</span><br><span class="line">0x00000000 65765382   apache    600        1</span><br><span class="line">0x00000000 65863687   apache    600        1</span><br><span class="line">0x00000000 65961992   apache    600        1</span><br><span class="line">0x00000000 66060297   apache    600        1</span><br><span class="line">0x00000000 66158602   apache    600        1</span><br><span class="line">0x00000000 66256907   apache    600        1</span><br><span class="line">0x00000000 66355212   apache    600        1</span><br><span class="line">0x00000000 66453517   apache    600        1</span><br><span class="line">0x00000000 66551822   apache    600        1</span><br><span class="line">0x00000000 66650127   apache    600        1</span><br><span class="line">0x00000000 66748432   apache    600        1</span><br><span class="line">0x00000000 66846737   apache    600        1</span><br><span class="line">0x00000000 66945042   apache    600        1</span><br><span class="line">0x00000000 67043347   apache    600        1</span><br><span class="line">0x00000000 67141652   apache    600        1</span><br><span class="line">0x00000000 67239957   apache    600        1</span><br><span class="line">0x00000000 67338262   apache    600        1</span><br><span class="line">0x00000000 67436567   apache    600        1</span><br><span class="line">0x00000000 67534872   apache    600        1</span><br><span class="line">0x00000000 67633177   apache    600        1</span><br><span class="line">0x00000000 67731482   apache    600        1</span><br><span class="line">0x00000000 67829787   apache    600        1</span><br><span class="line">0x00000000 67928092   apache    600        1</span><br><span class="line">0x00000000 68026397   apache    600        1</span><br><span class="line">0x00000000 68124702   apache    600        1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -l</span><br><span class="line"></span><br><span class="line">------ Shared Memory Limits --------</span><br><span class="line">max number of segments = 4096</span><br><span class="line">max seg size (kbytes) = 67108864</span><br><span class="line">max total shared memory (kbytes) = 17179869184</span><br><span class="line">min seg size (bytes) = 1</span><br><span class="line"></span><br><span class="line">------ Semaphore Limits --------</span><br><span class="line">max number of arrays = 512</span><br><span class="line">max semaphores per array = 25032000</span><br><span class="line">max semaphores system wide = 32</span><br><span class="line">max ops per semop call = 512</span><br><span class="line">semaphore max value = 32767</span><br><span class="line"></span><br><span class="line">------ Messages: Limits --------</span><br><span class="line">max queues system wide = 16</span><br><span class="line">max size of message (bytes) = 65536</span><br><span class="line">default max size of queue (bytes) = 65536</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># ipcs -a</span><br><span class="line"></span><br><span class="line">------ Shared Memory Segments --------</span><br><span class="line">key        shmid      owner      perms      bytes      nattch     status</span><br><span class="line">0x74008327 3440640    root      600        4          0</span><br><span class="line">0x740082fd 4128769    root      600        4          0</span><br><span class="line">0x00000000 4489218    root      644        80         2</span><br><span class="line">0x740082fc 4096003    root      600        4          0</span><br><span class="line">0x00000000 4521988    root      644        16384      2</span><br><span class="line">0x00000000 4554757    root      644        280        2</span><br><span class="line"></span><br><span class="line">------ Semaphore Arrays --------</span><br><span class="line">key        semid      owner      perms      nsems</span><br><span class="line">0x000000a7 0          root      600        1</span><br><span class="line">0x00000000 170524673  apache    600        1</span><br><span class="line">0x00000000 170557442  apache    600        1</span><br><span class="line"></span><br><span class="line">------ Message Queues --------</span><br><span class="line">key        msqid      owner      perms      used-bytes   messages</span><br></pre></td></tr></table></figure>
+
+<h1 id="处理方案"><a href="#处理方案" class="headerlink" title="处理方案"></a>处理方案</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># for i in $(/usr/bin/ipcs -s | awk &#x27;/apache/ &#123;print $2&#125;&#x27;); do /usr/bin/ipcrm -s $i; done</span><br><span class="line"># ipcs -s</span><br><span class="line"></span><br><span class="line">------ Semaphore Arrays --------</span><br><span class="line">key        semid      owner      perms      nsems</span><br><span class="line">0x000000a7 0          root      600        1</span><br><span class="line">0x00000000 170524673  apache    600        1</span><br><span class="line">0x00000000 170557442  apache    600        1</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="linux-x2F-unix下的进程间两类通信方式"><a href="#linux-x2F-unix下的进程间两类通信方式" class="headerlink" title="linux&#x2F;unix下的进程间两类通信方式"></a>linux&#x2F;unix下的进程间两类通信方式</h1><h2 id="基于文件的IPC"><a href="#基于文件的IPC" class="headerlink" title="基于文件的IPC"></a>基于文件的IPC</h2><ul>
+<li>基于普通文件的IPC</li>
+<li>基于管道文件的IPC<ul>
+<li>普通管道</li>
+<li>匿名管道<ul>
+<li>匿名管道只能使用在父子进程之间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于socket文件的IPC<ul>
+<li>对等模型<ul>
+<li>对等模型主要用于udp编程</li>
+</ul>
+</li>
+<li>C&#x2F;S模型<ul>
+<li>C&#x2F;S模型主要用于TCP编程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基于内存的IPC"><a href="#基于内存的IPC" class="headerlink" title="基于内存的IPC"></a>基于内存的IPC</h2><ul>
+<li>基于共享内存的IPC，</li>
+<li>基于共享队列的IPC，</li>
+<li>基于信号量的IPC。</li>
+<li>内核内存的工具（ipcs）<blockquote>
+<p>ipcs命令往标准输出写入一些关于活动进程间通信设施的信息.</p>
+<ul>
+<li>ipcs可以指定查看的具体信息，<ul>
+<li>如ipcs -m 查看共享内存，</li>
+<li>-q：查看共享队列，</li>
+<li>ipcs -s查看共享信号量，</li>
+<li>以上3中都不指定时则是查看共享内存、共享队列和共享信号量</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><p><a href="https://major.io/2007/08/24/apache-no-space-left-on-device-couldnt-create-accept-lock/">Apache: No space left on device: Couldn’t create accept lock</a></p>
+</li>
+<li><p><a href="http://www.voidcn.com/article/p-xilljgvz-ms.html">ipcs命令详解</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>IPC</category>
+      </categories>
+      <tags>
+        <tag>Apache</tag>
+        <tag>httpd</tag>
+        <tag>IPC</tag>
       </tags>
   </entry>
   <entry>
@@ -6360,6 +6360,98 @@
         <tag>Linux</tag>
         <tag>chkconfig</tag>
         <tag>systemd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于scrcpy远程操控android设备</title>
+    <url>/%E5%9F%BA%E4%BA%8Escrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7android%E8%AE%BE%E5%A4%87.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>非常酷炫的操作。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h1 id="USB模式"><a href="#USB模式" class="headerlink" title="USB模式"></a>USB模式</h1><blockquote>
+<p>需要通过USB线直连Android设备。</p>
+</blockquote>
+<h2 id="打开开发者选项"><a href="#打开开发者选项" class="headerlink" title="打开开发者选项"></a>打开开发者选项</h2><blockquote>
+<p>当手机开发者选项隐藏关闭时，需要打开开发者选项，设置&gt;系统&gt;关于手机&gt;版本号，<a href="https://developer.android.com/studio/debug/dev-options?hl=zh-CN">点击版本号信息7次</a>,返回上一屏幕，在底部附近可以找到开发者选项</p>
+</blockquote>
+<h2 id="打开USB调试"><a href="#打开USB调试" class="headerlink" title="打开USB调试"></a>打开USB调试</h2><blockquote>
+<p>设置&gt;系统&gt;开发者选项&gt;USB调试，打开USB调试</p>
+</blockquote>
+<h2 id="打开”仅充电”模式下允许ADB调试"><a href="#打开”仅充电”模式下允许ADB调试" class="headerlink" title="打开”仅充电”模式下允许ADB调试"></a>打开”仅充电”模式下允许ADB调试</h2><blockquote>
+<p>设置&gt;系统&gt;开发者选项&gt;”仅充电”模式下允许ADB调试，打开”仅充电”模式下允许ADB调试</p>
+</blockquote>
+<h2 id="执行-scrcpy-exe-即可"><a href="#执行-scrcpy-exe-即可" class="headerlink" title="执行 scrcpy.exe, 即可"></a>执行 <code>scrcpy.exe</code>, 即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.435s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
+
+<h1 id="wifi模式"><a href="#wifi模式" class="headerlink" title="wifi模式"></a>wifi模式</h1><blockquote>
+<p>前三步和USB模式相同，同时要求，adb调试设备和被调试设备在同一WLAN网络</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\WINDOWS\system32&gt; adb tcpip 5555</span><br><span class="line">PS C:\WINDOWS\system32&gt; adb connect 10.10.10.2:5555</span><br><span class="line">connected to 10.10.10.2:5555</span><br><span class="line"># 至此可拔掉USB连接线</span><br><span class="line">PS C:\WINDOWS\system32&gt; cd C:\scrcpy-win64-v1.10</span><br><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.431s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
+</li>
+<li><p><a href="https://github.com/Tomotoes/scrcpy-gui">scrcpy-gui</a></p>
+</li>
+<li><p><a href="https://developer.android.com/studio/command-line/adb.html#Enabling">android开发者文档·在设备上启用 adb 调试</a></p>
+</li>
+<li><p><a href="https://developer.android.com/studio/releases/platform-tools.html">Android SDK Platform-Tools下载·adb命令</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具控</category>
+      </categories>
+      <tags>
+        <tag>scrcpy</tag>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开源论坛技术栈</title>
+    <url>/%E5%BC%80%E6%BA%90%E8%AE%BA%E5%9D%9B%E6%8A%80%E6%9C%AF%E6%A0%88.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>摘要内容</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="nodebb"><a href="#nodebb" class="headerlink" title="nodebb"></a>nodebb</h1><h2 id="命令行安装-x2F-启-x2F-停插件"><a href="#命令行安装-x2F-启-x2F-停插件" class="headerlink" title="命令行安装&#x2F;启&#x2F;停插件"></a>命令行安装&#x2F;启&#x2F;停插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 列出插件列表</span><br><span class="line">./nodebb plugins</span><br><span class="line">npm install nodebb-plugin-office-ldap</span><br><span class="line">./nodebb reset --plugin nodebb-plugin-office-ldap</span><br><span class="line">./nodebb restart</span><br><span class="line">./nodebb activate nodebb-plugin-office-ldap</span><br><span class="line">./nodebb restart</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crontab:</span><br><span class="line">*/2 * * * * /data/nodebb/nodebb.mongo.backup.sh &gt;&gt; /data/nodebb/backupLogs/backup.log.$(date &quot;+\%Y\%m\%d\%H\%M\%S&quot;) 2&gt;&amp;1</span><br><span class="line"></span><br><span class="line">cat nodebb.mongo.backup.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">backupDir=/data/nodebb/db-backups/mongo.backup.v$(date &quot;+%Y%m%d_%H%M%S&quot;)</span><br><span class="line">mkdir -v $&#123;backupDir&#125;</span><br><span class="line">/usr/bin/mongodump -h 127.0.0.1:27017 -d nodebb -o $&#123;backupDir&#125;</span><br><span class="line">cd $(dirname $&#123;backupDir&#125;)</span><br><span class="line">tar -czf  $(basename $&#123;backupDir&#125;).tar.gz $(basename $&#123;backupDir&#125;)</span><br><span class="line">rm -rvf $(basename $&#123;backupDir&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="中文搜索支持"><a href="#中文搜索支持" class="headerlink" title="中文搜索支持"></a>中文搜索支持</h2><p>nodebb-plugin-solr</p>
+<h2 id="solr部署"><a href="#solr部署" class="headerlink" title="solr部署"></a>solr部署</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget http://apache.mirrors.lucidnetworks.net/lucene/solr/8.2.0/solr-8.2.0.tgz -O - |tar -zx</span><br><span class="line">ulimit -u 65000</span><br><span class="line">cd /path/to/solr/server/solr</span><br><span class="line">./bin/solr start</span><br><span class="line">/path/to/solr/bin/solr create_core -c nodebb            #创建核心</span><br><span class="line">/path/to/solr/bin/solr delete -c nodebb                 # 删除核心创建核心</span><br><span class="line">/path/to/solr/bin/solr status                           # 查看solr节点信息</span><br><span class="line">/path/to/solr/bin/solr start -e cloud                   #以cloud实例模式运行</span><br><span class="line">/path/to/solr/bin/solr create_collection -c nodebb      #cloud模式下</span><br><span class="line">/path/to/solr/bin/solr create_collection -c nodebb -s 3 -rf 3</span><br><span class="line">/path/to/solr/bin/solr auth enable -type basicAuth -credentials admin:nodebbAdmin</span><br><span class="line">/path/to/solr/bin/solr auth disable</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://www.w3cschool.cn/solr_doc/solr_doc-emn62fs5.html">以示例配置运行</a></li>
+</ul>
+<h1 id="discourse"><a href="#discourse" class="headerlink" title="discourse"></a>discourse</h1><p>官方仅提供docker部署方式</p>
+<h1 id="Flarum"><a href="#Flarum" class="headerlink" title="Flarum"></a>Flarum</h1><p>Beta版本，功能和易用性相对较差</p>
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><p><a href="https://docs.archive.nodebb.org/zh_CN/latest/configuring/databases/mongo.html">nodebb官方文档</a></p>
+</li>
+<li><p><a href="https://docs.nodebb.org/installing/os/centos/">https://docs.nodebb.org/installing/os/centos/</a></p>
+</li>
+<li><p><a href="https://hearrain.com/2015/12/847">https://hearrain.com/2015/12/847</a></p>
+</li>
+<li><p><a href="https://www.rosehosting.com/blog/how-to-install-nodebb-on-a-centos-7-vps/">https://www.rosehosting.com/blog/how-to-install-nodebb-on-a-centos-7-vps/</a></p>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html">MediaWiki导航菜单设置</a></li></ul></div>]]></content>
+      <categories>
+        <category>开源技术栈</category>
+      </categories>
+      <tags>
+        <tag>开源工具</tag>
+        <tag>nodebb</tag>
       </tags>
   </entry>
   <entry>
@@ -6461,150 +6553,50 @@
       </tags>
   </entry>
   <entry>
-    <title>基于scrcpy远程操控android设备</title>
-    <url>/%E5%9F%BA%E4%BA%8Escrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7android%E8%AE%BE%E5%A4%87.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>非常酷炫的操作。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<h1 id="USB模式"><a href="#USB模式" class="headerlink" title="USB模式"></a>USB模式</h1><blockquote>
-<p>需要通过USB线直连Android设备。</p>
-</blockquote>
-<h2 id="打开开发者选项"><a href="#打开开发者选项" class="headerlink" title="打开开发者选项"></a>打开开发者选项</h2><blockquote>
-<p>当手机开发者选项隐藏关闭时，需要打开开发者选项，设置&gt;系统&gt;关于手机&gt;版本号，<a href="https://developer.android.com/studio/debug/dev-options?hl=zh-CN">点击版本号信息7次</a>,返回上一屏幕，在底部附近可以找到开发者选项</p>
-</blockquote>
-<h2 id="打开USB调试"><a href="#打开USB调试" class="headerlink" title="打开USB调试"></a>打开USB调试</h2><blockquote>
-<p>设置&gt;系统&gt;开发者选项&gt;USB调试，打开USB调试</p>
-</blockquote>
-<h2 id="打开”仅充电”模式下允许ADB调试"><a href="#打开”仅充电”模式下允许ADB调试" class="headerlink" title="打开”仅充电”模式下允许ADB调试"></a>打开”仅充电”模式下允许ADB调试</h2><blockquote>
-<p>设置&gt;系统&gt;开发者选项&gt;”仅充电”模式下允许ADB调试，打开”仅充电”模式下允许ADB调试</p>
-</blockquote>
-<h2 id="执行-scrcpy-exe-即可"><a href="#执行-scrcpy-exe-即可" class="headerlink" title="执行 scrcpy.exe, 即可"></a>执行 <code>scrcpy.exe</code>, 即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.435s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
-
-<h1 id="wifi模式"><a href="#wifi模式" class="headerlink" title="wifi模式"></a>wifi模式</h1><blockquote>
-<p>前三步和USB模式相同，同时要求，adb调试设备和被调试设备在同一WLAN网络</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\WINDOWS\system32&gt; adb tcpip 5555</span><br><span class="line">PS C:\WINDOWS\system32&gt; adb connect 10.10.10.2:5555</span><br><span class="line">connected to 10.10.10.2:5555</span><br><span class="line"># 至此可拔掉USB连接线</span><br><span class="line">PS C:\WINDOWS\system32&gt; cd C:\scrcpy-win64-v1.10</span><br><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.431s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
-</li>
-<li><p><a href="https://github.com/Tomotoes/scrcpy-gui">scrcpy-gui</a></p>
-</li>
-<li><p><a href="https://developer.android.com/studio/command-line/adb.html#Enabling">android开发者文档·在设备上启用 adb 调试</a></p>
-</li>
-<li><p><a href="https://developer.android.com/studio/releases/platform-tools.html">Android SDK Platform-Tools下载·adb命令</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具控</category>
-      </categories>
-      <tags>
-        <tag>scrcpy</tag>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开源论坛技术栈</title>
-    <url>/%E5%BC%80%E6%BA%90%E8%AE%BA%E5%9D%9B%E6%8A%80%E6%9C%AF%E6%A0%88.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>摘要内容</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="nodebb"><a href="#nodebb" class="headerlink" title="nodebb"></a>nodebb</h1><h2 id="命令行安装-x2F-启-x2F-停插件"><a href="#命令行安装-x2F-启-x2F-停插件" class="headerlink" title="命令行安装&#x2F;启&#x2F;停插件"></a>命令行安装&#x2F;启&#x2F;停插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 列出插件列表</span><br><span class="line">./nodebb plugins</span><br><span class="line">npm install nodebb-plugin-office-ldap</span><br><span class="line">./nodebb reset --plugin nodebb-plugin-office-ldap</span><br><span class="line">./nodebb restart</span><br><span class="line">./nodebb activate nodebb-plugin-office-ldap</span><br><span class="line">./nodebb restart</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crontab:</span><br><span class="line">*/2 * * * * /data/nodebb/nodebb.mongo.backup.sh &gt;&gt; /data/nodebb/backupLogs/backup.log.$(date &quot;+\%Y\%m\%d\%H\%M\%S&quot;) 2&gt;&amp;1</span><br><span class="line"></span><br><span class="line">cat nodebb.mongo.backup.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">backupDir=/data/nodebb/db-backups/mongo.backup.v$(date &quot;+%Y%m%d_%H%M%S&quot;)</span><br><span class="line">mkdir -v $&#123;backupDir&#125;</span><br><span class="line">/usr/bin/mongodump -h 127.0.0.1:27017 -d nodebb -o $&#123;backupDir&#125;</span><br><span class="line">cd $(dirname $&#123;backupDir&#125;)</span><br><span class="line">tar -czf  $(basename $&#123;backupDir&#125;).tar.gz $(basename $&#123;backupDir&#125;)</span><br><span class="line">rm -rvf $(basename $&#123;backupDir&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="中文搜索支持"><a href="#中文搜索支持" class="headerlink" title="中文搜索支持"></a>中文搜索支持</h2><p>nodebb-plugin-solr</p>
-<h2 id="solr部署"><a href="#solr部署" class="headerlink" title="solr部署"></a>solr部署</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget http://apache.mirrors.lucidnetworks.net/lucene/solr/8.2.0/solr-8.2.0.tgz -O - |tar -zx</span><br><span class="line">ulimit -u 65000</span><br><span class="line">cd /path/to/solr/server/solr</span><br><span class="line">./bin/solr start</span><br><span class="line">/path/to/solr/bin/solr create_core -c nodebb            #创建核心</span><br><span class="line">/path/to/solr/bin/solr delete -c nodebb                 # 删除核心创建核心</span><br><span class="line">/path/to/solr/bin/solr status                           # 查看solr节点信息</span><br><span class="line">/path/to/solr/bin/solr start -e cloud                   #以cloud实例模式运行</span><br><span class="line">/path/to/solr/bin/solr create_collection -c nodebb      #cloud模式下</span><br><span class="line">/path/to/solr/bin/solr create_collection -c nodebb -s 3 -rf 3</span><br><span class="line">/path/to/solr/bin/solr auth enable -type basicAuth -credentials admin:nodebbAdmin</span><br><span class="line">/path/to/solr/bin/solr auth disable</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://www.w3cschool.cn/solr_doc/solr_doc-emn62fs5.html">以示例配置运行</a></li>
-</ul>
-<h1 id="discourse"><a href="#discourse" class="headerlink" title="discourse"></a>discourse</h1><p>官方仅提供docker部署方式</p>
-<h1 id="Flarum"><a href="#Flarum" class="headerlink" title="Flarum"></a>Flarum</h1><p>Beta版本，功能和易用性相对较差</p>
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://docs.archive.nodebb.org/zh_CN/latest/configuring/databases/mongo.html">nodebb官方文档</a></p>
-</li>
-<li><p><a href="https://docs.nodebb.org/installing/os/centos/">https://docs.nodebb.org/installing/os/centos/</a></p>
-</li>
-<li><p><a href="https://hearrain.com/2015/12/847">https://hearrain.com/2015/12/847</a></p>
-</li>
-<li><p><a href="https://www.rosehosting.com/blog/how-to-install-nodebb-on-a-centos-7-vps/">https://www.rosehosting.com/blog/how-to-install-nodebb-on-a-centos-7-vps/</a></p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html">MediaWiki导航菜单设置</a></li></ul></div>]]></content>
-      <categories>
-        <category>开源技术栈</category>
-      </categories>
-      <tags>
-        <tag>开源工具</tag>
-        <tag>nodebb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux内核崩溃分析</title>
-    <url>/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html</url>
+    <title>自签SSL证书</title>
+    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/Linuxkernel.png" />
+<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
 </div>
 
-<p>持续整理中。。。</p>
+<p>devops 必备技能</p>
 
 </blockquote>
 
 <span id="more"></span>
 
 
-<h1 id="崩溃现场"><a href="#崩溃现场" class="headerlink" title="崩溃现场"></a>崩溃现场</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[@bjsjs_42_92 ~]# crash /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux /opt/var/crash/127.0.0.1-2019-08-06-10\:16\:35/vmcore</span><br><span class="line"></span><br><span class="line">crash 7.1.2-3.el7_2.1</span><br><span class="line">Copyright (C) 2002-2014  Red Hat, Inc.</span><br><span class="line">Copyright (C) 2004, 2005, 2006, 2010  IBM Corporation</span><br><span class="line">Copyright (C) 1999-2006  Hewlett-Packard Co</span><br><span class="line">Copyright (C) 2005, 2006, 2011, 2012  Fujitsu Limited</span><br><span class="line">Copyright (C) 2006, 2007  VA Linux Systems Japan K.K.</span><br><span class="line">Copyright (C) 2005, 2011  NEC Corporation</span><br><span class="line">Copyright (C) 1999, 2002, 2007  Silicon Graphics, Inc.</span><br><span class="line">Copyright (C) 1999, 2000, 2001, 2002  Mission Critical Linux, Inc.</span><br><span class="line">This program is free software, covered by the GNU General Public License,</span><br><span class="line">and you are welcome to change it and/or distribute copies of it under</span><br><span class="line">certain conditions.  Enter &quot;help copying&quot; to see the conditions.</span><br><span class="line">This program has absolutely no warranty.  Enter &quot;help warranty&quot; for details.</span><br><span class="line"></span><br><span class="line">GNU gdb (GDB) 7.6</span><br><span class="line">Copyright (C) 2013 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;</span><br><span class="line">and &quot;show warranty&quot; for details.</span><br><span class="line">This GDB was configured as &quot;x86_64-unknown-linux-gnu&quot;...</span><br><span class="line"></span><br><span class="line">      KERNEL: /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux</span><br><span class="line">    DUMPFILE: /opt/var/crash/127.0.0.1-2019-08-06-10:16:35/vmcore  [PARTIAL DUMP]</span><br><span class="line">        CPUS: 40</span><br><span class="line">        DATE: Tue Aug  6 10:16:27 2019</span><br><span class="line">      UPTIME: 390 days, 14:40:34</span><br><span class="line">LOAD AVERAGE: 81.55, 29.79, 16.87</span><br><span class="line">       TASKS: 2448</span><br><span class="line">    NODENAME: bjsjs_42_92</span><br><span class="line">     RELEASE: 3.10.0-327.el7.x86_64</span><br><span class="line">     VERSION: #1 SMP Thu Nov 19 22:10:57 UTC 2015</span><br><span class="line">     MACHINE: x86_64  (2199 Mhz)</span><br><span class="line">      MEMORY: 127.9 GB</span><br><span class="line">       PANIC: &quot;kernel BUG at fs/buffer.c:1280!&quot;</span><br><span class="line">         PID: 57502</span><br><span class="line">     COMMAND: &quot;java&quot;</span><br><span class="line">        TASK: ffff88201a2eb980  [THREAD_INFO: ffff880f7566c000]</span><br><span class="line">         CPU: 26</span><br><span class="line">       STATE:  (PANIC)</span><br><span class="line"></span><br><span class="line">crash&gt; bt</span><br><span class="line">PID: 57502  TASK: ffff88201a2eb980  CPU: 26  COMMAND: &quot;java&quot;</span><br><span class="line"> #0 [ffff880f7566f5a8] machine_kexec at ffffffff81051beb</span><br><span class="line"> #1 [ffff880f7566f608] crash_kexec at ffffffff810f2542</span><br><span class="line"> #2 [ffff880f7566f6d8] oops_end at ffffffff8163e1a8</span><br><span class="line"> #3 [ffff880f7566f700] die at ffffffff8101859b</span><br><span class="line"> #4 [ffff880f7566f730] do_trap at ffffffff8163d860</span><br><span class="line"> #5 [ffff880f7566f780] do_invalid_op at ffffffff81015204</span><br><span class="line"> #6 [ffff880f7566f830] invalid_op at ffffffff8164701e</span><br><span class="line">    [exception RIP: check_irqs_on+4]</span><br><span class="line">    RIP: ffffffff816326d1  RSP: ffff880f7566f8e8  RFLAGS: 00010046</span><br><span class="line">    RAX: 0000000000000096  RBX: ffff8810092d9110  RCX: ffff880ee7d05800</span><br><span class="line">    RDX: 0000000000001000  RSI: 000000000090014a  RDI: ffff880f8cf4b740</span><br><span class="line">    RBP: ffff880f7566f8e8   R8: 0000000000000004   R9: 0000000000000004</span><br><span class="line">    R10: ffff880ee7d05800  R11: ffff880f7566f9e8  R12: ffff880f8cf4b740</span><br><span class="line">    R13: 0000000000001000  R14: ffff8801df370800  R15: 0000000000000010</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018</span><br><span class="line"> #7 [ffff880f7566f8f0] __find_get_block at ffffffff81212c85</span><br><span class="line"> #8 [ffff880f7566f910] __getblk at ffffffff81212cb5</span><br><span class="line"> #9 [ffff880f7566f970] __ext4_get_inode_loc at ffffffffa0373030 [ext4]</span><br><span class="line">#10 [ffff880f7566f9d8] ext4_get_inode_loc at ffffffffa0374dbd [ext4]</span><br><span class="line">#11 [ffff880f7566f9e8] ext4_reserve_inode_write at ffffffffa0376906 [ext4]</span><br><span class="line">#12 [ffff880f7566fa18] ext4_mark_inode_dirty at ffffffffa03769d3 [ext4]</span><br><span class="line">#13 [ffff880f7566fa70] ext4_writepages at ffffffffa0377567 [ext4]</span><br><span class="line">#14 [ffff880f7566fba8] do_writepages at ffffffff811758fe</span><br><span class="line">#15 [ffff880f7566fbb8] __filemap_fdatawrite_range at ffffffff8116a685</span><br><span class="line">#16 [ffff880f7566fc08] filemap_flush at ffffffff8116a74c</span><br><span class="line">#17 [ffff880f7566fc18] ext4_alloc_da_blocks at ffffffffa0374a8c [ext4]</span><br><span class="line">#18 [ffff880f7566fc38] ext4_release_file at ffffffffa036df89 [ext4]</span><br><span class="line">#19 [ffff880f7566fc60] __fput at ffffffff811e0329</span><br><span class="line">#20 [ffff880f7566fca8] ____fput at ffffffff811e05ee</span><br><span class="line">#21 [ffff880f7566fcb8] task_work_run at ffffffff810a22f4</span><br><span class="line">#22 [ffff880f7566fce8] do_exit at ffffffff810815eb</span><br><span class="line">#23 [ffff880f7566fd78] do_group_exit at ffffffff81081dff</span><br><span class="line">#24 [ffff880f7566fda8] get_signal_to_deliver at ffffffff81092c10</span><br><span class="line">#25 [ffff880f7566fe40] do_signal at ffffffff81014417</span><br><span class="line">#26 [ffff880f7566ff30] do_notify_resume at ffffffff81014adf</span><br><span class="line">#27 [ffff880f7566ff50] retint_signal at ffffffff8163d1fc</span><br><span class="line">    RIP: 00007f3db495ee17  RSP: 00007f3cbc8a20f0  RFLAGS: 00010246</span><br><span class="line">    RAX: 0000000000000006  RBX: 00007f3cbc8a2430  RCX: 0000000000000001</span><br><span class="line">    RDX: 00007f3cbc99f700  RSI: 0000000000000008  RDI: 0000000000000000</span><br><span class="line">    RBP: 00007f3cbc8a2220   R8: 00007f3cbc8a25f0   R9: 00007f3cbc8a24c0</span><br><span class="line">    R10: 00000000fffffe00  R11: 0000000000000000  R12: 000000000000000b</span><br><span class="line">    R13: 00007f3cbc8a24c0  R14: 00007f3cbc8a2430  R15: 00007f3db48ee2c5</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0033  SS: 002b</span><br><span class="line">crash&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查看当前系统使用的 OpenSSL 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取完整的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
+</blockquote>
+<ul>
+<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
+<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
+<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
+</ul>
+<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
 
-
-<h1 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">KERNEL: 系统崩溃时运行的 kernel 文件</span><br><span class="line"></span><br><span class="line">DUMPFILE: 内核转储文件</span><br><span class="line"></span><br><span class="line">CPUS: 所在机器的 CPU 数量</span><br><span class="line"></span><br><span class="line">DATE: 系统崩溃的时间</span><br><span class="line"></span><br><span class="line">TASKS: 系统崩溃时内存中的任务数</span><br><span class="line"></span><br><span class="line">NODENAME: 崩溃的系统主机名</span><br><span class="line"></span><br><span class="line">RELEASE: 和 VERSION: 内核版本号</span><br><span class="line"></span><br><span class="line">MACHINE: CPU 架构</span><br><span class="line"></span><br><span class="line">MEMORY: 崩溃主机的物理内存</span><br><span class="line"></span><br><span class="line">PANIC: 崩溃类型，常见的崩溃类型包括：</span><br><span class="line"></span><br><span class="line">SysRq (System Request)：通过魔法组合键导致的系统崩溃，通常是测试使用。通过 echo c &gt; /proc/sysrq-trigger，就可以触发系统崩溃。</span><br><span class="line"></span><br><span class="line">oops：可以看成是内核级的 Segmentation Fault。应用程序如果进行了非法内存访问或执行了非法指令，会得到 Segfault 信号，一般行为是 coredump，应用程序也可以自己截获 Segfault 信号，自行处理。如果内核自己犯了这样的错误，则会弹出 oops 信息。</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &gt;&gt; /etc/yum.repos.d/CentOS-Debug.repo  &lt;&lt;EOF</span><br><span class="line">[CentOS-Debug]</span><br><span class="line">name=CentOS-$releasever - DebugInfo</span><br><span class="line">baseurl=http://debuginfo.centos.org/\$releasever/\$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">protect=1</span><br><span class="line">priority=1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">yum --enablerepo=CentOS-Debug install -y kernel-debuginfo-$(uname -r)</span><br><span class="line"></span><br><span class="line">debuginfo-install glibc</span><br><span class="line"></span><br><span class="line">vmcore crash</span><br></pre></td></tr></table></figure>
-
+<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1</a></p>
-</li>
-<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1</a></p>
-</li>
-<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html</a></p>
-</li>
-<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html</a></p>
-</li>
-<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html</a></p>
-</li>
-<li><p><a href="https://www.jianshu.com/p/5b4ef8112b97">https://www.jianshu.com/p/5b4ef8112b97</a></p>
-</li>
-<li><p><a href="https://linux.cn/article-8737-1.html">https://linux.cn/article-8737-1.html</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/yuanfang_way/article/details/77987399">https://blog.csdn.net/yuanfang_way/article/details/77987399</a></p>
-</li>
-<li><p><a href="https://yq.aliyun.com/articles/483967">https://yq.aliyun.com/articles/483967</a></p>
-</li>
-<li><p><a href="https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/">https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/</a></p>
-</li>
+<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
+<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
+<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
+<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
+]]></content>
       <tags>
-        <tag>Linux</tag>
-        <tag>crash</tag>
+        <tag>openssl</tag>
+        <tag>https</tag>
       </tags>
   </entry>
   <entry>
@@ -6839,6 +6831,61 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux内核崩溃分析</title>
+    <url>/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img data-src="https://lengyuewusheng.com/assets/images/Linuxkernel.png" />
+</div>
+
+<p>持续整理中。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h1 id="崩溃现场"><a href="#崩溃现场" class="headerlink" title="崩溃现场"></a>崩溃现场</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[@bjsjs_42_92 ~]# crash /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux /opt/var/crash/127.0.0.1-2019-08-06-10\:16\:35/vmcore</span><br><span class="line"></span><br><span class="line">crash 7.1.2-3.el7_2.1</span><br><span class="line">Copyright (C) 2002-2014  Red Hat, Inc.</span><br><span class="line">Copyright (C) 2004, 2005, 2006, 2010  IBM Corporation</span><br><span class="line">Copyright (C) 1999-2006  Hewlett-Packard Co</span><br><span class="line">Copyright (C) 2005, 2006, 2011, 2012  Fujitsu Limited</span><br><span class="line">Copyright (C) 2006, 2007  VA Linux Systems Japan K.K.</span><br><span class="line">Copyright (C) 2005, 2011  NEC Corporation</span><br><span class="line">Copyright (C) 1999, 2002, 2007  Silicon Graphics, Inc.</span><br><span class="line">Copyright (C) 1999, 2000, 2001, 2002  Mission Critical Linux, Inc.</span><br><span class="line">This program is free software, covered by the GNU General Public License,</span><br><span class="line">and you are welcome to change it and/or distribute copies of it under</span><br><span class="line">certain conditions.  Enter &quot;help copying&quot; to see the conditions.</span><br><span class="line">This program has absolutely no warranty.  Enter &quot;help warranty&quot; for details.</span><br><span class="line"></span><br><span class="line">GNU gdb (GDB) 7.6</span><br><span class="line">Copyright (C) 2013 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;</span><br><span class="line">and &quot;show warranty&quot; for details.</span><br><span class="line">This GDB was configured as &quot;x86_64-unknown-linux-gnu&quot;...</span><br><span class="line"></span><br><span class="line">      KERNEL: /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux</span><br><span class="line">    DUMPFILE: /opt/var/crash/127.0.0.1-2019-08-06-10:16:35/vmcore  [PARTIAL DUMP]</span><br><span class="line">        CPUS: 40</span><br><span class="line">        DATE: Tue Aug  6 10:16:27 2019</span><br><span class="line">      UPTIME: 390 days, 14:40:34</span><br><span class="line">LOAD AVERAGE: 81.55, 29.79, 16.87</span><br><span class="line">       TASKS: 2448</span><br><span class="line">    NODENAME: bjsjs_42_92</span><br><span class="line">     RELEASE: 3.10.0-327.el7.x86_64</span><br><span class="line">     VERSION: #1 SMP Thu Nov 19 22:10:57 UTC 2015</span><br><span class="line">     MACHINE: x86_64  (2199 Mhz)</span><br><span class="line">      MEMORY: 127.9 GB</span><br><span class="line">       PANIC: &quot;kernel BUG at fs/buffer.c:1280!&quot;</span><br><span class="line">         PID: 57502</span><br><span class="line">     COMMAND: &quot;java&quot;</span><br><span class="line">        TASK: ffff88201a2eb980  [THREAD_INFO: ffff880f7566c000]</span><br><span class="line">         CPU: 26</span><br><span class="line">       STATE:  (PANIC)</span><br><span class="line"></span><br><span class="line">crash&gt; bt</span><br><span class="line">PID: 57502  TASK: ffff88201a2eb980  CPU: 26  COMMAND: &quot;java&quot;</span><br><span class="line"> #0 [ffff880f7566f5a8] machine_kexec at ffffffff81051beb</span><br><span class="line"> #1 [ffff880f7566f608] crash_kexec at ffffffff810f2542</span><br><span class="line"> #2 [ffff880f7566f6d8] oops_end at ffffffff8163e1a8</span><br><span class="line"> #3 [ffff880f7566f700] die at ffffffff8101859b</span><br><span class="line"> #4 [ffff880f7566f730] do_trap at ffffffff8163d860</span><br><span class="line"> #5 [ffff880f7566f780] do_invalid_op at ffffffff81015204</span><br><span class="line"> #6 [ffff880f7566f830] invalid_op at ffffffff8164701e</span><br><span class="line">    [exception RIP: check_irqs_on+4]</span><br><span class="line">    RIP: ffffffff816326d1  RSP: ffff880f7566f8e8  RFLAGS: 00010046</span><br><span class="line">    RAX: 0000000000000096  RBX: ffff8810092d9110  RCX: ffff880ee7d05800</span><br><span class="line">    RDX: 0000000000001000  RSI: 000000000090014a  RDI: ffff880f8cf4b740</span><br><span class="line">    RBP: ffff880f7566f8e8   R8: 0000000000000004   R9: 0000000000000004</span><br><span class="line">    R10: ffff880ee7d05800  R11: ffff880f7566f9e8  R12: ffff880f8cf4b740</span><br><span class="line">    R13: 0000000000001000  R14: ffff8801df370800  R15: 0000000000000010</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018</span><br><span class="line"> #7 [ffff880f7566f8f0] __find_get_block at ffffffff81212c85</span><br><span class="line"> #8 [ffff880f7566f910] __getblk at ffffffff81212cb5</span><br><span class="line"> #9 [ffff880f7566f970] __ext4_get_inode_loc at ffffffffa0373030 [ext4]</span><br><span class="line">#10 [ffff880f7566f9d8] ext4_get_inode_loc at ffffffffa0374dbd [ext4]</span><br><span class="line">#11 [ffff880f7566f9e8] ext4_reserve_inode_write at ffffffffa0376906 [ext4]</span><br><span class="line">#12 [ffff880f7566fa18] ext4_mark_inode_dirty at ffffffffa03769d3 [ext4]</span><br><span class="line">#13 [ffff880f7566fa70] ext4_writepages at ffffffffa0377567 [ext4]</span><br><span class="line">#14 [ffff880f7566fba8] do_writepages at ffffffff811758fe</span><br><span class="line">#15 [ffff880f7566fbb8] __filemap_fdatawrite_range at ffffffff8116a685</span><br><span class="line">#16 [ffff880f7566fc08] filemap_flush at ffffffff8116a74c</span><br><span class="line">#17 [ffff880f7566fc18] ext4_alloc_da_blocks at ffffffffa0374a8c [ext4]</span><br><span class="line">#18 [ffff880f7566fc38] ext4_release_file at ffffffffa036df89 [ext4]</span><br><span class="line">#19 [ffff880f7566fc60] __fput at ffffffff811e0329</span><br><span class="line">#20 [ffff880f7566fca8] ____fput at ffffffff811e05ee</span><br><span class="line">#21 [ffff880f7566fcb8] task_work_run at ffffffff810a22f4</span><br><span class="line">#22 [ffff880f7566fce8] do_exit at ffffffff810815eb</span><br><span class="line">#23 [ffff880f7566fd78] do_group_exit at ffffffff81081dff</span><br><span class="line">#24 [ffff880f7566fda8] get_signal_to_deliver at ffffffff81092c10</span><br><span class="line">#25 [ffff880f7566fe40] do_signal at ffffffff81014417</span><br><span class="line">#26 [ffff880f7566ff30] do_notify_resume at ffffffff81014adf</span><br><span class="line">#27 [ffff880f7566ff50] retint_signal at ffffffff8163d1fc</span><br><span class="line">    RIP: 00007f3db495ee17  RSP: 00007f3cbc8a20f0  RFLAGS: 00010246</span><br><span class="line">    RAX: 0000000000000006  RBX: 00007f3cbc8a2430  RCX: 0000000000000001</span><br><span class="line">    RDX: 00007f3cbc99f700  RSI: 0000000000000008  RDI: 0000000000000000</span><br><span class="line">    RBP: 00007f3cbc8a2220   R8: 00007f3cbc8a25f0   R9: 00007f3cbc8a24c0</span><br><span class="line">    R10: 00000000fffffe00  R11: 0000000000000000  R12: 000000000000000b</span><br><span class="line">    R13: 00007f3cbc8a24c0  R14: 00007f3cbc8a2430  R15: 00007f3db48ee2c5</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0033  SS: 002b</span><br><span class="line">crash&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">KERNEL: 系统崩溃时运行的 kernel 文件</span><br><span class="line"></span><br><span class="line">DUMPFILE: 内核转储文件</span><br><span class="line"></span><br><span class="line">CPUS: 所在机器的 CPU 数量</span><br><span class="line"></span><br><span class="line">DATE: 系统崩溃的时间</span><br><span class="line"></span><br><span class="line">TASKS: 系统崩溃时内存中的任务数</span><br><span class="line"></span><br><span class="line">NODENAME: 崩溃的系统主机名</span><br><span class="line"></span><br><span class="line">RELEASE: 和 VERSION: 内核版本号</span><br><span class="line"></span><br><span class="line">MACHINE: CPU 架构</span><br><span class="line"></span><br><span class="line">MEMORY: 崩溃主机的物理内存</span><br><span class="line"></span><br><span class="line">PANIC: 崩溃类型，常见的崩溃类型包括：</span><br><span class="line"></span><br><span class="line">SysRq (System Request)：通过魔法组合键导致的系统崩溃，通常是测试使用。通过 echo c &gt; /proc/sysrq-trigger，就可以触发系统崩溃。</span><br><span class="line"></span><br><span class="line">oops：可以看成是内核级的 Segmentation Fault。应用程序如果进行了非法内存访问或执行了非法指令，会得到 Segfault 信号，一般行为是 coredump，应用程序也可以自己截获 Segfault 信号，自行处理。如果内核自己犯了这样的错误，则会弹出 oops 信息。</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &gt;&gt; /etc/yum.repos.d/CentOS-Debug.repo  &lt;&lt;EOF</span><br><span class="line">[CentOS-Debug]</span><br><span class="line">name=CentOS-$releasever - DebugInfo</span><br><span class="line">baseurl=http://debuginfo.centos.org/\$releasever/\$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">protect=1</span><br><span class="line">priority=1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">yum --enablerepo=CentOS-Debug install -y kernel-debuginfo-$(uname -r)</span><br><span class="line"></span><br><span class="line">debuginfo-install glibc</span><br><span class="line"></span><br><span class="line">vmcore crash</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1</a></p>
+</li>
+<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html</a></p>
+</li>
+<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html</a></p>
+</li>
+<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/5b4ef8112b97">https://www.jianshu.com/p/5b4ef8112b97</a></p>
+</li>
+<li><p><a href="https://linux.cn/article-8737-1.html">https://linux.cn/article-8737-1.html</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/yuanfang_way/article/details/77987399">https://blog.csdn.net/yuanfang_way/article/details/77987399</a></p>
+</li>
+<li><p><a href="https://yq.aliyun.com/articles/483967">https://yq.aliyun.com/articles/483967</a></p>
+</li>
+<li><p><a href="https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/">https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/</a></p>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>crash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL基础实践</title>
     <url>/mysql%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<p>持续更新中</p>
@@ -6936,14 +6983,10 @@
       </tags>
   </entry>
   <entry>
-    <title>自签SSL证书</title>
-    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
+    <title>ngxtop应用实践</title>
+    <url>/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
-</div>
-
-<p>devops 必备技能</p>
+<p>挺实用。。。</p>
 
 </blockquote>
 
@@ -6951,35 +6994,33 @@
 
 
 <ul>
-<li><p>查看当前系统使用的 OpenSSL 版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取完整的版本信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
+<li>操作范例<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop top remote_addr -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure></li>
 </ul>
-<blockquote>
-<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+
 <ul>
-<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
-<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
-<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
+<li><p>查看前30条</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -n 30 -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装报错<br>ImportError: No module named ‘config_parser’</p>
+</li>
+<li><p>解决方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/lebinh/ngxtop.git</span><br><span class="line">cd ngxtop</span><br><span class="line">pip install .</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
-
-<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
-<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
-<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
-<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
-<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
+<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA==&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB+utNzqA0ZJO83cJfRurzxTLSbl">https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA%3D%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB%2ButNzqA0ZJO83cJfRurzxTLSbl</a></p>
+</li>
+<li><p><a href="https://www.vpser.net/manage/ngxtop.html">https://www.vpser.net/manage/ngxtop.html</a></p>
+</li>
 </ul>
-]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
+      <categories>
+        <category>工具控</category>
+      </categories>
       <tags>
-        <tag>openssl</tag>
-        <tag>https</tag>
+        <tag>nginx</tag>
+        <tag>ngxtop</tag>
       </tags>
   </entry>
   <entry>
@@ -7039,47 +7080,6 @@
         <tag>Linux</tag>
         <tag>监控</tag>
         <tag>prometheus</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ngxtop应用实践</title>
-    <url>/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>挺实用。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<ul>
-<li>操作范例<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop top remote_addr -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li><p>查看前30条</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -n 30 -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装报错<br>ImportError: No module named ‘config_parser’</p>
-</li>
-<li><p>解决方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/lebinh/ngxtop.git</span><br><span class="line">cd ngxtop</span><br><span class="line">pip install .</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA==&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB+utNzqA0ZJO83cJfRurzxTLSbl">https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA%3D%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB%2ButNzqA0ZJO83cJfRurzxTLSbl</a></p>
-</li>
-<li><p><a href="https://www.vpser.net/manage/ngxtop.html">https://www.vpser.net/manage/ngxtop.html</a></p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>工具控</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>ngxtop</tag>
       </tags>
   </entry>
   <entry>
