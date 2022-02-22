@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>开张之作</title>
+    <url>/%E5%BC%80%E5%BC%A0%E4%B9%8B%E4%BD%9C.html</url>
+    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32507038&auto=1&height=66"></iframe>
+
+<p>不得不说，想做成一件事情真的很难。</p>
+<p>酝酿三年，筹备半年，将近一个月的紧密实施，博客终于赶在今天悄然上线了。</p>
+<p>不得不说，做任何事情只要肯走心，一定能够做成，如果没成，那就再花点心思。</p>
+<p>在这个自媒体泛滥的时代，碎片化的知识无处不在，</p>
+<p>然而我并不励志做一个媒体人，我只是希望把日常的进步积累下来，</p>
+<p>蹉跎岁月中最后能留下点自己亲手创造的价值。</p>
+<p>还记得QQ空间刚火起来的那些年，每隔几个月都会挤时间跑到网吧里就为了写一篇博客，</p>
+<p>后来变成了每到寒暑假写一篇总结，再到后来每到年末回首过去展望未来写一篇，</p>
+<p>再后来我就变得不会写字了，如今算起来已经三四年没有认真写过东西了。</p>
+<p>从今天起，做一个爱学习爱总结的人，借助博客督促自己多读书，多学习，多努力。</p>
+<p>如果在自己进步的同时，无意中也帮到了你，这也算是一件让人开心的事儿了。</p>
+<p>已经很晚了，再不睡觉天都要亮了，今天就写到这儿吧，来日方长，积水成渊吧！</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo(Next)+GitHub Pages搭建开源博客</title>
     <url>/hexo-next-github-pages%E6%90%AD%E5%BB%BA%E5%BC%80%E6%BA%90%E5%8D%9A%E5%AE%A2.html</url>
     <content><![CDATA[<h1 id="node环境"><a href="#node环境" class="headerlink" title="node环境"></a>node环境</h1><p>  略</p>
@@ -163,31 +188,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开张之作</title>
-    <url>/%E5%BC%80%E5%BC%A0%E4%B9%8B%E4%BD%9C.html</url>
-    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32507038&auto=1&height=66"></iframe>
-
-<p>不得不说，想做成一件事情真的很难。</p>
-<p>酝酿三年，筹备半年，将近一个月的紧密实施，博客终于赶在今天悄然上线了。</p>
-<p>不得不说，做任何事情只要肯走心，一定能够做成，如果没成，那就再花点心思。</p>
-<p>在这个自媒体泛滥的时代，碎片化的知识无处不在，</p>
-<p>然而我并不励志做一个媒体人，我只是希望把日常的进步积累下来，</p>
-<p>蹉跎岁月中最后能留下点自己亲手创造的价值。</p>
-<p>还记得QQ空间刚火起来的那些年，每隔几个月都会挤时间跑到网吧里就为了写一篇博客，</p>
-<p>后来变成了每到寒暑假写一篇总结，再到后来每到年末回首过去展望未来写一篇，</p>
-<p>再后来我就变得不会写字了，如今算起来已经三四年没有认真写过东西了。</p>
-<p>从今天起，做一个爱学习爱总结的人，借助博客督促自己多读书，多学习，多努力。</p>
-<p>如果在自己进步的同时，无意中也帮到了你，这也算是一件让人开心的事儿了。</p>
-<p>已经很晚了，再不睡觉天都要亮了，今天就写到这儿吧，来日方长，积水成渊吧！</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>生活</tag>
       </tags>
   </entry>
   <entry>
@@ -1571,82 +1571,6 @@
       </tags>
   </entry>
   <entry>
-    <title>基于生产环境的仿真流量测试</title>
-    <url>/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html</url>
-    <content><![CDATA[<p>虽然业界的Web应用测试工具众多，但多数是基于压力的离线测试，很多时候很难发现所有问题，往往测试上线后依然存在各种问题。基于实际生产环境的仿真流量测试，无疑能够覆盖更多的问题，达到更好的测试效果。<br>以下介绍三种实现仿真流量测试环境的实现工具。</p>
-<span id="more"></span>
-
-<h1 id="goreplay"><a href="#goreplay" class="headerlink" title="goreplay"></a>goreplay</h1><ul>
-<li><p>源码下载</p>
-<p><a href="https://github.com/buger/goreplay.git">下载</a></p>
-</li>
-<li><p>文档</p>
-<p><a href="https://github.com/buger/goreplay/wiki">GitHubWiki</a></p>
-</li>
-<li><p>特点</p>
-<ul>
-<li>Go语言编写</li>
-<li>功能强大，简单易用</li>
-<li>资源消耗少</li>
-</ul>
-</li>
-<li><p>简单用例</p>
-<ul>
-<li>将本地8080端口流量复制到 10.0.0.2 的80端口<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./goreplay --http-original-host --input-raw :8080 --input-raw-realip-header &quot;X-Real-IP&quot; --output-http &quot;http://10.0.0.2:80&quot; --exit-after 259200s</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h1 id="Tcpcopy"><a href="#Tcpcopy" class="headerlink" title="Tcpcopy"></a>Tcpcopy</h1><ul>
-<li><p>源码下载</p>
-<p><a href="https://github.com/session-replay-tools/tcpcopy.git">Tcpcopy</a></p>
-<p><a href="https://github.com/session-replay-tools/intercept.git">intercept</a></p>
-</li>
-<li><p>文档</p>
-<p><a href="https://github.com/session-replay-tools/tcpcopy">GitHub·READEME</a></p>
-</li>
-<li><p>特点</p>
-<ul>
-<li>C语言编写</li>
-<li>使用复杂</li>
-<li>依赖root权限或CAP_NET_RAW capability(e.g. setcap CAP_NET_RAW&#x3D;ep tcpcopy)</li>
-<li>依赖于 assistant server的intercept截获应答</li>
-</ul>
-</li>
-<li><p>简单用例</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10.0.0.1 生产环境</span><br><span class="line">10.0.0.2 测试环境</span><br><span class="line">10.0.0.3 assistant server</span><br></pre></td></tr></table></figure>
-<ul>
-<li>生产环境<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./tcpcopy -x 8080-10.0.0.2:80 -s 10.0.0.3 -d -n2</span><br><span class="line"># 将生产环境本地8080端口流量放大2倍复制到10.0.0.2的80端口，并指定10.0.0.3为assistant server</span><br></pre></td></tr></table></figure></li>
-<li>测试服务器（10.0.0.2）上添加路由<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add -net 10.0.0.0 netmask 255.255.255.0 gw 10.0.0.3</span><br><span class="line">或：</span><br><span class="line">route add -host 10.0.0.1 gw 10.0.0.3</span><br></pre></td></tr></table></figure></li>
-<li>assistant server<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./intercept -i eth0 -F ‘tcp and src port 80’ -d</span><br><span class="line"># assistant server的intercept捕获eth0网卡的80端口的响应包</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h1 id="ngx-http-mirror-module"><a href="#ngx-http-mirror-module" class="headerlink" title="ngx_http_mirror_module"></a>ngx_http_mirror_module</h1><p>  mirror模块默认开启，编译时加–without-http_mirror_module参数可禁用此功能。</p>
-<ul>
-<li><p>版本</p>
-<p>Nginx 1.13.4 + </p>
-</li>
-<li><p>作用域</p>
-<p>http, server, location</p>
-<p>mirror 模块配置分为两部分：源地址和镜像地址配置。</p>
-</li>
-<li><p>简单用例配置</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># original配置</span><br><span class="line">location / &#123;</span><br><span class="line">    mirror /mirror;</span><br><span class="line">    mirror /mirror2;</span><br><span class="line">    mirror_request_body off; //是否镜像请求Body部分</span><br><span class="line">    proxy_pass http://prod.env:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># mirror配置  //mirror不会输出http返回内容</span><br><span class="line">location /mirror &#123;</span><br><span class="line">    internal;       //指定此location只能被内部的请求调用，外部的调用请求会返回404</span><br><span class="line">    proxy_pass http://test.env:8000$request_uri;   //指定上游Server的地址</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;  //镜像流量的头部</span><br><span class="line">&#125;</span><br><span class="line">location /mirror2 &#123;</span><br><span class="line">    internal;</span><br><span class="line">    proxy_pass http://test2.env:8000$request_uri;</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>仿真测试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</title>
     <url>/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84tmpfs%E3%80%81-dev-shm%E3%80%81tmp%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6.html</url>
     <content><![CDATA[<p>共享内存允许两个或更多进程访问同一块内存。</p>
@@ -1741,6 +1665,82 @@
       <tags>
         <tag>Linux</tag>
         <tag>共享内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于生产环境的仿真流量测试</title>
+    <url>/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html</url>
+    <content><![CDATA[<p>虽然业界的Web应用测试工具众多，但多数是基于压力的离线测试，很多时候很难发现所有问题，往往测试上线后依然存在各种问题。基于实际生产环境的仿真流量测试，无疑能够覆盖更多的问题，达到更好的测试效果。<br>以下介绍三种实现仿真流量测试环境的实现工具。</p>
+<span id="more"></span>
+
+<h1 id="goreplay"><a href="#goreplay" class="headerlink" title="goreplay"></a>goreplay</h1><ul>
+<li><p>源码下载</p>
+<p><a href="https://github.com/buger/goreplay.git">下载</a></p>
+</li>
+<li><p>文档</p>
+<p><a href="https://github.com/buger/goreplay/wiki">GitHubWiki</a></p>
+</li>
+<li><p>特点</p>
+<ul>
+<li>Go语言编写</li>
+<li>功能强大，简单易用</li>
+<li>资源消耗少</li>
+</ul>
+</li>
+<li><p>简单用例</p>
+<ul>
+<li>将本地8080端口流量复制到 10.0.0.2 的80端口<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./goreplay --http-original-host --input-raw :8080 --input-raw-realip-header &quot;X-Real-IP&quot; --output-http &quot;http://10.0.0.2:80&quot; --exit-after 259200s</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="Tcpcopy"><a href="#Tcpcopy" class="headerlink" title="Tcpcopy"></a>Tcpcopy</h1><ul>
+<li><p>源码下载</p>
+<p><a href="https://github.com/session-replay-tools/tcpcopy.git">Tcpcopy</a></p>
+<p><a href="https://github.com/session-replay-tools/intercept.git">intercept</a></p>
+</li>
+<li><p>文档</p>
+<p><a href="https://github.com/session-replay-tools/tcpcopy">GitHub·READEME</a></p>
+</li>
+<li><p>特点</p>
+<ul>
+<li>C语言编写</li>
+<li>使用复杂</li>
+<li>依赖root权限或CAP_NET_RAW capability(e.g. setcap CAP_NET_RAW&#x3D;ep tcpcopy)</li>
+<li>依赖于 assistant server的intercept截获应答</li>
+</ul>
+</li>
+<li><p>简单用例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10.0.0.1 生产环境</span><br><span class="line">10.0.0.2 测试环境</span><br><span class="line">10.0.0.3 assistant server</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生产环境<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./tcpcopy -x 8080-10.0.0.2:80 -s 10.0.0.3 -d -n2</span><br><span class="line"># 将生产环境本地8080端口流量放大2倍复制到10.0.0.2的80端口，并指定10.0.0.3为assistant server</span><br></pre></td></tr></table></figure></li>
+<li>测试服务器（10.0.0.2）上添加路由<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add -net 10.0.0.0 netmask 255.255.255.0 gw 10.0.0.3</span><br><span class="line">或：</span><br><span class="line">route add -host 10.0.0.1 gw 10.0.0.3</span><br></pre></td></tr></table></figure></li>
+<li>assistant server<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./intercept -i eth0 -F ‘tcp and src port 80’ -d</span><br><span class="line"># assistant server的intercept捕获eth0网卡的80端口的响应包</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="ngx-http-mirror-module"><a href="#ngx-http-mirror-module" class="headerlink" title="ngx_http_mirror_module"></a>ngx_http_mirror_module</h1><p>  mirror模块默认开启，编译时加–without-http_mirror_module参数可禁用此功能。</p>
+<ul>
+<li><p>版本</p>
+<p>Nginx 1.13.4 + </p>
+</li>
+<li><p>作用域</p>
+<p>http, server, location</p>
+<p>mirror 模块配置分为两部分：源地址和镜像地址配置。</p>
+</li>
+<li><p>简单用例配置</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># original配置</span><br><span class="line">location / &#123;</span><br><span class="line">    mirror /mirror;</span><br><span class="line">    mirror /mirror2;</span><br><span class="line">    mirror_request_body off; //是否镜像请求Body部分</span><br><span class="line">    proxy_pass http://prod.env:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># mirror配置  //mirror不会输出http返回内容</span><br><span class="line">location /mirror &#123;</span><br><span class="line">    internal;       //指定此location只能被内部的请求调用，外部的调用请求会返回404</span><br><span class="line">    proxy_pass http://test.env:8000$request_uri;   //指定上游Server的地址</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;  //镜像流量的头部</span><br><span class="line">&#125;</span><br><span class="line">location /mirror2 &#123;</span><br><span class="line">    internal;</span><br><span class="line">    proxy_pass http://test2.env:8000$request_uri;</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>仿真测试</tag>
       </tags>
   </entry>
   <entry>
@@ -2350,22 +2350,6 @@
       </tags>
   </entry>
   <entry>
-    <title>腾讯云虚机自动挂载数据盘脚本</title>
-    <url>/%E8%85%BE%E8%AE%AF%E4%BA%91%E8%99%9A%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E7%9B%98%E8%84%9A%E6%9C%AC.html</url>
-    <content><![CDATA[<p>把之前在腾讯云上部署环境过程中遇到的可以抽象摘取出来的固定逻辑，稍加整理供大家参考。</p>
-<span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Usage</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">cat &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Usage:</span></span><br><span class="line"><span class="string">    sh $0</span></span><br><span class="line"><span class="string">    sh $0 -d MOUNTDIRECTORY</span></span><br><span class="line"><span class="string">    sh $0 -h|--help</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -d|--MountDirectory &#123;eg:/data&#125;:     Mount directory.</span></span><br><span class="line"><span class="string">    -h|--help:  Show help.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">OPTS=$(getopt -o d:h -a --long <span class="built_in">help</span>,MountDirectory: -n <span class="string">&#x27;warning&#x27;</span> -- <span class="string">&quot;<span class="variable">$@</span>&quot;</span>)</span><br><span class="line"><span class="built_in">eval</span> <span class="built_in">set</span> -- <span class="string">&quot;<span class="variable">$OPTS</span>&quot;</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        -d|--MountDirectory) MountDirectory=<span class="variable">$2</span>; <span class="built_in">shift</span> 2 ;;</span><br><span class="line">        -h|--<span class="built_in">help</span>) Usage; <span class="built_in">shift</span>; <span class="built_in">exit</span> 0 ;;</span><br><span class="line">        --) <span class="built_in">shift</span>; <span class="built_in">break</span> ;;</span><br><span class="line">        *) <span class="built_in">echo</span> -e <span class="string">&quot;\nParameter error.\n&quot;</span>; Usage; <span class="built_in">exit</span> 1 ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">disk_mount</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> [ -b /dev/vdb ]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span> \tfdisk /dev/vdb \033[0m&quot;</span></span><br><span class="line">		fdisk /dev/vdb 1&gt;/dev/null &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">n</span></span><br><span class="line"><span class="string">p</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">wq</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">		<span class="built_in">wait</span></span><br><span class="line">		<span class="keyword">if</span> [ -b /dev/vdb1 ]; <span class="keyword">then</span></span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mkfs.ext4 /dev/vdb1 \033[0m&quot;</span></span><br><span class="line">			mkfs.ext4 /dev/vdb1 1&gt;/dev/null</span><br><span class="line">			sleep 3</span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mounting -a \033[0m&quot;</span></span><br><span class="line">			mkdir -p <span class="variable">$&#123;MountDirectory&#125;</span></span><br><span class="line">			<span class="keyword">if</span> ! grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> /etc/fstab &gt;/dev/null 2&gt;&amp;1 ; <span class="keyword">then</span></span><br><span class="line">				<span class="built_in">echo</span> -e <span class="string">&quot;/dev/disk/by-uuid/<span class="subst">$(ls -l /dev/disk/by-uuid/ |grep vdb1 |awk &#x27;&#123;print $9&#125;&#x27;)</span>     <span class="variable">$&#123;MountDirectory&#125;</span>	ext4	defaults,nofail 0 2&quot;</span> &gt;&gt;/etc/fstab &amp;&amp; mount -a</span><br><span class="line">			    <span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t Finished. \033[0m&quot;</span></span><br><span class="line">                df -h |grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m /etc/fstab record has already existed. \033[0m&quot;</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m fdisk failed. \033[0m&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m/dev/vdb does not exist. \033[0m&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    MountDirectory=<span class="string">&quot;<span class="subst">$(echo <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> |grep -Po &#x27;^/(\w+/)</span>*\w+&#x27;)&quot;</span></span><br><span class="line">    [ -z <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> ] &amp;&amp; MountDirectory=/tencentCloud/data;</span><br><span class="line">    disk_mount</span><br><span class="line">&#125;</span><br><span class="line">main</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>自动化</tag>
-        <tag>脚本</tag>
-        <tag>腾讯云</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MediaWiki导航菜单设置</title>
     <url>/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html</url>
     <content><![CDATA[<h1 id="侧边栏导航-MediaWiki-Sidebar"><a href="#侧边栏导航-MediaWiki-Sidebar" class="headerlink" title="侧边栏导航(MediaWiki:Sidebar)"></a>侧边栏导航(MediaWiki:Sidebar)</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* CATEGORY-SIDEBAR</span><br><span class="line">* navigation</span><br><span class="line">** mainpage|mainpage-description</span><br><span class="line">** recentchanges-url|recentchanges</span><br><span class="line">** randompage-url|randompage</span><br><span class="line">** helppage|help</span><br><span class="line"></span><br><span class="line">*  自定义一级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line">*  自定义一级导航2</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line">*  自定义一级导航3</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line"></span><br><span class="line">* SEARCH</span><br><span class="line">* TOOLBOX</span><br><span class="line">* LANGUAGES</span><br></pre></td></tr></table></figure>
@@ -2386,6 +2370,22 @@
       </tags>
   </entry>
   <entry>
+    <title>腾讯云虚机自动挂载数据盘脚本</title>
+    <url>/%E8%85%BE%E8%AE%AF%E4%BA%91%E8%99%9A%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E7%9B%98%E8%84%9A%E6%9C%AC.html</url>
+    <content><![CDATA[<p>把之前在腾讯云上部署环境过程中遇到的可以抽象摘取出来的固定逻辑，稍加整理供大家参考。</p>
+<span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Usage</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">cat &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Usage:</span></span><br><span class="line"><span class="string">    sh $0</span></span><br><span class="line"><span class="string">    sh $0 -d MOUNTDIRECTORY</span></span><br><span class="line"><span class="string">    sh $0 -h|--help</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -d|--MountDirectory &#123;eg:/data&#125;:     Mount directory.</span></span><br><span class="line"><span class="string">    -h|--help:  Show help.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">OPTS=$(getopt -o d:h -a --long <span class="built_in">help</span>,MountDirectory: -n <span class="string">&#x27;warning&#x27;</span> -- <span class="string">&quot;<span class="variable">$@</span>&quot;</span>)</span><br><span class="line"><span class="built_in">eval</span> <span class="built_in">set</span> -- <span class="string">&quot;<span class="variable">$OPTS</span>&quot;</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        -d|--MountDirectory) MountDirectory=<span class="variable">$2</span>; <span class="built_in">shift</span> 2 ;;</span><br><span class="line">        -h|--<span class="built_in">help</span>) Usage; <span class="built_in">shift</span>; <span class="built_in">exit</span> 0 ;;</span><br><span class="line">        --) <span class="built_in">shift</span>; <span class="built_in">break</span> ;;</span><br><span class="line">        *) <span class="built_in">echo</span> -e <span class="string">&quot;\nParameter error.\n&quot;</span>; Usage; <span class="built_in">exit</span> 1 ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">disk_mount</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> [ -b /dev/vdb ]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span> \tfdisk /dev/vdb \033[0m&quot;</span></span><br><span class="line">		fdisk /dev/vdb 1&gt;/dev/null &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">n</span></span><br><span class="line"><span class="string">p</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">wq</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">		<span class="built_in">wait</span></span><br><span class="line">		<span class="keyword">if</span> [ -b /dev/vdb1 ]; <span class="keyword">then</span></span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mkfs.ext4 /dev/vdb1 \033[0m&quot;</span></span><br><span class="line">			mkfs.ext4 /dev/vdb1 1&gt;/dev/null</span><br><span class="line">			sleep 3</span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mounting -a \033[0m&quot;</span></span><br><span class="line">			mkdir -p <span class="variable">$&#123;MountDirectory&#125;</span></span><br><span class="line">			<span class="keyword">if</span> ! grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> /etc/fstab &gt;/dev/null 2&gt;&amp;1 ; <span class="keyword">then</span></span><br><span class="line">				<span class="built_in">echo</span> -e <span class="string">&quot;/dev/disk/by-uuid/<span class="subst">$(ls -l /dev/disk/by-uuid/ |grep vdb1 |awk &#x27;&#123;print $9&#125;&#x27;)</span>     <span class="variable">$&#123;MountDirectory&#125;</span>	ext4	defaults,nofail 0 2&quot;</span> &gt;&gt;/etc/fstab &amp;&amp; mount -a</span><br><span class="line">			    <span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t Finished. \033[0m&quot;</span></span><br><span class="line">                df -h |grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m /etc/fstab record has already existed. \033[0m&quot;</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m fdisk failed. \033[0m&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m/dev/vdb does not exist. \033[0m&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    MountDirectory=<span class="string">&quot;<span class="subst">$(echo <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> |grep -Po &#x27;^/(\w+/)</span>*\w+&#x27;)&quot;</span></span><br><span class="line">    [ -z <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> ] &amp;&amp; MountDirectory=/tencentCloud/data;</span><br><span class="line">    disk_mount</span><br><span class="line">&#125;</span><br><span class="line">main</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>自动化</tag>
+        <tag>脚本</tag>
+        <tag>腾讯云</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MediaWiki常见问题汇总</title>
     <url>/mediawiki%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
     <content><![CDATA[<p>MediaWiki是一个非常成熟完善的文档框架，也许是因为太过成熟，官方给出的文档太过全面，一些问题就连google都很难搜出有效信息。</p>
@@ -2400,7 +2400,7 @@
 <ul>
 <li>从服务器端看session文件写入为空，但是session配置、权限等都没有问题。报错如下图：</li>
 </ul>
-<p><img data-src="http://www.lengyuewusheng.com/assets/images/00025-01.png" alt="登录报错"></p>
+<p><img src="http://www.lengyuewusheng.com/assets/images/00025-01.png" alt="登录报错"></p>
 </li>
 </ul>
 </li>
@@ -2428,136 +2428,6 @@
       </categories>
       <tags>
         <tag>MediaWiki</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>tmux窗口管理</title>
-    <url>/tmux%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86.html</url>
-    <content><![CDATA[<p>工欲善其事必先利其器。。。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>对于tmux简单来说，一个会话里面可以有多个窗口，一个窗口里面可以有多个面板。</p>
-</blockquote>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install tmux</span><br></pre></td></tr></table></figure>
-
-<style> table th:nth-of-type(2){width: 80%;}</style>
-
-
-<h1 id="会话（Session）"><a href="#会话（Session）" class="headerlink" title="会话（Session）"></a>会话（Session）</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>我们拿终端工具如：XShell、SecureCRT 等去连接正在运行的服务器的时候，每新建一个连接，就是一个新的会话。使用 Tmux 新建会话的时候，也是一样，一个新的会话就表示一个新的连接。</p>
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
-<li>创建一个新的会话test1：tmux new -s sessionName</li>
-<li>断开当前会话：tmux detach(快捷键：Ctrl+b+d)</li>
-<li>进入之前的会话：tmux attach-session -t sessionName，简写：tmux a -t sessionName</li>
-<li>关闭会话：tmux kill-session -t sessionName</li>
-<li>查看所有会话：tmux list-session 简写：tmux ls（快捷键：Ctrl+b+s）</li>
-<li>关闭所有会话：tmux kill-server</li>
-<li>强制重载当前会话：（快捷键：Ctrl+b+r）</li>
-<li>重新开启某一会话: tmux attach -t sessionName</li>
-<li>切换到某一会话：tmux switch -t sessionName</li>
-<li>重命名会话: tmux rename -t oldName newName</li>
-</ul>
-<h2 id="默认会话快捷键"><a href="#默认会话快捷键" class="headerlink" title="默认会话快捷键"></a>默认会话快捷键</h2><ul>
-<li>列出所有快捷键：<code>Ctrl + b,?</code>，按q返回</li>
-<li>脱离当前会话：<code>Ctrl + b,d</code>，输入tmux attach能够重新进入之前会话</li>
-<li>选择并切换会话：<code>Ctrl + b,s</code></li>
-<li>选择要脱离的会话：<code>Ctrl + b,D</code></li>
-<li>挂起当前会话：<code>Ctrl + z</code></li>
-<li>列出提示信息缓存：<code>Ctrl + b,~</code>，含tmux返回的各种提示信息</li>
-<li>进入命令行模式：<code>Ctrl + b,:</code>，可输入tmux命令，如kill-server</li>
-<li>复制模式：<code>Ctrl + b,[</code>，光标移动到复制内容位置，空格键开始，方向键选择复制，回车确认，q&#x2F;Esc退出</li>
-<li>粘贴模式：<code>Ctrl + b,]</code>，粘贴在复制模式中复制的内容，按q&#x2F;Esc退出</li>
-<li>显示当前的时间：<code>ctrl + b,t</code></li>
-</ul>
-<h1 id="窗口（Window）"><a href="#窗口（Window）" class="headerlink" title="窗口（Window）"></a>窗口（Window）</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>窗口：窗口的概念，可以类比于 Windows 里面的窗口的概念。<br/>之前我们连服务器的时候，终端工具每次连接只有一个界面，当我们需要同时操作多个过程的时候，我们就需要建立新的连接。这样很不方便。<br/>Tmux 里面的窗口的概念，就可以让我们在一个会话里有多个界面，就不需要去建立的一个会话。</p>
-<h2 id="常用操作-1"><a href="#常用操作-1" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
-<li>创建一个新的窗口：<code>tmux new-window</code> </li>
-<li>列出所有窗口：<code>tmux list-windows</code></li>
-<li>根据序列索引选择窗口 <code>tmux select-window -t :0-9</code></li>
-<li>重命名当前窗口：<code>tmux rename-window</code></li>
-</ul>
-<h2 id="默认窗口快捷键"><a href="#默认窗口快捷键" class="headerlink" title="默认窗口快捷键"></a>默认窗口快捷键</h2><ul>
-<li>创建新窗口：<code>Ctrl + b,c</code></li>
-<li>关闭当前窗口：<code>Ctrl + b,&amp;</code></li>
-<li>切换到指定窗口：<code>Ctrl + b,数字键</code></li>
-<li>重命名当前窗口，便于识别：<code>Ctrl + b,,</code></li>
-<li>修改当前窗口编号，相当于重新排序：<code>Ctrl + b,.</code></li>
-<li>切换至上一窗口：<code>Ctrl + b,p</code></li>
-<li>切换至下一窗口：<code>Ctrl + b,n</code></li>
-<li>前后窗口间互相切换：<code>Ctrl + b,l</code></li>
-<li>通过窗口列表切换窗口：<code>Ctrl + b,w</code></li>
-<li>在所有窗口中查找关键词，便于窗口多了切换：<code>Ctrl + b,f</code></li>
-</ul>
-<h1 id="面板（Panel）"><a href="#面板（Panel）" class="headerlink" title="面板（Panel）"></a>面板（Panel）</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>面板是用于对界面的布局而言的。就是将一个界面划分为多个不同的区域，每个区域我们称之为一个面板</p>
-<h2 id="常用操作-2"><a href="#常用操作-2" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
-<li>垂直切分窗口：<code>tmux split-window</code></li>
-<li>水平切分窗口：<code>tmux split-window -h</code></li>
-<li>在指定方向交换面板：<code>tmux swap-pane -[UDLR]</code></li>
-<li>在指定方向选择下一个面板：<code>tmux select-pane -[UDLR]</code></li>
-</ul>
-<h2 id="默认面板快捷键"><a href="#默认面板快捷键" class="headerlink" title="默认面板快捷键"></a>默认面板快捷键</h2><ul>
-<li>将当前面板上下分屏：<code>Ctrl + b,&quot;</code></li>
-<li>将当前面板左右分屏：<code>Ctrl + b,%</code></li>
-<li>选择当前窗口中下一个面板：<code>Ctrl + b,o</code></li>
-<li>移动光标选择对应面板：<code>Ctrl + b,方向键</code></li>
-<li>向前置换当前面板：<code>Ctrl + b,&#123;</code></li>
-<li>向后置换当前面板：<code>Ctrl + b,&#125;</code></li>
-<li>逆时针旋转当前窗口的面板：<code>Ctrl + b,Alt+o</code></li>
-<li>顺时针旋转当前窗口的面板：<code>Ctrl + b,Ctrl+o</code></li>
-<li>显示面板编号：<code>Ctrl + b,q</code></li>
-<li>关闭当前分屏：<code>Ctrl + b,x</code></li>
-<li>将当前面板置于新窗口,即新建一个窗口,其中仅包含当前面板：<code>Ctrl + b,!</code></li>
-<li>以1个单元格为单位移动边缘以调整当前面板大小：<code>Ctrl + b,Ctrl+方向键</code></li>
-<li>以5个单元格为单位移动边缘以调整当前面板大小：<code>Ctrl + b,Alt+方向键</code></li>
-<li>切换默认面板布局：<code>Ctrl + b,空格键</code></li>
-<li>最大化当前所在面板：<code>Ctrl + b,z</code>，tmux 1.8新特性</li>
-</ul>
-<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><ul>
-<li><p>列出所有tmux命令及其参数：<code>tmux list-commands</code></p>
-</li>
-<li><p>列出所有可以的快捷键和其运行的 tmux 命令：<code>tmux list-keys</code></p>
-</li>
-<li><p>流出所有的 session、window、pane、运行的进程号：<code>tmux info</code></p>
-</li>
-<li><p>变更配置文件后重新加载配置文件：<code>tmux source-file ~/.tmux.conf</code></p>
-</li>
-<li><p>重命名会话<code>tmux rename -t 原会话名  新会话名</code></p>
-</li>
-<li><p>会话间移动窗口：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`Ctrl + b,:`  进入命令行模式;</span><br><span class="line">move-window -s 源会话名:窗口号 -t 目标会话名        //move-window可以简写为movew</span><br><span class="line">movew -d 源会话名:窗口号                            //将某个窗口移动到当前会话</span><br></pre></td></tr></table></figure></li>
-<li><p>复制模式</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`Ctrl+b	[`进入复制模式，按`q`退出</span><br><span class="line">按下`空格键`开始复制，移动光标选择复制区域</span><br><span class="line">按下`回车键`复制选中文本并退出复制模式</span><br><span class="line">按下`Ctrl+b	]`粘贴复制模式中复制的文本</span><br></pre></td></tr></table></figure>
-<ul>
-<li>复制模式中不接受键盘的字符输入，如果误入复制模式，可以直接按<code>q</code>键退出复制模式。</li>
-<li>另外复制模式中可以上翻查看在普通模式下无法查看的屏幕输出内容。</li>
-</ul>
-</li>
-<li><p>窗口自动调整大小问题</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> tmux默认会同步同一个会话的操作到所有会话连接的终端窗口中，这种同步机制，限制了窗口的大小为最小的会话连接。</span><br><span class="line"> 为了避免窗口自动调整大小，终端剩余空间填充小圆点可以执行</span><br><span class="line"> tmux a -d</span><br><span class="line">或在会话命令行模式下执行</span><br><span class="line">: a -d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调整窗口排序顺序</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">命令行模式下</span><br><span class="line">swap-window -s 1 -t 2  交换1、2窗口</span><br><span class="line">swap-window -t 1       当前窗口和1号窗口交换</span><br><span class="line">move-window -t 1       将当前窗口移动到1号窗口位置</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>终端类型与配色方案</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ncurses库包名</span><br><span class="line">    CentOS 5:</span><br><span class="line">    ncurses-5.5-24.20060715</span><br><span class="line">    CentOS 6/7:</span><br><span class="line">    ncurses-base-5.9-13.20130511.el7.noarch</span><br><span class="line">文件路径</span><br><span class="line">    /usr/share/terminfo/</span><br><span class="line">    eg:</span><br><span class="line">    /usr/share/terminfo/s/screen-256color</span><br><span class="line">    /usr/share/terminfo/x/xterm-256color</span><br><span class="line">终端配置</span><br><span class="line">    echo $TERM</span><br><span class="line">    echo $TERMINFO</span><br><span class="line">    export TERM=screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">    export TERMINFO=/user/share/terminfo</span><br><span class="line">tmux 临时设置默认终端类型</span><br><span class="line">    set -g default-terminal &quot;xterm&quot;</span><br><span class="line">当终端不支持screen-256color，vim编辑文件报错时，将TERM修改为xterm</span><br><span class="line">    # echo $TERM</span><br><span class="line">    screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">备注：</span><br><span class="line">    vim ~/.tmux.conf</span><br><span class="line">    必须设置成</span><br><span class="line">    set -g default-terminal &quot;screen-256color&quot;</span><br><span class="line">    不能设置成</span><br><span class="line">    set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">    否则tmux新开的窗口中默认的$TERM就是xterm-256color，</span><br><span class="line">    开启omnitty 会有阴影，显示会有问题。也可以手动修改窗口中的$TERM环境变量消除阴影。</span><br></pre></td></tr></table></figure></li>
-<li><p>screen-256color和xterm-256color的区别？</p>
-</li>
-</ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="http://linuxwiki.github.io/ProductivityTools/tmux.html">tmux wiki</a></li>
-<li><a href="http://louiszhai.github.io/2017/09/30/tmux/#Tmux%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4">Tmux使用手册</a></li>
-<li><a href="https://linux.cn/blog-17704-5941.html">linux term</a></li>
-<li><a href="http://www.kbase101.com/question/26581.html">zsh：在tmux中设置TERM &#x3D; screen-256color，但在没有tmux的情况下设置xterm-256color</a></li>
-<li><a href="https://better-coding.com/solved-xterm-256color-unknown-terminal-type/">xterm-256color’: unknown terminal type.</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/GNU_Screen_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BD%BF%E7%94%A8_256_%E8%89%B2">GNU Screen</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
-      <categories>
-        <category>快捷键</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>tmux</tag>
       </tags>
   </entry>
   <entry>
@@ -3022,39 +2892,133 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux挂载Windows共享目录</title>
-    <url>/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html</url>
-    <content><![CDATA[<p>CIFS(Common Internet File System)：通用网络文件系统</p>
+    <title>tmux窗口管理</title>
+    <url>/tmux%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86.html</url>
+    <content><![CDATA[<p>工欲善其事必先利其器。。。</p>
 <span id="more"></span>
 
+<blockquote>
+<p>对于tmux简单来说，一个会话里面可以有多个窗口，一个窗口里面可以有多个面板。</p>
+</blockquote>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install tmux</span><br></pre></td></tr></table></figure>
+
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+
+<h1 id="会话（Session）"><a href="#会话（Session）" class="headerlink" title="会话（Session）"></a>会话（Session）</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>我们拿终端工具如：XShell、SecureCRT 等去连接正在运行的服务器的时候，每新建一个连接，就是一个新的会话。使用 Tmux 新建会话的时候，也是一样，一个新的会话就表示一个新的连接。</p>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
+<li>创建一个新的会话test1：tmux new -s sessionName</li>
+<li>断开当前会话：tmux detach(快捷键：Ctrl+b+d)</li>
+<li>进入之前的会话：tmux attach-session -t sessionName，简写：tmux a -t sessionName</li>
+<li>关闭会话：tmux kill-session -t sessionName</li>
+<li>查看所有会话：tmux list-session 简写：tmux ls（快捷键：Ctrl+b+s）</li>
+<li>关闭所有会话：tmux kill-server</li>
+<li>强制重载当前会话：（快捷键：Ctrl+b+r）</li>
+<li>重新开启某一会话: tmux attach -t sessionName</li>
+<li>切换到某一会话：tmux switch -t sessionName</li>
+<li>重命名会话: tmux rename -t oldName newName</li>
+</ul>
+<h2 id="默认会话快捷键"><a href="#默认会话快捷键" class="headerlink" title="默认会话快捷键"></a>默认会话快捷键</h2><ul>
+<li>列出所有快捷键：<code>Ctrl + b,?</code>，按q返回</li>
+<li>脱离当前会话：<code>Ctrl + b,d</code>，输入tmux attach能够重新进入之前会话</li>
+<li>选择并切换会话：<code>Ctrl + b,s</code></li>
+<li>选择要脱离的会话：<code>Ctrl + b,D</code></li>
+<li>挂起当前会话：<code>Ctrl + z</code></li>
+<li>列出提示信息缓存：<code>Ctrl + b,~</code>，含tmux返回的各种提示信息</li>
+<li>进入命令行模式：<code>Ctrl + b,:</code>，可输入tmux命令，如kill-server</li>
+<li>复制模式：<code>Ctrl + b,[</code>，光标移动到复制内容位置，空格键开始，方向键选择复制，回车确认，q&#x2F;Esc退出</li>
+<li>粘贴模式：<code>Ctrl + b,]</code>，粘贴在复制模式中复制的内容，按q&#x2F;Esc退出</li>
+<li>显示当前的时间：<code>ctrl + b,t</code></li>
+</ul>
+<h1 id="窗口（Window）"><a href="#窗口（Window）" class="headerlink" title="窗口（Window）"></a>窗口（Window）</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>窗口：窗口的概念，可以类比于 Windows 里面的窗口的概念。<br/>之前我们连服务器的时候，终端工具每次连接只有一个界面，当我们需要同时操作多个过程的时候，我们就需要建立新的连接。这样很不方便。<br/>Tmux 里面的窗口的概念，就可以让我们在一个会话里有多个界面，就不需要去建立的一个会话。</p>
+<h2 id="常用操作-1"><a href="#常用操作-1" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
+<li>创建一个新的窗口：<code>tmux new-window</code> </li>
+<li>列出所有窗口：<code>tmux list-windows</code></li>
+<li>根据序列索引选择窗口 <code>tmux select-window -t :0-9</code></li>
+<li>重命名当前窗口：<code>tmux rename-window</code></li>
+</ul>
+<h2 id="默认窗口快捷键"><a href="#默认窗口快捷键" class="headerlink" title="默认窗口快捷键"></a>默认窗口快捷键</h2><ul>
+<li>创建新窗口：<code>Ctrl + b,c</code></li>
+<li>关闭当前窗口：<code>Ctrl + b,&amp;</code></li>
+<li>切换到指定窗口：<code>Ctrl + b,数字键</code></li>
+<li>重命名当前窗口，便于识别：<code>Ctrl + b,,</code></li>
+<li>修改当前窗口编号，相当于重新排序：<code>Ctrl + b,.</code></li>
+<li>切换至上一窗口：<code>Ctrl + b,p</code></li>
+<li>切换至下一窗口：<code>Ctrl + b,n</code></li>
+<li>前后窗口间互相切换：<code>Ctrl + b,l</code></li>
+<li>通过窗口列表切换窗口：<code>Ctrl + b,w</code></li>
+<li>在所有窗口中查找关键词，便于窗口多了切换：<code>Ctrl + b,f</code></li>
+</ul>
+<h1 id="面板（Panel）"><a href="#面板（Panel）" class="headerlink" title="面板（Panel）"></a>面板（Panel）</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>面板是用于对界面的布局而言的。就是将一个界面划分为多个不同的区域，每个区域我们称之为一个面板</p>
+<h2 id="常用操作-2"><a href="#常用操作-2" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
+<li>垂直切分窗口：<code>tmux split-window</code></li>
+<li>水平切分窗口：<code>tmux split-window -h</code></li>
+<li>在指定方向交换面板：<code>tmux swap-pane -[UDLR]</code></li>
+<li>在指定方向选择下一个面板：<code>tmux select-pane -[UDLR]</code></li>
+</ul>
+<h2 id="默认面板快捷键"><a href="#默认面板快捷键" class="headerlink" title="默认面板快捷键"></a>默认面板快捷键</h2><ul>
+<li>将当前面板上下分屏：<code>Ctrl + b,&quot;</code></li>
+<li>将当前面板左右分屏：<code>Ctrl + b,%</code></li>
+<li>选择当前窗口中下一个面板：<code>Ctrl + b,o</code></li>
+<li>移动光标选择对应面板：<code>Ctrl + b,方向键</code></li>
+<li>向前置换当前面板：<code>Ctrl + b,&#123;</code></li>
+<li>向后置换当前面板：<code>Ctrl + b,&#125;</code></li>
+<li>逆时针旋转当前窗口的面板：<code>Ctrl + b,Alt+o</code></li>
+<li>顺时针旋转当前窗口的面板：<code>Ctrl + b,Ctrl+o</code></li>
+<li>显示面板编号：<code>Ctrl + b,q</code></li>
+<li>关闭当前分屏：<code>Ctrl + b,x</code></li>
+<li>将当前面板置于新窗口,即新建一个窗口,其中仅包含当前面板：<code>Ctrl + b,!</code></li>
+<li>以1个单元格为单位移动边缘以调整当前面板大小：<code>Ctrl + b,Ctrl+方向键</code></li>
+<li>以5个单元格为单位移动边缘以调整当前面板大小：<code>Ctrl + b,Alt+方向键</code></li>
+<li>切换默认面板布局：<code>Ctrl + b,空格键</code></li>
+<li>最大化当前所在面板：<code>Ctrl + b,z</code>，tmux 1.8新特性</li>
+</ul>
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><ul>
+<li><p>列出所有tmux命令及其参数：<code>tmux list-commands</code></p>
+</li>
+<li><p>列出所有可以的快捷键和其运行的 tmux 命令：<code>tmux list-keys</code></p>
+</li>
+<li><p>流出所有的 session、window、pane、运行的进程号：<code>tmux info</code></p>
+</li>
+<li><p>变更配置文件后重新加载配置文件：<code>tmux source-file ~/.tmux.conf</code></p>
+</li>
+<li><p>重命名会话<code>tmux rename -t 原会话名  新会话名</code></p>
+</li>
+<li><p>会话间移动窗口：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`Ctrl + b,:`  进入命令行模式;</span><br><span class="line">move-window -s 源会话名:窗口号 -t 目标会话名        //move-window可以简写为movew</span><br><span class="line">movew -d 源会话名:窗口号                            //将某个窗口移动到当前会话</span><br></pre></td></tr></table></figure></li>
+<li><p>复制模式</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`Ctrl+b	[`进入复制模式，按`q`退出</span><br><span class="line">按下`空格键`开始复制，移动光标选择复制区域</span><br><span class="line">按下`回车键`复制选中文本并退出复制模式</span><br><span class="line">按下`Ctrl+b	]`粘贴复制模式中复制的文本</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>软件环境</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install cifs-utils.x86_64</span><br></pre></td></tr></table></figure>
+<li>复制模式中不接受键盘的字符输入，如果误入复制模式，可以直接按<code>q</code>键退出复制模式。</li>
+<li>另外复制模式中可以上翻查看在普通模式下无法查看的屏幕输出内容。</li>
+</ul>
 </li>
-<li><p>挂载目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/share</span><br><span class="line">mount -t cifs -o username=&#x27;domain-name.com\username&#x27; &quot;//10.0.0.1/share&quot; /opt/share</span><br></pre></td></tr></table></figure>
+<li><p>窗口自动调整大小问题</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> tmux默认会同步同一个会话的操作到所有会话连接的终端窗口中，这种同步机制，限制了窗口的大小为最小的会话连接。</span><br><span class="line"> 为了避免窗口自动调整大小，终端剩余空间填充小圆点可以执行</span><br><span class="line"> tmux a -d</span><br><span class="line">或在会话命令行模式下执行</span><br><span class="line">: a -d</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>永久挂载(直接暴露用户密码，一般不建议，除非免密码公共共享)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -e &quot;\&quot;//10.0.0.1/share\&quot;    /opt/share  cifs  auto,username=&#x27;domain-name.com\username&#x27;,password=&#x27;passwd&#x27;  0 0\&quot; &gt;&gt;/etc/fstab</span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure>
+<li><p>调整窗口排序顺序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">命令行模式下</span><br><span class="line">swap-window -s 1 -t 2  交换1、2窗口</span><br><span class="line">swap-window -t 1       当前窗口和1号窗口交换</span><br><span class="line">move-window -t 1       将当前窗口移动到1号窗口位置</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>卸载</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">umount //10.0.0.1/share</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>中文乱码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum install system-config-language</span><br><span class="line"></span><br><span class="line"># system-config-language  # 选择中文简体</span><br><span class="line"></span><br><span class="line"># 将/etc/sysconfig/i18n中以下两项设置为</span><br><span class="line">LANG=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">SYSFONT=&quot;lat0-sun16&quot;</span><br><span class="line"></span><br><span class="line"># source /etc/sysconfig/i18n  #即使配置不需要改变也需要source一下</span><br><span class="line"></span><br><span class="line"># 如果没有中文语言包，执行此命令安装</span><br><span class="line"># yum groupinstall chinese-support</span><br><span class="line"></span><br><span class="line"># 最后将ssh客户端的编码设置为Unicode(UTF-8)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>参考</p>
+<li><p>终端类型与配色方案</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ncurses库包名</span><br><span class="line">    CentOS 5:</span><br><span class="line">    ncurses-5.5-24.20060715</span><br><span class="line">    CentOS 6/7:</span><br><span class="line">    ncurses-base-5.9-13.20130511.el7.noarch</span><br><span class="line">文件路径</span><br><span class="line">    /usr/share/terminfo/</span><br><span class="line">    eg:</span><br><span class="line">    /usr/share/terminfo/s/screen-256color</span><br><span class="line">    /usr/share/terminfo/x/xterm-256color</span><br><span class="line">终端配置</span><br><span class="line">    echo $TERM</span><br><span class="line">    echo $TERMINFO</span><br><span class="line">    export TERM=screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">    export TERMINFO=/user/share/terminfo</span><br><span class="line">tmux 临时设置默认终端类型</span><br><span class="line">    set -g default-terminal &quot;xterm&quot;</span><br><span class="line">当终端不支持screen-256color，vim编辑文件报错时，将TERM修改为xterm</span><br><span class="line">    # echo $TERM</span><br><span class="line">    screen-256color</span><br><span class="line">    export TERM=xterm</span><br><span class="line">备注：</span><br><span class="line">    vim ~/.tmux.conf</span><br><span class="line">    必须设置成</span><br><span class="line">    set -g default-terminal &quot;screen-256color&quot;</span><br><span class="line">    不能设置成</span><br><span class="line">    set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">    否则tmux新开的窗口中默认的$TERM就是xterm-256color，</span><br><span class="line">    开启omnitty 会有阴影，显示会有问题。也可以手动修改窗口中的$TERM环境变量消除阴影。</span><br></pre></td></tr></table></figure></li>
+<li><p>screen-256color和xterm-256color的区别？</p>
 </li>
 </ul>
-<p><a href="https://www.linuxhub.org/?p=147">Linux访问Windows共享</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://linuxwiki.github.io/ProductivityTools/tmux.html">tmux wiki</a></li>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/#Tmux%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4">Tmux使用手册</a></li>
+<li><a href="https://linux.cn/blog-17704-5941.html">linux term</a></li>
+<li><a href="http://www.kbase101.com/question/26581.html">zsh：在tmux中设置TERM &#x3D; screen-256color，但在没有tmux的情况下设置xterm-256color</a></li>
+<li><a href="https://better-coding.com/solved-xterm-256color-unknown-terminal-type/">xterm-256color’: unknown terminal type.</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/GNU_Screen_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BD%BF%E7%94%A8_256_%E8%89%B2">GNU Screen</a></li>
+</ul>
 <div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
       <categories>
-        <category>Windows</category>
+        <category>快捷键</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
         <tag>Linux</tag>
-        <tag>共享</tag>
+        <tag>tmux</tag>
       </tags>
   </entry>
   <entry>
@@ -3123,6 +3087,42 @@
       <tags>
         <tag>http</tag>
         <tag>协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux挂载Windows共享目录</title>
+    <url>/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html</url>
+    <content><![CDATA[<p>CIFS(Common Internet File System)：通用网络文件系统</p>
+<span id="more"></span>
+
+<ul>
+<li><p>软件环境</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install cifs-utils.x86_64</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/share</span><br><span class="line">mount -t cifs -o username=&#x27;domain-name.com\username&#x27; &quot;//10.0.0.1/share&quot; /opt/share</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>永久挂载(直接暴露用户密码，一般不建议，除非免密码公共共享)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -e &quot;\&quot;//10.0.0.1/share\&quot;    /opt/share  cifs  auto,username=&#x27;domain-name.com\username&#x27;,password=&#x27;passwd&#x27;  0 0\&quot; &gt;&gt;/etc/fstab</span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">umount //10.0.0.1/share</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>中文乱码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum install system-config-language</span><br><span class="line"></span><br><span class="line"># system-config-language  # 选择中文简体</span><br><span class="line"></span><br><span class="line"># 将/etc/sysconfig/i18n中以下两项设置为</span><br><span class="line">LANG=&quot;zh_CN.UTF-8&quot;</span><br><span class="line">SYSFONT=&quot;lat0-sun16&quot;</span><br><span class="line"></span><br><span class="line"># source /etc/sysconfig/i18n  #即使配置不需要改变也需要source一下</span><br><span class="line"></span><br><span class="line"># 如果没有中文语言包，执行此命令安装</span><br><span class="line"># yum groupinstall chinese-support</span><br><span class="line"></span><br><span class="line"># 最后将ssh客户端的编码设置为Unicode(UTF-8)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考</p>
+</li>
+</ul>
+<p><a href="https://www.linuxhub.org/?p=147">Linux访问Windows共享</a></p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Linux</tag>
+        <tag>共享</tag>
       </tags>
   </entry>
   <entry>
@@ -3258,6 +3258,186 @@
         <tag>协议</tag>
         <tag>OSI</tag>
         <tag>TCP/IP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</title>
+    <url>/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>术业有专攻，各有所长。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<style> table th:nth-of-type(1){width: 50%;} nth-of-type(2){width: 50%;}</style>
+
+<h1 id="influxdb-telegraf-Grafana监控解决方案"><a href="#influxdb-telegraf-Grafana监控解决方案" class="headerlink" title="influxdb+telegraf+Grafana监控解决方案"></a>influxdb+telegraf+Grafana监控解决方案</h1><h2 id="角色分工"><a href="#角色分工" class="headerlink" title="角色分工"></a>角色分工</h2><ul>
+<li>telegraf 根据配置采集数据，输出数据；拥有丰富强大的输出输出插件，influxdb官方推出的数据采集方案，对influxdb的支持非常好；</li>
+<li>influxdb 时序数据库，chronograf是官方提供的替代内置方案的web Admin；</li>
+<li>Grafana 出图告警。出图功能灵活强大，告警功能目前还比较简单单一。</li>
+</ul>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><ul>
+<li>官方提供的rpm包安装，无依赖，操作简单。</li>
+</ul>
+<h2 id="高可用实现方案"><a href="#高可用实现方案" class="headerlink" title="高可用实现方案"></a>高可用实现方案</h2><ul>
+<li>influxdb社区版不支持集群方案；</li>
+<li>telegraf支持写双份数据，来降低influxdb的单点风险；</li>
+<li>Grafana可以通过MySQL替代SQLite,redis共享session，nginx代理多个应用的方式实现高可用。</li>
+</ul>
+<h2 id="监控项"><a href="#监控项" class="headerlink" title="监控项"></a>监控项</h2><ul>
+<li>对java应用的监控<ul>
+<li>Jolokia</li>
+<li>httpjson<ul>
+<li>jmxtrans</li>
+<li>Actuator</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对http请求的监控<ul>
+<li>http</li>
+<li>httprespone</li>
+</ul>
+</li>
+<li>对日志的监控<ul>
+<li>logparser</li>
+<li>tail</li>
+</ul>
+</li>
+<li>支持exec脚本</li>
+<li>其它常见应用<ul>
+<li>apache</li>
+<li>ceph</li>
+<li>consul</li>
+<li>docker</li>
+<li>elasticsearch</li>
+<li>fluentd</li>
+<li>graylog</li>
+<li>haproxy</li>
+<li>influxdb</li>
+<li>iptables</li>
+<li>kubernetes</li>
+<li>memcached</li>
+<li>mesos</li>
+<li>mongodb</li>
+<li>mysql</li>
+<li>nginx</li>
+<li>openldap</li>
+<li>phpfpm</li>
+<li>postfix</li>
+<li>postgresql</li>
+<li>prometheus</li>
+<li>rabbitmq</li>
+<li>redis</li>
+<li>solr</li>
+<li>tomcat</li>
+<li>varnish</li>
+<li>zookeeper</li>
+</ul>
+</li>
+</ul>
+<h2 id="telegraf支持的常见写入方式或介质"><a href="#telegraf支持的常见写入方式或介质" class="headerlink" title="telegraf支持的常见写入方式或介质"></a>telegraf支持的常见写入方式或介质</h2><ul>
+<li>influxdb</li>
+<li>rabbitmq</li>
+<li>aws cloudwatch</li>
+<li>elasticsearch</li>
+<li>file</li>
+<li>graphite</li>
+<li>graylog</li>
+<li>kafka</li>
+<li>mqtt</li>
+<li>opentsdb</li>
+<li>prometheus</li>
+<li>socket_writer</li>
+<li>tcp</li>
+<li>udp</li>
+<li>…</li>
+</ul>
+<h2 id="出图"><a href="#出图" class="headerlink" title="出图"></a>出图</h2><ul>
+<li>Grafana社区提供了丰富的<a href="https://grafana.com/dashboards">Dashboard模板</a></li>
+<li>可以自定义</li>
+<li>导入导出</li>
+<li>Dashboard、Row、查询SQL中均支持Variables，出图非常灵活</li>
+</ul>
+<h2 id="告警"><a href="#告警" class="headerlink" title="告警"></a>告警</h2><ul>
+<li>支持较为简单的告警逻辑处理</li>
+<li>告警关联的SQL中不支持Variables解析</li>
+<li>目前单个panel只支持一个告警规则，因此在配置告警时要进行panel拆分</li>
+</ul>
+<h2 id="部署过程中的要点"><a href="#部署过程中的要点" class="headerlink" title="部署过程中的要点"></a>部署过程中的要点</h2><ul>
+<li>数据库使用域名，或绑hosts，避免迁移修改配置的问题</li>
+<li>http接口鉴权、绑定必要的IP list</li>
+<li>定义influxdb定期清理策略</li>
+<li>influxdb认证</li>
+</ul>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>秒级数据采集</li>
+<li>自动上报</li>
+<li>部署简单</li>
+<li>插件丰富，开箱即用</li>
+<li>支持协议数据</li>
+</ul>
+<h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><ul>
+<li>告警能力（策略相对简单、渠道固定）</li>
+<li>跨网部署</li>
+</ul>
+<h1 id="和zabbix的优劣对比"><a href="#和zabbix的优劣对比" class="headerlink" title="和zabbix的优劣对比"></a>和zabbix的优劣对比</h1><table>
+<thead>
+<tr>
+<th align="left">telegraf+influxdb+Grafana</th>
+<th align="left">Zabbix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">部署及使用简单</td>
+<td align="left">部署使用相对复杂</td>
+</tr>
+<tr>
+<td align="left">内置监控项丰富</td>
+<td align="left">内置监控项支持相对少一些，但是社区提供了丰富的监控采集方案</td>
+</tr>
+<tr>
+<td align="left">不支持跨机房部署</td>
+<td align="left">支持跨机房部署</td>
+</tr>
+<tr>
+<td align="left">审计功能相对较弱</td>
+<td align="left">审计功能成熟完善</td>
+</tr>
+<tr>
+<td align="left">出图能力灵活强大</td>
+<td align="left">出图功能相对弱一些，图形化定制方面操作复杂</td>
+</tr>
+<tr>
+<td align="left">告警功能简单</td>
+<td align="left">告警强大，支持告警依赖，告警升级</td>
+</tr>
+<tr>
+<td align="left">支持通过webhook方式触发命令</td>
+<td align="left">支持服务器端&#x2F;客户端的命令自动触发，支持命令推送</td>
+</tr>
+<tr>
+<td align="left">权限管理相对简单</td>
+<td align="left">支持细粒度的权限定制，权限体系成熟完善</td>
+</tr>
+<tr>
+<td align="left">数据采集方式相对单一，仅支持自动上报，但支持较为丰富的数据源</td>
+<td align="left">支持多种数据采集方式&#x2F;协议，数据源相对单一，v3.4.7版本开始支持ES存储历史数据</td>
+</tr>
+</tbody></table>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>zabbix 更加成熟完善，侧重告警能力。</li>
+<li>telegraf+influxdb+Grafana相对轻量，侧重出图能力。</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/%E9%80%9A%E8%BF%87zabbix-api%E5%9C%A8%E5%91%8A%E8%AD%A6%E9%82%AE%E4%BB%B6%E4%B8%AD%E6%8F%92%E5%85%A5%E8%B6%8B%E5%8A%BF%E5%9B%BE.html">通过Zabbix API在告警邮件中插入趋势图</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA%E5%90%8D.html">zabbix实现自定义主机名</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E8%A1%A8%E5%88%86%E5%8C%BA%E4%BC%98%E5%8C%96.html">zabbix表分区优化</a></li></ul></div>]]></content>
+      <categories>
+        <category>开源技术栈</category>
+      </categories>
+      <tags>
+        <tag>监控</tag>
+        <tag>influxdbdata</tag>
+        <tag>zabbix</tag>
       </tags>
   </entry>
   <entry>
@@ -3484,186 +3664,6 @@
       <tags>
         <tag>bash</tag>
         <tag>快捷键</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</title>
-    <url>/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>术业有专攻，各有所长。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<style> table th:nth-of-type(1){width: 50%;} nth-of-type(2){width: 50%;}</style>
-
-<h1 id="influxdb-telegraf-Grafana监控解决方案"><a href="#influxdb-telegraf-Grafana监控解决方案" class="headerlink" title="influxdb+telegraf+Grafana监控解决方案"></a>influxdb+telegraf+Grafana监控解决方案</h1><h2 id="角色分工"><a href="#角色分工" class="headerlink" title="角色分工"></a>角色分工</h2><ul>
-<li>telegraf 根据配置采集数据，输出数据；拥有丰富强大的输出输出插件，influxdb官方推出的数据采集方案，对influxdb的支持非常好；</li>
-<li>influxdb 时序数据库，chronograf是官方提供的替代内置方案的web Admin；</li>
-<li>Grafana 出图告警。出图功能灵活强大，告警功能目前还比较简单单一。</li>
-</ul>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><ul>
-<li>官方提供的rpm包安装，无依赖，操作简单。</li>
-</ul>
-<h2 id="高可用实现方案"><a href="#高可用实现方案" class="headerlink" title="高可用实现方案"></a>高可用实现方案</h2><ul>
-<li>influxdb社区版不支持集群方案；</li>
-<li>telegraf支持写双份数据，来降低influxdb的单点风险；</li>
-<li>Grafana可以通过MySQL替代SQLite,redis共享session，nginx代理多个应用的方式实现高可用。</li>
-</ul>
-<h2 id="监控项"><a href="#监控项" class="headerlink" title="监控项"></a>监控项</h2><ul>
-<li>对java应用的监控<ul>
-<li>Jolokia</li>
-<li>httpjson<ul>
-<li>jmxtrans</li>
-<li>Actuator</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>对http请求的监控<ul>
-<li>http</li>
-<li>httprespone</li>
-</ul>
-</li>
-<li>对日志的监控<ul>
-<li>logparser</li>
-<li>tail</li>
-</ul>
-</li>
-<li>支持exec脚本</li>
-<li>其它常见应用<ul>
-<li>apache</li>
-<li>ceph</li>
-<li>consul</li>
-<li>docker</li>
-<li>elasticsearch</li>
-<li>fluentd</li>
-<li>graylog</li>
-<li>haproxy</li>
-<li>influxdb</li>
-<li>iptables</li>
-<li>kubernetes</li>
-<li>memcached</li>
-<li>mesos</li>
-<li>mongodb</li>
-<li>mysql</li>
-<li>nginx</li>
-<li>openldap</li>
-<li>phpfpm</li>
-<li>postfix</li>
-<li>postgresql</li>
-<li>prometheus</li>
-<li>rabbitmq</li>
-<li>redis</li>
-<li>solr</li>
-<li>tomcat</li>
-<li>varnish</li>
-<li>zookeeper</li>
-</ul>
-</li>
-</ul>
-<h2 id="telegraf支持的常见写入方式或介质"><a href="#telegraf支持的常见写入方式或介质" class="headerlink" title="telegraf支持的常见写入方式或介质"></a>telegraf支持的常见写入方式或介质</h2><ul>
-<li>influxdb</li>
-<li>rabbitmq</li>
-<li>aws cloudwatch</li>
-<li>elasticsearch</li>
-<li>file</li>
-<li>graphite</li>
-<li>graylog</li>
-<li>kafka</li>
-<li>mqtt</li>
-<li>opentsdb</li>
-<li>prometheus</li>
-<li>socket_writer</li>
-<li>tcp</li>
-<li>udp</li>
-<li>…</li>
-</ul>
-<h2 id="出图"><a href="#出图" class="headerlink" title="出图"></a>出图</h2><ul>
-<li>Grafana社区提供了丰富的<a href="https://grafana.com/dashboards">Dashboard模板</a></li>
-<li>可以自定义</li>
-<li>导入导出</li>
-<li>Dashboard、Row、查询SQL中均支持Variables，出图非常灵活</li>
-</ul>
-<h2 id="告警"><a href="#告警" class="headerlink" title="告警"></a>告警</h2><ul>
-<li>支持较为简单的告警逻辑处理</li>
-<li>告警关联的SQL中不支持Variables解析</li>
-<li>目前单个panel只支持一个告警规则，因此在配置告警时要进行panel拆分</li>
-</ul>
-<h2 id="部署过程中的要点"><a href="#部署过程中的要点" class="headerlink" title="部署过程中的要点"></a>部署过程中的要点</h2><ul>
-<li>数据库使用域名，或绑hosts，避免迁移修改配置的问题</li>
-<li>http接口鉴权、绑定必要的IP list</li>
-<li>定义influxdb定期清理策略</li>
-<li>influxdb认证</li>
-</ul>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
-<li>秒级数据采集</li>
-<li>自动上报</li>
-<li>部署简单</li>
-<li>插件丰富，开箱即用</li>
-<li>支持协议数据</li>
-</ul>
-<h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><ul>
-<li>告警能力（策略相对简单、渠道固定）</li>
-<li>跨网部署</li>
-</ul>
-<h1 id="和zabbix的优劣对比"><a href="#和zabbix的优劣对比" class="headerlink" title="和zabbix的优劣对比"></a>和zabbix的优劣对比</h1><table>
-<thead>
-<tr>
-<th align="left">telegraf+influxdb+Grafana</th>
-<th align="left">Zabbix</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">部署及使用简单</td>
-<td align="left">部署使用相对复杂</td>
-</tr>
-<tr>
-<td align="left">内置监控项丰富</td>
-<td align="left">内置监控项支持相对少一些，但是社区提供了丰富的监控采集方案</td>
-</tr>
-<tr>
-<td align="left">不支持跨机房部署</td>
-<td align="left">支持跨机房部署</td>
-</tr>
-<tr>
-<td align="left">审计功能相对较弱</td>
-<td align="left">审计功能成熟完善</td>
-</tr>
-<tr>
-<td align="left">出图能力灵活强大</td>
-<td align="left">出图功能相对弱一些，图形化定制方面操作复杂</td>
-</tr>
-<tr>
-<td align="left">告警功能简单</td>
-<td align="left">告警强大，支持告警依赖，告警升级</td>
-</tr>
-<tr>
-<td align="left">支持通过webhook方式触发命令</td>
-<td align="left">支持服务器端&#x2F;客户端的命令自动触发，支持命令推送</td>
-</tr>
-<tr>
-<td align="left">权限管理相对简单</td>
-<td align="left">支持细粒度的权限定制，权限体系成熟完善</td>
-</tr>
-<tr>
-<td align="left">数据采集方式相对单一，仅支持自动上报，但支持较为丰富的数据源</td>
-<td align="left">支持多种数据采集方式&#x2F;协议，数据源相对单一，v3.4.7版本开始支持ES存储历史数据</td>
-</tr>
-</tbody></table>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>zabbix 更加成熟完善，侧重告警能力。</li>
-<li>telegraf+influxdb+Grafana相对轻量，侧重出图能力。</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/%E9%80%9A%E8%BF%87zabbix-api%E5%9C%A8%E5%91%8A%E8%AD%A6%E9%82%AE%E4%BB%B6%E4%B8%AD%E6%8F%92%E5%85%A5%E8%B6%8B%E5%8A%BF%E5%9B%BE.html">通过Zabbix API在告警邮件中插入趋势图</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA%E5%90%8D.html">zabbix实现自定义主机名</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E8%A1%A8%E5%88%86%E5%8C%BA%E4%BC%98%E5%8C%96.html">zabbix表分区优化</a></li></ul></div>]]></content>
-      <categories>
-        <category>开源技术栈</category>
-      </categories>
-      <tags>
-        <tag>监控</tag>
-        <tag>influxdbdata</tag>
-        <tag>zabbix</tag>
       </tags>
   </entry>
   <entry>
@@ -4499,85 +4499,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TCP连接过程</title>
-    <url>/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html</url>
-    <content><![CDATA[<p>传输控制协议(TCP)是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
-<span id="more"></span>
-
-<p><img data-src="https://www.lengyuewusheng.com/assets/images/00043-01.png" alt="TCP连接过程"></p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li></ul></div>]]></content>
-      <categories>
-        <category>TCP/IP</category>
-      </categories>
-      <tags>
-        <tag>TCP/IP</tag>
-        <tag>三次握手</tag>
-        <tag>四次挥手</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redis持久化策略</title>
-    <url>/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存也可以持久化的日志型、Key-Value数据库。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h2 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h2><h3 id="RDB-Redis-DataBase"><a href="#RDB-Redis-DataBase" class="headerlink" title="RDB(Redis DataBase)"></a>RDB(Redis DataBase)</h3><p>redis的默认持久化机制，在指定的时间间隔内将内存中的数据集快照写入磁盘。</p>
-<h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append Only File)"></a>AOF(Append Only File)</h3><p>以日志的形式记录服务器所处理的每一个写操作，在Redis服务器启动之初会读取该文件来重新构建数据库，以保证启动后数据库中的数据是完整的。</p>
-<p>Redis还可以同时使用AOF持久化和RDB持久化。<br>在这种情况下，当 Redis重启时，它会优先使用AOF文件来还原数据集，因为AOF文件保存的数据集通常比RDB文件所保存的数据集更完整。</p>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="RDB："><a href="#RDB：" class="headerlink" title="RDB："></a>RDB：</h3><ul>
-<li>优点<ul>
-<li>独立紧凑的数据文件，适用于备份和灾难恢复；</li>
-<li>RDB在恢复大数据集时的速度比AOF的恢复速度要快。</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>服务器故障是可能丢失一个保存时间间隔的数据；</li>
-</ul>
-</li>
-</ul>
-<h3 id="AOF"><a href="#AOF" class="headerlink" title="AOF:"></a>AOF:</h3><ul>
-<li>优点<ul>
-<li>AOF 的默认策略为每秒钟fsync一次，在这种配置下，Redis 仍然可以保持良好的性能，并且就算发生故障停机，也最多只会丢失一秒钟的数据</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>对于相同的数据集来说，AOF 文件的体积通常要大于 RDB 文件的体积。</li>
-<li>根据所使用的fsync策略，AOF的速度可能会慢于RDB。</li>
-</ul>
-</li>
-</ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="开启RDB"><a href="#开启RDB" class="headerlink" title="开启RDB"></a>开启RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">save 900 1            #在900秒(15分钟)内，如果至少有1个key发生变化，则dump内存快照。 </span><br><span class="line">save 300 10           #在300秒(5分钟)内，如果至少有10个key发生变化，则dump内存快照。 </span><br><span class="line">save 60 10000         #在60秒(1分钟)内，如果至少有10000个key发生变化，则dump内存快照。</span><br></pre></td></tr></table></figure>
-
-<h3 id="关闭-RDB"><a href="#关闭-RDB" class="headerlink" title="关闭 RDB"></a>关闭 RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set save &quot;&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>或者变更配置</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># save 900 1</span><br><span class="line"># save 300 10</span><br><span class="line"># save 60 10000</span><br></pre></td></tr></table></figure>
-
-<h3 id="开启-AOF"><a href="#开启-AOF" class="headerlink" title="开启 AOF"></a>开启 AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly yes</span><br><span class="line">redis-cli config appendfsync always      #每次有数据修改发生时都会写入AOF文件。 </span><br><span class="line">或者</span><br><span class="line">redis-cli config appendfsync everysec   #每秒钟同步一次，该策略为AOF的缺省策略。 </span><br></pre></td></tr></table></figure>
-
-<h3 id="关闭AOF"><a href="#关闭AOF" class="headerlink" title="关闭AOF"></a>关闭AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly no</span><br><span class="line">appendfsync no           #从不同步。高效但是数据不会被持久化。</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="http://redisdoc.com/topic/persistence.html">redis持久化</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">redis数据结构</a></li></ul></div>]]></content>
-      <categories>
-        <category>redis</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>持久化</tag>
-        <tag>缓存</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>http协议头字段说明</title>
     <url>/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -4670,7 +4591,7 @@
 <tr>
 <td align="left">From</td>
 <td align="left">发起此请求的用户的邮件地址。</td>
-<td align="left">From: <a href="mailto:&#x75;&#115;&#x65;&#114;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#x75;&#115;&#x65;&#114;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td align="left">From: <a href="mailto:&#x75;&#x73;&#x65;&#x72;&#64;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;">&#x75;&#x73;&#x65;&#x72;&#64;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td align="left">Host</td>
@@ -5079,6 +5000,85 @@
       </tags>
   </entry>
   <entry>
+    <title>TCP连接过程</title>
+    <url>/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html</url>
+    <content><![CDATA[<p>传输控制协议(TCP)是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<span id="more"></span>
+
+<p><img src="https://www.lengyuewusheng.com/assets/images/00043-01.png" alt="TCP连接过程"></p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li></ul></div>]]></content>
+      <categories>
+        <category>TCP/IP</category>
+      </categories>
+      <tags>
+        <tag>TCP/IP</tag>
+        <tag>三次握手</tag>
+        <tag>四次挥手</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redis持久化策略</title>
+    <url>/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存也可以持久化的日志型、Key-Value数据库。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h2 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h2><h3 id="RDB-Redis-DataBase"><a href="#RDB-Redis-DataBase" class="headerlink" title="RDB(Redis DataBase)"></a>RDB(Redis DataBase)</h3><p>redis的默认持久化机制，在指定的时间间隔内将内存中的数据集快照写入磁盘。</p>
+<h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append Only File)"></a>AOF(Append Only File)</h3><p>以日志的形式记录服务器所处理的每一个写操作，在Redis服务器启动之初会读取该文件来重新构建数据库，以保证启动后数据库中的数据是完整的。</p>
+<p>Redis还可以同时使用AOF持久化和RDB持久化。<br>在这种情况下，当 Redis重启时，它会优先使用AOF文件来还原数据集，因为AOF文件保存的数据集通常比RDB文件所保存的数据集更完整。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="RDB："><a href="#RDB：" class="headerlink" title="RDB："></a>RDB：</h3><ul>
+<li>优点<ul>
+<li>独立紧凑的数据文件，适用于备份和灾难恢复；</li>
+<li>RDB在恢复大数据集时的速度比AOF的恢复速度要快。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>服务器故障是可能丢失一个保存时间间隔的数据；</li>
+</ul>
+</li>
+</ul>
+<h3 id="AOF"><a href="#AOF" class="headerlink" title="AOF:"></a>AOF:</h3><ul>
+<li>优点<ul>
+<li>AOF 的默认策略为每秒钟fsync一次，在这种配置下，Redis 仍然可以保持良好的性能，并且就算发生故障停机，也最多只会丢失一秒钟的数据</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>对于相同的数据集来说，AOF 文件的体积通常要大于 RDB 文件的体积。</li>
+<li>根据所使用的fsync策略，AOF的速度可能会慢于RDB。</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="开启RDB"><a href="#开启RDB" class="headerlink" title="开启RDB"></a>开启RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">save 900 1            #在900秒(15分钟)内，如果至少有1个key发生变化，则dump内存快照。 </span><br><span class="line">save 300 10           #在300秒(5分钟)内，如果至少有10个key发生变化，则dump内存快照。 </span><br><span class="line">save 60 10000         #在60秒(1分钟)内，如果至少有10000个key发生变化，则dump内存快照。</span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭-RDB"><a href="#关闭-RDB" class="headerlink" title="关闭 RDB"></a>关闭 RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set save &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>或者变更配置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># save 900 1</span><br><span class="line"># save 300 10</span><br><span class="line"># save 60 10000</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启-AOF"><a href="#开启-AOF" class="headerlink" title="开启 AOF"></a>开启 AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly yes</span><br><span class="line">redis-cli config appendfsync always      #每次有数据修改发生时都会写入AOF文件。 </span><br><span class="line">或者</span><br><span class="line">redis-cli config appendfsync everysec   #每秒钟同步一次，该策略为AOF的缺省策略。 </span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭AOF"><a href="#关闭AOF" class="headerlink" title="关闭AOF"></a>关闭AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly no</span><br><span class="line">appendfsync no           #从不同步。高效但是数据不会被持久化。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="http://redisdoc.com/topic/persistence.html">redis持久化</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">redis数据结构</a></li></ul></div>]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>持久化</tag>
+        <tag>缓存</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于用户评价功能的使用感受和设计思考</title>
     <url>/%E5%85%B3%E4%BA%8E%E7%94%A8%E6%88%B7%E8%AF%84%E4%BB%B7%E5%8A%9F%E8%83%BD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -5089,7 +5089,7 @@
 <span id="more"></span>
 
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/feedback.jpeg" />
+<img src="https://lengyuewusheng.com/assets/images/feedback.jpeg" />
 </div>
 
 
@@ -5300,16 +5300,16 @@
 <h1 id="网页表格"><a href="#网页表格" class="headerlink" title="网页表格"></a>网页表格</h1><table>
   <tr>
     <td align="center">
-      <a href="https://crisp.chat/?ta=oR1nEv43TM" target="_blank"><img data-src="https://pbs.twimg.com/profile_images/651629444944273408/r5Kd_ifq_400x400.png" height="64" /></a>
+      <a href="https://crisp.chat/?ta=oR1nEv43TM" target="_blank"><img src="https://pbs.twimg.com/profile_images/651629444944273408/r5Kd_ifq_400x400.png" height="64" /></a>
     </td>
     <td align="center">
-      <a href="http://try.anyleads.com/secret" target="_blank"><img data-src="https://pbs.twimg.com/profile_images/838140522476761094/A4WpBe5M_400x400.jpg" height="64" /></a>
+      <a href="http://try.anyleads.com/secret" target="_blank"><img src="https://pbs.twimg.com/profile_images/838140522476761094/A4WpBe5M_400x400.jpg" height="64" /></a>
     </td>
     <td align="center">
-      <a href="https://hackr.io/" target="_blank"><img data-src="https://d1eq8vvyuam4eq.cloudfront.net/assets/images/code-images/code-apple-touch-icon-precomposed.png" height="64" /></a>
+      <a href="https://hackr.io/" target="_blank"><img src="https://d1eq8vvyuam4eq.cloudfront.net/assets/images/code-images/code-apple-touch-icon-precomposed.png" height="64" /></a>
     </td>
     <td align="center">
-      <a href="https://learnk8s.io/" target="_blank"><img data-src="https://pbs.twimg.com/profile_images/925127335573114880/9yCkEIe3_400x400.jpg" height="64" /></a>
+      <a href="https://learnk8s.io/" target="_blank"><img src="https://pbs.twimg.com/profile_images/925127335573114880/9yCkEIe3_400x400.jpg" height="64" /></a>
     </td>
   </tr>
 </table>
@@ -6363,56 +6363,6 @@
       </tags>
   </entry>
   <entry>
-    <title>基于scrcpy远程操控android设备</title>
-    <url>/%E5%9F%BA%E4%BA%8Escrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7android%E8%AE%BE%E5%A4%87.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>非常酷炫的操作。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<h1 id="USB模式"><a href="#USB模式" class="headerlink" title="USB模式"></a>USB模式</h1><blockquote>
-<p>需要通过USB线直连Android设备。</p>
-</blockquote>
-<h2 id="打开开发者选项"><a href="#打开开发者选项" class="headerlink" title="打开开发者选项"></a>打开开发者选项</h2><blockquote>
-<p>当手机开发者选项隐藏关闭时，需要打开开发者选项，设置&gt;系统&gt;关于手机&gt;版本号，<a href="https://developer.android.com/studio/debug/dev-options?hl=zh-CN">点击版本号信息7次</a>,返回上一屏幕，在底部附近可以找到开发者选项</p>
-</blockquote>
-<h2 id="打开USB调试"><a href="#打开USB调试" class="headerlink" title="打开USB调试"></a>打开USB调试</h2><blockquote>
-<p>设置&gt;系统&gt;开发者选项&gt;USB调试，打开USB调试</p>
-</blockquote>
-<h2 id="打开”仅充电”模式下允许ADB调试"><a href="#打开”仅充电”模式下允许ADB调试" class="headerlink" title="打开”仅充电”模式下允许ADB调试"></a>打开”仅充电”模式下允许ADB调试</h2><blockquote>
-<p>设置&gt;系统&gt;开发者选项&gt;”仅充电”模式下允许ADB调试，打开”仅充电”模式下允许ADB调试</p>
-</blockquote>
-<h2 id="执行-scrcpy-exe-即可"><a href="#执行-scrcpy-exe-即可" class="headerlink" title="执行 scrcpy.exe, 即可"></a>执行 <code>scrcpy.exe</code>, 即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.435s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
-
-<h1 id="wifi模式"><a href="#wifi模式" class="headerlink" title="wifi模式"></a>wifi模式</h1><blockquote>
-<p>前三步和USB模式相同，同时要求，adb调试设备和被调试设备在同一WLAN网络</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\WINDOWS\system32&gt; adb tcpip 5555</span><br><span class="line">PS C:\WINDOWS\system32&gt; adb connect 10.10.10.2:5555</span><br><span class="line">connected to 10.10.10.2:5555</span><br><span class="line"># 至此可拔掉USB连接线</span><br><span class="line">PS C:\WINDOWS\system32&gt; cd C:\scrcpy-win64-v1.10</span><br><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.431s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
-</li>
-<li><p><a href="https://github.com/Tomotoes/scrcpy-gui">scrcpy-gui</a></p>
-</li>
-<li><p><a href="https://developer.android.com/studio/command-line/adb.html#Enabling">android开发者文档·在设备上启用 adb 调试</a></p>
-</li>
-<li><p><a href="https://developer.android.com/studio/releases/platform-tools.html">Android SDK Platform-Tools下载·adb命令</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具控</category>
-      </categories>
-      <tags>
-        <tag>scrcpy</tag>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CPU相关知识总结</title>
     <url>/cpu%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93.html</url>
     <content><![CDATA[<p>整理中。。。</p>
@@ -6508,6 +6458,56 @@
       <tags>
         <tag>Linux</tag>
         <tag>cpu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于scrcpy远程操控android设备</title>
+    <url>/%E5%9F%BA%E4%BA%8Escrcpy%E8%BF%9C%E7%A8%8B%E6%93%8D%E6%8E%A7android%E8%AE%BE%E5%A4%87.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>非常酷炫的操作。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h1 id="USB模式"><a href="#USB模式" class="headerlink" title="USB模式"></a>USB模式</h1><blockquote>
+<p>需要通过USB线直连Android设备。</p>
+</blockquote>
+<h2 id="打开开发者选项"><a href="#打开开发者选项" class="headerlink" title="打开开发者选项"></a>打开开发者选项</h2><blockquote>
+<p>当手机开发者选项隐藏关闭时，需要打开开发者选项，设置&gt;系统&gt;关于手机&gt;版本号，<a href="https://developer.android.com/studio/debug/dev-options?hl=zh-CN">点击版本号信息7次</a>,返回上一屏幕，在底部附近可以找到开发者选项</p>
+</blockquote>
+<h2 id="打开USB调试"><a href="#打开USB调试" class="headerlink" title="打开USB调试"></a>打开USB调试</h2><blockquote>
+<p>设置&gt;系统&gt;开发者选项&gt;USB调试，打开USB调试</p>
+</blockquote>
+<h2 id="打开”仅充电”模式下允许ADB调试"><a href="#打开”仅充电”模式下允许ADB调试" class="headerlink" title="打开”仅充电”模式下允许ADB调试"></a>打开”仅充电”模式下允许ADB调试</h2><blockquote>
+<p>设置&gt;系统&gt;开发者选项&gt;”仅充电”模式下允许ADB调试，打开”仅充电”模式下允许ADB调试</p>
+</blockquote>
+<h2 id="执行-scrcpy-exe-即可"><a href="#执行-scrcpy-exe-即可" class="headerlink" title="执行 scrcpy.exe, 即可"></a>执行 <code>scrcpy.exe</code>, 即可</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.435s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
+
+<h1 id="wifi模式"><a href="#wifi模式" class="headerlink" title="wifi模式"></a>wifi模式</h1><blockquote>
+<p>前三步和USB模式相同，同时要求，adb调试设备和被调试设备在同一WLAN网络</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\WINDOWS\system32&gt; adb tcpip 5555</span><br><span class="line">PS C:\WINDOWS\system32&gt; adb connect 10.10.10.2:5555</span><br><span class="line">connected to 10.10.10.2:5555</span><br><span class="line"># 至此可拔掉USB连接线</span><br><span class="line">PS C:\WINDOWS\system32&gt; cd C:\scrcpy-win64-v1.10</span><br><span class="line">PS C:\scrcpy-win64-v1.10&gt; .\scrcpy.exe</span><br><span class="line">INFO: scrcpy 1.10 &lt;https://github.com/Genymobile/scrcpy&gt;</span><br><span class="line">E:\PortableSoftwares\scrcpy-win64-v1.10\scrcpy-server.jar: 1 file pushed. 0.0 MB/s (22546 bytes in 0.431s)</span><br><span class="line">INFO: Initial texture: 1080x1920</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><p><a href="https://github.com/Genymobile/scrcpy">scrcpy</a></p>
+</li>
+<li><p><a href="https://github.com/Tomotoes/scrcpy-gui">scrcpy-gui</a></p>
+</li>
+<li><p><a href="https://developer.android.com/studio/command-line/adb.html#Enabling">android开发者文档·在设备上启用 adb 调试</a></p>
+</li>
+<li><p><a href="https://developer.android.com/studio/releases/platform-tools.html">Android SDK Platform-Tools下载·adb命令</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具控</category>
+      </categories>
+      <tags>
+        <tag>scrcpy</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -6628,11 +6628,58 @@
       </tags>
   </entry>
   <entry>
+    <title>自签SSL证书</title>
+    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
+</div>
+
+<p>devops 必备技能</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<ul>
+<li><p>查看当前系统使用的 OpenSSL 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取完整的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
+</blockquote>
+<ul>
+<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
+<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
+<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
+</ul>
+<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
+
+<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
+<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
+<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
+<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>openssl</tag>
+        <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux内核崩溃分析</title>
     <url>/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/Linuxkernel.png" />
+<img src="https://lengyuewusheng.com/assets/images/Linuxkernel.png" />
 </div>
 
 <p>持续整理中。。。</p>
@@ -6769,7 +6816,7 @@
     <url>/mongodb%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/mongodb.png" />
+<img src="https://lengyuewusheng.com/assets/images/mongodb.png" />
 </div>
 
 <p>边用边总结</p>
@@ -6977,58 +7024,11 @@
       </tags>
   </entry>
   <entry>
-    <title>自签SSL证书</title>
-    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
-</div>
-
-<p>devops 必备技能</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<ul>
-<li><p>查看当前系统使用的 OpenSSL 版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取完整的版本信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
-</blockquote>
-<ul>
-<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
-<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
-<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
-</ul>
-<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
-
-<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
-<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
-<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
-<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
-<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>openssl</tag>
-        <tag>https</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>prometheus监控实践</title>
     <url>/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/prometheus.jpg" />
+<img src="https://lengyuewusheng.com/assets/images/prometheus.jpg" />
 </div>
 
 <p>Power your metrics and alerting with a leading open-source monitoring solution.</p>
@@ -7087,7 +7087,7 @@
     <url>/pandoc-revealjs%E4%BD%BF%E7%94%A8markdown%E7%BC%96%E5%86%99%E5%9C%A8%E7%BA%BFppt.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/revealjs.jpg" />
+<img src="https://lengyuewusheng.com/assets/images/revealjs.jpg" />
 </div>
 
 <p>学什么PPT，学reveal.js就够了！</p>
@@ -7161,11 +7161,11 @@
   <entry>
     <title>systemd配置范例</title>
     <url>/systemd%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</url>
-    <content><![CDATA[<p><img data-src="https://lengyuewusheng.com/images/systemd_logo.jpg"><br>systemd 是一个 Linux 系统基础组件的集合，提供了一个系统和服务管理器，运行为 PID 1 并负责启动其它程序。功能包括：支持并行化任务；同时采用 socket 式与 D-Bus 总线式激活服务；按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。systemd 支持 SysV 和 LSB 初始脚本，可以替代 sysvinit。除此之外，功能还包括日志进程、控制基础系统配置，维护登陆用户列表以及系统账户、运行时目录和设置，可以运行容器和虚拟机，可以简单的管理网络配置、网络时间同步、日志转发和名称解析等。</p>
+    <content><![CDATA[<p><img src="https://lengyuewusheng.com/images/systemd_logo.jpg"><br>systemd 是一个 Linux 系统基础组件的集合，提供了一个系统和服务管理器，运行为 PID 1 并负责启动其它程序。功能包括：支持并行化任务；同时采用 socket 式与 D-Bus 总线式激活服务；按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。systemd 支持 SysV 和 LSB 初始脚本，可以替代 sysvinit。除此之外，功能还包括日志进程、控制基础系统配置，维护登陆用户列表以及系统账户、运行时目录和设置，可以运行容器和虚拟机，可以简单的管理网络配置、网络时间同步、日志转发和名称解析等。</p>
 <span id="more"></span>
 
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/systemd.png" />
+<img src="https://lengyuewusheng.com/assets/images/systemd.png" />
 </div>
 
 <h1 id="配置文件路径"><a href="#配置文件路径" class="headerlink" title="配置文件路径"></a>配置文件路径</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/lib/systemd/system</span><br><span class="line">/run/systemd/system</span><br><span class="line">/etc/systemd/system</span><br></pre></td></tr></table></figure>
@@ -7209,7 +7209,7 @@
     <url>/tomcat%E8%B0%83%E4%BC%98%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
 <div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/tomcat.png" />
+<img src="https://lengyuewusheng.com/assets/images/tomcat.png" />
 </div>
 
 <p>持续整理中</p>
@@ -7399,9 +7399,9 @@
     <url>/nginx%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
 <!--div  align="center">
-<img data-src="https://lengyuewusheng.com/images/nginx.jpg" />
+<img src="https://lengyuewusheng.com/images/nginx.jpg" />
 </div-->
-<p><img data-src="https://lengyuewusheng.com/assets/images/nginx.png"></p>
+<p><img src="https://lengyuewusheng.com/assets/images/nginx.png"></p>
 <p>nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP&#x2F;UDP proxy server, originally written by Igor Sysoev.</p>
 
 </blockquote>
@@ -7569,7 +7569,7 @@
 </ul>
 <h1 id="前期筹备"><a href="#前期筹备" class="headerlink" title="前期筹备"></a>前期筹备</h1><p>前期筹备阶段需要做大量的准备和信息收集的工作，如基准测试、成本预估、成效预测等等，此外如果是新业务或新接手的业务，需要对业务应用整体有较为全面的了解。通过跟业务同学深入沟通或者参考现有相同或相似的服务。便于后续过程中的整体考量和扩展性设计。</p>
 <h2 id="了解业务架构"><a href="#了解业务架构" class="headerlink" title="了解业务架构"></a>了解业务架构</h2><p>本次部署的业务通过腾讯云覆盖全国15个边缘节点，服务器总量在200台左右。涉及nginx，各类C++业务服务。主体数据规模越100G，增量冷数据约10G，增量热数据1G以下，需要每天不定时更新。本篇主要从运维角度介绍服务部署的一般思路。因此弱化了业务细节，仅提供一张简洁的业务架构图说明部署和维护的复杂性即可。</p>
-<p><img data-src="https://lengyuewusheng.com/assets/images/edge/business_architecture.png" alt="业务架构图"></p>
+<p><img src="https://lengyuewusheng.com/assets/images/edge/business_architecture.png" alt="业务架构图"></p>
 <h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><p>技术选型主要指在工具链和技术方案选择时应遵循的一些基本原则。首先应该考虑的是业务场景的匹配程度，其次是实现成本和维护成本，开源方案还需考虑社区活跃程度，最后考虑的是人的因素，如已有的知识储备情况，以及团队对技术方案认同和擅长程度。</p>
 <h2 id="容灾设计"><a href="#容灾设计" class="headerlink" title="容灾设计"></a>容灾设计</h2><p>首先需要强调的是，这里提到的容灾是指工具链的容灾而非业务容灾。</p>
 <p>关于容灾设计应该如何考虑。有些同学会执念于服务的高可用，实际上业务的容灾设计是用户感知程度、服务容错能力以及容灾成本的多种因素平衡的结果，容灾能力在达到一定程度之后的提升成本可能是指数级上升的。因此出于成本考虑，很多工具链角色是单台服务器加冷备的方式，如基于Jenkins的持续交付工具，制品库，监控系统server端等。</p>
@@ -7698,7 +7698,7 @@
 </li>
 </ul>
 <h1 id="部署实施"><a href="#部署实施" class="headerlink" title="部署实施"></a>部署实施</h1><p>部署实施的流程大致总结如下。其中如果存在大规模数据传输过程，应该考虑和轻量的初始化操作剥离。</p>
-<p><img data-src="https://lengyuewusheng.com/assets/images/edge/deployment_flowchart.png" alt="部署流程图"></p>
+<p><img src="https://lengyuewusheng.com/assets/images/edge/deployment_flowchart.png" alt="部署流程图"></p>
 <p>针对重要流程将适当展开阐述。</p>
 <h2 id="服务器初始化"><a href="#服务器初始化" class="headerlink" title="服务器初始化"></a>服务器初始化</h2><p>所谓服务器的初始化操作，是指在部署之前，所有服务器需都要执行的统一的定制化操作步骤。一般至少需要考虑如下几个方面：</p>
 <ul>
@@ -7764,7 +7764,7 @@
 </ul>
 </li>
 </ul>
-<p><img data-src="https://lengyuewusheng.com/assets/images/edge/automation_architecture.png" alt="自动化实现"></p>
+<p><img src="https://lengyuewusheng.com/assets/images/edge/automation_architecture.png" alt="自动化实现"></p>
 <h1 id="监控告警"><a href="#监控告警" class="headerlink" title="监控告警"></a>监控告警</h1><p>监控的基本功能大致分为指标数据采集、数据可视化以及告警消息推送三部分。监控选型过程中，在满足需求的基础上，需要考虑部署和维护成本。Prometheus在系统指标监控层面无疑在部署和维护方面成本都是相对较低的。原因在于它不依赖于其它组件部署，时序数据存储于本地，便于备份和恢复。另外grafana社区对于prometheus监控的dashboard模板也非常丰富，可以快速搭建出基础的监控功能。</p>
 <p>对于nginx的监控需要第三方模块nginx-vts的支持或基于lua的metric库支持。个人比较倾向于使用vts模块，因为之前定制业务的nginx rpm包时顺带定制了vts扩展的rpm包，开箱即用，部署非常方便。nginx-vts的配置文件是相对固化的，在此不再详细展开。</p>
 <p>对于应用级监控，如进程存活状态，进程的各类硬件资源消耗等需要引入process-exporter，学习成本稍高，但是使用非常方便属于一劳永逸的学习投入。</p>
@@ -7802,7 +7802,7 @@
 </ul>
 </li>
 </ul>
-<p><img data-src="https://lengyuewusheng.com/assets/images/edge/alert.png" alt="监控告警架构图"></p>
+<p><img src="https://lengyuewusheng.com/assets/images/edge/alert.png" alt="监控告警架构图"></p>
 <h1 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h1><p>一篇写下来终于领悟到什么叫眼高手低，没写之前觉得有无数观点可以输出，真正开始整理的时候下发现，想把这些想法条例清楚的表述出来并不容易。在此对于那些默默输出原创有价值文章的人表示敬意。业务部署和写文档一样，没有实践之前觉得没有什么复杂性可言，实际实施过程中才发现很多细节问题需要通盘考虑。快糙猛的部署行为也许可以达到业务火速上线的效果。但是欠下的技术债会在很长一个周期内潜移默化的影响着业务品质。因此我们在追求业务快速迭代的同时，一定要夯实基础。尽可能避免偷工减料的行为拉低了业务稳定性。</p>
 <p>写至此处才发现，文字已经堆积了不少，但还不确定观点是否表达清楚。在略显凌乱的文字中间，希望对缺乏业务部署经验的同学一些思路上的启发。同时也是对自己整个项目实施过程的全面总结。</p>
 <p>纸上得来终觉浅。所谓的经验还需更多的实践才能有更深刻的理解。</p>
