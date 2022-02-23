@@ -469,6 +469,30 @@
       </tags>
   </entry>
   <entry>
+    <title>shell的分批并发操作的简单实现</title>
+    <url>/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html</url>
+    <content><![CDATA[<blockquote>
+<p>很多情况下，计算资源是有限的。我们需要在任务时长和资源消耗之前取得一种平衡。因此需要进行并发和控制。</p>
+</blockquote>
+<span id="more"></span>
+
+<ul>
+<li><p>示例一</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat packetConcurrency.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 并发数</span><br><span class="line">threads=3</span><br><span class="line"># 任务数</span><br><span class="line">tasks=9</span><br><span class="line">function task()</span><br><span class="line">&#123;</span><br><span class="line">	r=$(( $RANDOM % 30 + 1 ))</span><br><span class="line">	echo &quot;Start $1.&quot;</span><br><span class="line">	sleep $r</span><br><span class="line">	echo &quot;Finished $1,took $&#123;r&#125;s.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">counter=1</span><br><span class="line">for sn in $(seq 1 $&#123;tasks&#125;)</span><br><span class="line">do</span><br><span class="line">    task $&#123;sn&#125; &amp;</span><br><span class="line">    if [ &quot;$(($&#123;counter&#125; % $&#123;threads&#125;))&quot; -eq &quot;0&quot; ]; then</span><br><span class="line">	time wait</span><br><span class="line">	echo &quot;===================&quot;</span><br><span class="line">    fi</span><br><span class="line">    counter=$(($&#123;counter&#125; + 1))</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#######################################################</span><br><span class="line">执行结果：</span><br><span class="line"># sh packetConcurrency.sh</span><br><span class="line">Start 2.</span><br><span class="line">Start 3.</span><br><span class="line">Start 1.</span><br><span class="line">Finished 2,took 3s.</span><br><span class="line">Finished 1,took 14s.</span><br><span class="line">Finished 3,took 15s.</span><br><span class="line"></span><br><span class="line">real	0m15.014s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.059s</span><br><span class="line">===================</span><br><span class="line">Start 5.</span><br><span class="line">Start 6.</span><br><span class="line">Start 4.</span><br><span class="line">Finished 5,took 1s.</span><br><span class="line">Finished 6,took 22s.</span><br><span class="line">Finished 4,took 26s.</span><br><span class="line"></span><br><span class="line">real	0m26.065s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.050s</span><br><span class="line">===================</span><br><span class="line">Start 8.</span><br><span class="line">Start 9.</span><br><span class="line">Start 7.</span><br><span class="line">Finished 8,took 6s.</span><br><span class="line">Finished 7,took 9s.</span><br><span class="line">Finished 9,took 22s.</span><br><span class="line"></span><br><span class="line">real	0m22.101s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.088s</span><br><span class="line">sys	0m0.099s</span><br><span class="line">===================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例二</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat groupExec.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">groups=5</span><br><span class="line">tasks=20</span><br><span class="line">function groupExec()</span><br><span class="line">&#123;</span><br><span class="line">for group in $(seq 0 $(($&#123;groups&#125; - 1 )))</span><br><span class="line">do</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组开始：======&quot;</span><br><span class="line">        for task in $(seq 0 $(($&#123;tasks&#125; - 1 )))</span><br><span class="line">        do</span><br><span class="line">                if [ &quot;$(($&#123;task&#125; / $(($&#123;tasks&#125; / $&#123;groups&#125;))))&quot; -eq &quot;$&#123;group&#125;&quot; ]; then</span><br><span class="line">                        &#123; echo &quot;task:$(( $&#123;task&#125; + 1 ))&quot;;sleep $(($RANDOM % 10)); &#125; &amp;</span><br><span class="line">                else</span><br><span class="line">                        continue</span><br><span class="line">                fi</span><br><span class="line">        done</span><br><span class="line">        wait</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组完成。======&quot;</span><br><span class="line">done</span><br><span class="line">&#125;</span><br><span class="line">groupExec</span><br><span class="line"></span><br><span class="line"># sh groupExec.sh</span><br><span class="line">======第1组开始：======</span><br><span class="line">task:1</span><br><span class="line">task:4</span><br><span class="line">task:3</span><br><span class="line">task:2</span><br><span class="line">======第1组完成。======</span><br><span class="line">======第2组开始：======</span><br><span class="line">task:5</span><br><span class="line">task:7</span><br><span class="line">task:8</span><br><span class="line">task:6</span><br><span class="line">======第2组完成。======</span><br><span class="line">======第3组开始：======</span><br><span class="line">task:9</span><br><span class="line">task:11</span><br><span class="line">task:12</span><br><span class="line">task:10</span><br><span class="line">======第3组完成。======</span><br><span class="line">======第4组开始：======</span><br><span class="line">task:15</span><br><span class="line">task:16</span><br><span class="line">task:13</span><br><span class="line">task:14</span><br><span class="line">======第4组完成。======</span><br><span class="line">======第5组开始：======</span><br><span class="line">task:19</span><br><span class="line">task:17</span><br><span class="line">task:18</span><br><span class="line">task:20</span><br><span class="line">======第5组完成。======</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>并发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell脚本传参</title>
     <url>/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html</url>
     <content><![CDATA[<ul>
@@ -514,27 +538,127 @@
       </tags>
   </entry>
   <entry>
-    <title>shell的分批并发操作的简单实现</title>
-    <url>/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html</url>
-    <content><![CDATA[<blockquote>
-<p>很多情况下，计算资源是有限的。我们需要在任务时长和资源消耗之前取得一种平衡。因此需要进行并发和控制。</p>
-</blockquote>
+    <title>shell printf格式化输出</title>
+    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
+    <content><![CDATA[<p>shell也可以优雅的输出。</p>
 <span id="more"></span>
 
-<ul>
-<li><p>示例一</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat packetConcurrency.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 并发数</span><br><span class="line">threads=3</span><br><span class="line"># 任务数</span><br><span class="line">tasks=9</span><br><span class="line">function task()</span><br><span class="line">&#123;</span><br><span class="line">	r=$(( $RANDOM % 30 + 1 ))</span><br><span class="line">	echo &quot;Start $1.&quot;</span><br><span class="line">	sleep $r</span><br><span class="line">	echo &quot;Finished $1,took $&#123;r&#125;s.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">counter=1</span><br><span class="line">for sn in $(seq 1 $&#123;tasks&#125;)</span><br><span class="line">do</span><br><span class="line">    task $&#123;sn&#125; &amp;</span><br><span class="line">    if [ &quot;$(($&#123;counter&#125; % $&#123;threads&#125;))&quot; -eq &quot;0&quot; ]; then</span><br><span class="line">	time wait</span><br><span class="line">	echo &quot;===================&quot;</span><br><span class="line">    fi</span><br><span class="line">    counter=$(($&#123;counter&#125; + 1))</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#######################################################</span><br><span class="line">执行结果：</span><br><span class="line"># sh packetConcurrency.sh</span><br><span class="line">Start 2.</span><br><span class="line">Start 3.</span><br><span class="line">Start 1.</span><br><span class="line">Finished 2,took 3s.</span><br><span class="line">Finished 1,took 14s.</span><br><span class="line">Finished 3,took 15s.</span><br><span class="line"></span><br><span class="line">real	0m15.014s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.059s</span><br><span class="line">===================</span><br><span class="line">Start 5.</span><br><span class="line">Start 6.</span><br><span class="line">Start 4.</span><br><span class="line">Finished 5,took 1s.</span><br><span class="line">Finished 6,took 22s.</span><br><span class="line">Finished 4,took 26s.</span><br><span class="line"></span><br><span class="line">real	0m26.065s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.050s</span><br><span class="line">===================</span><br><span class="line">Start 8.</span><br><span class="line">Start 9.</span><br><span class="line">Start 7.</span><br><span class="line">Finished 8,took 6s.</span><br><span class="line">Finished 7,took 9s.</span><br><span class="line">Finished 9,took 22s.</span><br><span class="line"></span><br><span class="line">real	0m22.101s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.088s</span><br><span class="line">sys	0m0.099s</span><br><span class="line">===================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>示例二</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat groupExec.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">groups=5</span><br><span class="line">tasks=20</span><br><span class="line">function groupExec()</span><br><span class="line">&#123;</span><br><span class="line">for group in $(seq 0 $(($&#123;groups&#125; - 1 )))</span><br><span class="line">do</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组开始：======&quot;</span><br><span class="line">        for task in $(seq 0 $(($&#123;tasks&#125; - 1 )))</span><br><span class="line">        do</span><br><span class="line">                if [ &quot;$(($&#123;task&#125; / $(($&#123;tasks&#125; / $&#123;groups&#125;))))&quot; -eq &quot;$&#123;group&#125;&quot; ]; then</span><br><span class="line">                        &#123; echo &quot;task:$(( $&#123;task&#125; + 1 ))&quot;;sleep $(($RANDOM % 10)); &#125; &amp;</span><br><span class="line">                else</span><br><span class="line">                        continue</span><br><span class="line">                fi</span><br><span class="line">        done</span><br><span class="line">        wait</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组完成。======&quot;</span><br><span class="line">done</span><br><span class="line">&#125;</span><br><span class="line">groupExec</span><br><span class="line"></span><br><span class="line"># sh groupExec.sh</span><br><span class="line">======第1组开始：======</span><br><span class="line">task:1</span><br><span class="line">task:4</span><br><span class="line">task:3</span><br><span class="line">task:2</span><br><span class="line">======第1组完成。======</span><br><span class="line">======第2组开始：======</span><br><span class="line">task:5</span><br><span class="line">task:7</span><br><span class="line">task:8</span><br><span class="line">task:6</span><br><span class="line">======第2组完成。======</span><br><span class="line">======第3组开始：======</span><br><span class="line">task:9</span><br><span class="line">task:11</span><br><span class="line">task:12</span><br><span class="line">task:10</span><br><span class="line">======第3组完成。======</span><br><span class="line">======第4组开始：======</span><br><span class="line">task:15</span><br><span class="line">task:16</span><br><span class="line">task:13</span><br><span class="line">task:14</span><br><span class="line">======第4组完成。======</span><br><span class="line">======第5组开始：======</span><br><span class="line">task:19</span><br><span class="line">task:17</span><br><span class="line">task:18</span><br><span class="line">task:20</span><br><span class="line">======第5组完成。======</span><br></pre></td></tr></table></figure></li>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
+
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
+
+<table>
+<thead>
+<tr>
+<th align="left">格式符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">%s</td>
+<td align="left">字符串</td>
+</tr>
+<tr>
+<td align="left">%d,%i</td>
+<td align="left">十进制整数</td>
+</tr>
+<tr>
+<td align="left">%u</td>
+<td align="left">不带正负号的十进制值</td>
+</tr>
+<tr>
+<td align="left">%o</td>
+<td align="left">不带正负号的八进制值</td>
+</tr>
+<tr>
+<td align="left">%x</td>
+<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
+</tr>
+<tr>
+<td align="left">%X</td>
+<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
+</tr>
+<tr>
+<td align="left">%e,%E,%f</td>
+<td align="left">浮点格式</td>
+</tr>
+<tr>
+<td align="left">%g</td>
+<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%G</td>
+<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%b</td>
+<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
+</tr>
+<tr>
+<td align="left">%c</td>
+<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
+</tr>
+<tr>
+<td align="left">%%</td>
+<td align="left">字面意义的%</td>
+</tr>
+</tbody></table>
+<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
+<thead>
+<tr>
+<th align="left">格式符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\f</td>
+<td align="left">换页（formfeed）</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车（Carriage return）</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">水平制表符</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">垂直制表符</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">一个字面上的反斜杠字符</td>
+</tr>
+<tr>
+<td align="left">\ddd</td>
+<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
+</tr>
+<tr>
+<td align="left">\0ddd</td>
+<td align="left">表示1到3位的八进制值字符</td>
+</tr>
+</tbody></table>
+<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
+<li>默认printf没有换行，需要手动添加\n；</li>
+<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
+<li>-表示左对齐，+或者空则表示右对齐；</li>
+<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
+<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
+<li>格式控制中也可以引入字体颜色。</li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
       <categories>
         <category>shell</category>
       </categories>
       <tags>
         <tag>shell</tag>
-        <tag>并发</tag>
+        <tag>printf</tag>
       </tags>
   </entry>
   <entry>
@@ -883,82 +1007,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx配置中的if指令</title>
-    <url>/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html</url>
-    <content><![CDATA[<blockquote>
-<p>通常Nginx的if判断不支持else逻辑。</p>
-</blockquote>
-<span id="more"></span>
-
-<ul>
-<li>判断条件</li>
-</ul>
-<style> table th:nth-of-type(2){width: 80%;}</style>
-
-<table>
-<thead>
-<tr>
-<th align="left">判断条件</th>
-<th align="left">符号意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&#x3D; ,!&#x3D;</td>
-<td align="left">比较字符串相等</td>
-</tr>
-<tr>
-<td align="left">~</td>
-<td align="left">匹配正则表达式</td>
-</tr>
-<tr>
-<td align="left">~*</td>
-<td align="left">不区分大小写的匹配</td>
-</tr>
-<tr>
-<td align="left">!~</td>
-<td align="left">区分大小写的不匹配</td>
-</tr>
-<tr>
-<td align="left">-f ，!-f</td>
-<td align="left">判断文件是否存在</td>
-</tr>
-<tr>
-<td align="left">-d, !-d</td>
-<td align="left">判断目录是否存在</td>
-</tr>
-<tr>
-<td align="left">-e ，!-e</td>
-<td align="left">判断文件、目录或链接是否存在</td>
-</tr>
-<tr>
-<td align="left">-x ， !-x</td>
-<td align="left">判断文件是否可被执行</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>说明</p>
-<ul>
-<li>作用域：server,location</li>
-<li>if指令中如果一个变量是空字符串或者以0开始的字符串，则为false；</li>
-<li>nginx的if条件判断不支持else语法；</li>
-</ul>
-</li>
-<li><p>参考文档</p>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>rewrite</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nginx配置location匹配规则</title>
     <url>/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html</url>
     <content><![CDATA[<blockquote>
@@ -1024,127 +1072,75 @@
       </tags>
   </entry>
   <entry>
-    <title>shell printf格式化输出</title>
-    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
-    <content><![CDATA[<p>shell也可以优雅的输出。</p>
+    <title>http不同版本及特性概括</title>
+    <url>/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%8F%8A%E7%89%B9%E6%80%A7%E6%A6%82%E6%8B%AC.html</url>
+    <content><![CDATA[<p>HTTP（HyperText Transfer Protocol）是互联网应用中最常见的一种协议。</p>
 <span id="more"></span>
 
-<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
-
-<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
-
-<table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">%s</td>
-<td align="left">字符串</td>
-</tr>
-<tr>
-<td align="left">%d,%i</td>
-<td align="left">十进制整数</td>
-</tr>
-<tr>
-<td align="left">%u</td>
-<td align="left">不带正负号的十进制值</td>
-</tr>
-<tr>
-<td align="left">%o</td>
-<td align="left">不带正负号的八进制值</td>
-</tr>
-<tr>
-<td align="left">%x</td>
-<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
-</tr>
-<tr>
-<td align="left">%X</td>
-<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
-</tr>
-<tr>
-<td align="left">%e,%E,%f</td>
-<td align="left">浮点格式</td>
-</tr>
-<tr>
-<td align="left">%g</td>
-<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%G</td>
-<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%b</td>
-<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
-</tr>
-<tr>
-<td align="left">%c</td>
-<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
-</tr>
-<tr>
-<td align="left">%%</td>
-<td align="left">字面意义的%</td>
-</tr>
-</tbody></table>
-<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\f</td>
-<td align="left">换页（formfeed）</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">换行</td>
-</tr>
-<tr>
-<td align="left">\r</td>
-<td align="left">回车（Carriage return）</td>
-</tr>
-<tr>
-<td align="left">\t</td>
-<td align="left">水平制表符</td>
-</tr>
-<tr>
-<td align="left">\v</td>
-<td align="left">垂直制表符</td>
-</tr>
-<tr>
-<td align="left">\</td>
-<td align="left">一个字面上的反斜杠字符</td>
-</tr>
-<tr>
-<td align="left">\ddd</td>
-<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
-</tr>
-<tr>
-<td align="left">\0ddd</td>
-<td align="left">表示1到3位的八进制值字符</td>
-</tr>
-</tbody></table>
-<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
-<li>默认printf没有换行，需要手动添加\n；</li>
-<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
-<li>-表示左对齐，+或者空则表示右对齐；</li>
-<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
-<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
-<li>格式控制中也可以引入字体颜色。</li>
+<h1 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP 0.9"></a>HTTP 0.9</h1><p>1991年，Tim Berners-Lee概述。</p>
+<ul>
+<li><p>特性：</p>
+<ul>
+<li>客户端&#x2F;服务器，请求&#x2F;响应；</li>
+<li>ASCII协议，运行于TCP&#x2F;IP链接之上；</li>
+<li>传输超文本文档（HTML）；</li>
+<li>服务器和客户端之间的连接在每次请求之后都会关闭；</li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
+</li>
+<li><p>http逃逸原理<br>由于http0.9协议没有响应头。大多数防火墙产品只是简单地让它无法分析的数据包直接通过，对HTTP&#x2F;0.9的响应包没有做进一步检测。导致http&#x2F;0.9协议传输的响应包可以绕过防火墙。</p>
+</li>
+</ul>
+<h1 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP 1.0"></a>HTTP 1.0</h1><p>1996年，HTTP工作组发布 RFC 1945。</p>
+<ul>
+<li>特性：<ul>
+<li>HTTP1.0并不是一个正式的规范或标准</li>
+<li>请求可以由多行首部字段构成；</li>
+<li>响应对象前面包含响应状态行；</li>
+<li>响应对象包含由换行符分割的首部字段；</li>
+<li>响应对象不局限于超文本；</li>
+<li>服务器和客户端之间的连接在每次请求之后都会关闭；</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTTP1-1"><a href="#HTTP1-1" class="headerlink" title="HTTP1.1"></a>HTTP1.1</h1><p>1997年1月，定义正式http1.1标准的RFC2068发布；1999年6月，RFC2616发布，在标准中集合了很多改进和更新。</p>
+<ul>
+<li>特性：<ul>
+<li>默认持久连接</li>
+<li>分块编码传输</li>
+<li>字节范围请求</li>
+<li>增强的缓存机制</li>
+<li>传输编码及请求管道</li>
+<li>内容编码字符集以及语言的协商机制</li>
+</ul>
+</li>
+</ul>
+<h1 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP 2.0"></a>HTTP 2.0</h1><p>2012年1月，HTTP 2.0纲领发布。</p>
+<ul>
+<li><p>特性：</p>
+<ul>
+<li>主要目标是改进传输性能，实现低延迟和高吞吐量</li>
+<li>二进制分帧</li>
+<li>异步连接</li>
+<li>多路复用</li>
+<li>头部压缩</li>
+<li>流量控制</li>
+<li>请求响应管线化（管道Pipelining传输）</li>
+<li>请求优先级</li>
+<li>服务器推送</li>
+</ul>
+</li>
+<li><p>参考</p>
+<ul>
+<li>Ilya, Grigorik. Web性能权威指南[M]. 人民邮电出版社, 2014.</li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html">http协议头字段说明</a></li><li><a href="https://www.lengyuewusheng.com/http%E8%AF%B7%E6%B1%82%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A%E8%A7%A3%E9%87%8A.html">http请求常见状态码及解释</a></li><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%848%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.html">HTTP协议中的8种请求方法</a></li></ul></div>]]></content>
       <categories>
-        <category>shell</category>
+        <category>http</category>
       </categories>
       <tags>
-        <tag>shell</tag>
-        <tag>printf</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>
@@ -1465,75 +1461,79 @@
       </tags>
   </entry>
   <entry>
-    <title>http不同版本及特性概括</title>
-    <url>/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%8F%8A%E7%89%B9%E6%80%A7%E6%A6%82%E6%8B%AC.html</url>
-    <content><![CDATA[<p>HTTP（HyperText Transfer Protocol）是互联网应用中最常见的一种协议。</p>
+    <title>nginx配置中的if指令</title>
+    <url>/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html</url>
+    <content><![CDATA[<blockquote>
+<p>通常Nginx的if判断不支持else逻辑。</p>
+</blockquote>
 <span id="more"></span>
 
-<h1 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP 0.9"></a>HTTP 0.9</h1><p>1991年，Tim Berners-Lee概述。</p>
 <ul>
-<li><p>特性：</p>
+<li>判断条件</li>
+</ul>
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<table>
+<thead>
+<tr>
+<th align="left">判断条件</th>
+<th align="left">符号意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&#x3D; ,!&#x3D;</td>
+<td align="left">比较字符串相等</td>
+</tr>
+<tr>
+<td align="left">~</td>
+<td align="left">匹配正则表达式</td>
+</tr>
+<tr>
+<td align="left">~*</td>
+<td align="left">不区分大小写的匹配</td>
+</tr>
+<tr>
+<td align="left">!~</td>
+<td align="left">区分大小写的不匹配</td>
+</tr>
+<tr>
+<td align="left">-f ，!-f</td>
+<td align="left">判断文件是否存在</td>
+</tr>
+<tr>
+<td align="left">-d, !-d</td>
+<td align="left">判断目录是否存在</td>
+</tr>
+<tr>
+<td align="left">-e ，!-e</td>
+<td align="left">判断文件、目录或链接是否存在</td>
+</tr>
+<tr>
+<td align="left">-x ， !-x</td>
+<td align="left">判断文件是否可被执行</td>
+</tr>
+</tbody></table>
 <ul>
-<li>客户端&#x2F;服务器，请求&#x2F;响应；</li>
-<li>ASCII协议，运行于TCP&#x2F;IP链接之上；</li>
-<li>传输超文本文档（HTML）；</li>
-<li>服务器和客户端之间的连接在每次请求之后都会关闭；</li>
+<li><p>说明</p>
+<ul>
+<li>作用域：server,location</li>
+<li>if指令中如果一个变量是空字符串或者以0开始的字符串，则为false；</li>
+<li>nginx的if条件判断不支持else语法；</li>
 </ul>
 </li>
-<li><p>http逃逸原理<br>由于http0.9协议没有响应头。大多数防火墙产品只是简单地让它无法分析的数据包直接通过，对HTTP&#x2F;0.9的响应包没有做进一步检测。导致http&#x2F;0.9协议传输的响应包可以绕过防火墙。</p>
-</li>
-</ul>
-<h1 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP 1.0"></a>HTTP 1.0</h1><p>1996年，HTTP工作组发布 RFC 1945。</p>
+<li><p>参考文档</p>
 <ul>
-<li>特性：<ul>
-<li>HTTP1.0并不是一个正式的规范或标准</li>
-<li>请求可以由多行首部字段构成；</li>
-<li>响应对象前面包含响应状态行；</li>
-<li>响应对象包含由换行符分割的首部字段；</li>
-<li>响应对象不局限于超文本；</li>
-<li>服务器和客户端之间的连接在每次请求之后都会关闭；</li>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
 </ul>
 </li>
 </ul>
-<h1 id="HTTP1-1"><a href="#HTTP1-1" class="headerlink" title="HTTP1.1"></a>HTTP1.1</h1><p>1997年1月，定义正式http1.1标准的RFC2068发布；1999年6月，RFC2616发布，在标准中集合了很多改进和更新。</p>
-<ul>
-<li>特性：<ul>
-<li>默认持久连接</li>
-<li>分块编码传输</li>
-<li>字节范围请求</li>
-<li>增强的缓存机制</li>
-<li>传输编码及请求管道</li>
-<li>内容编码字符集以及语言的协商机制</li>
-</ul>
-</li>
-</ul>
-<h1 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP 2.0"></a>HTTP 2.0</h1><p>2012年1月，HTTP 2.0纲领发布。</p>
-<ul>
-<li><p>特性：</p>
-<ul>
-<li>主要目标是改进传输性能，实现低延迟和高吞吐量</li>
-<li>二进制分帧</li>
-<li>异步连接</li>
-<li>多路复用</li>
-<li>头部压缩</li>
-<li>流量控制</li>
-<li>请求响应管线化（管道Pipelining传输）</li>
-<li>请求优先级</li>
-<li>服务器推送</li>
-</ul>
-</li>
-<li><p>参考</p>
-<ul>
-<li>Ilya, Grigorik. Web性能权威指南[M]. 人民邮电出版社, 2014.</li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html">http协议头字段说明</a></li><li><a href="https://www.lengyuewusheng.com/http%E8%AF%B7%E6%B1%82%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A%E8%A7%A3%E9%87%8A.html">http请求常见状态码及解释</a></li><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%848%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.html">HTTP协议中的8种请求方法</a></li></ul></div>]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
       <categories>
-        <category>http</category>
+        <category>nginx</category>
       </categories>
       <tags>
-        <tag>http</tag>
+        <tag>nginx</tag>
+        <tag>rewrite</tag>
       </tags>
   </entry>
   <entry>
@@ -1568,82 +1568,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>磁盘存储</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于生产环境的仿真流量测试</title>
-    <url>/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html</url>
-    <content><![CDATA[<p>虽然业界的Web应用测试工具众多，但多数是基于压力的离线测试，很多时候很难发现所有问题，往往测试上线后依然存在各种问题。基于实际生产环境的仿真流量测试，无疑能够覆盖更多的问题，达到更好的测试效果。<br>以下介绍三种实现仿真流量测试环境的实现工具。</p>
-<span id="more"></span>
-
-<h1 id="goreplay"><a href="#goreplay" class="headerlink" title="goreplay"></a>goreplay</h1><ul>
-<li><p>源码下载</p>
-<p><a href="https://github.com/buger/goreplay.git">下载</a></p>
-</li>
-<li><p>文档</p>
-<p><a href="https://github.com/buger/goreplay/wiki">GitHubWiki</a></p>
-</li>
-<li><p>特点</p>
-<ul>
-<li>Go语言编写</li>
-<li>功能强大，简单易用</li>
-<li>资源消耗少</li>
-</ul>
-</li>
-<li><p>简单用例</p>
-<ul>
-<li>将本地8080端口流量复制到 10.0.0.2 的80端口<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./goreplay --http-original-host --input-raw :8080 --input-raw-realip-header &quot;X-Real-IP&quot; --output-http &quot;http://10.0.0.2:80&quot; --exit-after 259200s</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h1 id="Tcpcopy"><a href="#Tcpcopy" class="headerlink" title="Tcpcopy"></a>Tcpcopy</h1><ul>
-<li><p>源码下载</p>
-<p><a href="https://github.com/session-replay-tools/tcpcopy.git">Tcpcopy</a></p>
-<p><a href="https://github.com/session-replay-tools/intercept.git">intercept</a></p>
-</li>
-<li><p>文档</p>
-<p><a href="https://github.com/session-replay-tools/tcpcopy">GitHub·READEME</a></p>
-</li>
-<li><p>特点</p>
-<ul>
-<li>C语言编写</li>
-<li>使用复杂</li>
-<li>依赖root权限或CAP_NET_RAW capability(e.g. setcap CAP_NET_RAW&#x3D;ep tcpcopy)</li>
-<li>依赖于 assistant server的intercept截获应答</li>
-</ul>
-</li>
-<li><p>简单用例</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10.0.0.1 生产环境</span><br><span class="line">10.0.0.2 测试环境</span><br><span class="line">10.0.0.3 assistant server</span><br></pre></td></tr></table></figure>
-<ul>
-<li>生产环境<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./tcpcopy -x 8080-10.0.0.2:80 -s 10.0.0.3 -d -n2</span><br><span class="line"># 将生产环境本地8080端口流量放大2倍复制到10.0.0.2的80端口，并指定10.0.0.3为assistant server</span><br></pre></td></tr></table></figure></li>
-<li>测试服务器（10.0.0.2）上添加路由<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add -net 10.0.0.0 netmask 255.255.255.0 gw 10.0.0.3</span><br><span class="line">或：</span><br><span class="line">route add -host 10.0.0.1 gw 10.0.0.3</span><br></pre></td></tr></table></figure></li>
-<li>assistant server<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./intercept -i eth0 -F ‘tcp and src port 80’ -d</span><br><span class="line"># assistant server的intercept捕获eth0网卡的80端口的响应包</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h1 id="ngx-http-mirror-module"><a href="#ngx-http-mirror-module" class="headerlink" title="ngx_http_mirror_module"></a>ngx_http_mirror_module</h1><p>  mirror模块默认开启，编译时加–without-http_mirror_module参数可禁用此功能。</p>
-<ul>
-<li><p>版本</p>
-<p>Nginx 1.13.4 + </p>
-</li>
-<li><p>作用域</p>
-<p>http, server, location</p>
-<p>mirror 模块配置分为两部分：源地址和镜像地址配置。</p>
-</li>
-<li><p>简单用例配置</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># original配置</span><br><span class="line">location / &#123;</span><br><span class="line">    mirror /mirror;</span><br><span class="line">    mirror /mirror2;</span><br><span class="line">    mirror_request_body off; //是否镜像请求Body部分</span><br><span class="line">    proxy_pass http://prod.env:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># mirror配置  //mirror不会输出http返回内容</span><br><span class="line">location /mirror &#123;</span><br><span class="line">    internal;       //指定此location只能被内部的请求调用，外部的调用请求会返回404</span><br><span class="line">    proxy_pass http://test.env:8000$request_uri;   //指定上游Server的地址</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;  //镜像流量的头部</span><br><span class="line">&#125;</span><br><span class="line">location /mirror2 &#123;</span><br><span class="line">    internal;</span><br><span class="line">    proxy_pass http://test2.env:8000$request_uri;</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>仿真测试</tag>
       </tags>
   </entry>
   <entry>
@@ -1741,6 +1665,82 @@
       <tags>
         <tag>Linux</tag>
         <tag>共享内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于生产环境的仿真流量测试</title>
+    <url>/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html</url>
+    <content><![CDATA[<p>虽然业界的Web应用测试工具众多，但多数是基于压力的离线测试，很多时候很难发现所有问题，往往测试上线后依然存在各种问题。基于实际生产环境的仿真流量测试，无疑能够覆盖更多的问题，达到更好的测试效果。<br>以下介绍三种实现仿真流量测试环境的实现工具。</p>
+<span id="more"></span>
+
+<h1 id="goreplay"><a href="#goreplay" class="headerlink" title="goreplay"></a>goreplay</h1><ul>
+<li><p>源码下载</p>
+<p><a href="https://github.com/buger/goreplay.git">下载</a></p>
+</li>
+<li><p>文档</p>
+<p><a href="https://github.com/buger/goreplay/wiki">GitHubWiki</a></p>
+</li>
+<li><p>特点</p>
+<ul>
+<li>Go语言编写</li>
+<li>功能强大，简单易用</li>
+<li>资源消耗少</li>
+</ul>
+</li>
+<li><p>简单用例</p>
+<ul>
+<li>将本地8080端口流量复制到 10.0.0.2 的80端口<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./goreplay --http-original-host --input-raw :8080 --input-raw-realip-header &quot;X-Real-IP&quot; --output-http &quot;http://10.0.0.2:80&quot; --exit-after 259200s</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="Tcpcopy"><a href="#Tcpcopy" class="headerlink" title="Tcpcopy"></a>Tcpcopy</h1><ul>
+<li><p>源码下载</p>
+<p><a href="https://github.com/session-replay-tools/tcpcopy.git">Tcpcopy</a></p>
+<p><a href="https://github.com/session-replay-tools/intercept.git">intercept</a></p>
+</li>
+<li><p>文档</p>
+<p><a href="https://github.com/session-replay-tools/tcpcopy">GitHub·READEME</a></p>
+</li>
+<li><p>特点</p>
+<ul>
+<li>C语言编写</li>
+<li>使用复杂</li>
+<li>依赖root权限或CAP_NET_RAW capability(e.g. setcap CAP_NET_RAW&#x3D;ep tcpcopy)</li>
+<li>依赖于 assistant server的intercept截获应答</li>
+</ul>
+</li>
+<li><p>简单用例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10.0.0.1 生产环境</span><br><span class="line">10.0.0.2 测试环境</span><br><span class="line">10.0.0.3 assistant server</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生产环境<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./tcpcopy -x 8080-10.0.0.2:80 -s 10.0.0.3 -d -n2</span><br><span class="line"># 将生产环境本地8080端口流量放大2倍复制到10.0.0.2的80端口，并指定10.0.0.3为assistant server</span><br></pre></td></tr></table></figure></li>
+<li>测试服务器（10.0.0.2）上添加路由<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route add -net 10.0.0.0 netmask 255.255.255.0 gw 10.0.0.3</span><br><span class="line">或：</span><br><span class="line">route add -host 10.0.0.1 gw 10.0.0.3</span><br></pre></td></tr></table></figure></li>
+<li>assistant server<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./intercept -i eth0 -F ‘tcp and src port 80’ -d</span><br><span class="line"># assistant server的intercept捕获eth0网卡的80端口的响应包</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="ngx-http-mirror-module"><a href="#ngx-http-mirror-module" class="headerlink" title="ngx_http_mirror_module"></a>ngx_http_mirror_module</h1><p>  mirror模块默认开启，编译时加–without-http_mirror_module参数可禁用此功能。</p>
+<ul>
+<li><p>版本</p>
+<p>Nginx 1.13.4 + </p>
+</li>
+<li><p>作用域</p>
+<p>http, server, location</p>
+<p>mirror 模块配置分为两部分：源地址和镜像地址配置。</p>
+</li>
+<li><p>简单用例配置</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># original配置</span><br><span class="line">location / &#123;</span><br><span class="line">    mirror /mirror;</span><br><span class="line">    mirror /mirror2;</span><br><span class="line">    mirror_request_body off; //是否镜像请求Body部分</span><br><span class="line">    proxy_pass http://prod.env:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># mirror配置  //mirror不会输出http返回内容</span><br><span class="line">location /mirror &#123;</span><br><span class="line">    internal;       //指定此location只能被内部的请求调用，外部的调用请求会返回404</span><br><span class="line">    proxy_pass http://test.env:8000$request_uri;   //指定上游Server的地址</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;  //镜像流量的头部</span><br><span class="line">&#125;</span><br><span class="line">location /mirror2 &#123;</span><br><span class="line">    internal;</span><br><span class="line">    proxy_pass http://test2.env:8000$request_uri;</span><br><span class="line">    proxy_set_header X-Original-URI $request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>仿真测试</tag>
       </tags>
   </entry>
   <entry>
@@ -3126,6 +3126,68 @@
       </tags>
   </entry>
   <entry>
+    <title>redis数据结构</title>
+    <url>/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>只是redis的基本数据类型。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="5中数据结构"><a href="#5中数据结构" class="headerlink" title="5中数据结构"></a>5中数据结构</h1><style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 90%;}</style>
+
+<table>
+<thead>
+<tr>
+<th align="left">数据结构</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">String(字符串)</td>
+<td align="left">Strings 类型，可以完全实现目前Memcached的功能，并且效率更高。还可以享受 Redis 的定时持久化，操作日志及 Replication 等功能，并提供更多的操作命令支持。</td>
+</tr>
+<tr>
+<td align="left">Hash(字典)</td>
+<td align="left">可以像在数据库中Update一个属性一样只修改某一项属性值。</td>
+</tr>
+<tr>
+<td align="left">List(列表)</td>
+<td align="left">链表，可以轻松实现最新消息排行等功能。另一个应用就是消息队列，Redis提供了操作List中某一段元素的 API。</td>
+</tr>
+<tr>
+<td align="left">Set(集合)</td>
+<td align="left">集合的概念就是一堆不重复值的组合。利用 Redis 提供的 Set 数据结构，可以存储一些集合性的数据。</td>
+</tr>
+<tr>
+<td align="left">Sorted Set(有序集合)</td>
+<td align="left">和Sets相比，Sorted Sets是将Set中的元素增加了一个权重参数score，使得集合中的元素能够按 score 进行有序排列,适用于比较复杂的数据结构和带有权重的元素。</td>
+</tr>
+</tbody></table>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>缓存</li>
+<li>消息队列</li>
+<li>订阅-发布系统</li>
+<li>TimeLine</li>
+<li>加权元素</li>
+<li>事务处理(Transactions)</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.runoob.com/w3cnote/redis-use-scene.html">Redis 数据结构使用场景</a></li>
+<li><a href="http://www.redis.net.cn/tutorial/3501.html">Redis教程</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html">redis持久化策略</a></li></ul></div>]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>数据结构</tag>
+        <tag>kv</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>七层网络协议</title>
     <url>/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html</url>
     <content><![CDATA[<p>简单概括,不一定准确。。。</p>
@@ -3196,68 +3258,6 @@
         <tag>协议</tag>
         <tag>OSI</tag>
         <tag>TCP/IP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redis数据结构</title>
-    <url>/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>只是redis的基本数据类型。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="5中数据结构"><a href="#5中数据结构" class="headerlink" title="5中数据结构"></a>5中数据结构</h1><style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 90%;}</style>
-
-<table>
-<thead>
-<tr>
-<th align="left">数据结构</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">String(字符串)</td>
-<td align="left">Strings 类型，可以完全实现目前Memcached的功能，并且效率更高。还可以享受 Redis 的定时持久化，操作日志及 Replication 等功能，并提供更多的操作命令支持。</td>
-</tr>
-<tr>
-<td align="left">Hash(字典)</td>
-<td align="left">可以像在数据库中Update一个属性一样只修改某一项属性值。</td>
-</tr>
-<tr>
-<td align="left">List(列表)</td>
-<td align="left">链表，可以轻松实现最新消息排行等功能。另一个应用就是消息队列，Redis提供了操作List中某一段元素的 API。</td>
-</tr>
-<tr>
-<td align="left">Set(集合)</td>
-<td align="left">集合的概念就是一堆不重复值的组合。利用 Redis 提供的 Set 数据结构，可以存储一些集合性的数据。</td>
-</tr>
-<tr>
-<td align="left">Sorted Set(有序集合)</td>
-<td align="left">和Sets相比，Sorted Sets是将Set中的元素增加了一个权重参数score，使得集合中的元素能够按 score 进行有序排列,适用于比较复杂的数据结构和带有权重的元素。</td>
-</tr>
-</tbody></table>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
-<li>缓存</li>
-<li>消息队列</li>
-<li>订阅-发布系统</li>
-<li>TimeLine</li>
-<li>加权元素</li>
-<li>事务处理(Transactions)</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://www.runoob.com/w3cnote/redis-use-scene.html">Redis 数据结构使用场景</a></li>
-<li><a href="http://www.redis.net.cn/tutorial/3501.html">Redis教程</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html">redis持久化策略</a></li></ul></div>]]></content>
-      <categories>
-        <category>redis</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>数据结构</tag>
-        <tag>kv</tag>
       </tags>
   </entry>
   <entry>
@@ -4591,7 +4591,7 @@
 <tr>
 <td align="left">From</td>
 <td align="left">发起此请求的用户的邮件地址。</td>
-<td align="left">From: <a href="mailto:&#117;&#115;&#101;&#114;&#64;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#117;&#115;&#101;&#114;&#64;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a></td>
+<td align="left">From: <a href="mailto:&#x75;&#115;&#x65;&#x72;&#64;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x75;&#115;&#x65;&#x72;&#64;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;</a></td>
 </tr>
 <tr>
 <td align="left">Host</td>
@@ -5145,34 +5145,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux命令行环境下进行URL解码</title>
-    <url>/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html</url>
-    <content><![CDATA[<p>命令行环境解码url是运维的必备技能，尤其是在排查应用日志的时候。而最佳实践还是不依赖任何编程能直接敲个命令就搞定。。。</p>
-<span id="more"></span>
-
-<p>以下内容基于CentOS6.9系统环境。</p>
-<h1 id="命令行软件包"><a href="#命令行软件包" class="headerlink" title="命令行软件包"></a>命令行软件包</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test-204 ~]# rpm -qf /usr/bin/urlencode</span><br><span class="line">gridsite-clients-2.2.6-2.el6.x86_64</span><br><span class="line">[root@test-204 ~]#</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-clients-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-libs-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/c/canl-c-2.1.8-1.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="使用查看"><a href="#使用查看" class="headerlink" title="使用查看"></a>使用查看</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看归档日志</span><br><span class="line">urlencode -d decode $(zcat access.log.2018_09_01_22.log.gz |awk &#x27;&#123;print $7&#125;&#x27; |sort |uniq -c |sort -rn |head )</span><br><span class="line"></span><br><span class="line">#查看实时日志</span><br><span class="line">tailf access.log |awk &#x27;&#123;print $7&#125;&#x27;|xargs urlencode -d decode</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://www.urldecoder.net/linux-urldecode">linux-urldecode</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>urldecode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nginx限制策略</title>
     <url>/nginx%E9%99%90%E5%88%B6%E7%AD%96%E7%95%A5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -5232,6 +5204,34 @@
       <tags>
         <tag>nginx</tag>
         <tag>DDoS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux命令行环境下进行URL解码</title>
+    <url>/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html</url>
+    <content><![CDATA[<p>命令行环境解码url是运维的必备技能，尤其是在排查应用日志的时候。而最佳实践还是不依赖任何编程能直接敲个命令就搞定。。。</p>
+<span id="more"></span>
+
+<p>以下内容基于CentOS6.9系统环境。</p>
+<h1 id="命令行软件包"><a href="#命令行软件包" class="headerlink" title="命令行软件包"></a>命令行软件包</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test-204 ~]# rpm -qf /usr/bin/urlencode</span><br><span class="line">gridsite-clients-2.2.6-2.el6.x86_64</span><br><span class="line">[root@test-204 ~]#</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-clients-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-libs-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/c/canl-c-2.1.8-1.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="使用查看"><a href="#使用查看" class="headerlink" title="使用查看"></a>使用查看</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看归档日志</span><br><span class="line">urlencode -d decode $(zcat access.log.2018_09_01_22.log.gz |awk &#x27;&#123;print $7&#125;&#x27; |sort |uniq -c |sort -rn |head )</span><br><span class="line"></span><br><span class="line">#查看实时日志</span><br><span class="line">tailf access.log |awk &#x27;&#123;print $7&#125;&#x27;|xargs urlencode -d decode</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://www.urldecoder.net/linux-urldecode">linux-urldecode</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>urldecode</tag>
       </tags>
   </entry>
   <entry>
@@ -5363,76 +5363,114 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux环境中alias不生效问题</title>
-    <url>/linux%E7%8E%AF%E5%A2%83%E4%B8%ADalias%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98.html</url>
+    <title>sed 常见用例总结</title>
+    <url>/sed-%E5%B8%B8%E8%A7%81%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
-<p>很多时候，实际结果往往和我们的预期不一致，其中必有蹊跷。。。</p>
+<p>sed 发行于1974年，作者 Lee E. McMahon。awk发行于1977年，作者 阿尔佛雷德·艾侯、彼得·温伯格以及布莱恩·柯林汉。</p>
+<p>——源自维基百科</p>
 
 </blockquote>
 
 <span id="more"></span>
 
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>由于公司hadoop集群迁移，需要对线上几百台历史遗留的脚本进行改造，变更hadoop客户端环境。</p>
-<p>思虑再三，借鉴python装饰器的思想，部署一个绿色版的hadoop客户端环境。再将线上各式各样的脚本统一加一行<code>alias hadoop=&quot;/path/to/hadoop&quot;</code>成本最低。</p>
-<p>无奈alias貌似并没有生效，实际操作结果和预期不一致。。。</p>
-<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>alias 在非交互shell环境中不生效，除非手动设置<code>shopt -s expand_aliases</code></p>
-<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><ul>
-<li><p><code>cat aliasVerifi.sh</code></p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#/bin/bash</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br><span class="line">echo &quot;================&quot;</span><br><span class="line">shopt -s expand_aliases</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">alias whoami=&#x27;date &quot;+%Y-%m-%d %H:%M:%S&quot;&#x27;</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br></pre></td></tr></table></figure>
+<h1 id="常见用例"><a href="#常见用例" class="headerlink" title="常见用例"></a>常见用例</h1><ul>
+<li><p>文件最后追加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed &#x27;$ a\00 08 * * * /sbin/clock -w &gt;/dev/null 2&gt;&amp;1&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>通过cron调用脚本并将输出写入log文件aliasVerifi.log</p>
+<li><p>输出满足正则的记录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -n &#x27;/正则表达式/p&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>cat aliasVerifi.log</code></p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expand_aliases 	off</span><br><span class="line">root</span><br><span class="line">/usr/bin/whoami</span><br><span class="line">================</span><br><span class="line">expand_aliases 	on</span><br><span class="line">2018-11-06 22:20:01</span><br><span class="line">/usr/bin/whoami</span><br></pre></td></tr></table></figure>
+<li><p>删除满足正则的记录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;/正则表达式/d&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sed删除多行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;/START/,/END/d&#x27; /etc/rsyncd.conf</span><br><span class="line">eg:</span><br><span class="line">sed -i &#x27;/\[root\]\s*/,/\s*hosts\s*allow\s*=\s*10.0.0.0\/8\s*192.168.0.0\/16\s*/d&#x27; rsyncd.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将所有数字版本号统一</p>
 <ul>
-<li>此处我们注意到expand_aliases在非交互shell中默认关闭，并且用which获取该命令的绝对路径并没有发生改变，但是执行结果已经符合预期。</li>
+<li><strong>sed正则中{}()需要加转义，[]则不用。<code>|</code>和<code>+</code>也需要转义，<code>$</code>不需要转义。</strong></li>
 </ul>
 </li>
 </ul>
-<h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><ul>
-<li><p>当alias的命令和sudo一起使用时alias命令不生效，此时将sudo加入alias中即可生效。</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mkdir=&#x27;mkdir -p&#x27;</span><br><span class="line">$ sudo mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1/2/3’: No such file or directory</span><br><span class="line">$ mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1’: Permission denied</span><br><span class="line">$ alias mkdir=&#x27;sudo mkdir -p&#x27;</span><br><span class="line">$ mkdir 1/2/3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find /data/daemon/conf/ -name &quot;*.yaml&quot; -type f |xargs grep -irl &quot;version:v&quot; |xargs sed -i &#x27;s/version:v[0-9]\&#123;1\&#125;/version:v9/g&#x27;</span><br></pre></td></tr></table></figure>
 
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mv=&#x27;/usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ sudo mv a.sh  b.sh</span><br><span class="line">$ alias mv=&#x27;sudo /usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ mv a.sh  b.sh</span><br><span class="line">‘a.sh’ -&gt; ‘b.sh’</span><br></pre></td></tr></table></figure>
 <ul>
-<li>前提，mkdir,mv命令已加入sudoers</li>
+<li>将软件版本号去掉<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qa |grep someone|sed &#x27;s/\([0-9]\|\.\|_\|-\)\+\.el.\+\(.x86_64\|.noarch\)/\2/g&#x27;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>在xargs命令后命令别名也不生效，因为xargs是一个单独的应用程序，它不是shell，因此没有别名或函数的概念。但可以通过以下两种方式变相使用alias</p>
-<ul>
-<li>xargs ${BASH_ALIASES[alias_command]}<ul>
-<li>${BASH_ALIASES[alias_command]}前后不能有引号</li>
-</ul>
-</li>
-<li>xargs -t -i bash -ic “alias_command }”</li>
-<li>ansible script中可以使用alias，但是xargs后面的变量${BASH_ALIASES[alias_command]}为空，不能被使用。</li>
-</ul>
-</li>
-<li><p>在sshpass命令后命令别名同样不生效</p>
-<ul>
-<li><p>以下情况不生效alias rsync不生效</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">sshpass -e rsync ...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可用以下方式变相实现</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;sshpass -e rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">rsync ...</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>脚本中使用alias命令别名，通过eval调用命令别名可以生效。</p>
-</li>
+<h1 id="备注说明"><a href="#备注说明" class="headerlink" title="备注说明"></a>备注说明</h1><ul>
+<li>有些版本的sed正则中不支持\d，小括号和加号都要加转义符  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">eg:</span><br><span class="line">rpm -qa |grep php |sed &#x27;s/-[0-9]\(.*\)\+$/-flag/g;s/^php-/php71-/g&#x27;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://ss64.com/bash/alias.html">alias</a></li>
-<li><a href="https://unix.stackexchange.com/questions/141367/have-xargs-use-alias-instead-of-binary">stackoverflow·Have xargs use alias instead of binary</a></li>
-<li><a href="https://stackoverflow.com/questions/979453/how-can-i-use-aliased-commands-with-xargs">stackoverflow·How can I use aliased commands with xargs?</a></li>
+<li><p><a href="http://www.gnu.org/software/sed/manual/sed.html">sed, a stream editor·官方文档</a></p>
+</li>
+<li><p><a href="http://www.361way.com/sed-process-lines/2263.html">linux下在某行的前一行或后一行添加内容·运维之路</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/edwardlost/archive/2010/09/17/1829145.html">sed命令详解</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/emanlee/p/3307642.html">linux中sed的用法</a></p>
+</li>
+<li><p><a href="https://segmentfault.com/q/1010000006118112">sed 命令如何替换多行内容</a></p>
+</li>
+<li><p><a href="http://blog.fantasy.codes/shell/2013/05/21/learn-sed/">sed与正则表达式</a></p>
+</li>
+<li><p><a href="http://www.178linux.com/71180">sed命令的入门与进阶·Linux运维部落</a></p>
+</li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/awk%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93.html">awk使用总结</a></li></ul></div>]]></content>
       <categories>
-        <category>Linux</category>
+        <category>sed</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>alias</tag>
-        <tag>cron</tag>
+        <tag>文本处理</tag>
+        <tag>sed</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redmine 项目管理平台搭建过程概述</title>
+    <url>/redmine-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E6%A6%82%E8%BF%B0.html</url>
+    <content><![CDATA[<p>Redmine是基于Ruby开发的经典项目管理平台，功能强大。</p>
+<p>thin, A fast and very simple Ruby web server。</p>
+<span id="more"></span>
+
+<p>本文档非操作手册只列出来关键信息，需要对ruby，redmine，nginx稍有些许了解，完全按照这个文档部署大概率不会成功。。。</p>
+<h1 id="安装-x2F-升级关键步骤"><a href="#安装-x2F-升级关键步骤" class="headerlink" title="安装&#x2F;升级关键步骤"></a>安装&#x2F;升级关键步骤</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">git clone -b 4.0.4 https://github.com/redmine/redmine.git</span><br><span class="line">cd redmine</span><br><span class="line">gem install bundler</span><br><span class="line"> bundle install --without development test</span><br><span class="line"> bundle exec rake generate_secret_token</span><br><span class="line"> bundle exec rake redmine:plugins:migrate RAILS_ENV=production</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="升级数据库"><a href="#升级数据库" class="headerlink" title="升级数据库"></a>升级数据库</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bundle install --without development test</span><br><span class="line">bundle exec rake generate_secret_token</span><br><span class="line">bundle exec rake db:migrate RAILS_ENV=production</span><br><span class="line">bundle exec rake redmine:plugins:migrate RAILS_ENV=production</span><br><span class="line">bundle exec rake tmp:cache:clear RAILS_ENV=productionvim </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="thin-安装"><a href="#thin-安装" class="headerlink" title="thin 安装"></a>thin 安装</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo gem &quot;thin&quot; &gt;&gt; Gemfile   # 必须写入Gemfile否则启动thin过程会报错</span><br><span class="line">bundle exec rake redmine:plugins:migrate RAILS_ENV=production</span><br><span class="line">bundle exec rake redmine:plugins:migrate RAILS_ENV=production --trace</span><br><span class="line"></span><br><span class="line">gem install thin</span><br><span class="line">thin install  # 生成/etc/init.d/thin</span><br><span class="line">chkconfig --level 345 thin on</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="创建logrotate配置-x2F-etc-x2F-logrotate-d-x2F-thin"><a href="#创建logrotate配置-x2F-etc-x2F-logrotate-d-x2F-thin" class="headerlink" title="创建logrotate配置&#x2F;etc&#x2F;logrotate.d&#x2F;thin"></a>创建logrotate配置&#x2F;etc&#x2F;logrotate.d&#x2F;thin</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/var/log/thin/*.log &#123;</span><br><span class="line">	daily</span><br><span class="line">	missingok</span><br><span class="line">	rotate 52</span><br><span class="line">	compress</span><br><span class="line">	delaycompress</span><br><span class="line">	notifempty</span><br><span class="line">	create 640 root adm</span><br><span class="line">	sharedscripts</span><br><span class="line">	postrotate</span><br><span class="line">	/etc/init.d/thin restart &gt;/dev/null</span><br><span class="line">	endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="创建thin配置文件-x2F-etc-x2F-thin-x2F-redmine-yml"><a href="#创建thin配置文件-x2F-etc-x2F-thin-x2F-redmine-yml" class="headerlink" title="创建thin配置文件&#x2F;etc&#x2F;thin&#x2F;redmine.yml"></a>创建thin配置文件&#x2F;etc&#x2F;thin&#x2F;redmine.yml</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pid: /var/run/thin/thin.pid</span><br><span class="line">group: nginx</span><br><span class="line">wait: 30</span><br><span class="line">timeout: 30</span><br><span class="line">log: /var/log/thin/thin.log</span><br><span class="line">max_conns: 1024</span><br><span class="line"></span><br><span class="line">require: []</span><br><span class="line">environment: production</span><br><span class="line">max_persistent_conns: 512</span><br><span class="line">servers: 4</span><br><span class="line">daemonize: true</span><br><span class="line">user: nginx</span><br><span class="line">socket: /tmp/thin.sock</span><br><span class="line">chdir: /data/DevOps/redmine</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="nginx配置文件-x2F-etc-x2F-nginx-x2F-conf-d-x2F-redmine-conf"><a href="#nginx配置文件-x2F-etc-x2F-nginx-x2F-conf-d-x2F-redmine-conf" class="headerlink" title="nginx配置文件 &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;redmine.conf"></a>nginx配置文件 &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;redmine.conf</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream thin_cluster &#123;</span><br><span class="line">	server unix:/tmp/thin.0.sock;</span><br><span class="line">	server unix:/tmp/thin.1.sock;</span><br><span class="line">	server unix:/tmp/thin.2.sock;</span><br><span class="line">	server unix:/tmp/thin.3.sock;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  redmine.server;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line">    access_log  /var/log/nginx/log/redmine.access.log  main;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">    client_max_body_size 10m;</span><br><span class="line">    client_body_buffer_size 128k;</span><br><span class="line">    proxy_connect_timeout 90;</span><br><span class="line">    proxy_send_timeout 90;</span><br><span class="line">    proxy_read_timeout 90;</span><br><span class="line">    proxy_buffer_size 4k;</span><br><span class="line">    proxy_buffers 4 32k;</span><br><span class="line">    proxy_busy_buffers_size 64k;</span><br><span class="line">    proxy_temp_file_write_size 64k;</span><br><span class="line">    #your redmine path</span><br><span class="line">    root /data/DevOps/redmine/public;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">	try_files $uri/index.html $uri.html $uri @cluster;</span><br><span class="line">    &#125;</span><br><span class="line">    location @cluster &#123;</span><br><span class="line">	proxy_pass http://thin_cluster;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line">    #</span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="line">    #</span><br><span class="line">    #location ~ \.php$ &#123;</span><br><span class="line">    #    proxy_pass   http://127.0.0.1;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line">    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">    #</span><br><span class="line">    #location ~ \.php$ &#123;</span><br><span class="line">    #    root           html;</span><br><span class="line">    #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    #    fastcgi_index  index.php;</span><br><span class="line">    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">    #    include        fastcgi_params;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line">    # deny access to .htaccess files, if Apache&#x27;s document root</span><br><span class="line">    # concurs with nginx&#x27;s one</span><br><span class="line">    #</span><br><span class="line">    #location ~ /\.ht &#123;</span><br><span class="line">    #    deny  all;</span><br><span class="line">    #&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="推荐开源主题"><a href="#推荐开源主题" class="headerlink" title="推荐开源主题"></a>推荐开源主题</h1><p><a href="https://github.com/mrliptontea/PurpleMine2">https://github.com/mrliptontea/PurpleMine2</a></p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><p><a href="http://code.macournoyer.com/thin/">thin 官网</a></p>
+</li>
+<li><p><a href="http://www.redmine.org/boards/2/topics/37072">Help with Ruby 2.0 + Redmine 2.30 + thin install</a></p>
+</li>
+<li><p><a href="https://www.redmine.org/projects/redmine/wiki/Install_Redmine_346_on_Centos_75">redmine官方安装文档</a></p>
+</li>
+<li><p><a href="http://www.redmine.org/projects/redmine/wiki/RedmineUpgrade">redmine官方升级文档</a></p>
+</li>
+<li><p><a href="http://rvm.io/">Ruby Version Manager (RVM)</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>redmine</category>
+      </categories>
+      <tags>
+        <tag>redmine</tag>
+        <tag>thin</tag>
+        <tag>项目管理</tag>
       </tags>
   </entry>
   <entry>
@@ -5532,6 +5570,79 @@
       <tags>
         <tag>Linux</tag>
         <tag>rsync</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux环境中alias不生效问题</title>
+    <url>/linux%E7%8E%AF%E5%A2%83%E4%B8%ADalias%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>很多时候，实际结果往往和我们的预期不一致，其中必有蹊跷。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>由于公司hadoop集群迁移，需要对线上几百台历史遗留的脚本进行改造，变更hadoop客户端环境。</p>
+<p>思虑再三，借鉴python装饰器的思想，部署一个绿色版的hadoop客户端环境。再将线上各式各样的脚本统一加一行<code>alias hadoop=&quot;/path/to/hadoop&quot;</code>成本最低。</p>
+<p>无奈alias貌似并没有生效，实际操作结果和预期不一致。。。</p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>alias 在非交互shell环境中不生效，除非手动设置<code>shopt -s expand_aliases</code></p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><ul>
+<li><p><code>cat aliasVerifi.sh</code></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#/bin/bash</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br><span class="line">echo &quot;================&quot;</span><br><span class="line">shopt -s expand_aliases</span><br><span class="line">shopt |grep -i alias</span><br><span class="line">alias whoami=&#x27;date &quot;+%Y-%m-%d %H:%M:%S&quot;&#x27;</span><br><span class="line">whoami</span><br><span class="line">which whoami</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过cron调用脚本并将输出写入log文件aliasVerifi.log</p>
+</li>
+<li><p><code>cat aliasVerifi.log</code></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">expand_aliases 	off</span><br><span class="line">root</span><br><span class="line">/usr/bin/whoami</span><br><span class="line">================</span><br><span class="line">expand_aliases 	on</span><br><span class="line">2018-11-06 22:20:01</span><br><span class="line">/usr/bin/whoami</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此处我们注意到expand_aliases在非交互shell中默认关闭，并且用which获取该命令的绝对路径并没有发生改变，但是执行结果已经符合预期。</li>
+</ul>
+</li>
+</ul>
+<h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><ul>
+<li><p>当alias的命令和sudo一起使用时alias命令不生效，此时将sudo加入alias中即可生效。</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mkdir=&#x27;mkdir -p&#x27;</span><br><span class="line">$ sudo mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1/2/3’: No such file or directory</span><br><span class="line">$ mkdir 1/2/3</span><br><span class="line">mkdir: cannot create directory ‘1’: Permission denied</span><br><span class="line">$ alias mkdir=&#x27;sudo mkdir -p&#x27;</span><br><span class="line">$ mkdir 1/2/3</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ alias mv=&#x27;/usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ sudo mv a.sh  b.sh</span><br><span class="line">$ alias mv=&#x27;sudo /usr/bin/mv -v -b -S $(date &quot;+.mvbak%Y%m%d_%H%M&quot;)&#x27;</span><br><span class="line">$ mv a.sh  b.sh</span><br><span class="line">‘a.sh’ -&gt; ‘b.sh’</span><br></pre></td></tr></table></figure>
+<ul>
+<li>前提，mkdir,mv命令已加入sudoers</li>
+</ul>
+</li>
+<li><p>在xargs命令后命令别名也不生效，因为xargs是一个单独的应用程序，它不是shell，因此没有别名或函数的概念。但可以通过以下两种方式变相使用alias</p>
+<ul>
+<li>xargs ${BASH_ALIASES[alias_command]}<ul>
+<li>${BASH_ALIASES[alias_command]}前后不能有引号</li>
+</ul>
+</li>
+<li>xargs -t -i bash -ic “alias_command }”</li>
+<li>ansible script中可以使用alias，但是xargs后面的变量${BASH_ALIASES[alias_command]}为空，不能被使用。</li>
+</ul>
+</li>
+<li><p>在sshpass命令后命令别名同样不生效</p>
+<ul>
+<li><p>以下情况不生效alias rsync不生效</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">sshpass -e rsync ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可用以下方式变相实现</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export SSHPASS=&quot;xxxx&quot;</span><br><span class="line">alias rsync=&#x27;sshpass -e rsync -e &quot;ssh -q -o StrictHostKeyChecking=no&quot; -avzP&#x27;</span><br><span class="line">rsync ...</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>脚本中使用alias命令别名，通过eval调用命令别名可以生效。</p>
+</li>
+</ul>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://ss64.com/bash/alias.html">alias</a></li>
+<li><a href="https://unix.stackexchange.com/questions/141367/have-xargs-use-alias-instead-of-binary">stackoverflow·Have xargs use alias instead of binary</a></li>
+<li><a href="https://stackoverflow.com/questions/979453/how-can-i-use-aliased-commands-with-xargs">stackoverflow·How can I use aliased commands with xargs?</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>alias</tag>
+        <tag>cron</tag>
       </tags>
   </entry>
   <entry>
@@ -5735,117 +5846,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>iptables</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redmine 项目管理平台搭建过程概述</title>
-    <url>/redmine-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E6%A6%82%E8%BF%B0.html</url>
-    <content><![CDATA[<p>Redmine是基于Ruby开发的经典项目管理平台，功能强大。</p>
-<p>thin, A fast and very simple Ruby web server。</p>
-<span id="more"></span>
-
-<p>本文档非操作手册只列出来关键信息，需要对ruby，redmine，nginx稍有些许了解，完全按照这个文档部署大概率不会成功。。。</p>
-<h1 id="安装-x2F-升级关键步骤"><a href="#安装-x2F-升级关键步骤" class="headerlink" title="安装&#x2F;升级关键步骤"></a>安装&#x2F;升级关键步骤</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">git clone -b 4.0.4 https://github.com/redmine/redmine.git</span><br><span class="line">cd redmine</span><br><span class="line">gem install bundler</span><br><span class="line"> bundle install --without development test</span><br><span class="line"> bundle exec rake generate_secret_token</span><br><span class="line"> bundle exec rake redmine:plugins:migrate RAILS_ENV=production</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="升级数据库"><a href="#升级数据库" class="headerlink" title="升级数据库"></a>升级数据库</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bundle install --without development test</span><br><span class="line">bundle exec rake generate_secret_token</span><br><span class="line">bundle exec rake db:migrate RAILS_ENV=production</span><br><span class="line">bundle exec rake redmine:plugins:migrate RAILS_ENV=production</span><br><span class="line">bundle exec rake tmp:cache:clear RAILS_ENV=productionvim </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="thin-安装"><a href="#thin-安装" class="headerlink" title="thin 安装"></a>thin 安装</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo gem &quot;thin&quot; &gt;&gt; Gemfile   # 必须写入Gemfile否则启动thin过程会报错</span><br><span class="line">bundle exec rake redmine:plugins:migrate RAILS_ENV=production</span><br><span class="line">bundle exec rake redmine:plugins:migrate RAILS_ENV=production --trace</span><br><span class="line"></span><br><span class="line">gem install thin</span><br><span class="line">thin install  # 生成/etc/init.d/thin</span><br><span class="line">chkconfig --level 345 thin on</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="创建logrotate配置-x2F-etc-x2F-logrotate-d-x2F-thin"><a href="#创建logrotate配置-x2F-etc-x2F-logrotate-d-x2F-thin" class="headerlink" title="创建logrotate配置&#x2F;etc&#x2F;logrotate.d&#x2F;thin"></a>创建logrotate配置&#x2F;etc&#x2F;logrotate.d&#x2F;thin</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/var/log/thin/*.log &#123;</span><br><span class="line">	daily</span><br><span class="line">	missingok</span><br><span class="line">	rotate 52</span><br><span class="line">	compress</span><br><span class="line">	delaycompress</span><br><span class="line">	notifempty</span><br><span class="line">	create 640 root adm</span><br><span class="line">	sharedscripts</span><br><span class="line">	postrotate</span><br><span class="line">	/etc/init.d/thin restart &gt;/dev/null</span><br><span class="line">	endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="创建thin配置文件-x2F-etc-x2F-thin-x2F-redmine-yml"><a href="#创建thin配置文件-x2F-etc-x2F-thin-x2F-redmine-yml" class="headerlink" title="创建thin配置文件&#x2F;etc&#x2F;thin&#x2F;redmine.yml"></a>创建thin配置文件&#x2F;etc&#x2F;thin&#x2F;redmine.yml</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pid: /var/run/thin/thin.pid</span><br><span class="line">group: nginx</span><br><span class="line">wait: 30</span><br><span class="line">timeout: 30</span><br><span class="line">log: /var/log/thin/thin.log</span><br><span class="line">max_conns: 1024</span><br><span class="line"></span><br><span class="line">require: []</span><br><span class="line">environment: production</span><br><span class="line">max_persistent_conns: 512</span><br><span class="line">servers: 4</span><br><span class="line">daemonize: true</span><br><span class="line">user: nginx</span><br><span class="line">socket: /tmp/thin.sock</span><br><span class="line">chdir: /data/DevOps/redmine</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="nginx配置文件-x2F-etc-x2F-nginx-x2F-conf-d-x2F-redmine-conf"><a href="#nginx配置文件-x2F-etc-x2F-nginx-x2F-conf-d-x2F-redmine-conf" class="headerlink" title="nginx配置文件 &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;redmine.conf"></a>nginx配置文件 &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;redmine.conf</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream thin_cluster &#123;</span><br><span class="line">	server unix:/tmp/thin.0.sock;</span><br><span class="line">	server unix:/tmp/thin.1.sock;</span><br><span class="line">	server unix:/tmp/thin.2.sock;</span><br><span class="line">	server unix:/tmp/thin.3.sock;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  redmine.server;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line">    access_log  /var/log/nginx/log/redmine.access.log  main;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">    client_max_body_size 10m;</span><br><span class="line">    client_body_buffer_size 128k;</span><br><span class="line">    proxy_connect_timeout 90;</span><br><span class="line">    proxy_send_timeout 90;</span><br><span class="line">    proxy_read_timeout 90;</span><br><span class="line">    proxy_buffer_size 4k;</span><br><span class="line">    proxy_buffers 4 32k;</span><br><span class="line">    proxy_busy_buffers_size 64k;</span><br><span class="line">    proxy_temp_file_write_size 64k;</span><br><span class="line">    #your redmine path</span><br><span class="line">    root /data/DevOps/redmine/public;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">	try_files $uri/index.html $uri.html $uri @cluster;</span><br><span class="line">    &#125;</span><br><span class="line">    location @cluster &#123;</span><br><span class="line">	proxy_pass http://thin_cluster;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line">    #</span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="line">    #</span><br><span class="line">    #location ~ \.php$ &#123;</span><br><span class="line">    #    proxy_pass   http://127.0.0.1;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line">    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">    #</span><br><span class="line">    #location ~ \.php$ &#123;</span><br><span class="line">    #    root           html;</span><br><span class="line">    #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    #    fastcgi_index  index.php;</span><br><span class="line">    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">    #    include        fastcgi_params;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line">    # deny access to .htaccess files, if Apache&#x27;s document root</span><br><span class="line">    # concurs with nginx&#x27;s one</span><br><span class="line">    #</span><br><span class="line">    #location ~ /\.ht &#123;</span><br><span class="line">    #    deny  all;</span><br><span class="line">    #&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="推荐开源主题"><a href="#推荐开源主题" class="headerlink" title="推荐开源主题"></a>推荐开源主题</h1><p><a href="https://github.com/mrliptontea/PurpleMine2">https://github.com/mrliptontea/PurpleMine2</a></p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><p><a href="http://code.macournoyer.com/thin/">thin 官网</a></p>
-</li>
-<li><p><a href="http://www.redmine.org/boards/2/topics/37072">Help with Ruby 2.0 + Redmine 2.30 + thin install</a></p>
-</li>
-<li><p><a href="https://www.redmine.org/projects/redmine/wiki/Install_Redmine_346_on_Centos_75">redmine官方安装文档</a></p>
-</li>
-<li><p><a href="http://www.redmine.org/projects/redmine/wiki/RedmineUpgrade">redmine官方升级文档</a></p>
-</li>
-<li><p><a href="http://rvm.io/">Ruby Version Manager (RVM)</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>redmine</category>
-      </categories>
-      <tags>
-        <tag>redmine</tag>
-        <tag>thin</tag>
-        <tag>项目管理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sed 常见用例总结</title>
-    <url>/sed-%E5%B8%B8%E8%A7%81%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>sed 发行于1974年，作者 Lee E. McMahon。awk发行于1977年，作者 阿尔佛雷德·艾侯、彼得·温伯格以及布莱恩·柯林汉。</p>
-<p>——源自维基百科</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="常见用例"><a href="#常见用例" class="headerlink" title="常见用例"></a>常见用例</h1><ul>
-<li><p>文件最后追加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed &#x27;$ a\00 08 * * * /sbin/clock -w &gt;/dev/null 2&gt;&amp;1&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>输出满足正则的记录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -n &#x27;/正则表达式/p&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除满足正则的记录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;/正则表达式/d&#x27; /var/spool/cron/root</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>sed删除多行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;/START/,/END/d&#x27; /etc/rsyncd.conf</span><br><span class="line">eg:</span><br><span class="line">sed -i &#x27;/\[root\]\s*/,/\s*hosts\s*allow\s*=\s*10.0.0.0\/8\s*192.168.0.0\/16\s*/d&#x27; rsyncd.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将所有数字版本号统一</p>
-<ul>
-<li><strong>sed正则中{}()需要加转义，[]则不用。<code>|</code>和<code>+</code>也需要转义，<code>$</code>不需要转义。</strong></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find /data/daemon/conf/ -name &quot;*.yaml&quot; -type f |xargs grep -irl &quot;version:v&quot; |xargs sed -i &#x27;s/version:v[0-9]\&#123;1\&#125;/version:v9/g&#x27;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>将软件版本号去掉<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qa |grep someone|sed &#x27;s/\([0-9]\|\.\|_\|-\)\+\.el.\+\(.x86_64\|.noarch\)/\2/g&#x27;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="备注说明"><a href="#备注说明" class="headerlink" title="备注说明"></a>备注说明</h1><ul>
-<li>有些版本的sed正则中不支持\d，小括号和加号都要加转义符  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">eg:</span><br><span class="line">rpm -qa |grep php |sed &#x27;s/-[0-9]\(.*\)\+$/-flag/g;s/^php-/php71-/g&#x27;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><p><a href="http://www.gnu.org/software/sed/manual/sed.html">sed, a stream editor·官方文档</a></p>
-</li>
-<li><p><a href="http://www.361way.com/sed-process-lines/2263.html">linux下在某行的前一行或后一行添加内容·运维之路</a></p>
-</li>
-<li><p><a href="http://www.cnblogs.com/edwardlost/archive/2010/09/17/1829145.html">sed命令详解</a></p>
-</li>
-<li><p><a href="http://www.cnblogs.com/emanlee/p/3307642.html">linux中sed的用法</a></p>
-</li>
-<li><p><a href="https://segmentfault.com/q/1010000006118112">sed 命令如何替换多行内容</a></p>
-</li>
-<li><p><a href="http://blog.fantasy.codes/shell/2013/05/21/learn-sed/">sed与正则表达式</a></p>
-</li>
-<li><p><a href="http://www.178linux.com/71180">sed命令的入门与进阶·Linux运维部落</a></p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/awk%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93.html">awk使用总结</a></li></ul></div>]]></content>
-      <categories>
-        <category>sed</category>
-      </categories>
-      <tags>
-        <tag>文本处理</tag>
-        <tag>sed</tag>
       </tags>
   </entry>
   <entry>
@@ -6683,6 +6683,53 @@
       </tags>
   </entry>
   <entry>
+    <title>自签SSL证书</title>
+    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
+</div>
+
+<p>devops 必备技能</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<ul>
+<li><p>查看当前系统使用的 OpenSSL 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取完整的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
+</blockquote>
+<ul>
+<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
+<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
+<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
+</ul>
+<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
+
+<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
+<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
+<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
+<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>openssl</tag>
+        <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MediaWiki管理控制台命令操作</title>
     <url>/mediawiki%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C.html</url>
     <content><![CDATA[<p>经典wiki</p>
@@ -6762,80 +6809,6 @@
       <tags>
         <tag>MediaWiki</tag>
         <tag>开源技术栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB基础实践</title>
-    <url>/mongodb%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img src="https://lengyuewusheng.com/assets/images/mongodb.png" />
-</div>
-
-<p>边用边总结</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="mongo连接"><a href="#mongo连接" class="headerlink" title="mongo连接"></a>mongo连接</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mongo --host 127.0.0.1 --port 27017</span><br><span class="line">或</span><br><span class="line">mongo &quot;mongodb://127.0.0.1:27017&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="升级操作"><a href="#升级操作" class="headerlink" title="升级操作"></a>升级操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.adminCommand( &#123; setFeatureCompatibilityVersion: &quot;4.0&quot; &#125; )</span><br></pre></td></tr></table></figure>
-
-<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p>启用用户认证必须修改配置文件&#x2F;etc&#x2F;mongod.conf为：并重启服务</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization : enabled</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>创建管理员用户</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser(&#123; user: &quot;admin&quot;, pwd: &quot;passwd&quot;, roles: [&#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125;] &#125;)</span><br><span class="line">db.auth(&quot;admin&quot;, &quot;passwd&quot;)</span><br><span class="line">db.getUsers()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建备份用户</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use testdb</span><br><span class="line">db.createUser(&#123; user: &quot;backup&quot;, pwd: &quot;passwd&quot;, roles: [&#123; role: &quot;backup&quot;, db: &quot;admin&quot; &#125;, &#123; role: &quot;restore&quot;, db: &quot;admin&quot; &#125;] &#125;)  # role中的db必须为admin</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看用户</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.system.users.find().pretty()</span><br><span class="line">use testdb</span><br><span class="line">show users</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改用户密码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use xxxdb;</span><br><span class="line">db.changeUserPassword(&#x27;username&#x27;,&#x27;newpasswd&#x27;);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="开启-x2F-关闭监控"><a href="#开启-x2F-关闭监控" class="headerlink" title="开启&#x2F;关闭监控"></a>开启&#x2F;关闭监控</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.enableFreeMonitoring()</span><br><span class="line">db.disableFreeMonitoring()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show dbs;</span><br><span class="line">db.getCollectionNames();   #show collections;</span><br><span class="line">help</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="查询范例"><a href="#查询范例" class="headerlink" title="查询范例"></a>查询范例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.getCollection(&#x27;gd_event&#x27;).aggregate([&#123;$group:&#123;_id:&quot;$eid&quot;,count:&#123;$sum:1&#125;&#125;&#125;,&#123; $match:&#123;count:&#123;$gt:1&#125;&#125;&#125;])</span><br><span class="line">类似sql：</span><br><span class="line">select eid as _id,count(eid) as count from gd_event group by eid having count&gt;1</span><br><span class="line"></span><br><span class="line">两个条件或运算：</span><br><span class="line">db.getCollection(&#x27;gd_event_log&#x27;).find(&#123;$or:[&#123;&quot;detail&quot;:&#123;$regex:&quot;冷月无声&quot;&#125;&#125;,&#123;&quot;info&quot;:&#123;$regex:&quot;冷月无声&quot;&#125;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="mongo查询包含"><a href="#mongo查询包含" class="headerlink" title="mongo查询包含"></a>mongo查询包含</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.getCollection(&#x27;cards&#x27;).find(&#123;title:/scribe/&#125;)</span><br><span class="line">db.getCollection(&#x27;cards&#x27;).find(&#123;title:/导航/&#125;)</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="mongo启用全文索引"><a href="#mongo启用全文索引" class="headerlink" title="mongo启用全文索引"></a>mongo启用全文索引</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; db.adminCommand( &#123; setParameter : 1, textSearchEnabled : true &#125; )</span><br><span class="line">&#123; &quot;was&quot; : false, &quot;ok&quot; : 1 &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>默认是关闭的。否则会报错”err” : “text search not enabled”</li>
-</ul>
-<h2 id="索引语言支持"><a href="#索引语言支持" class="headerlink" title="索引语言支持"></a>索引语言支持</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.de.ensureIndex( &#123;txt: &quot;text&quot;&#125;, &#123;default_language: &quot;german&quot;&#125; )</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果希望使用其他语言，需要在创建索引时指定要使用的语言。默认是支持英文的。</li>
-</ul>
-<h2 id="修改主从"><a href="#修改主从" class="headerlink" title="修改主从"></a>修改主从</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">use local</span><br><span class="line">db.sources.find()</span><br><span class="line">db.sources.remove( &#123; &quot;host&quot;: &quot;旧IP:27017&quot;&#125; )</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="mongdb客户端工具"><a href="#mongdb客户端工具" class="headerlink" title="mongdb客户端工具"></a>mongdb客户端工具</h1><ul>
-<li><a href="http://robomongo.org/">http://robomongo.org/</a></li>
-</ul>
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://www.jianshu.com/p/f5afc6488f9e">https://www.jianshu.com/p/f5afc6488f9e</a></li>
-<li><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#backup-and-restoration-roles">https://docs.mongodb.com/manual/reference/built-in-roles/#backup-and-restoration-roles</a></li>
-<li><a href="https://docs.mongodb.com/manual/reference/configuration-options/#security.authorization">https://docs.mongodb.com/manual/reference/configuration-options/#security.authorization</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>MongoDB</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>nosql</tag>
       </tags>
   </entry>
   <entry>
@@ -6933,6 +6906,80 @@
       </categories>
       <tags>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB基础实践</title>
+    <url>/mongodb%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img src="https://lengyuewusheng.com/assets/images/mongodb.png" />
+</div>
+
+<p>边用边总结</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="mongo连接"><a href="#mongo连接" class="headerlink" title="mongo连接"></a>mongo连接</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mongo --host 127.0.0.1 --port 27017</span><br><span class="line">或</span><br><span class="line">mongo &quot;mongodb://127.0.0.1:27017&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="升级操作"><a href="#升级操作" class="headerlink" title="升级操作"></a>升级操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.adminCommand( &#123; setFeatureCompatibilityVersion: &quot;4.0&quot; &#125; )</span><br></pre></td></tr></table></figure>
+
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p>启用用户认证必须修改配置文件&#x2F;etc&#x2F;mongod.conf为：并重启服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization : enabled</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>创建管理员用户</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.createUser(&#123; user: &quot;admin&quot;, pwd: &quot;passwd&quot;, roles: [&#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125;] &#125;)</span><br><span class="line">db.auth(&quot;admin&quot;, &quot;passwd&quot;)</span><br><span class="line">db.getUsers()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建备份用户</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use testdb</span><br><span class="line">db.createUser(&#123; user: &quot;backup&quot;, pwd: &quot;passwd&quot;, roles: [&#123; role: &quot;backup&quot;, db: &quot;admin&quot; &#125;, &#123; role: &quot;restore&quot;, db: &quot;admin&quot; &#125;] &#125;)  # role中的db必须为admin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看用户</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use admin</span><br><span class="line">db.system.users.find().pretty()</span><br><span class="line">use testdb</span><br><span class="line">show users</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改用户密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use xxxdb;</span><br><span class="line">db.changeUserPassword(&#x27;username&#x27;,&#x27;newpasswd&#x27;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="开启-x2F-关闭监控"><a href="#开启-x2F-关闭监控" class="headerlink" title="开启&#x2F;关闭监控"></a>开启&#x2F;关闭监控</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.enableFreeMonitoring()</span><br><span class="line">db.disableFreeMonitoring()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show dbs;</span><br><span class="line">db.getCollectionNames();   #show collections;</span><br><span class="line">help</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="查询范例"><a href="#查询范例" class="headerlink" title="查询范例"></a>查询范例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.getCollection(&#x27;gd_event&#x27;).aggregate([&#123;$group:&#123;_id:&quot;$eid&quot;,count:&#123;$sum:1&#125;&#125;&#125;,&#123; $match:&#123;count:&#123;$gt:1&#125;&#125;&#125;])</span><br><span class="line">类似sql：</span><br><span class="line">select eid as _id,count(eid) as count from gd_event group by eid having count&gt;1</span><br><span class="line"></span><br><span class="line">两个条件或运算：</span><br><span class="line">db.getCollection(&#x27;gd_event_log&#x27;).find(&#123;$or:[&#123;&quot;detail&quot;:&#123;$regex:&quot;冷月无声&quot;&#125;&#125;,&#123;&quot;info&quot;:&#123;$regex:&quot;冷月无声&quot;&#125;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="mongo查询包含"><a href="#mongo查询包含" class="headerlink" title="mongo查询包含"></a>mongo查询包含</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.getCollection(&#x27;cards&#x27;).find(&#123;title:/scribe/&#125;)</span><br><span class="line">db.getCollection(&#x27;cards&#x27;).find(&#123;title:/导航/&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="mongo启用全文索引"><a href="#mongo启用全文索引" class="headerlink" title="mongo启用全文索引"></a>mongo启用全文索引</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; db.adminCommand( &#123; setParameter : 1, textSearchEnabled : true &#125; )</span><br><span class="line">&#123; &quot;was&quot; : false, &quot;ok&quot; : 1 &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认是关闭的。否则会报错”err” : “text search not enabled”</li>
+</ul>
+<h2 id="索引语言支持"><a href="#索引语言支持" class="headerlink" title="索引语言支持"></a>索引语言支持</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.de.ensureIndex( &#123;txt: &quot;text&quot;&#125;, &#123;default_language: &quot;german&quot;&#125; )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果希望使用其他语言，需要在创建索引时指定要使用的语言。默认是支持英文的。</li>
+</ul>
+<h2 id="修改主从"><a href="#修改主从" class="headerlink" title="修改主从"></a>修改主从</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">use local</span><br><span class="line">db.sources.find()</span><br><span class="line">db.sources.remove( &#123; &quot;host&quot;: &quot;旧IP:27017&quot;&#125; )</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="mongdb客户端工具"><a href="#mongdb客户端工具" class="headerlink" title="mongdb客户端工具"></a>mongdb客户端工具</h1><ul>
+<li><a href="http://robomongo.org/">http://robomongo.org/</a></li>
+</ul>
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a href="https://www.jianshu.com/p/f5afc6488f9e">https://www.jianshu.com/p/f5afc6488f9e</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#backup-and-restoration-roles">https://docs.mongodb.com/manual/reference/built-in-roles/#backup-and-restoration-roles</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/configuration-options/#security.authorization">https://docs.mongodb.com/manual/reference/configuration-options/#security.authorization</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>MongoDB</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>nosql</tag>
       </tags>
   </entry>
   <entry>
@@ -7109,53 +7156,6 @@
         <tag>pandoc</tag>
         <tag>revealjs</tag>
         <tag>ppt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自签SSL证书</title>
-    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
-</div>
-
-<p>devops 必备技能</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<ul>
-<li><p>查看当前系统使用的 OpenSSL 版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取完整的版本信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
-</blockquote>
-<ul>
-<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
-<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
-<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
-</ul>
-<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
-
-<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
-<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
-<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
-<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
-<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>openssl</tag>
-        <tag>https</tag>
       </tags>
   </entry>
   <entry>
