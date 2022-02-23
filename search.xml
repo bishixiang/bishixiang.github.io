@@ -191,147 +191,6 @@
       </tags>
   </entry>
   <entry>
-    <title>DOS常用命令总结</title>
-    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
-    <content><![CDATA[<ul>
-<li><p>查看历史命令（快捷键：F7）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自动关机</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件系统转换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>磁盘检查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改文件属性</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内网主机名IP互查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>组策略</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
-</ul>
-</li>
-<li><p>help</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
-      <categories>
-        <category>DOS</category>
-      </categories>
-      <tags>
-        <tag>DOS</tag>
-        <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>curl命令使用范例</title>
-    <url>/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html</url>
-    <content><![CDATA[<h1 id="curl常用参数："><a href="#curl常用参数：" class="headerlink" title="curl常用参数："></a>curl常用参数：</h1><style> table th:nth-of-type(1){width: 15%;} nth-of-type(2){width: 85%;} </style>
-
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-A&#x2F;–user-agent</td>
-<td align="left">定义用户代理字符串</td>
-</tr>
-<tr>
-<td align="left">-H&#x2F;–header</td>
-<td align="left">自定义header头信息</td>
-</tr>
-<tr>
-<td align="left">-i&#x2F;–include</td>
-<td align="left">输出时包括protocol头信息</td>
-</tr>
-<tr>
-<td align="left">-I&#x2F;–head</td>
-<td align="left">只显示请求的头信息</td>
-</tr>
-<tr>
-<td align="left">-o&#x2F;–output</td>
-<td align="left">把输出写到该文件中</td>
-</tr>
-<tr>
-<td align="left">-s&#x2F;–silent</td>
-<td align="left">静默模式</td>
-</tr>
-<tr>
-<td align="left">-w&#x2F;–write-out [format]</td>
-<td align="left">在一次完整且成功的操作后输出指定格式的内容到标准输出</td>
-</tr>
-<tr>
-<td align="left">-X&#x2F;–request</td>
-<td align="left">指定请求方式</td>
-</tr>
-<tr>
-<td align="left">-u&#x2F;–user</td>
-<td align="left">设置服务器的用户和密码</td>
-</tr>
-<tr>
-<td align="left">-T&#x2F;–upload-file</td>
-<td align="left">上传文件</td>
-</tr>
-<tr>
-<td align="left">-l&#x2F;–list-only</td>
-<td align="left">列出ftp目录下的文件名称</td>
-</tr>
-<tr>
-<td align="left">–limit-rate</td>
-<td align="left">设置传输速度</td>
-</tr>
-<tr>
-<td align="left">-m&#x2F;–max-time</td>
-<td align="left">设置最大传输时间</td>
-</tr>
-</tbody></table>
-<h1 id="常用范例-纯shell命令-："><a href="#常用范例-纯shell命令-：" class="headerlink" title="常用范例(纯shell命令)："></a>常用范例(纯shell命令)：</h1><ul>
-<li><p>伪造UA绑host请求:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --user-agent &quot;curl-test-agent&quot; -H &quot;Host:www.lengyuewusheng.com&quot; -I &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>伪造X-Real-IP：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -H &quot;X-Real-IP:1.1.1.1&quot; -H &quot;Host:www.lengyuwusheng.com&quot; &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取请求的状态码字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;%&#123;http_code&#125;\n&quot; -H &quot;Host:www.lengyuewusheng.com&quot; &quot;http://10.0.0.1/index.php&quot; </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向服务器端POST数据</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -X POST -d &quot;a=1&amp;b=2&amp;c=3&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>指定请求的超时时间</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --connect-timeout 5 -m 90 -o /dev/null -s -w &quot;%&#123;http_code&#125;&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过curl向ftp服务器上传文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -u &quot;$&#123;USER&#125;:$&#123;PASSWD&#125;&quot; -T &quot;$&#123;DATADIR&#125;/$&#123;FILE&#125;&quot; &quot;ftp://$&#123;FTPSERVER&#125;&quot;</span><br><span class="line"># eg: curl -u &quot;admin:123456&quot; -T &quot;/tmp/logs/test.log&quot; &quot;ftp://10.0.0.1&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li></ul></div>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>curl</tag>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nginx部分常用内置变量</title>
     <url>/nginx%E9%83%A8%E5%88%86%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F.html</url>
     <content><![CDATA[<style> table th:nth-of-type(1){width: 15%;} nth-of-type(2){width: 45%;} nth-of-type(3){width: 40%;}</style>
@@ -493,6 +352,98 @@
       </tags>
   </entry>
   <entry>
+    <title>curl命令使用范例</title>
+    <url>/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html</url>
+    <content><![CDATA[<h1 id="curl常用参数："><a href="#curl常用参数：" class="headerlink" title="curl常用参数："></a>curl常用参数：</h1><style> table th:nth-of-type(1){width: 15%;} nth-of-type(2){width: 85%;} </style>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-A&#x2F;–user-agent</td>
+<td align="left">定义用户代理字符串</td>
+</tr>
+<tr>
+<td align="left">-H&#x2F;–header</td>
+<td align="left">自定义header头信息</td>
+</tr>
+<tr>
+<td align="left">-i&#x2F;–include</td>
+<td align="left">输出时包括protocol头信息</td>
+</tr>
+<tr>
+<td align="left">-I&#x2F;–head</td>
+<td align="left">只显示请求的头信息</td>
+</tr>
+<tr>
+<td align="left">-o&#x2F;–output</td>
+<td align="left">把输出写到该文件中</td>
+</tr>
+<tr>
+<td align="left">-s&#x2F;–silent</td>
+<td align="left">静默模式</td>
+</tr>
+<tr>
+<td align="left">-w&#x2F;–write-out [format]</td>
+<td align="left">在一次完整且成功的操作后输出指定格式的内容到标准输出</td>
+</tr>
+<tr>
+<td align="left">-X&#x2F;–request</td>
+<td align="left">指定请求方式</td>
+</tr>
+<tr>
+<td align="left">-u&#x2F;–user</td>
+<td align="left">设置服务器的用户和密码</td>
+</tr>
+<tr>
+<td align="left">-T&#x2F;–upload-file</td>
+<td align="left">上传文件</td>
+</tr>
+<tr>
+<td align="left">-l&#x2F;–list-only</td>
+<td align="left">列出ftp目录下的文件名称</td>
+</tr>
+<tr>
+<td align="left">–limit-rate</td>
+<td align="left">设置传输速度</td>
+</tr>
+<tr>
+<td align="left">-m&#x2F;–max-time</td>
+<td align="left">设置最大传输时间</td>
+</tr>
+</tbody></table>
+<h1 id="常用范例-纯shell命令-："><a href="#常用范例-纯shell命令-：" class="headerlink" title="常用范例(纯shell命令)："></a>常用范例(纯shell命令)：</h1><ul>
+<li><p>伪造UA绑host请求:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --user-agent &quot;curl-test-agent&quot; -H &quot;Host:www.lengyuewusheng.com&quot; -I &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>伪造X-Real-IP：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -H &quot;X-Real-IP:1.1.1.1&quot; -H &quot;Host:www.lengyuwusheng.com&quot; &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取请求的状态码字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;%&#123;http_code&#125;\n&quot; -H &quot;Host:www.lengyuewusheng.com&quot; &quot;http://10.0.0.1/index.php&quot; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向服务器端POST数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -X POST -d &quot;a=1&amp;b=2&amp;c=3&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>指定请求的超时时间</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --connect-timeout 5 -m 90 -o /dev/null -s -w &quot;%&#123;http_code&#125;&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过curl向ftp服务器上传文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -u &quot;$&#123;USER&#125;:$&#123;PASSWD&#125;&quot; -T &quot;$&#123;DATADIR&#125;/$&#123;FILE&#125;&quot; &quot;ftp://$&#123;FTPSERVER&#125;&quot;</span><br><span class="line"># eg: curl -u &quot;admin:123456&quot; -T &quot;/tmp/logs/test.log&quot; &quot;ftp://10.0.0.1&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li></ul></div>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>curl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell脚本传参</title>
     <url>/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html</url>
     <content><![CDATA[<ul>
@@ -535,130 +486,6 @@
       <tags>
         <tag>shell</tag>
         <tag>传参</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell printf格式化输出</title>
-    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
-    <content><![CDATA[<p>shell也可以优雅的输出。</p>
-<span id="more"></span>
-
-<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
-
-<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
-
-<table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">%s</td>
-<td align="left">字符串</td>
-</tr>
-<tr>
-<td align="left">%d,%i</td>
-<td align="left">十进制整数</td>
-</tr>
-<tr>
-<td align="left">%u</td>
-<td align="left">不带正负号的十进制值</td>
-</tr>
-<tr>
-<td align="left">%o</td>
-<td align="left">不带正负号的八进制值</td>
-</tr>
-<tr>
-<td align="left">%x</td>
-<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
-</tr>
-<tr>
-<td align="left">%X</td>
-<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
-</tr>
-<tr>
-<td align="left">%e,%E,%f</td>
-<td align="left">浮点格式</td>
-</tr>
-<tr>
-<td align="left">%g</td>
-<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%G</td>
-<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
-</tr>
-<tr>
-<td align="left">%b</td>
-<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
-</tr>
-<tr>
-<td align="left">%c</td>
-<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
-</tr>
-<tr>
-<td align="left">%%</td>
-<td align="left">字面意义的%</td>
-</tr>
-</tbody></table>
-<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
-<thead>
-<tr>
-<th align="left">格式符</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\f</td>
-<td align="left">换页（formfeed）</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">换行</td>
-</tr>
-<tr>
-<td align="left">\r</td>
-<td align="left">回车（Carriage return）</td>
-</tr>
-<tr>
-<td align="left">\t</td>
-<td align="left">水平制表符</td>
-</tr>
-<tr>
-<td align="left">\v</td>
-<td align="left">垂直制表符</td>
-</tr>
-<tr>
-<td align="left">\</td>
-<td align="left">一个字面上的反斜杠字符</td>
-</tr>
-<tr>
-<td align="left">\ddd</td>
-<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
-</tr>
-<tr>
-<td align="left">\0ddd</td>
-<td align="left">表示1到3位的八进制值字符</td>
-</tr>
-</tbody></table>
-<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
-<li>默认printf没有换行，需要手动添加\n；</li>
-<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
-<li>-表示左对齐，+或者空则表示右对齐；</li>
-<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
-<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
-<li>格式控制中也可以引入字体颜色。</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>printf</tag>
       </tags>
   </entry>
   <entry>
@@ -941,69 +768,127 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx-rewrite指令中的flag参数</title>
-    <url>/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html</url>
-    <content><![CDATA[<blockquote>
-<p>Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。</p>
-</blockquote>
+    <title>shell printf格式化输出</title>
+    <url>/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html</url>
+    <content><![CDATA[<p>shell也可以优雅的输出。</p>
 <span id="more"></span>
 
-<style> table th:nth-of-type(2){width: 80%;}</style>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">printf: usage: printf [-v var] format [arguments]</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>flag 参数</li>
-</ul>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="常用格式控制符"><a href="#常用格式控制符" class="headerlink" title="常用格式控制符"></a>常用格式控制符</h2><style> table th:nth-of-type(2){width: 80%;} </style>
+
 <table>
 <thead>
 <tr>
-<th align="left">flag参数</th>
-<th align="left">意义</th>
+<th align="left">格式符</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">last</td>
-<td align="left">终止rewrite指令匹配，然后对当前重写的新URI在rewrite指令集上重新查找</td>
+<td align="left">%s</td>
+<td align="left">字符串</td>
 </tr>
 <tr>
-<td align="left">break</td>
-<td align="left">停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行</td>
+<td align="left">%d,%i</td>
+<td align="left">十进制整数</td>
 </tr>
 <tr>
-<td align="left">permant</td>
-<td align="left">返回301永久重定向，地址栏显示跳转后的地址</td>
+<td align="left">%u</td>
+<td align="left">不带正负号的十进制值</td>
 </tr>
 <tr>
-<td align="left">redirect</td>
-<td align="left">返回302临时重定向，地址栏显示跳转后的地址</td>
+<td align="left">%o</td>
+<td align="left">不带正负号的八进制值</td>
+</tr>
+<tr>
+<td align="left">%x</td>
+<td align="left">不带正负号的十六进制值，使用a至f表示10至15</td>
+</tr>
+<tr>
+<td align="left">%X</td>
+<td align="left">不带正负号的十六进制值，使用A至F表示10至15</td>
+</tr>
+<tr>
+<td align="left">%e,%E,%f</td>
+<td align="left">浮点格式</td>
+</tr>
+<tr>
+<td align="left">%g</td>
+<td align="left">%e或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%G</td>
+<td align="left">%E或%f转换，看哪一个较短，则删除结尾的零</td>
+</tr>
+<tr>
+<td align="left">%b</td>
+<td align="left">相对应的参数被视为含有要被处理的转义序列之字符串</td>
+</tr>
+<tr>
+<td align="left">%c</td>
+<td align="left">ASCII字符。显示相对应参数的第一个字符</td>
+</tr>
+<tr>
+<td align="left">%%</td>
+<td align="left">字面意义的%</td>
 </tr>
 </tbody></table>
-<ul>
-<li><p>说明</p>
-<ul>
-<li>nginx可以通过增加<code>rewrite_log on; error_log logs/error.log notice;</code>调试 rewrite；</li>
-<li>last：将rewrite后的地址重新在server标签执行；</li>
-<li>break：将rewrite后地址重新在当前的location标签执行；</li>
-<li>last和break正常返回200状态码；</li>
-<li>last一般写在server和if中，而break一般使用在location中；</li>
-<li>last不终止重写后的url匹配，而break终止重写后的匹配；</li>
-<li>一般使用302重定向是在一个网站或网页在24到48小时之内临时移到其它位置，建议尽量采用301重定向；</li>
-<li>rewrite指令执行过程中如果循环超过10次，则返回500 Internal Server Error错误；</li>
-<li>rewrite正则表达regex式中包含 “}” 或 “;”时整个表达式需要用双引号或单引号引起来；</li>
+<h2 id="常用转义序列"><a href="#常用转义序列" class="headerlink" title="常用转义序列"></a>常用转义序列</h2><table>
+<thead>
+<tr>
+<th align="left">格式符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\f</td>
+<td align="left">换页（formfeed）</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车（Carriage return）</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">水平制表符</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">垂直制表符</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">一个字面上的反斜杠字符</td>
+</tr>
+<tr>
+<td align="left">\ddd</td>
+<td align="left">表示1到3位数八进制值的字符，仅在格式字符串中有效</td>
+</tr>
+<tr>
+<td align="left">\0ddd</td>
+<td align="left">表示1到3位的八进制值字符</td>
+</tr>
+</tbody></table>
+<h1 id="使用场景举例"><a href="#使用场景举例" class="headerlink" title="使用场景举例"></a>使用场景举例</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat printf.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;格式符&quot; &quot;说明&quot;</span><br><span class="line">printf &quot;%-20s\t\033[33m%-30s\033[0m\n&quot; &#x27;%s&#x27; &#x27;字符串&#x27;</span><br><span class="line">printf &#x27;%-20s\t%-30s\n&#x27; &#x27;%d&#x27; &#x27;十进制整数&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%u&quot; &#x27;不带正负号的十进制值&#x27;</span><br><span class="line">printf &quot;%-20s\t%-30s\n&quot; &quot;%o&quot; &quot;不带正负号的八进制值&quot;</span><br><span class="line">printf &quot;\033[32m%-20s\033[0m\t%-1.15f\n&quot; %f 3.14159265358</span><br><span class="line"></span><br><span class="line"># sh printf.sh</span><br><span class="line">格式符           	说明</span><br><span class="line">%s                  	字符串</span><br><span class="line">%d                  	十进制整数</span><br><span class="line">%u                  	不带正负号的十进制值</span><br><span class="line">%o                  	不带正负号的八进制值</span><br><span class="line">%f                  	3.141592653580000</span><br></pre></td></tr></table></figure>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><ul>
+<li>默认printf没有换行，需要手动添加\n；</li>
+<li>%-20s指一个宽度为20的左对齐字符。如果不满20个字符则以空格填充，如超出20个字符也会显示所有内容；</li>
+<li>-表示左对齐，+或者空则表示右对齐；</li>
+<li>%-1.15f 格式化小数，其中.15指保留15位小数，不足位数补零；</li>
+<li>在格式控制符和输出字符串中单引号与双引号效果相同，但是不能将所有的输出字符串用一个引起来，必须每个字段一对引号；</li>
+<li>格式控制中也可以引入字体颜色。</li>
 </ul>
-</li>
-<li><p>参考文档</p>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li></ul></div>]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
       <categories>
-        <category>nginx</category>
+        <category>shell</category>
       </categories>
       <tags>
-        <tag>nginx</tag>
-        <tag>rewrite</tag>
+        <tag>shell</tag>
+        <tag>printf</tag>
       </tags>
   </entry>
   <entry>
@@ -1083,71 +968,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx配置location匹配规则</title>
-    <url>/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html</url>
-    <content><![CDATA[<blockquote>
-<p>请求路由定位是Nginx的核心功能，位于ngx_http_core_module模块中。</p>
-</blockquote>
-<span id="more"></span>
-
-<ul>
-<li>location匹配模式</li>
-</ul>
-<style> table th:nth-of-type(2){width: 80%;}</style>
-
-<table>
-<thead>
-<tr>
-<th align="left">判断条件</th>
-<th align="left">符号意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">~</td>
-<td align="left">区分大小写地匹配正则</td>
-</tr>
-<tr>
-<td align="left">~*</td>
-<td align="left">不区分大小写地匹配正则</td>
-</tr>
-<tr>
-<td align="left">^~</td>
-<td align="left">普通字符（相对于正则）匹配，一般用来匹配目录</td>
-</tr>
-<tr>
-<td align="left">&#x3D;</td>
-<td align="left">进行普通字符精确匹配</td>
-</tr>
-<tr>
-<td align="left">@</td>
-<td align="left">“@”定义一个命名的 location,用于内部重定向，不能被嵌套，不能包含嵌套的location。例如 error_page, try_files</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>location 匹配的优先级</p>
-<ul>
-<li>&#x3D; 精确匹配会第一个被处理。如果发现精确匹配，nginx停止搜索其他匹配；</li>
-<li>Nginx首先检查最长前缀字符串匹配，其次检查正则表达式的匹配程度；</li>
-<li>最长前缀匹配如果使用”^~”，则不检查正则表达式；</li>
-<li>当没有正则表达式或者没有正则表达式被匹配的情况下，那么匹配程度最高的前缀匹配规则会被应用。</li>
-</ul>
-</li>
-<li><p>参考文档</p>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">nginx官方文档location部分</a></li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>location</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>http不同版本及特性概括</title>
     <url>/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%8F%8A%E7%89%B9%E6%80%A7%E6%A6%82%E6%8B%AC.html</url>
     <content><![CDATA[<p>HTTP（HyperText Transfer Protocol）是互联网应用中最常见的一种协议。</p>
@@ -1217,6 +1037,186 @@
       </categories>
       <tags>
         <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx-rewrite指令中的flag参数</title>
+    <url>/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html</url>
+    <content><![CDATA[<blockquote>
+<p>Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。</p>
+</blockquote>
+<span id="more"></span>
+
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<ul>
+<li>flag 参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">flag参数</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">last</td>
+<td align="left">终止rewrite指令匹配，然后对当前重写的新URI在rewrite指令集上重新查找</td>
+</tr>
+<tr>
+<td align="left">break</td>
+<td align="left">停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行</td>
+</tr>
+<tr>
+<td align="left">permant</td>
+<td align="left">返回301永久重定向，地址栏显示跳转后的地址</td>
+</tr>
+<tr>
+<td align="left">redirect</td>
+<td align="left">返回302临时重定向，地址栏显示跳转后的地址</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>说明</p>
+<ul>
+<li>nginx可以通过增加<code>rewrite_log on; error_log logs/error.log notice;</code>调试 rewrite；</li>
+<li>last：将rewrite后的地址重新在server标签执行；</li>
+<li>break：将rewrite后地址重新在当前的location标签执行；</li>
+<li>last和break正常返回200状态码；</li>
+<li>last一般写在server和if中，而break一般使用在location中；</li>
+<li>last不终止重写后的url匹配，而break终止重写后的匹配；</li>
+<li>一般使用302重定向是在一个网站或网页在24到48小时之内临时移到其它位置，建议尽量采用301重定向；</li>
+<li>rewrite指令执行过程中如果循环超过10次，则返回500 Internal Server Error错误；</li>
+<li>rewrite正则表达regex式中包含 “}” 或 “;”时整个表达式需要用双引号或单引号引起来；</li>
+</ul>
+</li>
+<li><p>参考文档</p>
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li></ul></div>]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>rewrite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOS常用命令总结</title>
+    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
+    <content><![CDATA[<ul>
+<li><p>查看历史命令（快捷键：F7）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动关机</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件系统转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>磁盘检查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改文件属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内网主机名IP互查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组策略</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
+</ul>
+</li>
+<li><p>help</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
+      <categories>
+        <category>DOS</category>
+      </categories>
+      <tags>
+        <tag>DOS</tag>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx配置location匹配规则</title>
+    <url>/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html</url>
+    <content><![CDATA[<blockquote>
+<p>请求路由定位是Nginx的核心功能，位于ngx_http_core_module模块中。</p>
+</blockquote>
+<span id="more"></span>
+
+<ul>
+<li>location匹配模式</li>
+</ul>
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<table>
+<thead>
+<tr>
+<th align="left">判断条件</th>
+<th align="left">符号意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">~</td>
+<td align="left">区分大小写地匹配正则</td>
+</tr>
+<tr>
+<td align="left">~*</td>
+<td align="left">不区分大小写地匹配正则</td>
+</tr>
+<tr>
+<td align="left">^~</td>
+<td align="left">普通字符（相对于正则）匹配，一般用来匹配目录</td>
+</tr>
+<tr>
+<td align="left">&#x3D;</td>
+<td align="left">进行普通字符精确匹配</td>
+</tr>
+<tr>
+<td align="left">@</td>
+<td align="left">“@”定义一个命名的 location,用于内部重定向，不能被嵌套，不能包含嵌套的location。例如 error_page, try_files</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>location 匹配的优先级</p>
+<ul>
+<li>&#x3D; 精确匹配会第一个被处理。如果发现精确匹配，nginx停止搜索其他匹配；</li>
+<li>Nginx首先检查最长前缀字符串匹配，其次检查正则表达式的匹配程度；</li>
+<li>最长前缀匹配如果使用”^~”，则不检查正则表达式；</li>
+<li>当没有正则表达式或者没有正则表达式被匹配的情况下，那么匹配程度最高的前缀匹配规则会被应用。</li>
+</ul>
+</li>
+<li><p>参考文档</p>
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">nginx官方文档location部分</a></li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>location</tag>
       </tags>
   </entry>
   <entry>
@@ -1537,40 +1537,6 @@
       </tags>
   </entry>
   <entry>
-    <title>存储空间计算</title>
-    <url>/%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E8%AE%A1%E7%AE%97.html</url>
-    <content><![CDATA[<p>最基础的知识往往是最容易被忽略的点，放低姿态，夯实基础，才能行稳致远。</p>
-<span id="more"></span>
-
-<h1 id="存储空间单位换算"><a href="#存储空间单位换算" class="headerlink" title="存储空间单位换算"></a>存储空间单位换算</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 B = 8 bit</span><br><span class="line">1 KB = 1024 B = 8192 bit</span><br><span class="line">1 MB = 1024 KB = 1048576 B = 8388608 bit</span><br><span class="line">1 GB = 1024 MB = 1048576 KB = 1073741824 B = 8589934592 bit</span><br><span class="line">1 TB = 1024 GB = 1048576 MB = 1073741824 KB = 1099511627776 B = 8796093022208 bit</span><br><span class="line">1 PB = 1024 TB = 1048576 GB = 1073741824 MB = 1099511627776 KB = 1125899906842624 B = 9007199254740992 bit</span><br><span class="line">1 EB = 1024 PB = 1048576 TB = 1073741824 GB = 1099511627776 MB = 1125899906842624 KB = 1.152921504606847e+18 B = 9.223372036854776e+18 bit</span><br></pre></td></tr></table></figure>
-
-<h1 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="ASCII编码"></a>ASCII编码</h1><ul>
-<li>一个ASCII码占一个字节</li>
-<li>一个英文字母占一个字节</li>
-<li>一个中文汉字占两个字节</li>
-</ul>
-<h1 id="UTF-8编码"><a href="#UTF-8编码" class="headerlink" title="UTF-8编码"></a>UTF-8编码</h1><ul>
-<li>一个英文字符等于一个字节</li>
-<li>一个中文（含繁体）占三个字节</li>
-</ul>
-<h1 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h1><ul>
-<li>一个英文字占两个字节</li>
-<li>一个中文（含繁体）占两个字节</li>
-</ul>
-<h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><ul>
-<li>英文标点占一个字节</li>
-<li>中文标点占两个字节</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>磁盘存储</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</title>
     <url>/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84tmpfs%E3%80%81-dev-shm%E3%80%81tmp%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6.html</url>
     <content><![CDATA[<p>共享内存允许两个或更多进程访问同一块内存。</p>
@@ -1663,8 +1629,8 @@
         <category>操作系统</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>共享内存</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1741,6 +1707,40 @@
       <tags>
         <tag>nginx</tag>
         <tag>仿真测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>存储空间计算</title>
+    <url>/%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E8%AE%A1%E7%AE%97.html</url>
+    <content><![CDATA[<p>最基础的知识往往是最容易被忽略的点，放低姿态，夯实基础，才能行稳致远。</p>
+<span id="more"></span>
+
+<h1 id="存储空间单位换算"><a href="#存储空间单位换算" class="headerlink" title="存储空间单位换算"></a>存储空间单位换算</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 B = 8 bit</span><br><span class="line">1 KB = 1024 B = 8192 bit</span><br><span class="line">1 MB = 1024 KB = 1048576 B = 8388608 bit</span><br><span class="line">1 GB = 1024 MB = 1048576 KB = 1073741824 B = 8589934592 bit</span><br><span class="line">1 TB = 1024 GB = 1048576 MB = 1073741824 KB = 1099511627776 B = 8796093022208 bit</span><br><span class="line">1 PB = 1024 TB = 1048576 GB = 1073741824 MB = 1099511627776 KB = 1125899906842624 B = 9007199254740992 bit</span><br><span class="line">1 EB = 1024 PB = 1048576 TB = 1073741824 GB = 1099511627776 MB = 1125899906842624 KB = 1.152921504606847e+18 B = 9.223372036854776e+18 bit</span><br></pre></td></tr></table></figure>
+
+<h1 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="ASCII编码"></a>ASCII编码</h1><ul>
+<li>一个ASCII码占一个字节</li>
+<li>一个英文字母占一个字节</li>
+<li>一个中文汉字占两个字节</li>
+</ul>
+<h1 id="UTF-8编码"><a href="#UTF-8编码" class="headerlink" title="UTF-8编码"></a>UTF-8编码</h1><ul>
+<li>一个英文字符等于一个字节</li>
+<li>一个中文（含繁体）占三个字节</li>
+</ul>
+<h1 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h1><ul>
+<li>一个英文字占两个字节</li>
+<li>一个中文（含繁体）占两个字节</li>
+</ul>
+<h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><ul>
+<li>英文标点占一个字节</li>
+<li>中文标点占两个字节</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>磁盘存储</tag>
       </tags>
   </entry>
   <entry>
@@ -2561,6 +2561,74 @@
       </tags>
   </entry>
   <entry>
+    <title>HTTP协议中的8种请求方法</title>
+    <url>/http%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%848%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.html</url>
+    <content><![CDATA[<!-- \{\% centerquote \%\}\{\% endcenterquote \%\} -->
+<p>根据HTTP标准，HTTP请求可以使用多种请求方法。。。</p>
+<span id="more"></span>
+
+<style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 90%;}</style>
+
+<h1 id="八种请求方法"><a href="#八种请求方法" class="headerlink" title="八种请求方法"></a>八种请求方法</h1><table>
+<thead>
+<tr>
+<th align="left">请求方法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">请求指定的页面信息，并返回实体主体。</td>
+</tr>
+<tr>
+<td align="left">HEAD</td>
+<td align="left">类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头。</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">向指定资源提交数据进行处理请求，主要用于向数据处理过程提供数据块，如递交表单或上传文件。</td>
+</tr>
+<tr>
+<td align="left">PUT</td>
+<td align="left">从客户端向服务器传送的数据取代指定的文档的内容。由于自身不带验证机制，任何人都可以上传文件，因此存在安全性问题，一般不使用该方法。</td>
+</tr>
+<tr>
+<td align="left">DELETE</td>
+<td align="left">请求服务器删除指定的页面。同样不带验证机制。</td>
+</tr>
+<tr>
+<td align="left">CONNECT</td>
+<td align="left">HTTP&#x2F;1.1协议中预留给能够将连接改为管道方式的代理服务器，使请求连接转换到透明的 TCP&#x2F;IP 通道。</td>
+</tr>
+<tr>
+<td align="left">OPTIONS</td>
+<td align="left">返回服务器支持的 HTTP 方法，允许客户端查看服务器的性能。</td>
+</tr>
+<tr>
+<td align="left">TRACE</td>
+<td align="left">回显服务器收到的请求，主要用于测试或诊断。通常不会使用 TRACE，并且它容易受到 XST(跨站追踪)攻击。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>其中HTTP1.0定义了三种请求方法： GET、POST、和HEAD，HTTP1.1新增了OPTIONS、PUT、DELETE、TRACE和CONNECT方法。</li>
+</ul>
+<h1 id="GET和POST比较"><a href="#GET和POST比较" class="headerlink" title="GET和POST比较"></a>GET和POST比较</h1><ul>
+<li><p>GET方法<br>GET方法请求有长度限制，保留在浏览器历史记录中，请求可被缓存，可被收藏为书签。请求只应当用于取回数据，不应在处理敏感数据时使用。</p>
+</li>
+<li><p>POST方法<br>POST方法请求对数据长度没有要求，请求不会保留在浏览器历史记录中，请求不能被缓存，不能被收藏为书签。</p>
+</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>*<a href="http://www.runoob.com/http/http-methods.html">HTTP请求方法</a><br>*<a href="https://github.com/xuelangZF/CS_Offer/blob/master/Network/HTTP.md">HTTP 协议基础</a><br>*<a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp">HTTP 方法：GET 对比 POST</a></p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html">http协议头字段说明</a></li><li><a href="https://www.lengyuewusheng.com/http%E8%AF%B7%E6%B1%82%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A%E8%A7%A3%E9%87%8A.html">http请求常见状态码及解释</a></li><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li><li><a href="https://www.lengyuewusheng.com/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%8F%8A%E7%89%B9%E6%80%A7%E6%A6%82%E6%8B%AC.html">http不同版本及特性概括</a></li></ul></div>]]></content>
+      <categories>
+        <category>http</category>
+      </categories>
+      <tags>
+        <tag>http</tag>
+        <tag>协议</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>awk使用总结</title>
     <url>/awk%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93.html</url>
     <content><![CDATA[<p>AWK是一款优秀的文本处理工具，Linux及类Unix环境中功能最强大的数据处理引擎之一。awk的衍生版本主要有nawk，gawk。linux系统下默认版本为gawk。</p>
@@ -3022,74 +3090,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HTTP协议中的8种请求方法</title>
-    <url>/http%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%848%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.html</url>
-    <content><![CDATA[<!-- \{\% centerquote \%\}\{\% endcenterquote \%\} -->
-<p>根据HTTP标准，HTTP请求可以使用多种请求方法。。。</p>
-<span id="more"></span>
-
-<style> table th:nth-of-type(1){width: 10%;} nth-of-type(2){width: 90%;}</style>
-
-<h1 id="八种请求方法"><a href="#八种请求方法" class="headerlink" title="八种请求方法"></a>八种请求方法</h1><table>
-<thead>
-<tr>
-<th align="left">请求方法</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">GET</td>
-<td align="left">请求指定的页面信息，并返回实体主体。</td>
-</tr>
-<tr>
-<td align="left">HEAD</td>
-<td align="left">类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头。</td>
-</tr>
-<tr>
-<td align="left">POST</td>
-<td align="left">向指定资源提交数据进行处理请求，主要用于向数据处理过程提供数据块，如递交表单或上传文件。</td>
-</tr>
-<tr>
-<td align="left">PUT</td>
-<td align="left">从客户端向服务器传送的数据取代指定的文档的内容。由于自身不带验证机制，任何人都可以上传文件，因此存在安全性问题，一般不使用该方法。</td>
-</tr>
-<tr>
-<td align="left">DELETE</td>
-<td align="left">请求服务器删除指定的页面。同样不带验证机制。</td>
-</tr>
-<tr>
-<td align="left">CONNECT</td>
-<td align="left">HTTP&#x2F;1.1协议中预留给能够将连接改为管道方式的代理服务器，使请求连接转换到透明的 TCP&#x2F;IP 通道。</td>
-</tr>
-<tr>
-<td align="left">OPTIONS</td>
-<td align="left">返回服务器支持的 HTTP 方法，允许客户端查看服务器的性能。</td>
-</tr>
-<tr>
-<td align="left">TRACE</td>
-<td align="left">回显服务器收到的请求，主要用于测试或诊断。通常不会使用 TRACE，并且它容易受到 XST(跨站追踪)攻击。</td>
-</tr>
-</tbody></table>
-<ul>
-<li>其中HTTP1.0定义了三种请求方法： GET、POST、和HEAD，HTTP1.1新增了OPTIONS、PUT、DELETE、TRACE和CONNECT方法。</li>
-</ul>
-<h1 id="GET和POST比较"><a href="#GET和POST比较" class="headerlink" title="GET和POST比较"></a>GET和POST比较</h1><ul>
-<li><p>GET方法<br>GET方法请求有长度限制，保留在浏览器历史记录中，请求可被缓存，可被收藏为书签。请求只应当用于取回数据，不应在处理敏感数据时使用。</p>
-</li>
-<li><p>POST方法<br>POST方法请求对数据长度没有要求，请求不会保留在浏览器历史记录中，请求不能被缓存，不能被收藏为书签。</p>
-</li>
-</ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>*<a href="http://www.runoob.com/http/http-methods.html">HTTP请求方法</a><br>*<a href="https://github.com/xuelangZF/CS_Offer/blob/master/Network/HTTP.md">HTTP 协议基础</a><br>*<a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp">HTTP 方法：GET 对比 POST</a></p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html">http协议头字段说明</a></li><li><a href="https://www.lengyuewusheng.com/http%E8%AF%B7%E6%B1%82%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81%E5%8F%8A%E8%A7%A3%E9%87%8A.html">http请求常见状态码及解释</a></li><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li><li><a href="https://www.lengyuewusheng.com/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%8F%8A%E7%89%B9%E6%80%A7%E6%A6%82%E6%8B%AC.html">http不同版本及特性概括</a></li></ul></div>]]></content>
-      <categories>
-        <category>http</category>
-      </categories>
-      <tags>
-        <tag>http</tag>
-        <tag>协议</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux挂载Windows共享目录</title>
     <url>/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html</url>
     <content><![CDATA[<p>CIFS(Common Internet File System)：通用网络文件系统</p>
@@ -3441,6 +3441,34 @@
       </tags>
   </entry>
   <entry>
+    <title>confluence 自动备份策略不生效</title>
+    <url>/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>一切问题都有答案。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<p>##问题现象</p>
+<p>confluence从备份文件中降级恢复后，配置没有任何错误提示，但是发现备份策略不生效，备份目录为空。查看日志后发现，没有取到backupPath，但是实际配置中是有显示配置路径的。</p>
+<h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backupAttachmentsDaily = true</span><br><span class="line">dailyBackupFilePrefix = backup-</span><br><span class="line">backupDaily = true</span><br><span class="line">backupPath = null</span><br><span class="line">2018-03-20 02:00:00,022 WARN [Caesium-1-2] [confluence.importexport.impl.BackupJob] runJob No daily backup directory specified to store the backups. Taking no action!</span><br><span class="line">2018-03-20 02:00:00,038 WARN [Caesium-1-2] [impl.schedule.caesium.JobRunnerWrapper] runJob Scheduled job BackupJob#BackupJob completed unsuccessfully with response JobRunnerResponse[runOutcome=ABORTED,message=&#x27;No daily backup directory specified to store the backups. Taking no action!&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>参考了一些<a href="https://confluence.atlassian.com/confkb/cannot-create-xml-backup-with-the-warn-message-no-daily-backup-directory-specified-to-store-the-backups-in-the-logs-737772474.html">官网给出的case</a>,<br>将 ${CONFLUENCE_HOME}目录下的配置文件confluence.cfg.xml中的<code>&lt;property name=&quot;admin.ui.allow.daily.backup.custom.location&quot;&gt;false&lt;/property&gt;</code>属性值变更为<code>true</code>,<br>重启confluence，<br>然后将<code>每日备份管理-&gt;备份设置-&gt;备份路径</code>设置为<code>默认</code>,<br>最后重新手动触发备份任务，<br>成功生成备份文件。</p>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>由于之前有过confluence从备份文件中降级恢复操作，怀疑是由于恢复操作，导致备份路径没有生效，猜测不用修改confluence.cfg.xml，直接重新提交一下备份路径设置也是可以的，因为问题的根本原因是<code>backupPath = null</code>。由于生产环境不便于验证，反复修改验证。有兴趣的读者可以验证一下，以后有机会也会再做验证。</p>
+<p>confluence的备份恢复机制还是很好用的。wiki作为团队的重要资源，做好备份恢复还是非常重要和必要的。</p>
+]]></content>
+      <categories>
+        <category>confluence</category>
+        <category>填坑指南</category>
+      </categories>
+      <tags>
+        <tag>confluence</tag>
+        <tag>wiki</tag>
+        <tag>备份</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>bash常用快捷键</title>
     <url>/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html</url>
     <content><![CDATA[<p>常用但不全面，会持续总结完善。。。</p>
@@ -3667,68 +3695,6 @@
       </tags>
   </entry>
   <entry>
-    <title>confluence 自动备份策略不生效</title>
-    <url>/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>一切问题都有答案。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<p>##问题现象</p>
-<p>confluence从备份文件中降级恢复后，配置没有任何错误提示，但是发现备份策略不生效，备份目录为空。查看日志后发现，没有取到backupPath，但是实际配置中是有显示配置路径的。</p>
-<h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backupAttachmentsDaily = true</span><br><span class="line">dailyBackupFilePrefix = backup-</span><br><span class="line">backupDaily = true</span><br><span class="line">backupPath = null</span><br><span class="line">2018-03-20 02:00:00,022 WARN [Caesium-1-2] [confluence.importexport.impl.BackupJob] runJob No daily backup directory specified to store the backups. Taking no action!</span><br><span class="line">2018-03-20 02:00:00,038 WARN [Caesium-1-2] [impl.schedule.caesium.JobRunnerWrapper] runJob Scheduled job BackupJob#BackupJob completed unsuccessfully with response JobRunnerResponse[runOutcome=ABORTED,message=&#x27;No daily backup directory specified to store the backups. Taking no action!&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>参考了一些<a href="https://confluence.atlassian.com/confkb/cannot-create-xml-backup-with-the-warn-message-no-daily-backup-directory-specified-to-store-the-backups-in-the-logs-737772474.html">官网给出的case</a>,<br>将 ${CONFLUENCE_HOME}目录下的配置文件confluence.cfg.xml中的<code>&lt;property name=&quot;admin.ui.allow.daily.backup.custom.location&quot;&gt;false&lt;/property&gt;</code>属性值变更为<code>true</code>,<br>重启confluence，<br>然后将<code>每日备份管理-&gt;备份设置-&gt;备份路径</code>设置为<code>默认</code>,<br>最后重新手动触发备份任务，<br>成功生成备份文件。</p>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>由于之前有过confluence从备份文件中降级恢复操作，怀疑是由于恢复操作，导致备份路径没有生效，猜测不用修改confluence.cfg.xml，直接重新提交一下备份路径设置也是可以的，因为问题的根本原因是<code>backupPath = null</code>。由于生产环境不便于验证，反复修改验证。有兴趣的读者可以验证一下，以后有机会也会再做验证。</p>
-<p>confluence的备份恢复机制还是很好用的。wiki作为团队的重要资源，做好备份恢复还是非常重要和必要的。</p>
-]]></content>
-      <categories>
-        <category>confluence</category>
-        <category>填坑指南</category>
-      </categories>
-      <tags>
-        <tag>confluence</tag>
-        <tag>wiki</tag>
-        <tag>备份</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>drupal应用部署</title>
-    <url>/drupal%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<p>Drupal是一款诞生于2000年的基于PHP语言编写的经典开源内容管理框架。</p>
-<span id="more"></span>
-
-<p>坊间传说drupal使用成本比wp高，偶然的机会看到一个基于drupal搭建的网站还不赖。兴趣使然，简单研究了一下drupal的搭建和使用。<br>以下简单给出搭建的关键步骤：</p>
-<h2 id="composer工具准备"><a href="#composer工具准备" class="headerlink" title="composer工具准备"></a>composer工具准备</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br><span class="line">mv composer.phar /usr/sbin/</span><br><span class="line">composer self-update</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php -r &quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span><br><span class="line">php -r &quot;if (hash_file(&#x27;sha384&#x27;, &#x27;composer-setup.php&#x27;) === &#x27;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&#x27;) &#123; echo &#x27;Installer verified&#x27;; &#125; else &#123; echo &#x27;Installer corrupt&#x27;; unlink(&#x27;composer-setup.php&#x27;); &#125; echo PHP_EOL;&quot;</span><br><span class="line">php composer-setup.php --install-dir=/bin --filename=composer --version=1.9.0</span><br><span class="line">composer config -g --unset repos.packagist</span><br><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="以lightning为例部署"><a href="#以lightning为例部署" class="headerlink" title="以lightning为例部署"></a>以lightning为例部署</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer create-project acquia/lightning-project drupal</span><br><span class="line">chown -R nobody:nobody drupal</span><br></pre></td></tr></table></figure>
-<ul>
-<li>drupal&#x2F;docroot为应用根目录</li>
-<li>drupal默认使用sqlite数据库不需要单独配置</li>
-</ul>
-<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>以上方式部署完成后，用nginx的默认php应用配置会导致除了首页能访问，其它所有页面全部404，<br>根据drupal的路由特点需要简单配置rewrite规则，nginx应用的基本配置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       *:80;</span><br><span class="line">    # include vhosts/vhosts.listen.addr;</span><br><span class="line">    # server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line"></span><br><span class="line">    access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html/drupal/docroot;</span><br><span class="line">        index  index.php index.htm;</span><br><span class="line">        try_files $uri $uri/ @rewrite;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ ^/sites/.*/private/ &#123;</span><br><span class="line">        access_log  off;</span><br><span class="line">        internal;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location @rewrite &#123;</span><br><span class="line">            rewrite ^/(.*)$ /index.php?q=$1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        root           html/drupal/docroot;</span><br><span class="line">        fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny  all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如此一来，基本上就可以用了。。。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://getcomposer.org/download/">composer文档</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>drupal</category>
-      </categories>
-      <tags>
-        <tag>drupal</tag>
-        <tag>CMS</tag>
-        <tag>搭建部署</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>yum/rpm常用命令总结</title>
     <url>/yum-rpm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -3839,6 +3805,74 @@
       </tags>
   </entry>
   <entry>
+    <title>drupal应用部署</title>
+    <url>/drupal%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<p>Drupal是一款诞生于2000年的基于PHP语言编写的经典开源内容管理框架。</p>
+<span id="more"></span>
+
+<p>坊间传说drupal使用成本比wp高，偶然的机会看到一个基于drupal搭建的网站还不赖。兴趣使然，简单研究了一下drupal的搭建和使用。<br>以下简单给出搭建的关键步骤：</p>
+<h2 id="composer工具准备"><a href="#composer工具准备" class="headerlink" title="composer工具准备"></a>composer工具准备</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br><span class="line">mv composer.phar /usr/sbin/</span><br><span class="line">composer self-update</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php -r &quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span><br><span class="line">php -r &quot;if (hash_file(&#x27;sha384&#x27;, &#x27;composer-setup.php&#x27;) === &#x27;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&#x27;) &#123; echo &#x27;Installer verified&#x27;; &#125; else &#123; echo &#x27;Installer corrupt&#x27;; unlink(&#x27;composer-setup.php&#x27;); &#125; echo PHP_EOL;&quot;</span><br><span class="line">php composer-setup.php --install-dir=/bin --filename=composer --version=1.9.0</span><br><span class="line">composer config -g --unset repos.packagist</span><br><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="以lightning为例部署"><a href="#以lightning为例部署" class="headerlink" title="以lightning为例部署"></a>以lightning为例部署</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer create-project acquia/lightning-project drupal</span><br><span class="line">chown -R nobody:nobody drupal</span><br></pre></td></tr></table></figure>
+<ul>
+<li>drupal&#x2F;docroot为应用根目录</li>
+<li>drupal默认使用sqlite数据库不需要单独配置</li>
+</ul>
+<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>以上方式部署完成后，用nginx的默认php应用配置会导致除了首页能访问，其它所有页面全部404，<br>根据drupal的路由特点需要简单配置rewrite规则，nginx应用的基本配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       *:80;</span><br><span class="line">    # include vhosts/vhosts.listen.addr;</span><br><span class="line">    # server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line"></span><br><span class="line">    access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html/drupal/docroot;</span><br><span class="line">        index  index.php index.htm;</span><br><span class="line">        try_files $uri $uri/ @rewrite;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ ^/sites/.*/private/ &#123;</span><br><span class="line">        access_log  off;</span><br><span class="line">        internal;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location @rewrite &#123;</span><br><span class="line">            rewrite ^/(.*)$ /index.php?q=$1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        root           html/drupal/docroot;</span><br><span class="line">        fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny  all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如此一来，基本上就可以用了。。。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://getcomposer.org/download/">composer文档</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>drupal</category>
+      </categories>
+      <tags>
+        <tag>drupal</tag>
+        <tag>CMS</tag>
+        <tag>搭建部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>zabbix实现自定义主机名</title>
+    <url>/zabbix%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA%E5%90%8D.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>主机名作为监控系统的关键信息，一定不能太死板。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<p>生产环境中通常系统的Hostname定义没有严格规范，一般在做系统时，很少在Hostname定义上花时间。但是Hostname作为关键信息在很多场景下具有非常重要的意义。</p>
+<p>zabbix agent的默认配置文件中Hostname配置为<code># HostnameItem=system.hostname</code>,但是<a href="https://www.zabbix.com/documentation/3.0/manual/config/items/itemtypes/zabbix_agent">zabbix官方文档</a>中有对<code>system.run[command,&lt;mode&gt;]</code>的描述，从2.2版本开始即支持通过该参数在主机上执行指定命令定义监控项的值。我们可以通过该参数实现对Hostname属性的重写。</p>
+<p>配置样例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HostnameItem=system.run[/bin/bash /path/to/hostname.sh]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="zabbix相关资源"><a href="#zabbix相关资源" class="headerlink" title="zabbix相关资源"></a>zabbix相关资源</h2><ul>
+<li><p><a href="https://share.zabbix.com/">Zabbix社区资源共享</a></p>
+</li>
+<li><p><a href="https://www.zabbix.org/wiki/Main_Page">Zabbix官方WIKI</a></p>
+</li>
+<li><p><a href="https://www.zabbix.com/manuals">Zabbix官方文档</a></p>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/%E9%80%9A%E8%BF%87zabbix-api%E5%9C%A8%E5%91%8A%E8%AD%A6%E9%82%AE%E4%BB%B6%E4%B8%AD%E6%8F%92%E5%85%A5%E8%B6%8B%E5%8A%BF%E5%9B%BE.html">通过Zabbix API在告警邮件中插入趋势图</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E8%A1%A8%E5%88%86%E5%8C%BA%E4%BC%98%E5%8C%96.html">zabbix表分区优化</a></li><li><a href="https://www.lengyuewusheng.com/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html">influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</a></li></ul></div>]]></content>
+      <categories>
+        <category>zabbix</category>
+      </categories>
+      <tags>
+        <tag>监控</tag>
+        <tag>zabbix</tag>
+        <tag>优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>zabbix表分区优化</title>
     <url>/zabbix%E8%A1%A8%E5%88%86%E5%8C%BA%E4%BC%98%E5%8C%96.html</url>
     <content><![CDATA[<p>Zabbix是一款非常优秀的开源监控系统。</p>
@@ -3877,40 +3911,6 @@
         <tag>MySQL</tag>
         <tag>zabbix</tag>
         <tag>表分区</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>zabbix实现自定义主机名</title>
-    <url>/zabbix%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA%E5%90%8D.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>主机名作为监控系统的关键信息，一定不能太死板。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<p>生产环境中通常系统的Hostname定义没有严格规范，一般在做系统时，很少在Hostname定义上花时间。但是Hostname作为关键信息在很多场景下具有非常重要的意义。</p>
-<p>zabbix agent的默认配置文件中Hostname配置为<code># HostnameItem=system.hostname</code>,但是<a href="https://www.zabbix.com/documentation/3.0/manual/config/items/itemtypes/zabbix_agent">zabbix官方文档</a>中有对<code>system.run[command,&lt;mode&gt;]</code>的描述，从2.2版本开始即支持通过该参数在主机上执行指定命令定义监控项的值。我们可以通过该参数实现对Hostname属性的重写。</p>
-<p>配置样例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HostnameItem=system.run[/bin/bash /path/to/hostname.sh]</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="zabbix相关资源"><a href="#zabbix相关资源" class="headerlink" title="zabbix相关资源"></a>zabbix相关资源</h2><ul>
-<li><p><a href="https://share.zabbix.com/">Zabbix社区资源共享</a></p>
-</li>
-<li><p><a href="https://www.zabbix.org/wiki/Main_Page">Zabbix官方WIKI</a></p>
-</li>
-<li><p><a href="https://www.zabbix.com/manuals">Zabbix官方文档</a></p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/%E9%80%9A%E8%BF%87zabbix-api%E5%9C%A8%E5%91%8A%E8%AD%A6%E9%82%AE%E4%BB%B6%E4%B8%AD%E6%8F%92%E5%85%A5%E8%B6%8B%E5%8A%BF%E5%9B%BE.html">通过Zabbix API在告警邮件中插入趋势图</a></li><li><a href="https://www.lengyuewusheng.com/zabbix%E8%A1%A8%E5%88%86%E5%8C%BA%E4%BC%98%E5%8C%96.html">zabbix表分区优化</a></li><li><a href="https://www.lengyuewusheng.com/influxdb-telegraf-grafana%E7%9B%91%E6%8E%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B8%8Ezabbix%E7%9B%91%E6%8E%A7%E7%9A%84%E5%AF%B9%E6%AF%94.html">influxdb+telegraf+Grafana监控解决方案与zabbix监控的对比</a></li></ul></div>]]></content>
-      <categories>
-        <category>zabbix</category>
-      </categories>
-      <tags>
-        <tag>监控</tag>
-        <tag>zabbix</tag>
-        <tag>优化</tag>
       </tags>
   </entry>
   <entry>
@@ -4499,6 +4499,85 @@
       </tags>
   </entry>
   <entry>
+    <title>TCP连接过程</title>
+    <url>/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html</url>
+    <content><![CDATA[<p>传输控制协议(TCP)是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<span id="more"></span>
+
+<p><img data-src="https://www.lengyuewusheng.com/assets/images/00043-01.png" alt="TCP连接过程"></p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li></ul></div>]]></content>
+      <categories>
+        <category>TCP/IP</category>
+      </categories>
+      <tags>
+        <tag>TCP/IP</tag>
+        <tag>三次握手</tag>
+        <tag>四次挥手</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redis持久化策略</title>
+    <url>/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存也可以持久化的日志型、Key-Value数据库。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h2 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h2><h3 id="RDB-Redis-DataBase"><a href="#RDB-Redis-DataBase" class="headerlink" title="RDB(Redis DataBase)"></a>RDB(Redis DataBase)</h3><p>redis的默认持久化机制，在指定的时间间隔内将内存中的数据集快照写入磁盘。</p>
+<h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append Only File)"></a>AOF(Append Only File)</h3><p>以日志的形式记录服务器所处理的每一个写操作，在Redis服务器启动之初会读取该文件来重新构建数据库，以保证启动后数据库中的数据是完整的。</p>
+<p>Redis还可以同时使用AOF持久化和RDB持久化。<br>在这种情况下，当 Redis重启时，它会优先使用AOF文件来还原数据集，因为AOF文件保存的数据集通常比RDB文件所保存的数据集更完整。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="RDB："><a href="#RDB：" class="headerlink" title="RDB："></a>RDB：</h3><ul>
+<li>优点<ul>
+<li>独立紧凑的数据文件，适用于备份和灾难恢复；</li>
+<li>RDB在恢复大数据集时的速度比AOF的恢复速度要快。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>服务器故障是可能丢失一个保存时间间隔的数据；</li>
+</ul>
+</li>
+</ul>
+<h3 id="AOF"><a href="#AOF" class="headerlink" title="AOF:"></a>AOF:</h3><ul>
+<li>优点<ul>
+<li>AOF 的默认策略为每秒钟fsync一次，在这种配置下，Redis 仍然可以保持良好的性能，并且就算发生故障停机，也最多只会丢失一秒钟的数据</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>对于相同的数据集来说，AOF 文件的体积通常要大于 RDB 文件的体积。</li>
+<li>根据所使用的fsync策略，AOF的速度可能会慢于RDB。</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="开启RDB"><a href="#开启RDB" class="headerlink" title="开启RDB"></a>开启RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">save 900 1            #在900秒(15分钟)内，如果至少有1个key发生变化，则dump内存快照。 </span><br><span class="line">save 300 10           #在300秒(5分钟)内，如果至少有10个key发生变化，则dump内存快照。 </span><br><span class="line">save 60 10000         #在60秒(1分钟)内，如果至少有10000个key发生变化，则dump内存快照。</span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭-RDB"><a href="#关闭-RDB" class="headerlink" title="关闭 RDB"></a>关闭 RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set save &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>或者变更配置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># save 900 1</span><br><span class="line"># save 300 10</span><br><span class="line"># save 60 10000</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启-AOF"><a href="#开启-AOF" class="headerlink" title="开启 AOF"></a>开启 AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly yes</span><br><span class="line">redis-cli config appendfsync always      #每次有数据修改发生时都会写入AOF文件。 </span><br><span class="line">或者</span><br><span class="line">redis-cli config appendfsync everysec   #每秒钟同步一次，该策略为AOF的缺省策略。 </span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭AOF"><a href="#关闭AOF" class="headerlink" title="关闭AOF"></a>关闭AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly no</span><br><span class="line">appendfsync no           #从不同步。高效但是数据不会被持久化。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="http://redisdoc.com/topic/persistence.html">redis持久化</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">redis数据结构</a></li></ul></div>]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>持久化</tag>
+        <tag>缓存</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>http协议头字段说明</title>
     <url>/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -4591,7 +4670,7 @@
 <tr>
 <td align="left">From</td>
 <td align="left">发起此请求的用户的邮件地址。</td>
-<td align="left">From: <a href="mailto:&#x75;&#x73;&#x65;&#114;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x75;&#x73;&#x65;&#114;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td align="left">From: <a href="mailto:&#x75;&#x73;&#x65;&#114;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#111;&#109;">&#x75;&#x73;&#x65;&#114;&#64;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td align="left">Host</td>
@@ -5000,85 +5079,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TCP连接过程</title>
-    <url>/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html</url>
-    <content><![CDATA[<p>传输控制协议(TCP)是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
-<span id="more"></span>
-
-<p><img data-src="https://www.lengyuewusheng.com/assets/images/00043-01.png" alt="TCP连接过程"></p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li></ul></div>]]></content>
-      <categories>
-        <category>TCP/IP</category>
-      </categories>
-      <tags>
-        <tag>TCP/IP</tag>
-        <tag>三次握手</tag>
-        <tag>四次挥手</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redis持久化策略</title>
-    <url>/redis%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存也可以持久化的日志型、Key-Value数据库。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h2 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h2><h3 id="RDB-Redis-DataBase"><a href="#RDB-Redis-DataBase" class="headerlink" title="RDB(Redis DataBase)"></a>RDB(Redis DataBase)</h3><p>redis的默认持久化机制，在指定的时间间隔内将内存中的数据集快照写入磁盘。</p>
-<h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append Only File)"></a>AOF(Append Only File)</h3><p>以日志的形式记录服务器所处理的每一个写操作，在Redis服务器启动之初会读取该文件来重新构建数据库，以保证启动后数据库中的数据是完整的。</p>
-<p>Redis还可以同时使用AOF持久化和RDB持久化。<br>在这种情况下，当 Redis重启时，它会优先使用AOF文件来还原数据集，因为AOF文件保存的数据集通常比RDB文件所保存的数据集更完整。</p>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="RDB："><a href="#RDB：" class="headerlink" title="RDB："></a>RDB：</h3><ul>
-<li>优点<ul>
-<li>独立紧凑的数据文件，适用于备份和灾难恢复；</li>
-<li>RDB在恢复大数据集时的速度比AOF的恢复速度要快。</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>服务器故障是可能丢失一个保存时间间隔的数据；</li>
-</ul>
-</li>
-</ul>
-<h3 id="AOF"><a href="#AOF" class="headerlink" title="AOF:"></a>AOF:</h3><ul>
-<li>优点<ul>
-<li>AOF 的默认策略为每秒钟fsync一次，在这种配置下，Redis 仍然可以保持良好的性能，并且就算发生故障停机，也最多只会丢失一秒钟的数据</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>对于相同的数据集来说，AOF 文件的体积通常要大于 RDB 文件的体积。</li>
-<li>根据所使用的fsync策略，AOF的速度可能会慢于RDB。</li>
-</ul>
-</li>
-</ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="开启RDB"><a href="#开启RDB" class="headerlink" title="开启RDB"></a>开启RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">save 900 1            #在900秒(15分钟)内，如果至少有1个key发生变化，则dump内存快照。 </span><br><span class="line">save 300 10           #在300秒(5分钟)内，如果至少有10个key发生变化，则dump内存快照。 </span><br><span class="line">save 60 10000         #在60秒(1分钟)内，如果至少有10000个key发生变化，则dump内存快照。</span><br></pre></td></tr></table></figure>
-
-<h3 id="关闭-RDB"><a href="#关闭-RDB" class="headerlink" title="关闭 RDB"></a>关闭 RDB</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set save &quot;&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>或者变更配置</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># save 900 1</span><br><span class="line"># save 300 10</span><br><span class="line"># save 60 10000</span><br></pre></td></tr></table></figure>
-
-<h3 id="开启-AOF"><a href="#开启-AOF" class="headerlink" title="开启 AOF"></a>开启 AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly yes</span><br><span class="line">redis-cli config appendfsync always      #每次有数据修改发生时都会写入AOF文件。 </span><br><span class="line">或者</span><br><span class="line">redis-cli config appendfsync everysec   #每秒钟同步一次，该策略为AOF的缺省策略。 </span><br></pre></td></tr></table></figure>
-
-<h3 id="关闭AOF"><a href="#关闭AOF" class="headerlink" title="关闭AOF"></a>关闭AOF</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli config set appendonly no</span><br><span class="line">appendfsync no           #从不同步。高效但是数据不会被持久化。</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="http://redisdoc.com/topic/persistence.html">redis持久化</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">redis数据结构</a></li></ul></div>]]></content>
-      <categories>
-        <category>redis</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>持久化</tag>
-        <tag>缓存</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>关于用户评价功能的使用感受和设计思考</title>
     <url>/%E5%85%B3%E4%BA%8E%E7%94%A8%E6%88%B7%E8%AF%84%E4%BB%B7%E5%8A%9F%E8%83%BD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -5145,6 +5145,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux命令行环境下进行URL解码</title>
+    <url>/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html</url>
+    <content><![CDATA[<p>命令行环境解码url是运维的必备技能，尤其是在排查应用日志的时候。而最佳实践还是不依赖任何编程能直接敲个命令就搞定。。。</p>
+<span id="more"></span>
+
+<p>以下内容基于CentOS6.9系统环境。</p>
+<h1 id="命令行软件包"><a href="#命令行软件包" class="headerlink" title="命令行软件包"></a>命令行软件包</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test-204 ~]# rpm -qf /usr/bin/urlencode</span><br><span class="line">gridsite-clients-2.2.6-2.el6.x86_64</span><br><span class="line">[root@test-204 ~]#</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-clients-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-libs-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/c/canl-c-2.1.8-1.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="使用查看"><a href="#使用查看" class="headerlink" title="使用查看"></a>使用查看</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看归档日志</span><br><span class="line">urlencode -d decode $(zcat access.log.2018_09_01_22.log.gz |awk &#x27;&#123;print $7&#125;&#x27; |sort |uniq -c |sort -rn |head )</span><br><span class="line"></span><br><span class="line">#查看实时日志</span><br><span class="line">tailf access.log |awk &#x27;&#123;print $7&#125;&#x27;|xargs urlencode -d decode</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://www.urldecoder.net/linux-urldecode">linux-urldecode</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>urldecode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx限制策略</title>
     <url>/nginx%E9%99%90%E5%88%B6%E7%AD%96%E7%95%A5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -5204,34 +5232,6 @@
       <tags>
         <tag>nginx</tag>
         <tag>DDoS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux命令行环境下进行URL解码</title>
-    <url>/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html</url>
-    <content><![CDATA[<p>命令行环境解码url是运维的必备技能，尤其是在排查应用日志的时候。而最佳实践还是不依赖任何编程能直接敲个命令就搞定。。。</p>
-<span id="more"></span>
-
-<p>以下内容基于CentOS6.9系统环境。</p>
-<h1 id="命令行软件包"><a href="#命令行软件包" class="headerlink" title="命令行软件包"></a>命令行软件包</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@test-204 ~]# rpm -qf /usr/bin/urlencode</span><br><span class="line">gridsite-clients-2.2.6-2.el6.x86_64</span><br><span class="line">[root@test-204 ~]#</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-clients-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/g/gridsite-libs-2.2.6-2.el6.x86_64.rpm \</span><br><span class="line">http://dl.fedoraproject.org/pub/epel/6/x86_64/Packages/c/canl-c-2.1.8-1.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="使用查看"><a href="#使用查看" class="headerlink" title="使用查看"></a>使用查看</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看归档日志</span><br><span class="line">urlencode -d decode $(zcat access.log.2018_09_01_22.log.gz |awk &#x27;&#123;print $7&#125;&#x27; |sort |uniq -c |sort -rn |head )</span><br><span class="line"></span><br><span class="line">#查看实时日志</span><br><span class="line">tailf access.log |awk &#x27;&#123;print $7&#125;&#x27;|xargs urlencode -d decode</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://www.urldecoder.net/linux-urldecode">linux-urldecode</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>urldecode</tag>
       </tags>
   </entry>
   <entry>
@@ -5888,85 +5888,6 @@
       </tags>
   </entry>
   <entry>
-    <title>应用开发的12要素</title>
-    <url>/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%8412%E8%A6%81%E7%B4%A0.html</url>
-    <content><![CDATA[<p>12-Factor 为构建 SaaS 应用提供方法论。</p>
-<span id="more"></span>
-
-<ul>
-<li><p>基准代码</p>
-<blockquote>
-<p>一份基准代码，多份部署</p>
-</blockquote>
-</li>
-<li><p>依赖</p>
-<blockquote>
-<p>显式声明依赖关系</p>
-</blockquote>
-</li>
-<li><p>配置</p>
-<blockquote>
-<p>在环境中存储配置</p>
-</blockquote>
-</li>
-<li><p>后端服务</p>
-<blockquote>
-<p>把后端服务当作附加资源</p>
-</blockquote>
-</li>
-<li><p>构建，发布，运行</p>
-<blockquote>
-<p>严格分离构建和运行</p>
-</blockquote>
-</li>
-<li><p>进程</p>
-<blockquote>
-<p>以一个或多个无状态进程运行应用</p>
-</blockquote>
-</li>
-<li><p>端口绑定</p>
-<blockquote>
-<p>通过端口绑定提供服务</p>
-</blockquote>
-</li>
-<li><p>并发</p>
-<blockquote>
-<p>通过进程模型进行扩展</p>
-</blockquote>
-</li>
-<li><p>易处理</p>
-<blockquote>
-<p>快速启动和优雅终止可最大化健壮性</p>
-</blockquote>
-</li>
-<li><p>开发环境与线上环境等价</p>
-<blockquote>
-<p>尽可能的保持开发，预发布，线上环境相同</p>
-</blockquote>
-</li>
-<li><p>日志</p>
-<blockquote>
-<p>把日志当作事件流</p>
-</blockquote>
-</li>
-<li><p>管理进程</p>
-<blockquote>
-<p>后台管理任务当作一次性进程运行</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="转载自"><a href="#转载自" class="headerlink" title="转载自"></a>转载自</h1><ul>
-<li><a href="https://www.12factor.net/zh_cn/">THE TWELVE-FACTOR APP</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>12factor</category>
-      </categories>
-      <tags>
-        <tag>12factor</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git基础实践</title>
     <url>/git%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -6191,6 +6112,85 @@
       <tags>
         <tag>git</tag>
         <tag>版本控制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>应用开发的12要素</title>
+    <url>/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%8412%E8%A6%81%E7%B4%A0.html</url>
+    <content><![CDATA[<p>12-Factor 为构建 SaaS 应用提供方法论。</p>
+<span id="more"></span>
+
+<ul>
+<li><p>基准代码</p>
+<blockquote>
+<p>一份基准代码，多份部署</p>
+</blockquote>
+</li>
+<li><p>依赖</p>
+<blockquote>
+<p>显式声明依赖关系</p>
+</blockquote>
+</li>
+<li><p>配置</p>
+<blockquote>
+<p>在环境中存储配置</p>
+</blockquote>
+</li>
+<li><p>后端服务</p>
+<blockquote>
+<p>把后端服务当作附加资源</p>
+</blockquote>
+</li>
+<li><p>构建，发布，运行</p>
+<blockquote>
+<p>严格分离构建和运行</p>
+</blockquote>
+</li>
+<li><p>进程</p>
+<blockquote>
+<p>以一个或多个无状态进程运行应用</p>
+</blockquote>
+</li>
+<li><p>端口绑定</p>
+<blockquote>
+<p>通过端口绑定提供服务</p>
+</blockquote>
+</li>
+<li><p>并发</p>
+<blockquote>
+<p>通过进程模型进行扩展</p>
+</blockquote>
+</li>
+<li><p>易处理</p>
+<blockquote>
+<p>快速启动和优雅终止可最大化健壮性</p>
+</blockquote>
+</li>
+<li><p>开发环境与线上环境等价</p>
+<blockquote>
+<p>尽可能的保持开发，预发布，线上环境相同</p>
+</blockquote>
+</li>
+<li><p>日志</p>
+<blockquote>
+<p>把日志当作事件流</p>
+</blockquote>
+</li>
+<li><p>管理进程</p>
+<blockquote>
+<p>后台管理任务当作一次性进程运行</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="转载自"><a href="#转载自" class="headerlink" title="转载自"></a>转载自</h1><ul>
+<li><a href="https://www.12factor.net/zh_cn/">THE TWELVE-FACTOR APP</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>12factor</category>
+      </categories>
+      <tags>
+        <tag>12factor</tag>
       </tags>
   </entry>
   <entry>
@@ -6631,8 +6631,8 @@
     <title>Linux内核崩溃分析</title>
     <url>/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/Linuxkernel.png" />
+<div  align="center">
+<img data-src="https://lengyuewusheng.com/assets/images/LinuxKernel.png" />
 </div>
 
 <p>持续整理中。。。</p>
@@ -6762,53 +6762,6 @@
       <tags>
         <tag>MediaWiki</tag>
         <tag>开源技术栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自签SSL证书</title>
-    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
-</div>
-
-<p>devops 必备技能</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<ul>
-<li><p>查看当前系统使用的 OpenSSL 版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取完整的版本信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
-</blockquote>
-<ul>
-<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
-<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
-<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
-</ul>
-<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
-
-<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
-<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
-<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
-<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
-<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>openssl</tag>
-        <tag>https</tag>
       </tags>
   </entry>
   <entry>
@@ -6983,47 +6936,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ngxtop应用实践</title>
-    <url>/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>挺实用。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<ul>
-<li>操作范例<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop top remote_addr -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li><p>查看前30条</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -n 30 -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装报错<br>ImportError: No module named ‘config_parser’</p>
-</li>
-<li><p>解决方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/lebinh/ngxtop.git</span><br><span class="line">cd ngxtop</span><br><span class="line">pip install .</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA==&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB+utNzqA0ZJO83cJfRurzxTLSbl">https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA%3D%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB%2ButNzqA0ZJO83cJfRurzxTLSbl</a></p>
-</li>
-<li><p><a href="https://www.vpser.net/manage/ngxtop.html">https://www.vpser.net/manage/ngxtop.html</a></p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>工具控</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>ngxtop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>prometheus监控实践</title>
     <url>/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -7083,49 +6995,44 @@
       </tags>
   </entry>
   <entry>
-    <title>systemd配置范例</title>
-    <url>/systemd%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</url>
-    <content><![CDATA[<p><img data-src="https://lengyuewusheng.com/images/systemd_logo.jpg"><br>systemd 是一个 Linux 系统基础组件的集合，提供了一个系统和服务管理器，运行为 PID 1 并负责启动其它程序。功能包括：支持并行化任务；同时采用 socket 式与 D-Bus 总线式激活服务；按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。systemd 支持 SysV 和 LSB 初始脚本，可以替代 sysvinit。除此之外，功能还包括日志进程、控制基础系统配置，维护登陆用户列表以及系统账户、运行时目录和设置，可以运行容器和虚拟机，可以简单的管理网络配置、网络时间同步、日志转发和名称解析等。</p>
+    <title>ngxtop应用实践</title>
+    <url>/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>挺实用。。。</p>
+
+</blockquote>
+
 <span id="more"></span>
 
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/systemd.png" />
-</div>
 
-<h1 id="配置文件路径"><a href="#配置文件路径" class="headerlink" title="配置文件路径"></a>配置文件路径</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/lib/systemd/system</span><br><span class="line">/run/systemd/system</span><br><span class="line">/etc/systemd/system</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Zabbix Agent</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;CONFFILE=/etc/zabbix/zabbix_agentd.conf&quot;</span><br><span class="line">EnvironmentFile=-/etc/sysconfig/zabbix-agent</span><br><span class="line">Type=forking</span><br><span class="line">Restart=on-failure</span><br><span class="line">PIDFile=/run/zabbix/zabbix_agentd.pid</span><br><span class="line">KillMode=control-group</span><br><span class="line"># ExecStartPre=-/usr/bin/chmod 777 /run/zabbix/zabbix_agentd.pid</span><br><span class="line">ExecStart=/usr/sbin/zabbix_agentd -c $CONFFILE</span><br><span class="line">ExecStop=/bin/kill -SIGTERM $MAINPID</span><br><span class="line">ExecStartPost=-/usr/bin/chown zabbix:zabbix /run/zabbix/zabbix_agentd.pid</span><br><span class="line"># ExectStopPost=-/usr/bin/chmod 777 /run/zabbix/zabbix_agentd.pid</span><br><span class="line">RestartSec=10s</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>操作范例<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop top remote_addr -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="centos7-兼容6的启动脚本-x2F-etc-x2F-init-d-x2F-php-fpm"><a href="#centos7-兼容6的启动脚本-x2F-etc-x2F-init-d-x2F-php-fpm" class="headerlink" title="centos7 兼容6的启动脚本&#x2F;etc&#x2F;init.d&#x2F;php-fpm"></a>centos7 兼容6的启动脚本&#x2F;etc&#x2F;init.d&#x2F;php-fpm</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#! /bin/sh</span><br><span class="line">#</span><br><span class="line"># chkconfig: - 84 16</span><br><span class="line"># description:	PHP FastCGI Process Manager</span><br><span class="line"># processname: php-fpm</span><br><span class="line"># config: /etc/php-fpm.conf</span><br><span class="line"># config: /etc/sysconfig/php-fpm</span><br><span class="line"># pidfile: /var/run/php-fpm/php-fpm.pid</span><br><span class="line">#</span><br><span class="line">### BEGIN INIT INFO</span><br><span class="line"># Provides:          php-fpm</span><br><span class="line"># Required-Start:    $remote_fs $network</span><br><span class="line"># Required-Stop:     $remote_fs $network</span><br><span class="line"># Default-Start:     2 3 4 5</span><br><span class="line"># Default-Stop:      0 1 6</span><br><span class="line"># Short-Description: starts php-fpm</span><br><span class="line"># Description:       starts the PHP FastCGI Process Manager daemon</span><br><span class="line">### END INIT INFO</span><br><span class="line"></span><br><span class="line"># Standard LSB functions</span><br><span class="line">#. /lib/lsb/init-functions</span><br><span class="line"></span><br><span class="line"># Source function library.</span><br><span class="line">. /etc/init.d/functions</span><br><span class="line"></span><br><span class="line"># Check that networking is up.</span><br><span class="line">. /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"># Additional environment file</span><br><span class="line">if [ -f /etc/sysconfig/php-fpm ]; then</span><br><span class="line">      . /etc/sysconfig/php-fpm</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ &quot;$NETWORKING&quot; = &quot;no&quot; ]</span><br><span class="line">then</span><br><span class="line">	exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">RETVAL=0</span><br><span class="line">prog=&quot;php-fpm&quot;</span><br><span class="line">pidfile=$&#123;PIDFILE-/var/run/php-fpm/php-fpm.pid&#125;</span><br><span class="line">lockfile=$&#123;LOCKFILE-/var/lock/subsys/php-fpm&#125;</span><br><span class="line"></span><br><span class="line">start () &#123;</span><br><span class="line">	echo -n $&quot;Starting $prog: &quot;</span><br><span class="line">	dir=$(dirname $&#123;pidfile&#125;)</span><br><span class="line">	[ -d $dir ] || mkdir $dir</span><br><span class="line">	daemon --pidfile $&#123;pidfile&#125; /usr/sbin/php-fpm --daemonize</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	echo</span><br><span class="line">	[ $RETVAL -eq 0 ] &amp;&amp; touch $&#123;lockfile&#125;</span><br><span class="line">&#125;</span><br><span class="line">stop () &#123;</span><br><span class="line">	echo -n $&quot;Stopping $prog: &quot;</span><br><span class="line">	killproc -p $&#123;pidfile&#125; php-fpm</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	echo</span><br><span class="line">	if [ $RETVAL -eq 0 ] ; then</span><br><span class="line">		rm -f $&#123;lockfile&#125; $&#123;pidfile&#125;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">restart () &#123;</span><br><span class="line">        stop</span><br><span class="line">        start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reload () &#123;</span><br><span class="line">	echo -n $&quot;Reloading $prog: &quot;</span><br><span class="line">	if ! /usr/sbin/php-fpm --test ; then</span><br><span class="line">	        RETVAL=6</span><br><span class="line">	        echo $&quot;not reloading due to configuration syntax error&quot;</span><br><span class="line">	        failure $&quot;not reloading $prog due to configuration syntax error&quot;</span><br><span class="line">	else</span><br><span class="line">		killproc -p $&#123;pidfile&#125; php-fpm -USR2</span><br><span class="line">		RETVAL=$?</span><br><span class="line">	fi</span><br><span class="line">	echo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># See how we were called.</span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">  start)</span><br><span class="line">	start</span><br><span class="line">	;;</span><br><span class="line">  stop)</span><br><span class="line">	stop</span><br><span class="line">	;;</span><br><span class="line">  status)</span><br><span class="line">	status -p $&#123;pidfile&#125; php-fpm</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	;;</span><br><span class="line">  restart)</span><br><span class="line">	restart</span><br><span class="line">	;;</span><br><span class="line">  reload|force-reload)</span><br><span class="line">	reload</span><br><span class="line">	;;</span><br><span class="line">  configtest)</span><br><span class="line"> 	/usr/sbin/php-fpm --test</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	;;</span><br><span class="line">  condrestart|try-restart)</span><br><span class="line">	[ -f $&#123;lockfile&#125; ] &amp;&amp; restart || :</span><br><span class="line">	;;</span><br><span class="line">  *)</span><br><span class="line">	echo $&quot;Usage: $0 &#123;start|stop|status|restart|reload|force-reload|condrestart|try-restart|configtest&#125;&quot;</span><br><span class="line">	RETVAL=2</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="centos7-systemd启动配置-x2F-usr-x2F-lib-x2F-systemd-x2F-system-x2F-php-fpm-service"><a href="#centos7-systemd启动配置-x2F-usr-x2F-lib-x2F-systemd-x2F-system-x2F-php-fpm-service" class="headerlink" title="centos7 systemd启动配置&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;php-fpm.service"></a>centos7 systemd启动配置&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;php-fpm.service</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=The PHP FastCGI Process Manager</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">PIDFile=/var/run/php-fpm/php-fpm.pid</span><br><span class="line">EnvironmentFile=/etc/sysconfig/php-fpm</span><br><span class="line">ExecStart=/usr/sbin/php-fpm --nodaemonize --fpm-config /etc/php-fpm.conf</span><br><span class="line">ExecReload=/bin/kill -USR2 $MAINPID</span><br><span class="line">PrivateTmp=true</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="nginx-service【官方】"><a href="#nginx-service【官方】" class="headerlink" title="nginx.service【官方】"></a>nginx.service【官方】</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /usr/lib/systemd/system/nginx.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=nginx - high performance web server</span><br><span class="line">Documentation=http://nginx.org/en/docs/</span><br><span class="line">After=network-online.target remote-fs.target nss-lookup.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/var/run/nginx.pid</span><br><span class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">ExecStop=/bin/kill -s TERM $MAINPID</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="tomcat-service"><a href="#tomcat-service" class="headerlink" title="tomcat.service"></a>tomcat.service</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Apache Tomcat</span><br><span class="line">Documentation=https://tomcat.apache.org/tomcat-9.0-doc/index.html</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/data/webserver/tomcat/bin/catalina.map.pid</span><br><span class="line">ExecStart=/data/webserver/tomcat/bin/catalina.sh start</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">ExecStop=/data/webserver/tomcat/bin/catalina.sh stop</span><br><span class="line">PrivateTmp=true</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=15s</span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+<ul>
+<li><p>查看前30条</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/python/bin/ngxtop -n 30 -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装报错<br>ImportError: No module named ‘config_parser’</p>
+</li>
+<li><p>解决方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/lebinh/ngxtop.git</span><br><span class="line">cd ngxtop</span><br><span class="line">pip install .</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#systemd_.E5.9F.BA.E6.9C.AC.E5.B7.A5.E5.85.B7">https://wiki.archlinux.org/index.php/Systemd_(简体中文)#systemd_.E5.9F.BA.E6.9C.AC.E5.B7.A5.E5.85.B7</a></p>
+<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA==&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB+utNzqA0ZJO83cJfRurzxTLSbl">https://mp.weixin.qq.com/s?__biz=MzA4Nzc4MjI4MQ==&amp;mid=403732461&amp;idx=1&amp;sn=355c5b2c4eea5fc667d910a976bc23d9&amp;scene=7&amp;key=b00bc6577437f0f5637ec152e1a9885b06338b95d65135e74cbc78d69c09655b0695f143dcfbb99626af16ddd5291d68c8441d2f8d77b962377edc86a1dc1478a07d1c4eeba5bd828e99a530ed574c7b&amp;ascene=0&amp;uin=MjU4NTIwODY2MA%3D%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;pass_ticket=VJ5qyiMQOdr7Vx9dh33jjUe53zQKR3FhJuWiKB%2ButNzqA0ZJO83cJfRurzxTLSbl</a></p>
 </li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html">http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html</a></p>
-</li>
-<li><p><a href="http://www.jinbuguo.com/systemd/systemd.service.html">http://www.jinbuguo.com/systemd/systemd.service.html</a></p>
-</li>
-<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-centos-7">How To Install Apache Tomcat 8 on CentOS 7</a></p>
+<li><p><a href="https://www.vpser.net/manage/ngxtop.html">https://www.vpser.net/manage/ngxtop.html</a></p>
 </li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
       <categories>
-        <category>systemd</category>
+        <category>工具控</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
-        <tag>systemd</tag>
+        <tag>nginx</tag>
+        <tag>ngxtop</tag>
       </tags>
   </entry>
   <entry>
@@ -7202,6 +7109,98 @@
         <tag>pandoc</tag>
         <tag>revealjs</tag>
         <tag>ppt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>systemd配置范例</title>
+    <url>/systemd%E9%85%8D%E7%BD%AE%E8%8C%83%E4%BE%8B.html</url>
+    <content><![CDATA[<p><img data-src="https://lengyuewusheng.com/images/systemd_logo.jpg"><br>systemd 是一个 Linux 系统基础组件的集合，提供了一个系统和服务管理器，运行为 PID 1 并负责启动其它程序。功能包括：支持并行化任务；同时采用 socket 式与 D-Bus 总线式激活服务；按需启动守护进程（daemon）；利用 Linux 的 cgroups 监视进程；支持快照和系统恢复；维护挂载点和自动挂载点；各服务间基于依赖关系进行精密控制。systemd 支持 SysV 和 LSB 初始脚本，可以替代 sysvinit。除此之外，功能还包括日志进程、控制基础系统配置，维护登陆用户列表以及系统账户、运行时目录和设置，可以运行容器和虚拟机，可以简单的管理网络配置、网络时间同步、日志转发和名称解析等。</p>
+<span id="more"></span>
+
+<div  align="center">    
+<img data-src="https://lengyuewusheng.com/assets/images/systemd.png" />
+</div>
+
+<h1 id="配置文件路径"><a href="#配置文件路径" class="headerlink" title="配置文件路径"></a>配置文件路径</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/lib/systemd/system</span><br><span class="line">/run/systemd/system</span><br><span class="line">/etc/systemd/system</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Zabbix Agent</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;CONFFILE=/etc/zabbix/zabbix_agentd.conf&quot;</span><br><span class="line">EnvironmentFile=-/etc/sysconfig/zabbix-agent</span><br><span class="line">Type=forking</span><br><span class="line">Restart=on-failure</span><br><span class="line">PIDFile=/run/zabbix/zabbix_agentd.pid</span><br><span class="line">KillMode=control-group</span><br><span class="line"># ExecStartPre=-/usr/bin/chmod 777 /run/zabbix/zabbix_agentd.pid</span><br><span class="line">ExecStart=/usr/sbin/zabbix_agentd -c $CONFFILE</span><br><span class="line">ExecStop=/bin/kill -SIGTERM $MAINPID</span><br><span class="line">ExecStartPost=-/usr/bin/chown zabbix:zabbix /run/zabbix/zabbix_agentd.pid</span><br><span class="line"># ExectStopPost=-/usr/bin/chmod 777 /run/zabbix/zabbix_agentd.pid</span><br><span class="line">RestartSec=10s</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="centos7-兼容6的启动脚本-x2F-etc-x2F-init-d-x2F-php-fpm"><a href="#centos7-兼容6的启动脚本-x2F-etc-x2F-init-d-x2F-php-fpm" class="headerlink" title="centos7 兼容6的启动脚本&#x2F;etc&#x2F;init.d&#x2F;php-fpm"></a>centos7 兼容6的启动脚本&#x2F;etc&#x2F;init.d&#x2F;php-fpm</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#! /bin/sh</span><br><span class="line">#</span><br><span class="line"># chkconfig: - 84 16</span><br><span class="line"># description:	PHP FastCGI Process Manager</span><br><span class="line"># processname: php-fpm</span><br><span class="line"># config: /etc/php-fpm.conf</span><br><span class="line"># config: /etc/sysconfig/php-fpm</span><br><span class="line"># pidfile: /var/run/php-fpm/php-fpm.pid</span><br><span class="line">#</span><br><span class="line">### BEGIN INIT INFO</span><br><span class="line"># Provides:          php-fpm</span><br><span class="line"># Required-Start:    $remote_fs $network</span><br><span class="line"># Required-Stop:     $remote_fs $network</span><br><span class="line"># Default-Start:     2 3 4 5</span><br><span class="line"># Default-Stop:      0 1 6</span><br><span class="line"># Short-Description: starts php-fpm</span><br><span class="line"># Description:       starts the PHP FastCGI Process Manager daemon</span><br><span class="line">### END INIT INFO</span><br><span class="line"></span><br><span class="line"># Standard LSB functions</span><br><span class="line">#. /lib/lsb/init-functions</span><br><span class="line"></span><br><span class="line"># Source function library.</span><br><span class="line">. /etc/init.d/functions</span><br><span class="line"></span><br><span class="line"># Check that networking is up.</span><br><span class="line">. /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"># Additional environment file</span><br><span class="line">if [ -f /etc/sysconfig/php-fpm ]; then</span><br><span class="line">      . /etc/sysconfig/php-fpm</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ &quot;$NETWORKING&quot; = &quot;no&quot; ]</span><br><span class="line">then</span><br><span class="line">	exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">RETVAL=0</span><br><span class="line">prog=&quot;php-fpm&quot;</span><br><span class="line">pidfile=$&#123;PIDFILE-/var/run/php-fpm/php-fpm.pid&#125;</span><br><span class="line">lockfile=$&#123;LOCKFILE-/var/lock/subsys/php-fpm&#125;</span><br><span class="line"></span><br><span class="line">start () &#123;</span><br><span class="line">	echo -n $&quot;Starting $prog: &quot;</span><br><span class="line">	dir=$(dirname $&#123;pidfile&#125;)</span><br><span class="line">	[ -d $dir ] || mkdir $dir</span><br><span class="line">	daemon --pidfile $&#123;pidfile&#125; /usr/sbin/php-fpm --daemonize</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	echo</span><br><span class="line">	[ $RETVAL -eq 0 ] &amp;&amp; touch $&#123;lockfile&#125;</span><br><span class="line">&#125;</span><br><span class="line">stop () &#123;</span><br><span class="line">	echo -n $&quot;Stopping $prog: &quot;</span><br><span class="line">	killproc -p $&#123;pidfile&#125; php-fpm</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	echo</span><br><span class="line">	if [ $RETVAL -eq 0 ] ; then</span><br><span class="line">		rm -f $&#123;lockfile&#125; $&#123;pidfile&#125;</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">restart () &#123;</span><br><span class="line">        stop</span><br><span class="line">        start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reload () &#123;</span><br><span class="line">	echo -n $&quot;Reloading $prog: &quot;</span><br><span class="line">	if ! /usr/sbin/php-fpm --test ; then</span><br><span class="line">	        RETVAL=6</span><br><span class="line">	        echo $&quot;not reloading due to configuration syntax error&quot;</span><br><span class="line">	        failure $&quot;not reloading $prog due to configuration syntax error&quot;</span><br><span class="line">	else</span><br><span class="line">		killproc -p $&#123;pidfile&#125; php-fpm -USR2</span><br><span class="line">		RETVAL=$?</span><br><span class="line">	fi</span><br><span class="line">	echo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># See how we were called.</span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">  start)</span><br><span class="line">	start</span><br><span class="line">	;;</span><br><span class="line">  stop)</span><br><span class="line">	stop</span><br><span class="line">	;;</span><br><span class="line">  status)</span><br><span class="line">	status -p $&#123;pidfile&#125; php-fpm</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	;;</span><br><span class="line">  restart)</span><br><span class="line">	restart</span><br><span class="line">	;;</span><br><span class="line">  reload|force-reload)</span><br><span class="line">	reload</span><br><span class="line">	;;</span><br><span class="line">  configtest)</span><br><span class="line"> 	/usr/sbin/php-fpm --test</span><br><span class="line">	RETVAL=$?</span><br><span class="line">	;;</span><br><span class="line">  condrestart|try-restart)</span><br><span class="line">	[ -f $&#123;lockfile&#125; ] &amp;&amp; restart || :</span><br><span class="line">	;;</span><br><span class="line">  *)</span><br><span class="line">	echo $&quot;Usage: $0 &#123;start|stop|status|restart|reload|force-reload|condrestart|try-restart|configtest&#125;&quot;</span><br><span class="line">	RETVAL=2</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="centos7-systemd启动配置-x2F-usr-x2F-lib-x2F-systemd-x2F-system-x2F-php-fpm-service"><a href="#centos7-systemd启动配置-x2F-usr-x2F-lib-x2F-systemd-x2F-system-x2F-php-fpm-service" class="headerlink" title="centos7 systemd启动配置&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;php-fpm.service"></a>centos7 systemd启动配置&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;php-fpm.service</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=The PHP FastCGI Process Manager</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">PIDFile=/var/run/php-fpm/php-fpm.pid</span><br><span class="line">EnvironmentFile=/etc/sysconfig/php-fpm</span><br><span class="line">ExecStart=/usr/sbin/php-fpm --nodaemonize --fpm-config /etc/php-fpm.conf</span><br><span class="line">ExecReload=/bin/kill -USR2 $MAINPID</span><br><span class="line">PrivateTmp=true</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="nginx-service【官方】"><a href="#nginx-service【官方】" class="headerlink" title="nginx.service【官方】"></a>nginx.service【官方】</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /usr/lib/systemd/system/nginx.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=nginx - high performance web server</span><br><span class="line">Documentation=http://nginx.org/en/docs/</span><br><span class="line">After=network-online.target remote-fs.target nss-lookup.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/var/run/nginx.pid</span><br><span class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">ExecStop=/bin/kill -s TERM $MAINPID</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="tomcat-service"><a href="#tomcat-service" class="headerlink" title="tomcat.service"></a>tomcat.service</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Apache Tomcat</span><br><span class="line">Documentation=https://tomcat.apache.org/tomcat-9.0-doc/index.html</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/data/webserver/tomcat/bin/catalina.map.pid</span><br><span class="line">ExecStart=/data/webserver/tomcat/bin/catalina.sh start</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">ExecStop=/data/webserver/tomcat/bin/catalina.sh stop</span><br><span class="line">PrivateTmp=true</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=15s</span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><p><a href="https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#systemd_.E5.9F.BA.E6.9C.AC.E5.B7.A5.E5.85.B7">https://wiki.archlinux.org/index.php/Systemd_(简体中文)#systemd_.E5.9F.BA.E6.9C.AC.E5.B7.A5.E5.85.B7</a></p>
+</li>
+<li><p><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html">http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html</a></p>
+</li>
+<li><p><a href="http://www.jinbuguo.com/systemd/systemd.service.html">http://www.jinbuguo.com/systemd/systemd.service.html</a></p>
+</li>
+<li><p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-centos-7">How To Install Apache Tomcat 8 on CentOS 7</a></p>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>systemd</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>systemd</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wekan开源kanban系统部署</title>
+    <url>/wekan%E5%BC%80%E6%BA%90kanban%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>Open-Source kanban.</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="关键安装步骤"><a href="#关键安装步骤" class="headerlink" title="关键安装步骤"></a>关键安装步骤</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum --showduplicates list snapd |expand</span><br><span class="line"></span><br><span class="line">yum -y install snapd-2.30-0.el7.centos.1.x86_64 snapd-selinux-2.30-0.el7.centos.1.noarch snap-confine-2.30-0.el7.centos.1.x86_64</span><br><span class="line"></span><br><span class="line">snap install wekan</span><br><span class="line"></span><br><span class="line"> snap list</span><br><span class="line"></span><br><span class="line">查看wekan配置</span><br><span class="line">snap get wekan</span><br><span class="line"></span><br><span class="line">snap info wekan</span><br><span class="line">snap services</span><br><span class="line"></span><br><span class="line">snap 安装指定修订版本应用</span><br><span class="line">snap refresh wekan --revision=581 --stable</span><br><span class="line"></span><br><span class="line">所有的配置选项</span><br><span class="line">wekan.help 2&gt;&amp;1 |grep &quot;\\\$&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装后配置"><a href="#安装后配置" class="headerlink" title="安装后配置"></a>安装后配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">snap set wekan caddy-bind-port=&#x27;80&#x27;</span><br><span class="line">snap set wekan caddy-enabled=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;cn\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan mail-from=&#x27;username &lt;username@xxxx.com&gt;&#x27;</span><br><span class="line">snap set wekan mail-url=&#x27;smtp://username:passwd@mail.xxxx.com:25&#x27;</span><br><span class="line">snap set wekan mongodb-bind-ip=&#x27;127.0.0.1&#x27;</span><br><span class="line">snap set wekan port=&#x27;3001&#x27;</span><br><span class="line">snap set wekan root-url=&#x27;http://domainname&#x27;</span><br><span class="line">#-----------------------------</span><br><span class="line">snap set wekan ldap-enable=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-port=&#x27;389&#x27;</span><br><span class="line">snap set wekan ldap-host=&#x27;ldap.xxxx.com&#x27;</span><br><span class="line">snap set wekan ldap-basedn=&#x27;OU=user,OU=xxxx,DC=xxxx,DC=com&#x27;</span><br><span class="line">snap set wekan ldap-login-fallback=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reconnect=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-idle-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-vonnect-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-authentication=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-authentication-userdn=&#x27;cn=xxxx,ou=Special_Account,ou=user,ou=xxxx,dc=xxxx,dc=com&#x27;</span><br><span class="line">snap set wekan ldap-authentication-password=&#x27;passwd&#x27;</span><br><span class="line">snap set wekan ldap-internal-log-level=&#x27;debug&#x27;</span><br><span class="line">snap set wekan ldap-background-sync=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-background-sync-interval=&#x27;100&#x27;</span><br><span class="line">snap set wekan ldap-encryption=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reject-unauthorized=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-group-filter-enable=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-search-page-size=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-search-size-limit=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-user-search-filter=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-user-search-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-user-search-scope=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-unique-identifier-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-username-field=&#x27;displayName&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data=&#x27;false&#x27;</span><br><span class="line"># snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;cn\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;displayName\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan ldap-merge-existing-users=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-utf8-names-slugify=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-fullname-field=displayName</span><br><span class="line">snap set wekan ldap-login-fallback=true</span><br><span class="line">snap set wekan default-authentication-method=&#x27;ldap&#x27;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="备份与恢复数据"><a href="#备份与恢复数据" class="headerlink" title="备份与恢复数据"></a>备份与恢复数据</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备份：</span><br><span class="line">/var/lib/snapd/snap/bin/wekan.database-backup &gt;/dev/null 2&gt;&amp;1 &amp;&amp; mv /var/snap/wekan/common/db-backups/* /data/wekan/db-backups/</span><br><span class="line"></span><br><span class="line">恢复</span><br><span class="line">wekan.database-restore /var/snap/wekan/common/db-backups/wekan-20190806T103004.backup</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="操作历史"><a href="#操作历史" class="headerlink" title="操作历史"></a>操作历史</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">diff /etc/yum.repos.d/ngompa-snapcore-el7-epel-7.repo /etc/yum.repos.d/_copr_ngompa-snapcore-el7.repo</span><br><span class="line"> rm -rf /etc/yum.repos.d/ngompa-snapcore-el7-epel-7.repo</span><br><span class="line">sudo yum install snapd</span><br><span class="line">snap install wekan</span><br><span class="line">systemctl enable --now snapd.socket</span><br><span class="line">snap install wekan</span><br><span class="line">snap set wekan root-url=&quot;http://0.0.0.0:3000/&quot;</span><br><span class="line">lsof -i :3000</span><br><span class="line">snap set wekan root-url=&quot;http://10.153.43.151:3000/wekan&quot;</span><br><span class="line">snap set wekan port=&#x27;3001&#x27;</span><br><span class="line">systemctl restart snap.wekan.wekan</span><br><span class="line">systemctl status snap.wekan.wekan</span><br><span class="line">snap set wekan.help</span><br><span class="line">wekan.help</span><br><span class="line">ll /snapcat /etc/systemd/system/snap.wekan.wekan.service</span><br><span class="line">cat /etc/systemd/system/snap.wekan.wekan.service</span><br><span class="line">sudo snap set wekan mail-url=&#x27;smtp://username:passwd@mail.xxx-inc.com:25&#x27;</span><br><span class="line">sudo snap set wekan mail-from=&#x27;xxx &lt;xxx@xxx-inc.com&gt;&#x27;</span><br><span class="line">systemctl restart snap.wekan.caddy.service</span><br><span class="line">systemctl status snap.wekan.wekan.service</span><br><span class="line">systemctl status snap.wekan.mongodb.service</span><br><span class="line">journalctl -af -u snap.wekan.caddy.service</span><br><span class="line">vim /etc/systemd/system/snap.wekan.caddy.service</span><br><span class="line"> /usr/bin/snap run wekan.caddy</span><br><span class="line">snap set wekan caddy-bind-port=80</span><br><span class="line">snap set wekan caddy-enabled=true</span><br><span class="line">systemctl status snap.wekan.caddy.service</span><br><span class="line">vim /var/snap/wekan/common/Caddyfile</span><br><span class="line">vim /var/snap/wekan/common/Caddyfile</span><br><span class="line">snap set wekan caddy-bind-port=80</span><br><span class="line">systemctl status snap.wekan.caddy.service -l</span><br><span class="line">systemctl status snap.wekan.caddy.service -l</span><br><span class="line">snap set wekan ldap-login-fallback=true</span><br><span class="line">snap get wekan</span><br><span class="line">snap set wekan root-url=http://10.153.43.151:3001/dashboard</span><br><span class="line">systemctl status snap.wekan.caddy.service -l</span><br><span class="line">systemctl status snap.wekan.wekan.service</span><br><span class="line">systemctl status snap.wekan.mongodb.service</span><br><span class="line">snap set wekan caddy-enabled=false</span><br><span class="line">snap set wekan port=80</span><br><span class="line">snap set wekan root-url=http://domainname/dashboard</span><br><span class="line">snap set wekan port=3001</span><br><span class="line">snap set wekan root-url=http://domainname</span><br><span class="line">snap set wekan mongodb-bind-ip=127.0.0.1</span><br><span class="line">systemctl restart snap.wekan.wekan.service</span><br><span class="line">systemctl status snap.wekan.wekan.service</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="LDAP配置"><a href="#LDAP配置" class="headerlink" title="LDAP配置"></a>LDAP配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &lt;&lt; EOF</span><br><span class="line">#!/bin/bash</span><br><span class="line">snap set wekan ldap-port=&#x27;389&#x27;</span><br><span class="line">snap set wekan ldap-host=&#x27;ldap.xxx-inc.com&#x27;</span><br><span class="line">snap set wekan ldap-basedn=&#x27;OU=user,OU=xxx,DC=xxx-inc,DC=com&#x27;</span><br><span class="line">snap set wekan ldap-login-fallback=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reconnect=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-idle-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-vonnect-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-authentication=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-authentication-userdn=&#x27;cn=xxxxxx,ou=xxxxxx,ou=user,ou=xxx,dc=xxx-inc,dc=com&#x27;</span><br><span class="line">snap set wekan ldap-authentication-password=&#x27;passwd&#x27;</span><br><span class="line">snap set wekan ldap-internal-log-level=&#x27;debug&#x27;</span><br><span class="line">snap set wekan ldap-background-sync=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-background-sync-interval=&#x27;100&#x27;</span><br><span class="line">snap set wekan ldap-encryption=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reject-unauthorized=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-group-filter-enable=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-search-page-size=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-search-size-limit=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-user-search-filter=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-user-search-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-user-search-scope=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-unique-identifier-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-username-field=&#x27;displayName&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;displayName\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan ldap-merge-existing-users=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-utf8-names-slugify=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-fullname-field=displayName</span><br><span class="line">snap set wekan ldap-login-fallback=true</span><br><span class="line">snap set wekan default-authentication-method=&#x27;ldap&#x27;</span><br><span class="line">EOF |bash</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="nginx代理"><a href="#nginx代理" class="headerlink" title="nginx代理"></a>nginx代理</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &gt;&gt; wekan.conf &lt;&lt; EOF</span><br><span class="line">upstream task &#123;</span><br><span class="line">	server 10.0.0.1:3001;</span><br><span class="line">&#125;</span><br><span class="line"># this section is needed to proxy web-socket connections</span><br><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    &#x27;&#x27;      close;</span><br><span class="line">&#125;</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">	include vhosts/vhosts.listen.addr;</span><br><span class="line"></span><br><span class="line">	server_name wekan.webserver;</span><br><span class="line">	access_log logs/$&#123;server_name&#125;_access_log main;</span><br><span class="line">	access_log logs/status_log mini;</span><br><span class="line">	charset  utf-8;</span><br><span class="line"></span><br><span class="line">	error_page  404           /404.html;</span><br><span class="line">	error_page   500 502 503 504  /50x.html;</span><br><span class="line"></span><br><span class="line">	location = /50x.html</span><br><span class="line">	&#123;</span><br><span class="line">		root   html;</span><br><span class="line">	&#125;</span><br><span class="line">	location /server-status</span><br><span class="line">	&#123;</span><br><span class="line">		stub_status on;</span><br><span class="line">		allow 10.0.0.0/8;</span><br><span class="line">		deny all;</span><br><span class="line">	&#125;</span><br><span class="line">	location /</span><br><span class="line">	&#123;</span><br><span class="line">      		proxy_set_header   Host              $host;</span><br><span class="line">      		proxy_set_header   X-Real-IP         $remote_addr;</span><br><span class="line">      		proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;</span><br><span class="line">      		proxy_set_header   X-Forwarded-Proto $scheme;</span><br><span class="line">      		proxy_max_temp_file_size 0;</span><br><span class="line">		proxy_set_header Upgrade $http_upgrade; # allow websockets</span><br><span class="line">        	proxy_set_header Connection $connection_upgrade;</span><br><span class="line">      		proxy_pass         http://task;</span><br><span class="line"></span><br><span class="line">      		#this is the maximum upload size</span><br><span class="line">      		client_max_body_size       10m;</span><br><span class="line">      		client_body_buffer_size    128k;</span><br><span class="line"></span><br><span class="line">      		proxy_connect_timeout      90;</span><br><span class="line">      		proxy_send_timeout         90;</span><br><span class="line">      		proxy_read_timeout         90;</span><br><span class="line">      		proxy_buffering            off;</span><br><span class="line">      		proxy_request_buffering    off; # Required for HTTP CLI commands in Jenkins &gt; 2.54</span><br><span class="line">      		proxy_set_header Connection &quot;&quot;; # Clear for keepalive</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">30 10 * * * /var/lib/snapd/snap/bin/wekan.database-backup &gt;/dev/null 2&gt;&amp;1 &amp;&amp; mv /var/snap/wekan/common/db-backups/* /data/wekan/db-backups/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我们可以看到图中的loo0-loop11占用100%,我们只要清理掉一下就可以了.</span><br><span class="line">命令:</span><br><span class="line">sudo apt autoremove --purge snapd</span><br><span class="line">　命令:</span><br><span class="line">　　sudo apt autoremove --purge snapd</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a href="https://github.com/wekan/wekan-snap/wiki/Install">官方安装文档</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>开源技术栈</category>
+      </categories>
+      <tags>
+        <tag>wekan</tag>
+        <tag>kanban</tag>
       </tags>
   </entry>
   <entry>
@@ -7346,52 +7345,6 @@
       <tags>
         <tag>tomcat</tag>
         <tag>jvm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wekan开源kanban系统部署</title>
-    <url>/wekan%E5%BC%80%E6%BA%90kanban%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>Open-Source kanban.</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="关键安装步骤"><a href="#关键安装步骤" class="headerlink" title="关键安装步骤"></a>关键安装步骤</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum --showduplicates list snapd |expand</span><br><span class="line"></span><br><span class="line">yum -y install snapd-2.30-0.el7.centos.1.x86_64 snapd-selinux-2.30-0.el7.centos.1.noarch snap-confine-2.30-0.el7.centos.1.x86_64</span><br><span class="line"></span><br><span class="line">snap install wekan</span><br><span class="line"></span><br><span class="line"> snap list</span><br><span class="line"></span><br><span class="line">查看wekan配置</span><br><span class="line">snap get wekan</span><br><span class="line"></span><br><span class="line">snap info wekan</span><br><span class="line">snap services</span><br><span class="line"></span><br><span class="line">snap 安装指定修订版本应用</span><br><span class="line">snap refresh wekan --revision=581 --stable</span><br><span class="line"></span><br><span class="line">所有的配置选项</span><br><span class="line">wekan.help 2&gt;&amp;1 |grep &quot;\\\$&quot;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="安装后配置"><a href="#安装后配置" class="headerlink" title="安装后配置"></a>安装后配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">snap set wekan caddy-bind-port=&#x27;80&#x27;</span><br><span class="line">snap set wekan caddy-enabled=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;cn\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan mail-from=&#x27;username &lt;username@xxxx.com&gt;&#x27;</span><br><span class="line">snap set wekan mail-url=&#x27;smtp://username:passwd@mail.xxxx.com:25&#x27;</span><br><span class="line">snap set wekan mongodb-bind-ip=&#x27;127.0.0.1&#x27;</span><br><span class="line">snap set wekan port=&#x27;3001&#x27;</span><br><span class="line">snap set wekan root-url=&#x27;http://domainname&#x27;</span><br><span class="line">#-----------------------------</span><br><span class="line">snap set wekan ldap-enable=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-port=&#x27;389&#x27;</span><br><span class="line">snap set wekan ldap-host=&#x27;ldap.xxxx.com&#x27;</span><br><span class="line">snap set wekan ldap-basedn=&#x27;OU=user,OU=xxxx,DC=xxxx,DC=com&#x27;</span><br><span class="line">snap set wekan ldap-login-fallback=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reconnect=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-idle-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-vonnect-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-authentication=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-authentication-userdn=&#x27;cn=xxxx,ou=Special_Account,ou=user,ou=xxxx,dc=xxxx,dc=com&#x27;</span><br><span class="line">snap set wekan ldap-authentication-password=&#x27;passwd&#x27;</span><br><span class="line">snap set wekan ldap-internal-log-level=&#x27;debug&#x27;</span><br><span class="line">snap set wekan ldap-background-sync=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-background-sync-interval=&#x27;100&#x27;</span><br><span class="line">snap set wekan ldap-encryption=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reject-unauthorized=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-group-filter-enable=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-search-page-size=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-search-size-limit=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-user-search-filter=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-user-search-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-user-search-scope=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-unique-identifier-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-username-field=&#x27;displayName&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data=&#x27;false&#x27;</span><br><span class="line"># snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;cn\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;displayName\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan ldap-merge-existing-users=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-utf8-names-slugify=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-fullname-field=displayName</span><br><span class="line">snap set wekan ldap-login-fallback=true</span><br><span class="line">snap set wekan default-authentication-method=&#x27;ldap&#x27;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="备份与恢复数据"><a href="#备份与恢复数据" class="headerlink" title="备份与恢复数据"></a>备份与恢复数据</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备份：</span><br><span class="line">/var/lib/snapd/snap/bin/wekan.database-backup &gt;/dev/null 2&gt;&amp;1 &amp;&amp; mv /var/snap/wekan/common/db-backups/* /data/wekan/db-backups/</span><br><span class="line"></span><br><span class="line">恢复</span><br><span class="line">wekan.database-restore /var/snap/wekan/common/db-backups/wekan-20190806T103004.backup</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="操作历史"><a href="#操作历史" class="headerlink" title="操作历史"></a>操作历史</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">diff /etc/yum.repos.d/ngompa-snapcore-el7-epel-7.repo /etc/yum.repos.d/_copr_ngompa-snapcore-el7.repo</span><br><span class="line"> rm -rf /etc/yum.repos.d/ngompa-snapcore-el7-epel-7.repo</span><br><span class="line">sudo yum install snapd</span><br><span class="line">snap install wekan</span><br><span class="line">systemctl enable --now snapd.socket</span><br><span class="line">snap install wekan</span><br><span class="line">snap set wekan root-url=&quot;http://0.0.0.0:3000/&quot;</span><br><span class="line">lsof -i :3000</span><br><span class="line">snap set wekan root-url=&quot;http://10.153.43.151:3000/wekan&quot;</span><br><span class="line">snap set wekan port=&#x27;3001&#x27;</span><br><span class="line">systemctl restart snap.wekan.wekan</span><br><span class="line">systemctl status snap.wekan.wekan</span><br><span class="line">snap set wekan.help</span><br><span class="line">wekan.help</span><br><span class="line">ll /snapcat /etc/systemd/system/snap.wekan.wekan.service</span><br><span class="line">cat /etc/systemd/system/snap.wekan.wekan.service</span><br><span class="line">sudo snap set wekan mail-url=&#x27;smtp://username:passwd@mail.xxx-inc.com:25&#x27;</span><br><span class="line">sudo snap set wekan mail-from=&#x27;xxx &lt;xxx@xxx-inc.com&gt;&#x27;</span><br><span class="line">systemctl restart snap.wekan.caddy.service</span><br><span class="line">systemctl status snap.wekan.wekan.service</span><br><span class="line">systemctl status snap.wekan.mongodb.service</span><br><span class="line">journalctl -af -u snap.wekan.caddy.service</span><br><span class="line">vim /etc/systemd/system/snap.wekan.caddy.service</span><br><span class="line"> /usr/bin/snap run wekan.caddy</span><br><span class="line">snap set wekan caddy-bind-port=80</span><br><span class="line">snap set wekan caddy-enabled=true</span><br><span class="line">systemctl status snap.wekan.caddy.service</span><br><span class="line">vim /var/snap/wekan/common/Caddyfile</span><br><span class="line">vim /var/snap/wekan/common/Caddyfile</span><br><span class="line">snap set wekan caddy-bind-port=80</span><br><span class="line">systemctl status snap.wekan.caddy.service -l</span><br><span class="line">systemctl status snap.wekan.caddy.service -l</span><br><span class="line">snap set wekan ldap-login-fallback=true</span><br><span class="line">snap get wekan</span><br><span class="line">snap set wekan root-url=http://10.153.43.151:3001/dashboard</span><br><span class="line">systemctl status snap.wekan.caddy.service -l</span><br><span class="line">systemctl status snap.wekan.wekan.service</span><br><span class="line">systemctl status snap.wekan.mongodb.service</span><br><span class="line">snap set wekan caddy-enabled=false</span><br><span class="line">snap set wekan port=80</span><br><span class="line">snap set wekan root-url=http://domainname/dashboard</span><br><span class="line">snap set wekan port=3001</span><br><span class="line">snap set wekan root-url=http://domainname</span><br><span class="line">snap set wekan mongodb-bind-ip=127.0.0.1</span><br><span class="line">systemctl restart snap.wekan.wekan.service</span><br><span class="line">systemctl status snap.wekan.wekan.service</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="LDAP配置"><a href="#LDAP配置" class="headerlink" title="LDAP配置"></a>LDAP配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &lt;&lt; EOF</span><br><span class="line">#!/bin/bash</span><br><span class="line">snap set wekan ldap-port=&#x27;389&#x27;</span><br><span class="line">snap set wekan ldap-host=&#x27;ldap.xxx-inc.com&#x27;</span><br><span class="line">snap set wekan ldap-basedn=&#x27;OU=user,OU=xxx,DC=xxx-inc,DC=com&#x27;</span><br><span class="line">snap set wekan ldap-login-fallback=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reconnect=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-idle-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-vonnect-timeout=&#x27;10000&#x27;</span><br><span class="line">snap set wekan ldap-authentication=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-authentication-userdn=&#x27;cn=xxxxxx,ou=xxxxxx,ou=user,ou=xxx,dc=xxx-inc,dc=com&#x27;</span><br><span class="line">snap set wekan ldap-authentication-password=&#x27;passwd&#x27;</span><br><span class="line">snap set wekan ldap-internal-log-level=&#x27;debug&#x27;</span><br><span class="line">snap set wekan ldap-background-sync=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-background-sync-interval=&#x27;100&#x27;</span><br><span class="line">snap set wekan ldap-encryption=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-reject-unauthorized=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-group-filter-enable=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-search-page-size=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-search-size-limit=&#x27;0&#x27;</span><br><span class="line">snap set wekan ldap-user-search-filter=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-user-search-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-user-search-scope=&#x27;&#x27;</span><br><span class="line">snap set wekan ldap-unique-identifier-field=&#x27;sAMAccountName&#x27;</span><br><span class="line">snap set wekan ldap-username-field=&#x27;displayName&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data=&#x27;false&#x27;</span><br><span class="line">snap set wekan ldap-sync-user-data-fieldmap=&#x27;&#123;\&quot;displayName\&quot;:\&quot;name\&quot;, \&quot;mail\&quot;:\&quot;email\&quot;&#125;&#x27;</span><br><span class="line">snap set wekan ldap-merge-existing-users=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-utf8-names-slugify=&#x27;true&#x27;</span><br><span class="line">snap set wekan ldap-fullname-field=displayName</span><br><span class="line">snap set wekan ldap-login-fallback=true</span><br><span class="line">snap set wekan default-authentication-method=&#x27;ldap&#x27;</span><br><span class="line">EOF |bash</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="nginx代理"><a href="#nginx代理" class="headerlink" title="nginx代理"></a>nginx代理</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &gt;&gt; wekan.conf &lt;&lt; EOF</span><br><span class="line">upstream task &#123;</span><br><span class="line">	server 10.0.0.1:3001;</span><br><span class="line">&#125;</span><br><span class="line"># this section is needed to proxy web-socket connections</span><br><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    &#x27;&#x27;      close;</span><br><span class="line">&#125;</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">	include vhosts/vhosts.listen.addr;</span><br><span class="line"></span><br><span class="line">	server_name wekan.webserver;</span><br><span class="line">	access_log logs/$&#123;server_name&#125;_access_log main;</span><br><span class="line">	access_log logs/status_log mini;</span><br><span class="line">	charset  utf-8;</span><br><span class="line"></span><br><span class="line">	error_page  404           /404.html;</span><br><span class="line">	error_page   500 502 503 504  /50x.html;</span><br><span class="line"></span><br><span class="line">	location = /50x.html</span><br><span class="line">	&#123;</span><br><span class="line">		root   html;</span><br><span class="line">	&#125;</span><br><span class="line">	location /server-status</span><br><span class="line">	&#123;</span><br><span class="line">		stub_status on;</span><br><span class="line">		allow 10.0.0.0/8;</span><br><span class="line">		deny all;</span><br><span class="line">	&#125;</span><br><span class="line">	location /</span><br><span class="line">	&#123;</span><br><span class="line">      		proxy_set_header   Host              $host;</span><br><span class="line">      		proxy_set_header   X-Real-IP         $remote_addr;</span><br><span class="line">      		proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;</span><br><span class="line">      		proxy_set_header   X-Forwarded-Proto $scheme;</span><br><span class="line">      		proxy_max_temp_file_size 0;</span><br><span class="line">		proxy_set_header Upgrade $http_upgrade; # allow websockets</span><br><span class="line">        	proxy_set_header Connection $connection_upgrade;</span><br><span class="line">      		proxy_pass         http://task;</span><br><span class="line"></span><br><span class="line">      		#this is the maximum upload size</span><br><span class="line">      		client_max_body_size       10m;</span><br><span class="line">      		client_body_buffer_size    128k;</span><br><span class="line"></span><br><span class="line">      		proxy_connect_timeout      90;</span><br><span class="line">      		proxy_send_timeout         90;</span><br><span class="line">      		proxy_read_timeout         90;</span><br><span class="line">      		proxy_buffering            off;</span><br><span class="line">      		proxy_request_buffering    off; # Required for HTTP CLI commands in Jenkins &gt; 2.54</span><br><span class="line">      		proxy_set_header Connection &quot;&quot;; # Clear for keepalive</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">30 10 * * * /var/lib/snapd/snap/bin/wekan.database-backup &gt;/dev/null 2&gt;&amp;1 &amp;&amp; mv /var/snap/wekan/common/db-backups/* /data/wekan/db-backups/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我们可以看到图中的loo0-loop11占用100%,我们只要清理掉一下就可以了.</span><br><span class="line">命令:</span><br><span class="line">sudo apt autoremove --purge snapd</span><br><span class="line">　命令:</span><br><span class="line">　　sudo apt autoremove --purge snapd</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://github.com/wekan/wekan-snap/wiki/Install">官方安装文档</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>开源技术栈</category>
-      </categories>
-      <tags>
-        <tag>wekan</tag>
-        <tag>kanban</tag>
       </tags>
   </entry>
   <entry>
@@ -7554,9 +7507,61 @@
       </tags>
   </entry>
   <entry>
+    <title>自签SSL证书</title>
+    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
+</div>
+
+<p>devops 必备技能</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<ul>
+<li><p>查看当前系统使用的 OpenSSL 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取完整的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
+</blockquote>
+<ul>
+<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
+<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
+<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
+</ul>
+<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
+
+<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
+<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
+<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
+<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>openssl</tag>
+        <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>边缘计算业务部署实践</title>
     <url>/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%83%A8%E7%BD%B2%E5%AE%9E%E8%B7%B5.html</url>
-    <content><![CDATA[<p>边缘计算是一种分布式计算的架构，作为云计算的延伸，通过将计算能力从中心节点下沉到靠近用户的边缘节点，提供更低延时的计算服务。边缘计算节点，距离用户更近。通常情况下，各个节点之间的网络是隔离的。跟企业IDC生产环境通常也通过公网互联。直接导致的后果就是，企业级的运维保障能力和平台难以覆盖到边缘计算节点。</p>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>边缘计算是一种分布式计算的架构，作为云计算的延伸，通过将计算能力从中心节点下沉到靠近用户的边缘节点，提供更低延时的计算服务。边缘计算节点，距离用户更近。通常情况下，各个节点之间的网络是隔离的。跟企业IDC生产环境通常也通过公网互联。直接导致的后果就是，企业级的运维保障能力和平台难以覆盖到边缘计算节点。</p>
+
+</blockquote>
+
+<p>边缘计算是一种分布式计算的架构，作为云计算的延伸，通过将计算能力从中心节点下沉到靠近用户的边缘节点，提供更低延时的计算服务。边缘计算节点，距离用户更近。通常情况下，各个节点之间的网络是隔离的。跟企业IDC生产环境通常也通过公网互联。直接导致的后果就是，企业级的运维保障能力和平台难以覆盖到边缘计算节点。</p>
 <p>当然任何事情都不是绝对的。比如Zabbix可以通过Zabbix-proxy实现跨网监控，Jenkins也可以通过Slave节点实现跨网构建交付。但是很多时候，出于很多原因，比如有些私有化方案，耦合内部资源或者涉及业务拆分交付等等，可能会导致企业级能力覆盖不到。此时我们不会坐等时间去解决一切问题，而是需要考虑从零到一,实现一套独立的解决方案。</p>
 <p>如果把基于企业内网已有能力体系基础上的部署行为比作现代社会的基建工程，那在脱离内网能力的边缘节点部署业务，就好比在原始森林里盖房子。一切都需要从零开始就地取材。需要着重强调的是，本文的实际背景是在多个独立网络环境，没有其它基础设施的情况下，快速部署上线一套生产可用可运维的分布式应用服务。笔者期望以此为例，梳理一下从零到一部署一套应用服务以及搭建功能基本完整的周边运维设施的一般思路，对缺乏业务运维经验的同学在全面认识业务部署全流程方面有所启发。因此应着力避免刻板思维造成的，不计成本的追求公有云或其它商用产品的设计标准。</p>
 <p>以下从几个方面介绍一下相关思路和实现过程：</p>
