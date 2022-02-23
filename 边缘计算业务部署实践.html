@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"www.lengyuewusheng.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.lengyuewusheng.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
   <meta name="description" content="边缘计算是一种分布式计算的架构，作为云计算的延伸，通过将计算能力从中心节点下沉到靠近用户的边缘节点，提供更低延时的计算服务。边缘计算节点，距离用户更近。通常情况下，各个节点之间的网络是隔离的。跟企业IDC生产环境通常也通过公网互联。直接导致的后果就是，企业级的运维保障能力和平台难以覆盖到边缘计算节点。 当然任何事情都不是绝对的。比如Zabbix可以通过Zabbix-proxy实现跨网监控，Jenk">
 <meta property="og:type" content="article">
@@ -50,7 +50,12 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>边缘计算业务部署实践 | 冷月无声</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119523284-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-119523284-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?01d66b7109c2a75544d1724df8a28646"></script>
 
 
 
@@ -279,6 +284,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -301,7 +313,7 @@
 </ul>
 <h1 id="前期筹备"><a href="#前期筹备" class="headerlink" title="前期筹备"></a>前期筹备</h1><p>前期筹备阶段需要做大量的准备和信息收集的工作，如基准测试、成本预估、成效预测等等，此外如果是新业务或新接手的业务，需要对业务应用整体有较为全面的了解。通过跟业务同学深入沟通或者参考现有相同或相似的服务。便于后续过程中的整体考量和扩展性设计。</p>
 <h2 id="了解业务架构"><a href="#了解业务架构" class="headerlink" title="了解业务架构"></a>了解业务架构</h2><p>本次部署的业务通过腾讯云覆盖全国15个边缘节点，服务器总量在200台左右。涉及nginx，各类C++业务服务。主体数据规模越100G，增量冷数据约10G，增量热数据1G以下，需要每天不定时更新。本篇主要从运维角度介绍服务部署的一般思路。因此弱化了业务细节，仅提供一张简洁的业务架构图说明部署和维护的复杂性即可。</p>
-<p><img src="https://lengyuewusheng.com/assets/images/edge/business_architecture.png" alt="业务架构图"></p>
+<p><img data-src="https://lengyuewusheng.com/assets/images/edge/business_architecture.png" alt="业务架构图"></p>
 <h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><p>技术选型主要指在工具链和技术方案选择时应遵循的一些基本原则。首先应该考虑的是业务场景的匹配程度，其次是实现成本和维护成本，开源方案还需考虑社区活跃程度，最后考虑的是人的因素，如已有的知识储备情况，以及团队对技术方案认同和擅长程度。</p>
 <h2 id="容灾设计"><a href="#容灾设计" class="headerlink" title="容灾设计"></a>容灾设计</h2><p>首先需要强调的是，这里提到的容灾是指工具链的容灾而非业务容灾。</p>
 <p>关于容灾设计应该如何考虑。有些同学会执念于服务的高可用，实际上业务的容灾设计是用户感知程度、服务容错能力以及容灾成本的多种因素平衡的结果，容灾能力在达到一定程度之后的提升成本可能是指数级上升的。因此出于成本考虑，很多工具链角色是单台服务器加冷备的方式，如基于Jenkins的持续交付工具，制品库，监控系统server端等。</p>
@@ -430,7 +442,7 @@
 </li>
 </ul>
 <h1 id="部署实施"><a href="#部署实施" class="headerlink" title="部署实施"></a>部署实施</h1><p>部署实施的流程大致总结如下。其中如果存在大规模数据传输过程，应该考虑和轻量的初始化操作剥离。</p>
-<p><img src="https://lengyuewusheng.com/assets/images/edge/deployment_flowchart.png" alt="部署流程图"></p>
+<p><img data-src="https://lengyuewusheng.com/assets/images/edge/deployment_flowchart.png" alt="部署流程图"></p>
 <p>针对重要流程将适当展开阐述。</p>
 <h2 id="服务器初始化"><a href="#服务器初始化" class="headerlink" title="服务器初始化"></a>服务器初始化</h2><p>所谓服务器的初始化操作，是指在部署之前，所有服务器需都要执行的统一的定制化操作步骤。一般至少需要考虑如下几个方面：</p>
 <ul>
@@ -496,7 +508,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://lengyuewusheng.com/assets/images/edge/automation_architecture.png" alt="自动化实现"></p>
+<p><img data-src="https://lengyuewusheng.com/assets/images/edge/automation_architecture.png" alt="自动化实现"></p>
 <h1 id="监控告警"><a href="#监控告警" class="headerlink" title="监控告警"></a>监控告警</h1><p>监控的基本功能大致分为指标数据采集、数据可视化以及告警消息推送三部分。监控选型过程中，在满足需求的基础上，需要考虑部署和维护成本。Prometheus在系统指标监控层面无疑在部署和维护方面成本都是相对较低的。原因在于它不依赖于其它组件部署，时序数据存储于本地，便于备份和恢复。另外grafana社区对于prometheus监控的dashboard模板也非常丰富，可以快速搭建出基础的监控功能。</p>
 <p>对于nginx的监控需要第三方模块nginx-vts的支持或基于lua的metric库支持。个人比较倾向于使用vts模块，因为之前定制业务的nginx rpm包时顺带定制了vts扩展的rpm包，开箱即用，部署非常方便。nginx-vts的配置文件是相对固化的，在此不再详细展开。</p>
 <p>对于应用级监控，如进程存活状态，进程的各类硬件资源消耗等需要引入process-exporter，学习成本稍高，但是使用非常方便属于一劳永逸的学习投入。</p>
@@ -534,7 +546,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://lengyuewusheng.com/assets/images/edge/alert.png" alt="监控告警架构图"></p>
+<p><img data-src="https://lengyuewusheng.com/assets/images/edge/alert.png" alt="监控告警架构图"></p>
 <h1 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h1><p>一篇写下来终于领悟到什么叫眼高手低，没写之前觉得有无数观点可以输出，真正开始整理的时候下发现，想把这些想法条例清楚的表述出来并不容易。在此对于那些默默输出原创有价值文章的人表示敬意。业务部署和写文档一样，没有实践之前觉得没有什么复杂性可言，实际实施过程中才发现很多细节问题需要通盘考虑。快糙猛的部署行为也许可以达到业务火速上线的效果。但是欠下的技术债会在很长一个周期内潜移默化的影响着业务品质。因此我们在追求业务快速迭代的同时，一定要夯实基础。尽可能避免偷工减料的行为拉低了业务稳定性。</p>
 <p>写至此处才发现，文字已经堆积了不少，但还不确定观点是否表达清楚。在略显凌乱的文字中间，希望对缺乏业务部署经验的同学一些思路上的启发。同时也是对自己整个项目实施过程的全面总结。</p>
 <p>纸上得来终觉浅。所谓的经验还需更多的实践才能有更深刻的理解。</p>
@@ -587,6 +599,24 @@
   </span>
   <span class="author" itemprop="copyrightHolder">冷月无声</span>
 </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
@@ -595,6 +625,7 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -606,6 +637,7 @@
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
