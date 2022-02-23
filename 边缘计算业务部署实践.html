@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://lengyuewusheng.com/assets/images/edge/prometheus.png">
 <meta property="og:image" content="https://lengyuewusheng.com/assets/images/edge/message.png">
 <meta property="article:published_time" content="2022-02-20T13:43:15.000Z">
-<meta property="article:modified_time" content="2022-02-23T13:24:11.131Z">
+<meta property="article:modified_time" content="2022-02-23T13:32:53.399Z">
 <meta property="article:author" content="冷月无声">
 <meta property="article:tag" content="运维自动化">
 <meta property="article:tag" content="Edge Computing">
@@ -292,7 +292,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-23 21:24:11" itemprop="dateModified" datetime="2022-02-23T21:24:11+08:00">2022-02-23</time>
+      <time title="修改时间：2022-02-23 21:32:53" itemprop="dateModified" datetime="2022-02-23T21:32:53+08:00">2022-02-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -546,31 +546,28 @@
 </ul>
 <p><img data-src="https://lengyuewusheng.com/assets/images/edge/alert.png" alt="监控告警架构图"></p>
 <h2 id="监控可视化"><a href="#监控可视化" class="headerlink" title="监控可视化"></a>监控可视化</h2><ul>
-<li><p>系统状态，node_exporter采集的数据，非常全面，几乎涵盖了所有关系的系统指标数据。</p>
+<li><p>系统状态，node_exporter采集的数据，非常全面，几乎涵盖了所有关系的系统指标数据；</p>
 </li>
-<li><p>nginx请求状态，nginx-vts模块暴露的metrics，主要关注请求量和5xx请求量。</p>
+<li><p>nginx请求状态，nginx-vts模块暴露的metrics，主要关注请求量、延迟和5xx的错误率；</p>
 </li>
-<li><p>应用进程状态，process-exporter采集的数据展示，主要关注进程存活以及进程的资源使用情况。</p>
+<li><p>应用进程状态，process-exporter采集的数据展示，主要关注进程存活以及进程的资源使用情况；</p>
 </li>
 <li><p>业务指标状态，业务指标数据依赖于业务埋点。</p>
 </li>
 </ul>
 <p><img data-src="https://lengyuewusheng.com/assets/images/edge/grafana.png" alt="可视化效果图"></p>
 <h2 id="告警"><a href="#告警" class="headerlink" title="告警"></a>告警</h2><ul>
-<li><p>基础告警，包括服务器存活，Load状态，cpu、内存、磁盘使用率，网卡出入带宽、网络连接数等。</p>
+<li><p>基础告警。应至少涵盖服务器存活，Load状态，cpu、内存、磁盘使用率，网卡出入带宽、网络连接数等；</p>
 </li>
-<li><p>应用告警，业务进程存活，基础进程如crond、rsync等存活状态，nginx进程存活，nginx错误状态码请求量，nginx请求的平均响应时间等。</p>
+<li><p>应用告警。业务进程存活，基础进程如crond、rsync等存活状态，nginx进程存活，nginx错误状态码请求量，nginx请求的平均响应时间等；</p>
 </li>
-<li><p>告警合并。适度控制告警数量，有利于更加高效的发现并处理异常。</p>
+<li><p>告警合并。适度控制告警数量，有利于更加高效的发现并处理异常；</p>
 </li>
-<li><p>日志审计，必要时候用于问题溯源。</p>
+<li><p>日志审计。必要时候用于问题溯源；</p>
 </li>
-<li><p>阈值合理，过于敏感的告警等于没有告警。</p>
+<li><p>阈值合理。过于敏感的告警等于没有告警；</p>
 </li>
-<li><p>告警实现</p>
-<ul>
-<li>Prometheus alertmanager webhook 企微机器人</li>
-</ul>
+<li><p>告警实现。Prometheus + alertmanager + webhook + 企微机器人。</p>
 </li>
 </ul>
 <h2 id="实现效果-1"><a href="#实现效果-1" class="headerlink" title="实现效果"></a>实现效果</h2><ul>
@@ -580,7 +577,7 @@
 </li>
 </ul>
 <h1 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h1><p>一篇写下来终于领悟到什么叫眼高手低，没写之前觉得有无数观点可以输出，真正开始整理的时候下发现，想把这些想法条例清楚的表述出来并不容易。在此对于那些默默输出原创有价值文章的人表示敬意。业务部署和写文档一样，没有实践之前觉得没有什么复杂性可言，实际实施过程中才发现很多细节问题需要通盘考虑。快糙猛的部署行为也许可以达到业务火速上线的效果。但是欠下的技术债会在很长一个周期内潜移默化的影响着业务品质。因此我们在追求业务快速迭代的同时，一定要夯实基础。尽可能避免偷工减料的行为拉低了业务稳定性。</p>
-<p>行文至此，才发现文字已经堆积了不少，但还不确定观点是否表达清楚。在略显凌乱的文字中间，希望对缺乏业务部署经验的同学一些思路上的启发，同时也是对自己整个项目实施过程的全面总结。当然，由于个人见识和理解的局限性，造成了客观上论述的片面性，敬请各路大神不吝赐教，进而持续完善。由于篇幅限制，具体的配置细节和脚本逻辑没有进一步展开。如有相关疑问，也欢迎线下探讨交流。</p>
+<p>行文至此，才发现文字已经堆积了不少，但还不确定观点是否表达清楚。在略显凌乱的文字中间，希望对缺乏业务部署经验的同学一些思路上的启发，同时也是对自己整个项目实施过程的全面总结。当然，由于个人见识和理解的局限性，造成了客观上论述的片面性，敬请各路大神不吝批评指正，进而实现持续完善。由于篇幅限制，具体的配置细节和脚本逻辑没有进一步展开。如遇到相关疑问，也欢迎线下探讨交流。</p>
 <p>纸上得来终觉浅。所谓的经验还需更多的实践才能有更深刻的理解。</p>
 
     </div>
