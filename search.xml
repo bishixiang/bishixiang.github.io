@@ -26,55 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title>DOS常用命令总结</title>
-    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
-    <content><![CDATA[<ul>
-<li><p>查看历史命令（快捷键：F7）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看进程PID</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自动关机</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件系统转换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>磁盘检查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改文件属性</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内网主机名IP互查</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>组策略</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
-</ul>
-</li>
-<li><p>help</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
-      <categories>
-        <category>DOS</category>
-      </categories>
-      <tags>
-        <tag>DOS</tag>
-        <tag>Windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo(Next)+GitHub Pages搭建开源博客</title>
     <url>/hexo-next-github-pages%E6%90%AD%E5%BB%BA%E5%BC%80%E6%BA%90%E5%8D%9A%E5%AE%A2.html</url>
     <content><![CDATA[<h1 id="node环境"><a href="#node环境" class="headerlink" title="node环境"></a>node环境</h1><p>  略</p>
@@ -240,6 +191,147 @@
       </tags>
   </entry>
   <entry>
+    <title>DOS常用命令总结</title>
+    <url>/dos%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
+    <content><![CDATA[<ul>
+<li><p>查看历史命令（快捷键：F7）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">doskey /history</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr &quot;80&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tasklist</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程PID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taskkill</span><br><span class="line"># /s computer 制定远程计算机名称或IP</span><br><span class="line"># /u domain\user 指定用户</span><br><span class="line"># /p password 指定用户密码</span><br><span class="line"># /pid ProcessID 被终止进程的ID</span><br><span class="line"># /f 强制终止。远程进程可忽略此参数，所有远程进程都会被强制终止</span><br><span class="line"># /t 终止与父进程的所有子进程</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动关机</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown</span><br><span class="line"># /m \\ComputerName 关闭远程机器</span><br><span class="line"># /l 注销当前用户</span><br><span class="line"># /s 关机</span><br><span class="line"># /r 重启</span><br><span class="line"># /f 强制关闭应用程序</span><br><span class="line"># /c &quot;comment&quot; 操作说明</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件系统转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">convert D: /fs:ntfs /x</span><br><span class="line"># /x 强制卸除卷标</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>磁盘检查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chkdsk C: /X /R /F</span><br><span class="line"># /X    如果必要，则先强制卸除卷。</span><br><span class="line"># /R    查找坏扇区并恢复可读信息</span><br><span class="line"># /F    修复磁盘上的错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改文件属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">attrib [+R|-R] [+A|-A] [+S|-S] [+H|-H] [+I|-I] [drive:][path][filename] [/S [/D] [/L]]</span><br><span class="line">#  +   设置属性。</span><br><span class="line">#  -   清除属性。</span><br><span class="line">#  R   只读文件属性。</span><br><span class="line">#  A   存档文件属性。</span><br><span class="line">#  S   系统文件属性。</span><br><span class="line">#  H   隐藏文件属性。</span><br><span class="line">#  I   无内容索引文件属性。</span><br><span class="line">#  X   无清理文件属性。</span><br><span class="line">#  V   完整性属性。</span><br><span class="line">#  [drive:][path][filename]指定 attrib 要处理的文件</span><br><span class="line">#  /S  处理当前文件夹及其所有子文件夹中的匹配文件</span><br><span class="line">#  /D  也处理文件夹。</span><br><span class="line">#  /L  处理符号链接和符号链接目标的属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内网主机名IP互查</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根据IP查主机名</span><br><span class="line">nbtstat -A IP</span><br><span class="line">ping -a IP</span><br><span class="line">根据主机名查IP</span><br><span class="line">nbtstat -a 主机名</span><br><span class="line">ping 主机名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组策略</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打开组策略</span><br><span class="line">gpedit.msc</span><br><span class="line">强制刷新组策略</span><br><span class="line">gpupdate /force</span><br><span class="line">仅刷新用户策略</span><br><span class="line">gpupdate /target:user</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一般如果所有配置都正确的情况下，Mac远程桌面Windows依然连不上，就强制刷新一下组策略有可能会出现奇迹。。。</li>
+</ul>
+</li>
+<li><p>help</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">help [command]</span><br><span class="line"># 提供 Windows 命令的帮助信息。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95.html">Linux挂载Windows共享目录</a></li><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
+      <categories>
+        <category>DOS</category>
+      </categories>
+      <tags>
+        <tag>DOS</tag>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>curl命令使用范例</title>
+    <url>/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html</url>
+    <content><![CDATA[<h1 id="curl常用参数："><a href="#curl常用参数：" class="headerlink" title="curl常用参数："></a>curl常用参数：</h1><style> table th:nth-of-type(1){width: 15%;} nth-of-type(2){width: 85%;} </style>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-A&#x2F;–user-agent</td>
+<td align="left">定义用户代理字符串</td>
+</tr>
+<tr>
+<td align="left">-H&#x2F;–header</td>
+<td align="left">自定义header头信息</td>
+</tr>
+<tr>
+<td align="left">-i&#x2F;–include</td>
+<td align="left">输出时包括protocol头信息</td>
+</tr>
+<tr>
+<td align="left">-I&#x2F;–head</td>
+<td align="left">只显示请求的头信息</td>
+</tr>
+<tr>
+<td align="left">-o&#x2F;–output</td>
+<td align="left">把输出写到该文件中</td>
+</tr>
+<tr>
+<td align="left">-s&#x2F;–silent</td>
+<td align="left">静默模式</td>
+</tr>
+<tr>
+<td align="left">-w&#x2F;–write-out [format]</td>
+<td align="left">在一次完整且成功的操作后输出指定格式的内容到标准输出</td>
+</tr>
+<tr>
+<td align="left">-X&#x2F;–request</td>
+<td align="left">指定请求方式</td>
+</tr>
+<tr>
+<td align="left">-u&#x2F;–user</td>
+<td align="left">设置服务器的用户和密码</td>
+</tr>
+<tr>
+<td align="left">-T&#x2F;–upload-file</td>
+<td align="left">上传文件</td>
+</tr>
+<tr>
+<td align="left">-l&#x2F;–list-only</td>
+<td align="left">列出ftp目录下的文件名称</td>
+</tr>
+<tr>
+<td align="left">–limit-rate</td>
+<td align="left">设置传输速度</td>
+</tr>
+<tr>
+<td align="left">-m&#x2F;–max-time</td>
+<td align="left">设置最大传输时间</td>
+</tr>
+</tbody></table>
+<h1 id="常用范例-纯shell命令-："><a href="#常用范例-纯shell命令-：" class="headerlink" title="常用范例(纯shell命令)："></a>常用范例(纯shell命令)：</h1><ul>
+<li><p>伪造UA绑host请求:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --user-agent &quot;curl-test-agent&quot; -H &quot;Host:www.lengyuewusheng.com&quot; -I &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>伪造X-Real-IP：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -H &quot;X-Real-IP:1.1.1.1&quot; -H &quot;Host:www.lengyuwusheng.com&quot; &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取请求的状态码字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;%&#123;http_code&#125;\n&quot; -H &quot;Host:www.lengyuewusheng.com&quot; &quot;http://10.0.0.1/index.php&quot; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向服务器端POST数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -X POST -d &quot;a=1&amp;b=2&amp;c=3&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>指定请求的超时时间</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --connect-timeout 5 -m 90 -o /dev/null -s -w &quot;%&#123;http_code&#125;&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过curl向ftp服务器上传文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -u &quot;$&#123;USER&#125;:$&#123;PASSWD&#125;&quot; -T &quot;$&#123;DATADIR&#125;/$&#123;FILE&#125;&quot; &quot;ftp://$&#123;FTPSERVER&#125;&quot;</span><br><span class="line"># eg: curl -u &quot;admin:123456&quot; -T &quot;/tmp/logs/test.log&quot; &quot;ftp://10.0.0.1&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li></ul></div>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>curl</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx部分常用内置变量</title>
     <url>/nginx%E9%83%A8%E5%88%86%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F.html</url>
     <content><![CDATA[<style> table th:nth-of-type(1){width: 15%;} nth-of-type(2){width: 45%;} nth-of-type(3){width: 40%;}</style>
@@ -377,95 +469,27 @@
       </tags>
   </entry>
   <entry>
-    <title>curl命令使用范例</title>
-    <url>/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html</url>
-    <content><![CDATA[<h1 id="curl常用参数："><a href="#curl常用参数：" class="headerlink" title="curl常用参数："></a>curl常用参数：</h1><style> table th:nth-of-type(1){width: 15%;} nth-of-type(2){width: 85%;} </style>
+    <title>shell的分批并发操作的简单实现</title>
+    <url>/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html</url>
+    <content><![CDATA[<blockquote>
+<p>很多情况下，计算资源是有限的。我们需要在任务时长和资源消耗之前取得一种平衡。因此需要进行并发和控制。</p>
+</blockquote>
+<span id="more"></span>
 
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-A&#x2F;–user-agent</td>
-<td align="left">定义用户代理字符串</td>
-</tr>
-<tr>
-<td align="left">-H&#x2F;–header</td>
-<td align="left">自定义header头信息</td>
-</tr>
-<tr>
-<td align="left">-i&#x2F;–include</td>
-<td align="left">输出时包括protocol头信息</td>
-</tr>
-<tr>
-<td align="left">-I&#x2F;–head</td>
-<td align="left">只显示请求的头信息</td>
-</tr>
-<tr>
-<td align="left">-o&#x2F;–output</td>
-<td align="left">把输出写到该文件中</td>
-</tr>
-<tr>
-<td align="left">-s&#x2F;–silent</td>
-<td align="left">静默模式</td>
-</tr>
-<tr>
-<td align="left">-w&#x2F;–write-out [format]</td>
-<td align="left">在一次完整且成功的操作后输出指定格式的内容到标准输出</td>
-</tr>
-<tr>
-<td align="left">-X&#x2F;–request</td>
-<td align="left">指定请求方式</td>
-</tr>
-<tr>
-<td align="left">-u&#x2F;–user</td>
-<td align="left">设置服务器的用户和密码</td>
-</tr>
-<tr>
-<td align="left">-T&#x2F;–upload-file</td>
-<td align="left">上传文件</td>
-</tr>
-<tr>
-<td align="left">-l&#x2F;–list-only</td>
-<td align="left">列出ftp目录下的文件名称</td>
-</tr>
-<tr>
-<td align="left">–limit-rate</td>
-<td align="left">设置传输速度</td>
-</tr>
-<tr>
-<td align="left">-m&#x2F;–max-time</td>
-<td align="left">设置最大传输时间</td>
-</tr>
-</tbody></table>
-<h1 id="常用范例-纯shell命令-："><a href="#常用范例-纯shell命令-：" class="headerlink" title="常用范例(纯shell命令)："></a>常用范例(纯shell命令)：</h1><ul>
-<li><p>伪造UA绑host请求:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --user-agent &quot;curl-test-agent&quot; -H &quot;Host:www.lengyuewusheng.com&quot; -I &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>示例一</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat packetConcurrency.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 并发数</span><br><span class="line">threads=3</span><br><span class="line"># 任务数</span><br><span class="line">tasks=9</span><br><span class="line">function task()</span><br><span class="line">&#123;</span><br><span class="line">	r=$(( $RANDOM % 30 + 1 ))</span><br><span class="line">	echo &quot;Start $1.&quot;</span><br><span class="line">	sleep $r</span><br><span class="line">	echo &quot;Finished $1,took $&#123;r&#125;s.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">counter=1</span><br><span class="line">for sn in $(seq 1 $&#123;tasks&#125;)</span><br><span class="line">do</span><br><span class="line">    task $&#123;sn&#125; &amp;</span><br><span class="line">    if [ &quot;$(($&#123;counter&#125; % $&#123;threads&#125;))&quot; -eq &quot;0&quot; ]; then</span><br><span class="line">	time wait</span><br><span class="line">	echo &quot;===================&quot;</span><br><span class="line">    fi</span><br><span class="line">    counter=$(($&#123;counter&#125; + 1))</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#######################################################</span><br><span class="line">执行结果：</span><br><span class="line"># sh packetConcurrency.sh</span><br><span class="line">Start 2.</span><br><span class="line">Start 3.</span><br><span class="line">Start 1.</span><br><span class="line">Finished 2,took 3s.</span><br><span class="line">Finished 1,took 14s.</span><br><span class="line">Finished 3,took 15s.</span><br><span class="line"></span><br><span class="line">real	0m15.014s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.059s</span><br><span class="line">===================</span><br><span class="line">Start 5.</span><br><span class="line">Start 6.</span><br><span class="line">Start 4.</span><br><span class="line">Finished 5,took 1s.</span><br><span class="line">Finished 6,took 22s.</span><br><span class="line">Finished 4,took 26s.</span><br><span class="line"></span><br><span class="line">real	0m26.065s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.050s</span><br><span class="line">===================</span><br><span class="line">Start 8.</span><br><span class="line">Start 9.</span><br><span class="line">Start 7.</span><br><span class="line">Finished 8,took 6s.</span><br><span class="line">Finished 7,took 9s.</span><br><span class="line">Finished 9,took 22s.</span><br><span class="line"></span><br><span class="line">real	0m22.101s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.088s</span><br><span class="line">sys	0m0.099s</span><br><span class="line">===================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>伪造X-Real-IP：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -H &quot;X-Real-IP:1.1.1.1&quot; -H &quot;Host:www.lengyuwusheng.com&quot; &quot;http://10.0.0.1/index.php&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取请求的状态码字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;%&#123;http_code&#125;\n&quot; -H &quot;Host:www.lengyuewusheng.com&quot; &quot;http://10.0.0.1/index.php&quot; </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向服务器端POST数据</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -X POST -d &quot;a=1&amp;b=2&amp;c=3&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>指定请求的超时时间</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl --connect-timeout 5 -m 90 -o /dev/null -s -w &quot;%&#123;http_code&#125;&quot; &quot;http://www.lengyuewusheng.com&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过curl向ftp服务器上传文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -u &quot;$&#123;USER&#125;:$&#123;PASSWD&#125;&quot; -T &quot;$&#123;DATADIR&#125;/$&#123;FILE&#125;&quot; &quot;ftp://$&#123;FTPSERVER&#125;&quot;</span><br><span class="line"># eg: curl -u &quot;admin:123456&quot; -T &quot;/tmp/logs/test.log&quot; &quot;ftp://10.0.0.1&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>示例二</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat groupExec.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">groups=5</span><br><span class="line">tasks=20</span><br><span class="line">function groupExec()</span><br><span class="line">&#123;</span><br><span class="line">for group in $(seq 0 $(($&#123;groups&#125; - 1 )))</span><br><span class="line">do</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组开始：======&quot;</span><br><span class="line">        for task in $(seq 0 $(($&#123;tasks&#125; - 1 )))</span><br><span class="line">        do</span><br><span class="line">                if [ &quot;$(($&#123;task&#125; / $(($&#123;tasks&#125; / $&#123;groups&#125;))))&quot; -eq &quot;$&#123;group&#125;&quot; ]; then</span><br><span class="line">                        &#123; echo &quot;task:$(( $&#123;task&#125; + 1 ))&quot;;sleep $(($RANDOM % 10)); &#125; &amp;</span><br><span class="line">                else</span><br><span class="line">                        continue</span><br><span class="line">                fi</span><br><span class="line">        done</span><br><span class="line">        wait</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组完成。======&quot;</span><br><span class="line">done</span><br><span class="line">&#125;</span><br><span class="line">groupExec</span><br><span class="line"></span><br><span class="line"># sh groupExec.sh</span><br><span class="line">======第1组开始：======</span><br><span class="line">task:1</span><br><span class="line">task:4</span><br><span class="line">task:3</span><br><span class="line">task:2</span><br><span class="line">======第1组完成。======</span><br><span class="line">======第2组开始：======</span><br><span class="line">task:5</span><br><span class="line">task:7</span><br><span class="line">task:8</span><br><span class="line">task:6</span><br><span class="line">======第2组完成。======</span><br><span class="line">======第3组开始：======</span><br><span class="line">task:9</span><br><span class="line">task:11</span><br><span class="line">task:12</span><br><span class="line">task:10</span><br><span class="line">======第3组完成。======</span><br><span class="line">======第4组开始：======</span><br><span class="line">task:15</span><br><span class="line">task:16</span><br><span class="line">task:13</span><br><span class="line">task:14</span><br><span class="line">======第4组完成。======</span><br><span class="line">======第5组开始：======</span><br><span class="line">task:19</span><br><span class="line">task:17</span><br><span class="line">task:18</span><br><span class="line">task:20</span><br><span class="line">======第5组完成。======</span><br></pre></td></tr></table></figure></li>
 </ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html">shell的分批并发操作的简单实现</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li></ul></div>]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
       <categories>
         <category>shell</category>
       </categories>
       <tags>
-        <tag>curl</tag>
         <tag>shell</tag>
+        <tag>并发</tag>
       </tags>
   </entry>
   <entry>
@@ -511,96 +535,6 @@
       <tags>
         <tag>shell</tag>
         <tag>传参</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell的分批并发操作的简单实现</title>
-    <url>/shell%E7%9A%84%E5%88%86%E6%89%B9%E5%B9%B6%E5%8F%91%E6%93%8D%E4%BD%9C%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0.html</url>
-    <content><![CDATA[<blockquote>
-<p>很多情况下，计算资源是有限的。我们需要在任务时长和资源消耗之前取得一种平衡。因此需要进行并发和控制。</p>
-</blockquote>
-<span id="more"></span>
-
-<ul>
-<li><p>示例一</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat packetConcurrency.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 并发数</span><br><span class="line">threads=3</span><br><span class="line"># 任务数</span><br><span class="line">tasks=9</span><br><span class="line">function task()</span><br><span class="line">&#123;</span><br><span class="line">	r=$(( $RANDOM % 30 + 1 ))</span><br><span class="line">	echo &quot;Start $1.&quot;</span><br><span class="line">	sleep $r</span><br><span class="line">	echo &quot;Finished $1,took $&#123;r&#125;s.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">counter=1</span><br><span class="line">for sn in $(seq 1 $&#123;tasks&#125;)</span><br><span class="line">do</span><br><span class="line">    task $&#123;sn&#125; &amp;</span><br><span class="line">    if [ &quot;$(($&#123;counter&#125; % $&#123;threads&#125;))&quot; -eq &quot;0&quot; ]; then</span><br><span class="line">	time wait</span><br><span class="line">	echo &quot;===================&quot;</span><br><span class="line">    fi</span><br><span class="line">    counter=$(($&#123;counter&#125; + 1))</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#######################################################</span><br><span class="line">执行结果：</span><br><span class="line"># sh packetConcurrency.sh</span><br><span class="line">Start 2.</span><br><span class="line">Start 3.</span><br><span class="line">Start 1.</span><br><span class="line">Finished 2,took 3s.</span><br><span class="line">Finished 1,took 14s.</span><br><span class="line">Finished 3,took 15s.</span><br><span class="line"></span><br><span class="line">real	0m15.014s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.059s</span><br><span class="line">===================</span><br><span class="line">Start 5.</span><br><span class="line">Start 6.</span><br><span class="line">Start 4.</span><br><span class="line">Finished 5,took 1s.</span><br><span class="line">Finished 6,took 22s.</span><br><span class="line">Finished 4,took 26s.</span><br><span class="line"></span><br><span class="line">real	0m26.065s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.021s</span><br><span class="line">sys	0m0.050s</span><br><span class="line">===================</span><br><span class="line">Start 8.</span><br><span class="line">Start 9.</span><br><span class="line">Start 7.</span><br><span class="line">Finished 8,took 6s.</span><br><span class="line">Finished 7,took 9s.</span><br><span class="line">Finished 9,took 22s.</span><br><span class="line"></span><br><span class="line">real	0m22.101s       #每一批任务的耗时和该批任务中耗时最长的任务消耗的时间一致。</span><br><span class="line">user	0m0.088s</span><br><span class="line">sys	0m0.099s</span><br><span class="line">===================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>示例二</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat groupExec.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">groups=5</span><br><span class="line">tasks=20</span><br><span class="line">function groupExec()</span><br><span class="line">&#123;</span><br><span class="line">for group in $(seq 0 $(($&#123;groups&#125; - 1 )))</span><br><span class="line">do</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组开始：======&quot;</span><br><span class="line">        for task in $(seq 0 $(($&#123;tasks&#125; - 1 )))</span><br><span class="line">        do</span><br><span class="line">                if [ &quot;$(($&#123;task&#125; / $(($&#123;tasks&#125; / $&#123;groups&#125;))))&quot; -eq &quot;$&#123;group&#125;&quot; ]; then</span><br><span class="line">                        &#123; echo &quot;task:$(( $&#123;task&#125; + 1 ))&quot;;sleep $(($RANDOM % 10)); &#125; &amp;</span><br><span class="line">                else</span><br><span class="line">                        continue</span><br><span class="line">                fi</span><br><span class="line">        done</span><br><span class="line">        wait</span><br><span class="line">	echo &quot;======第$(($&#123;group&#125; + 1))组完成。======&quot;</span><br><span class="line">done</span><br><span class="line">&#125;</span><br><span class="line">groupExec</span><br><span class="line"></span><br><span class="line"># sh groupExec.sh</span><br><span class="line">======第1组开始：======</span><br><span class="line">task:1</span><br><span class="line">task:4</span><br><span class="line">task:3</span><br><span class="line">task:2</span><br><span class="line">======第1组完成。======</span><br><span class="line">======第2组开始：======</span><br><span class="line">task:5</span><br><span class="line">task:7</span><br><span class="line">task:8</span><br><span class="line">task:6</span><br><span class="line">======第2组完成。======</span><br><span class="line">======第3组开始：======</span><br><span class="line">task:9</span><br><span class="line">task:11</span><br><span class="line">task:12</span><br><span class="line">task:10</span><br><span class="line">======第3组完成。======</span><br><span class="line">======第4组开始：======</span><br><span class="line">task:15</span><br><span class="line">task:16</span><br><span class="line">task:13</span><br><span class="line">task:14</span><br><span class="line">======第4组完成。======</span><br><span class="line">======第5组开始：======</span><br><span class="line">task:19</span><br><span class="line">task:17</span><br><span class="line">task:18</span><br><span class="line">task:20</span><br><span class="line">======第5组完成。======</span><br></pre></td></tr></table></figure></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%9B%E8%A1%8Curl%E8%A7%A3%E7%A0%81.html">Linux命令行环境下进行URL解码</a></li><li><a href="https://www.lengyuewusheng.com/%E5%B8%B8%E7%94%A8shell%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">常用shell命令总结</a></li><li><a href="https://www.lengyuewusheng.com/shell-printf%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA.html">shell printf格式化输出</a></li><li><a href="https://www.lengyuewusheng.com/shell%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%8F%82.html">shell脚本传参</a></li><li><a href="https://www.lengyuewusheng.com/curl%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%8C%83%E4%BE%8B.html">curl命令使用范例</a></li></ul></div>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-        <tag>并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx-rewrite指令中的flag参数</title>
-    <url>/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html</url>
-    <content><![CDATA[<blockquote>
-<p>Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。</p>
-</blockquote>
-<span id="more"></span>
-
-<style> table th:nth-of-type(2){width: 80%;}</style>
-
-<ul>
-<li>flag 参数</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">flag参数</th>
-<th align="left">意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">last</td>
-<td align="left">终止rewrite指令匹配，然后对当前重写的新URI在rewrite指令集上重新查找</td>
-</tr>
-<tr>
-<td align="left">break</td>
-<td align="left">停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行</td>
-</tr>
-<tr>
-<td align="left">permant</td>
-<td align="left">返回301永久重定向，地址栏显示跳转后的地址</td>
-</tr>
-<tr>
-<td align="left">redirect</td>
-<td align="left">返回302临时重定向，地址栏显示跳转后的地址</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>说明</p>
-<ul>
-<li>nginx可以通过增加<code>rewrite_log on; error_log logs/error.log notice;</code>调试 rewrite；</li>
-<li>last：将rewrite后的地址重新在server标签执行；</li>
-<li>break：将rewrite后地址重新在当前的location标签执行；</li>
-<li>last和break正常返回200状态码；</li>
-<li>last一般写在server和if中，而break一般使用在location中；</li>
-<li>last不终止重写后的url匹配，而break终止重写后的匹配；</li>
-<li>一般使用302重定向是在一个网站或网页在24到48小时之内临时移到其它位置，建议尽量采用301重定向；</li>
-<li>rewrite指令执行过程中如果循环超过10次，则返回500 Internal Server Error错误；</li>
-<li>rewrite正则表达regex式中包含 “}” 或 “;”时整个表达式需要用双引号或单引号引起来；</li>
-</ul>
-</li>
-<li><p>参考文档</p>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li></ul></div>]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>rewrite</tag>
       </tags>
   </entry>
   <entry>
@@ -725,82 +659,6 @@
       <tags>
         <tag>shell</tag>
         <tag>printf</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx配置中的if指令</title>
-    <url>/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html</url>
-    <content><![CDATA[<blockquote>
-<p>通常Nginx的if判断不支持else逻辑。</p>
-</blockquote>
-<span id="more"></span>
-
-<ul>
-<li>判断条件</li>
-</ul>
-<style> table th:nth-of-type(2){width: 80%;}</style>
-
-<table>
-<thead>
-<tr>
-<th align="left">判断条件</th>
-<th align="left">符号意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">&#x3D; ,!&#x3D;</td>
-<td align="left">比较字符串相等</td>
-</tr>
-<tr>
-<td align="left">~</td>
-<td align="left">匹配正则表达式</td>
-</tr>
-<tr>
-<td align="left">~*</td>
-<td align="left">不区分大小写的匹配</td>
-</tr>
-<tr>
-<td align="left">!~</td>
-<td align="left">区分大小写的不匹配</td>
-</tr>
-<tr>
-<td align="left">-f ，!-f</td>
-<td align="left">判断文件是否存在</td>
-</tr>
-<tr>
-<td align="left">-d, !-d</td>
-<td align="left">判断目录是否存在</td>
-</tr>
-<tr>
-<td align="left">-e ，!-e</td>
-<td align="left">判断文件、目录或链接是否存在</td>
-</tr>
-<tr>
-<td align="left">-x ， !-x</td>
-<td align="left">判断文件是否可被执行</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>说明</p>
-<ul>
-<li>作用域：server,location</li>
-<li>if指令中如果一个变量是空字符串或者以0开始的字符串，则为false；</li>
-<li>nginx的if条件判断不支持else语法；</li>
-</ul>
-</li>
-<li><p>参考文档</p>
-<ul>
-<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
-      <categories>
-        <category>nginx</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>rewrite</tag>
       </tags>
   </entry>
   <entry>
@@ -1083,6 +941,148 @@
       </tags>
   </entry>
   <entry>
+    <title>nginx-rewrite指令中的flag参数</title>
+    <url>/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html</url>
+    <content><![CDATA[<blockquote>
+<p>Nginx的ngx_http_rewrite_module模块使用PCRE（pcre.x86_64）正则表达式重定向URL。</p>
+</blockquote>
+<span id="more"></span>
+
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<ul>
+<li>flag 参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">flag参数</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">last</td>
+<td align="left">终止rewrite指令匹配，然后对当前重写的新URI在rewrite指令集上重新查找</td>
+</tr>
+<tr>
+<td align="left">break</td>
+<td align="left">停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行</td>
+</tr>
+<tr>
+<td align="left">permant</td>
+<td align="left">返回301永久重定向，地址栏显示跳转后的地址</td>
+</tr>
+<tr>
+<td align="left">redirect</td>
+<td align="left">返回302临时重定向，地址栏显示跳转后的地址</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>说明</p>
+<ul>
+<li>nginx可以通过增加<code>rewrite_log on; error_log logs/error.log notice;</code>调试 rewrite；</li>
+<li>last：将rewrite后的地址重新在server标签执行；</li>
+<li>break：将rewrite后地址重新在当前的location标签执行；</li>
+<li>last和break正常返回200状态码；</li>
+<li>last一般写在server和if中，而break一般使用在location中；</li>
+<li>last不终止重写后的url匹配，而break终止重写后的匹配；</li>
+<li>一般使用302重定向是在一个网站或网页在24到48小时之内临时移到其它位置，建议尽量采用301重定向；</li>
+<li>rewrite指令执行过程中如果循环超过10次，则返回500 Internal Server Error错误；</li>
+<li>rewrite正则表达regex式中包含 “}” 或 “;”时整个表达式需要用双引号或单引号引起来；</li>
+</ul>
+</li>
+<li><p>参考文档</p>
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html">nginx配置中的if指令</a></li></ul></div>]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>rewrite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx配置中的if指令</title>
+    <url>/nginx%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84if%E6%8C%87%E4%BB%A4.html</url>
+    <content><![CDATA[<blockquote>
+<p>通常Nginx的if判断不支持else逻辑。</p>
+</blockquote>
+<span id="more"></span>
+
+<ul>
+<li>判断条件</li>
+</ul>
+<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<table>
+<thead>
+<tr>
+<th align="left">判断条件</th>
+<th align="left">符号意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&#x3D; ,!&#x3D;</td>
+<td align="left">比较字符串相等</td>
+</tr>
+<tr>
+<td align="left">~</td>
+<td align="left">匹配正则表达式</td>
+</tr>
+<tr>
+<td align="left">~*</td>
+<td align="left">不区分大小写的匹配</td>
+</tr>
+<tr>
+<td align="left">!~</td>
+<td align="left">区分大小写的不匹配</td>
+</tr>
+<tr>
+<td align="left">-f ，!-f</td>
+<td align="left">判断文件是否存在</td>
+</tr>
+<tr>
+<td align="left">-d, !-d</td>
+<td align="left">判断目录是否存在</td>
+</tr>
+<tr>
+<td align="left">-e ，!-e</td>
+<td align="left">判断文件、目录或链接是否存在</td>
+</tr>
+<tr>
+<td align="left">-x ， !-x</td>
+<td align="left">判断文件是否可被执行</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>说明</p>
+<ul>
+<li>作用域：server,location</li>
+<li>if指令中如果一个变量是空字符串或者以0开始的字符串，则为false；</li>
+<li>nginx的if条件判断不支持else语法；</li>
+</ul>
+</li>
+<li><p>参考文档</p>
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">nginx官方文档Module ngx_http_rewrite_module部分</a></li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/ngxtop%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5.html">ngxtop应用实践</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E8%AE%BF%E9%97%AE%E9%A2%91%E7%8E%87%E9%99%90%E5%88%B6.html">nginx访问频率限制</a></li><li><a href="https://www.lengyuewusheng.com/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html">基于生产环境的仿真流量测试</a></li><li><a href="https://www.lengyuewusheng.com/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html">nginx配置location匹配规则</a></li><li><a href="https://www.lengyuewusheng.com/nginx-rewrite%E6%8C%87%E4%BB%A4%E4%B8%AD%E7%9A%84flag%E5%8F%82%E6%95%B0.html">nginx-rewrite指令中的flag参数</a></li></ul></div>]]></content>
+      <categories>
+        <category>nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>rewrite</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx配置location匹配规则</title>
     <url>/nginx%E9%85%8D%E7%BD%AElocation%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99.html</url>
     <content><![CDATA[<blockquote>
@@ -1217,137 +1217,6 @@
       </categories>
       <tags>
         <tag>http</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>存储空间计算</title>
-    <url>/%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E8%AE%A1%E7%AE%97.html</url>
-    <content><![CDATA[<p>最基础的知识往往是最容易被忽略的点，放低姿态，夯实基础，才能行稳致远。</p>
-<span id="more"></span>
-
-<h1 id="存储空间单位换算"><a href="#存储空间单位换算" class="headerlink" title="存储空间单位换算"></a>存储空间单位换算</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 B = 8 bit</span><br><span class="line">1 KB = 1024 B = 8192 bit</span><br><span class="line">1 MB = 1024 KB = 1048576 B = 8388608 bit</span><br><span class="line">1 GB = 1024 MB = 1048576 KB = 1073741824 B = 8589934592 bit</span><br><span class="line">1 TB = 1024 GB = 1048576 MB = 1073741824 KB = 1099511627776 B = 8796093022208 bit</span><br><span class="line">1 PB = 1024 TB = 1048576 GB = 1073741824 MB = 1099511627776 KB = 1125899906842624 B = 9007199254740992 bit</span><br><span class="line">1 EB = 1024 PB = 1048576 TB = 1073741824 GB = 1099511627776 MB = 1125899906842624 KB = 1.152921504606847e+18 B = 9.223372036854776e+18 bit</span><br></pre></td></tr></table></figure>
-
-<h1 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="ASCII编码"></a>ASCII编码</h1><ul>
-<li>一个ASCII码占一个字节</li>
-<li>一个英文字母占一个字节</li>
-<li>一个中文汉字占两个字节</li>
-</ul>
-<h1 id="UTF-8编码"><a href="#UTF-8编码" class="headerlink" title="UTF-8编码"></a>UTF-8编码</h1><ul>
-<li>一个英文字符等于一个字节</li>
-<li>一个中文（含繁体）占三个字节</li>
-</ul>
-<h1 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h1><ul>
-<li>一个英文字占两个字节</li>
-<li>一个中文（含繁体）占两个字节</li>
-</ul>
-<h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><ul>
-<li>英文标点占一个字节</li>
-<li>中文标点占两个字节</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>磁盘存储</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</title>
-    <url>/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84tmpfs%E3%80%81-dev-shm%E3%80%81tmp%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6.html</url>
-    <content><![CDATA[<p>共享内存允许两个或更多进程访问同一块内存。</p>
-<span id="more"></span>
-
-<h1 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h1><p>tmpfs一种基于内存的临时文件系统，tmpfs可以使用RAM，但它也可以使用swap分区来存储。传统的ramdisk是个块设备，要用mkfs来格式化它，才能真正地使用它；tmpfs是一个文件系统，并不是块设备，安装即可以使用。tmpfs是最好的基于RAM的文件系统。</p>
-<ul>
-<li>特征：<ul>
-<li>动态文件系统大小</li>
-<li>存取速度快</li>
-</ul>
-</li>
-</ul>
-<h1 id="x2F-dev-x2F-shm"><a href="#x2F-dev-x2F-shm" class="headerlink" title="&#x2F;dev&#x2F;shm"></a>&#x2F;dev&#x2F;shm</h1><p>是利用内存虚拟出来的磁盘空间。通常是内存空间大小的一半，该目录下创建的文件存取速度优于普通硬盘挂载的目录下的文件，该目录下的文件在机器重启时会丢失。</p>
-<h1 id="x2F-tmp目录"><a href="#x2F-tmp目录" class="headerlink" title="&#x2F;tmp目录"></a>&#x2F;tmp目录</h1><p>存放临时文件的目录。由于通常&#x2F;dev&#x2F;shm挂载在&#x2F;tmp目录下，该目录会被不同用户读写，因此<strong>该目录的权限建议设置成777</strong>。<br>之前就在生产环境中遇到过&#x2F;tmp目录权限被旁路流程误修改为755，导致普通用户启动的C++的应用无法写入共享内存，导致线上服务异常的惨痛教训。希望大家吸取教训。<br>这种目录权限导致的问题，恢复较为容易，但是定位问题原因较为复杂，由于之前的代码中没有调试逻辑，出现问题时，开发临时新上了一版代码增加了详细的错误输出，最后才定位到共享内存写入失败导致，此过程花费相对较长的时间。</p>
-<ul>
-<li>文件系统挂载关系<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat /etc/fstab |egrep &quot;tmp|shm&quot;</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind         0 0</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="Linux的两种共享内存机制"><a href="#Linux的两种共享内存机制" class="headerlink" title="Linux的两种共享内存机制:"></a>Linux的两种共享内存机制:</h1><ul>
-<li>POSIX共享内存(结合内存映射mmap使用)<ul>
-<li>mmap映射的内存是非持久化的，随着进程关闭，映射会随即失效。</li>
-<li>mmap内存映射机制标准的系统调用，分为：<ul>
-<li>匿名映射</li>
-<li>文件映射，又分为：<ul>
-<li>MAP_PRIVATE</li>
-<li>MAP_SHARED</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>System V共享内存(经典方案)<ul>
-<li>sysv shm是持久化的，除非被进程明确的删除，否则在系统关机前始终存在于内存中。</li>
-</ul>
-</li>
-</ul>
-<p>虽然System V与POSIX共享内存都是通过tmpfs实现，但由于内核在mount tmpfs时，指定了MS_NOUSER，所以该tmpfs没有大小限制。因此&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;shmmax只会限制System V共享内存，&#x2F;dev&#x2F;shm只限制Posix共享内存,默认是物理内存的一半。</p>
-<ul>
-<li><p>System V共享内存的最大值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat /proc/sys/kernel/shmmax</span><br><span class="line">68719476736</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>&#x2F;dev&#x2F;shm空间大小设定</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mount -t tmpfs -o size=2G tmpfs -o remount /dev/shm</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="修改tmpfs大小"><a href="#修改tmpfs大小" class="headerlink" title="修改tmpfs大小"></a>修改tmpfs大小</h1><ul>
-<li><p>&#x2F;etc&#x2F;fstab 字段介绍</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/etc/fstab</span><br><span class="line"># &lt;file system&gt;            &lt;dir&gt;                        &lt;type&gt;    &lt;options&gt;             &lt;dump&gt; &lt;pass&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>file system: 要挂载的分区或存储设备</li>
-<li>dir:  file systems的挂载位置</li>
-<li>type: 要挂载设备或是分区的文件系统类型<ul>
-<li>ext2, ext3, ext4, reiserfs, xfs, jfs, smbfs, iso9660, vfat, ntfs, swap 及 auto</li>
-</ul>
-</li>
-<li>options: 挂载时使用的参数<ul>
-<li>defaults</li>
-</ul>
-</li>
-<li>dump: dump工具通过它决定何时作备份<ul>
-<li>0和1,0表示忽略，1则进行备份。大部分的用户是没有安装 dump 的，对他们而言<dump>应设为 0。</li>
-</ul>
-</li>
-<li>pass fsck 读取 pass的数值来决定需要检查的文件系统的检查顺序。允许的数字是0,1,和2。<ul>
-<li>根目录应当获得最高的优先权 1,</li>
-<li>其它所有需要被检查的设备设置为 2.</li>
-<li>0表示设备不会被 fsck 所检查。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>centos5修改tmpfs大小</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0            //修改这行不起作用</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind,size=55g         0 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>centos6&#x2F;7修改tmpfs大小</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs       /dev/shm      tmpfs   defaults,size=30g        0 0</span><br><span class="line">/dev/shm    /tmp          none     rw,bind                 0 0    // 修改这行不起作用</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>挂载命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mount -a        //加载文件&quot;/etc/fstab&quot;中描述的所有文件系统。</span><br><span class="line">mount -o remount /dev/shm   //重新加载设备</span><br></pre></td></tr></table></figure>
-<ul>
-<li>要直接执行 mount -a 命令，因为可能造成无法访问当前目录中的文件（比如你应该保证 lockfiles 的正常存在）。</li>
-<li>然而，如果它们都是空的，那么就可以直接执行 mount -a 而不必重启电脑。</li>
-<li>应用更改后，可以通过 findmnt 检查是否生效：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">findmnt --target /tmp</span><br></pre></td></tr></table></figure></li>
-<li>tmpfs 可以设置成比物理内存大，但是只能存储小于物理内存空间的数据，之后会出现登录掉线等异常.</li>
-</ul>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>共享内存</tag>
       </tags>
   </entry>
   <entry>
@@ -1668,6 +1537,137 @@
       </tags>
   </entry>
   <entry>
+    <title>存储空间计算</title>
+    <url>/%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E8%AE%A1%E7%AE%97.html</url>
+    <content><![CDATA[<p>最基础的知识往往是最容易被忽略的点，放低姿态，夯实基础，才能行稳致远。</p>
+<span id="more"></span>
+
+<h1 id="存储空间单位换算"><a href="#存储空间单位换算" class="headerlink" title="存储空间单位换算"></a>存储空间单位换算</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 B = 8 bit</span><br><span class="line">1 KB = 1024 B = 8192 bit</span><br><span class="line">1 MB = 1024 KB = 1048576 B = 8388608 bit</span><br><span class="line">1 GB = 1024 MB = 1048576 KB = 1073741824 B = 8589934592 bit</span><br><span class="line">1 TB = 1024 GB = 1048576 MB = 1073741824 KB = 1099511627776 B = 8796093022208 bit</span><br><span class="line">1 PB = 1024 TB = 1048576 GB = 1073741824 MB = 1099511627776 KB = 1125899906842624 B = 9007199254740992 bit</span><br><span class="line">1 EB = 1024 PB = 1048576 TB = 1073741824 GB = 1099511627776 MB = 1125899906842624 KB = 1.152921504606847e+18 B = 9.223372036854776e+18 bit</span><br></pre></td></tr></table></figure>
+
+<h1 id="ASCII编码"><a href="#ASCII编码" class="headerlink" title="ASCII编码"></a>ASCII编码</h1><ul>
+<li>一个ASCII码占一个字节</li>
+<li>一个英文字母占一个字节</li>
+<li>一个中文汉字占两个字节</li>
+</ul>
+<h1 id="UTF-8编码"><a href="#UTF-8编码" class="headerlink" title="UTF-8编码"></a>UTF-8编码</h1><ul>
+<li>一个英文字符等于一个字节</li>
+<li>一个中文（含繁体）占三个字节</li>
+</ul>
+<h1 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h1><ul>
+<li>一个英文字占两个字节</li>
+<li>一个中文（含繁体）占两个字节</li>
+</ul>
+<h1 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h1><ul>
+<li>英文标点占一个字节</li>
+<li>中文标点占两个字节</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>磁盘存储</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux系统中的tmpfs、/dev/shm、tmp以及共享内存机制</title>
+    <url>/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84tmpfs%E3%80%81-dev-shm%E3%80%81tmp%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6.html</url>
+    <content><![CDATA[<p>共享内存允许两个或更多进程访问同一块内存。</p>
+<span id="more"></span>
+
+<h1 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h1><p>tmpfs一种基于内存的临时文件系统，tmpfs可以使用RAM，但它也可以使用swap分区来存储。传统的ramdisk是个块设备，要用mkfs来格式化它，才能真正地使用它；tmpfs是一个文件系统，并不是块设备，安装即可以使用。tmpfs是最好的基于RAM的文件系统。</p>
+<ul>
+<li>特征：<ul>
+<li>动态文件系统大小</li>
+<li>存取速度快</li>
+</ul>
+</li>
+</ul>
+<h1 id="x2F-dev-x2F-shm"><a href="#x2F-dev-x2F-shm" class="headerlink" title="&#x2F;dev&#x2F;shm"></a>&#x2F;dev&#x2F;shm</h1><p>是利用内存虚拟出来的磁盘空间。通常是内存空间大小的一半，该目录下创建的文件存取速度优于普通硬盘挂载的目录下的文件，该目录下的文件在机器重启时会丢失。</p>
+<h1 id="x2F-tmp目录"><a href="#x2F-tmp目录" class="headerlink" title="&#x2F;tmp目录"></a>&#x2F;tmp目录</h1><p>存放临时文件的目录。由于通常&#x2F;dev&#x2F;shm挂载在&#x2F;tmp目录下，该目录会被不同用户读写，因此<strong>该目录的权限建议设置成777</strong>。<br>之前就在生产环境中遇到过&#x2F;tmp目录权限被旁路流程误修改为755，导致普通用户启动的C++的应用无法写入共享内存，导致线上服务异常的惨痛教训。希望大家吸取教训。<br>这种目录权限导致的问题，恢复较为容易，但是定位问题原因较为复杂，由于之前的代码中没有调试逻辑，出现问题时，开发临时新上了一版代码增加了详细的错误输出，最后才定位到共享内存写入失败导致，此过程花费相对较长的时间。</p>
+<ul>
+<li>文件系统挂载关系<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat /etc/fstab |egrep &quot;tmp|shm&quot;</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind         0 0</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Linux的两种共享内存机制"><a href="#Linux的两种共享内存机制" class="headerlink" title="Linux的两种共享内存机制:"></a>Linux的两种共享内存机制:</h1><ul>
+<li>POSIX共享内存(结合内存映射mmap使用)<ul>
+<li>mmap映射的内存是非持久化的，随着进程关闭，映射会随即失效。</li>
+<li>mmap内存映射机制标准的系统调用，分为：<ul>
+<li>匿名映射</li>
+<li>文件映射，又分为：<ul>
+<li>MAP_PRIVATE</li>
+<li>MAP_SHARED</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>System V共享内存(经典方案)<ul>
+<li>sysv shm是持久化的，除非被进程明确的删除，否则在系统关机前始终存在于内存中。</li>
+</ul>
+</li>
+</ul>
+<p>虽然System V与POSIX共享内存都是通过tmpfs实现，但由于内核在mount tmpfs时，指定了MS_NOUSER，所以该tmpfs没有大小限制。因此&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;shmmax只会限制System V共享内存，&#x2F;dev&#x2F;shm只限制Posix共享内存,默认是物理内存的一半。</p>
+<ul>
+<li><p>System V共享内存的最大值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># cat /proc/sys/kernel/shmmax</span><br><span class="line">68719476736</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x2F;dev&#x2F;shm空间大小设定</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mount -t tmpfs -o size=2G tmpfs -o remount /dev/shm</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="修改tmpfs大小"><a href="#修改tmpfs大小" class="headerlink" title="修改tmpfs大小"></a>修改tmpfs大小</h1><ul>
+<li><p>&#x2F;etc&#x2F;fstab 字段介绍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/etc/fstab</span><br><span class="line"># &lt;file system&gt;            &lt;dir&gt;                        &lt;type&gt;    &lt;options&gt;             &lt;dump&gt; &lt;pass&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>file system: 要挂载的分区或存储设备</li>
+<li>dir:  file systems的挂载位置</li>
+<li>type: 要挂载设备或是分区的文件系统类型<ul>
+<li>ext2, ext3, ext4, reiserfs, xfs, jfs, smbfs, iso9660, vfat, ntfs, swap 及 auto</li>
+</ul>
+</li>
+<li>options: 挂载时使用的参数<ul>
+<li>defaults</li>
+</ul>
+</li>
+<li>dump: dump工具通过它决定何时作备份<ul>
+<li>0和1,0表示忽略，1则进行备份。大部分的用户是没有安装 dump 的，对他们而言<dump>应设为 0。</li>
+</ul>
+</li>
+<li>pass fsck 读取 pass的数值来决定需要检查的文件系统的检查顺序。允许的数字是0,1,和2。<ul>
+<li>根目录应当获得最高的优先权 1,</li>
+<li>其它所有需要被检查的设备设置为 2.</li>
+<li>0表示设备不会被 fsck 所检查。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>centos5修改tmpfs大小</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs                   /dev/shm                tmpfs   defaults        0 0            //修改这行不起作用</span><br><span class="line">/dev/shm                /tmp                    none    rw,bind,size=55g         0 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>centos6&#x2F;7修改tmpfs大小</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /etc/fstab</span><br><span class="line">tmpfs       /dev/shm      tmpfs   defaults,size=30g        0 0</span><br><span class="line">/dev/shm    /tmp          none     rw,bind                 0 0    // 修改这行不起作用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mount -a        //加载文件&quot;/etc/fstab&quot;中描述的所有文件系统。</span><br><span class="line">mount -o remount /dev/shm   //重新加载设备</span><br></pre></td></tr></table></figure>
+<ul>
+<li>要直接执行 mount -a 命令，因为可能造成无法访问当前目录中的文件（比如你应该保证 lockfiles 的正常存在）。</li>
+<li>然而，如果它们都是空的，那么就可以直接执行 mount -a 而不必重启电脑。</li>
+<li>应用更改后，可以通过 findmnt 检查是否生效：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">findmnt --target /tmp</span><br></pre></td></tr></table></figure></li>
+<li>tmpfs 可以设置成比物理内存大，但是只能存储小于物理内存空间的数据，之后会出现登录掉线等异常.</li>
+</ul>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>共享内存</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于生产环境的仿真流量测试</title>
     <url>/%E5%9F%BA%E4%BA%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BB%BF%E7%9C%9F%E6%B5%81%E9%87%8F%E6%B5%8B%E8%AF%95.html</url>
     <content><![CDATA[<p>虽然业界的Web应用测试工具众多，但多数是基于压力的离线测试，很多时候很难发现所有问题，往往测试上线后依然存在各种问题。基于实际生产环境的仿真流量测试，无疑能够覆盖更多的问题，达到更好的测试效果。<br>以下介绍三种实现仿真流量测试环境的实现工具。</p>
@@ -1768,6 +1768,88 @@
       </categories>
       <tags>
         <tag>性能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>chrome经典插件</title>
+    <url>/chrome%E7%BB%8F%E5%85%B8%E6%8F%92%E4%BB%B6.html</url>
+    <content><![CDATA[<style> table th:nth-of-type(2){width: 80%;}</style>
+
+<table>
+<thead>
+<tr>
+<th align="left">插件名</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Copytables</td>
+<td align="left">快速选择表格中的行、列、单元格等信息复制</td>
+</tr>
+<tr>
+<td align="left">JSON Formatter&#x2F;JSONiew</td>
+<td align="left">json格式化输出</td>
+</tr>
+<tr>
+<td align="left">XML Tree</td>
+<td align="left">xml格式化输出</td>
+</tr>
+<tr>
+<td align="left">LastPass: Free Password Manager</td>
+<td align="left">密码存储</td>
+</tr>
+<tr>
+<td align="left">Print Friendly &amp; PDF</td>
+<td align="left">网页打印工具</td>
+</tr>
+<tr>
+<td align="left">Host Switch Plus</td>
+<td align="left">host快速切换工具</td>
+</tr>
+<tr>
+<td align="left">Website IP</td>
+<td align="left">显示访问站点的IP，一般结合Host Switch Plus一起使用</td>
+</tr>
+<tr>
+<td align="left">Proxy SwitchySharp</td>
+<td align="left">代理切换</td>
+</tr>
+<tr>
+<td align="left">OneTab</td>
+<td align="left">快速记录并存储当前正在打开的标签页</td>
+</tr>
+<tr>
+<td align="left">The Great Suspender</td>
+<td align="left">自动暂停使用标签来释放系统资源</td>
+</tr>
+<tr>
+<td align="left">Octotree</td>
+<td align="left">GitHub侧边栏插件，便于浏览代码目录</td>
+</tr>
+<tr>
+<td align="left">Adblock Plus</td>
+<td align="left">屏蔽广告</td>
+</tr>
+<tr>
+<td align="left">New Tab Redirect</td>
+<td align="left">首页设置</td>
+</tr>
+<tr>
+<td align="left">Stylish</td>
+<td align="left">客户端自定义站点样式</td>
+</tr>
+<tr>
+<td align="left">Postman</td>
+<td align="left">Web调试工具</td>
+</tr>
+</tbody></table>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
+      <categories>
+        <category>chrome</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>chrome插件</tag>
       </tags>
   </entry>
   <entry>
@@ -2117,88 +2199,6 @@
       </tags>
   </entry>
   <entry>
-    <title>chrome经典插件</title>
-    <url>/chrome%E7%BB%8F%E5%85%B8%E6%8F%92%E4%BB%B6.html</url>
-    <content><![CDATA[<style> table th:nth-of-type(2){width: 80%;}</style>
-
-<table>
-<thead>
-<tr>
-<th align="left">插件名</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Copytables</td>
-<td align="left">快速选择表格中的行、列、单元格等信息复制</td>
-</tr>
-<tr>
-<td align="left">JSON Formatter&#x2F;JSONiew</td>
-<td align="left">json格式化输出</td>
-</tr>
-<tr>
-<td align="left">XML Tree</td>
-<td align="left">xml格式化输出</td>
-</tr>
-<tr>
-<td align="left">LastPass: Free Password Manager</td>
-<td align="left">密码存储</td>
-</tr>
-<tr>
-<td align="left">Print Friendly &amp; PDF</td>
-<td align="left">网页打印工具</td>
-</tr>
-<tr>
-<td align="left">Host Switch Plus</td>
-<td align="left">host快速切换工具</td>
-</tr>
-<tr>
-<td align="left">Website IP</td>
-<td align="left">显示访问站点的IP，一般结合Host Switch Plus一起使用</td>
-</tr>
-<tr>
-<td align="left">Proxy SwitchySharp</td>
-<td align="left">代理切换</td>
-</tr>
-<tr>
-<td align="left">OneTab</td>
-<td align="left">快速记录并存储当前正在打开的标签页</td>
-</tr>
-<tr>
-<td align="left">The Great Suspender</td>
-<td align="left">自动暂停使用标签来释放系统资源</td>
-</tr>
-<tr>
-<td align="left">Octotree</td>
-<td align="left">GitHub侧边栏插件，便于浏览代码目录</td>
-</tr>
-<tr>
-<td align="left">Adblock Plus</td>
-<td align="left">屏蔽广告</td>
-</tr>
-<tr>
-<td align="left">New Tab Redirect</td>
-<td align="left">首页设置</td>
-</tr>
-<tr>
-<td align="left">Stylish</td>
-<td align="left">客户端自定义站点样式</td>
-</tr>
-<tr>
-<td align="left">Postman</td>
-<td align="left">Web调试工具</td>
-</tr>
-</tbody></table>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/windows%E5%B0%8F%E5%B7%A5%E5%85%B7.html">Windows小工具</a></li></ul></div>]]></content>
-      <categories>
-        <category>chrome</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>chrome插件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux系统中的IO模式</title>
     <url>/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84io%E6%A8%A1%E5%BC%8F.html</url>
     <content><![CDATA[<h1 id="一次IO的两个阶段："><a href="#一次IO的两个阶段：" class="headerlink" title="一次IO的两个阶段："></a>一次IO的两个阶段：</h1><ul>
@@ -2284,71 +2284,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MediaWiki导航菜单设置</title>
-    <url>/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html</url>
-    <content><![CDATA[<h1 id="侧边栏导航-MediaWiki-Sidebar"><a href="#侧边栏导航-MediaWiki-Sidebar" class="headerlink" title="侧边栏导航(MediaWiki:Sidebar)"></a>侧边栏导航(MediaWiki:Sidebar)</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* CATEGORY-SIDEBAR</span><br><span class="line">* navigation</span><br><span class="line">** mainpage|mainpage-description</span><br><span class="line">** recentchanges-url|recentchanges</span><br><span class="line">** randompage-url|randompage</span><br><span class="line">** helppage|help</span><br><span class="line"></span><br><span class="line">*  自定义一级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line">*  自定义一级导航2</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line">*  自定义一级导航3</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line"></span><br><span class="line">* SEARCH</span><br><span class="line">* TOOLBOX</span><br><span class="line">* LANGUAGES</span><br></pre></td></tr></table></figure>
-
-<h1 id="右侧悬浮目录"><a href="#右侧悬浮目录" class="headerlink" title="右侧悬浮目录"></a>右侧悬浮目录</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MediaWiki:Common.css</span><br><span class="line">/* 放置于这里的CSS将应用于所有皮肤 */</span><br><span class="line">#toc&#123;</span><br><span class="line"> display: block;</span><br><span class="line"> position: fixed;</span><br><span class="line"> top: 100px;</span><br><span class="line"> right: 0px;</span><br><span class="line"> min-width: 200px;</span><br><span class="line"> max-width: 350px;</span><br><span class="line"> max-height: 10px;</span><br><span class="line"> overflow-y: scroll;</span><br><span class="line"> border: 1px solid #aaa;</span><br><span class="line"> border-radius: 0 0 1px 1px;</span><br><span class="line"> -moz-border-radius: 0 0 1px 1px;</span><br><span class="line"> background: rgba(249,249,249,0.75);</span><br><span class="line"> padding: 12px;</span><br><span class="line"> box-shadow: 0 1px 8px #000;</span><br><span class="line"> -webkit-box-shadow: 0 1px 8px #000;</span><br><span class="line"> -moz-box-shadow: 0 1px 8px #000;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">#toc:hover&#123;</span><br><span class="line"> display: block;</span><br><span class="line"> position: fixed;</span><br><span class="line"> top: 100px;</span><br><span class="line"> right: 0px;</span><br><span class="line"> min-width: 200px;</span><br><span class="line"> max-width: 350px;</span><br><span class="line"> max-height: 100px;</span><br><span class="line"> max-height: 600px;</span><br><span class="line"> overflow-y: scroll;</span><br><span class="line"> border: 1px solid #aaa;</span><br><span class="line"> border-radius: 0 0 1px 1px;</span><br><span class="line"> -moz-border-radius: 0 0 1px 1px;</span><br><span class="line"> background: rgba(249,249,249,0.75);</span><br><span class="line"> padding: 12px;</span><br><span class="line"> box-shadow: 0 1px 8px #000;</span><br><span class="line"> -webkit-box-shadow: 0 1px 8px #000;</span><br><span class="line"> -moz-box-shadow: 0 1px 8px #000;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">body &#123; overflow-x: hidden;&#125;</span><br><span class="line"></span><br><span class="line">/*Extension:TreeAndMenu*/</span><br><span class="line">.fancytree ul &#123;</span><br><span class="line">    background: none;</span><br><span class="line">    border: none;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">&#125;</span><br><span class="line">ul.fancytree-container &#123;</span><br><span class="line">    outline: 0;</span><br><span class="line">    border: none;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.fancytree p &#123;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br><span class="line">span.fancytree-title &#123;</span><br><span class="line">    cursor: default;</span><br><span class="line">&#125;</span><br><span class="line">span.fancytree-title a &#123;</span><br><span class="line">    color: black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="http://codex.wordpress.org.cn/Mediawiki%E4%BF%AE%E6%94%B9%E5%B7%A6%E4%BE%A7%E5%AF%BC%E8%88%AA%E6%9D%A1">Mediawiki修改左侧导航条</a></li>
-<li><a href="https://wiki.ling2.cn/index.php/MediaWiki-%E7%9B%AE%E5%BD%95%E6%82%AC%E6%B5%AE%2B%E9%9A%90%E8%97%8F">MediaWiki-目录悬浮+隐藏</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E5%BC%80%E6%BA%90%E8%AE%BA%E5%9D%9B%E6%8A%80%E6%9C%AF%E6%A0%88.html">开源论坛技术栈</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">MediaWiki配置文件</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">MediaWiki常见问题汇总</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C.html">MediaWiki管理控制台命令操作</a></li></ul></div>]]></content>
-      <categories>
-        <category>MediaWiki</category>
-      </categories>
-      <tags>
-        <tag>MediaWiki</tag>
-        <tag>开源工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MediaWiki常见问题汇总</title>
-    <url>/mediawiki%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
-    <content><![CDATA[<p>MediaWiki是一个非常成熟完善的文档框架，也许是因为太过成熟，官方给出的文档太过全面，一些问题就连google都很难搜出有效信息。</p>
-<span id="more"></span>
-
-<h1 id="登录问题"><a href="#登录问题" class="headerlink" title="登录问题"></a>登录问题</h1><ul>
-<li><p>问题现象：</p>
-<ul>
-<li><p>现象描述：</p>
-<ul>
-<li><p>登录时报错：似乎您的登录会话有问题；为了防止会话劫持，这个操作已经被取消。请返回先前的页面，重新载入这个页面，然后重试。</p>
-<ul>
-<li>从服务器端看session文件写入为空，但是session配置、权限等都没有问题。报错如下图：</li>
-</ul>
-<p><img data-src="http://www.lengyuewusheng.com/assets/images/00025-01.png" alt="登录报错"></p>
-</li>
-</ul>
-</li>
-<li><p>解决方案：该问题一般是由于php 序列化导致，多数情况是由于服务器端环境缺少apcu扩展。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="访问问题"><a href="#访问问题" class="headerlink" title="访问问题"></a>访问问题</h1><ul>
-<li><p>问题现象：</p>
-<ul>
-<li><p>访问直接报错：Exception encountered, of type “InvalidArgumentException”</p>
-</li>
-<li><p>无任何其它的nginx或php层面的报错日志输出</p>
-</li>
-</ul>
-</li>
-<li><p>解决方案：MediaWiki要求服务器端php环境默认关闭session.auto_start属性，因此php.ini配置文件中session.auto_start &#x3D; 0 即可。</p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mediawiki%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">MediaWiki配置文件</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html">MediaWiki导航菜单设置</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C.html">MediaWiki管理控制台命令操作</a></li></ul></div>]]></content>
-      <categories>
-        <category>MediaWiki</category>
-        <category>填坑指南</category>
-      </categories>
-      <tags>
-        <tag>MediaWiki</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL常见的两种数据库引擎比较</title>
     <url>/mysql%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%95%E6%93%8E%E6%AF%94%E8%BE%83.html</url>
     <content><![CDATA[<p>MySQL有多种存储引擎：MyISAM、InnoDB、MERGE、MEMORY(HEAP)、BDB(BerkeleyDB)、EXAMPLE、FEDERATED、ARCHIVE、CSV、BLACKHOLE 等。</p>
@@ -2412,6 +2347,87 @@
       <tags>
         <tag>MySQL</tag>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MediaWiki导航菜单设置</title>
+    <url>/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html</url>
+    <content><![CDATA[<h1 id="侧边栏导航-MediaWiki-Sidebar"><a href="#侧边栏导航-MediaWiki-Sidebar" class="headerlink" title="侧边栏导航(MediaWiki:Sidebar)"></a>侧边栏导航(MediaWiki:Sidebar)</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* CATEGORY-SIDEBAR</span><br><span class="line">* navigation</span><br><span class="line">** mainpage|mainpage-description</span><br><span class="line">** recentchanges-url|recentchanges</span><br><span class="line">** randompage-url|randompage</span><br><span class="line">** helppage|help</span><br><span class="line"></span><br><span class="line">*  自定义一级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line">*  自定义一级导航2</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line">*  自定义一级导航3</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航1</span><br><span class="line">** http://www.lengyuewusheng.com/ |自定义二级级导航2</span><br><span class="line"></span><br><span class="line">* SEARCH</span><br><span class="line">* TOOLBOX</span><br><span class="line">* LANGUAGES</span><br></pre></td></tr></table></figure>
+
+<h1 id="右侧悬浮目录"><a href="#右侧悬浮目录" class="headerlink" title="右侧悬浮目录"></a>右侧悬浮目录</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MediaWiki:Common.css</span><br><span class="line">/* 放置于这里的CSS将应用于所有皮肤 */</span><br><span class="line">#toc&#123;</span><br><span class="line"> display: block;</span><br><span class="line"> position: fixed;</span><br><span class="line"> top: 100px;</span><br><span class="line"> right: 0px;</span><br><span class="line"> min-width: 200px;</span><br><span class="line"> max-width: 350px;</span><br><span class="line"> max-height: 10px;</span><br><span class="line"> overflow-y: scroll;</span><br><span class="line"> border: 1px solid #aaa;</span><br><span class="line"> border-radius: 0 0 1px 1px;</span><br><span class="line"> -moz-border-radius: 0 0 1px 1px;</span><br><span class="line"> background: rgba(249,249,249,0.75);</span><br><span class="line"> padding: 12px;</span><br><span class="line"> box-shadow: 0 1px 8px #000;</span><br><span class="line"> -webkit-box-shadow: 0 1px 8px #000;</span><br><span class="line"> -moz-box-shadow: 0 1px 8px #000;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">#toc:hover&#123;</span><br><span class="line"> display: block;</span><br><span class="line"> position: fixed;</span><br><span class="line"> top: 100px;</span><br><span class="line"> right: 0px;</span><br><span class="line"> min-width: 200px;</span><br><span class="line"> max-width: 350px;</span><br><span class="line"> max-height: 100px;</span><br><span class="line"> max-height: 600px;</span><br><span class="line"> overflow-y: scroll;</span><br><span class="line"> border: 1px solid #aaa;</span><br><span class="line"> border-radius: 0 0 1px 1px;</span><br><span class="line"> -moz-border-radius: 0 0 1px 1px;</span><br><span class="line"> background: rgba(249,249,249,0.75);</span><br><span class="line"> padding: 12px;</span><br><span class="line"> box-shadow: 0 1px 8px #000;</span><br><span class="line"> -webkit-box-shadow: 0 1px 8px #000;</span><br><span class="line"> -moz-box-shadow: 0 1px 8px #000;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">body &#123; overflow-x: hidden;&#125;</span><br><span class="line"></span><br><span class="line">/*Extension:TreeAndMenu*/</span><br><span class="line">.fancytree ul &#123;</span><br><span class="line">    background: none;</span><br><span class="line">    border: none;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">&#125;</span><br><span class="line">ul.fancytree-container &#123;</span><br><span class="line">    outline: 0;</span><br><span class="line">    border: none;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.fancytree p &#123;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br><span class="line">span.fancytree-title &#123;</span><br><span class="line">    cursor: default;</span><br><span class="line">&#125;</span><br><span class="line">span.fancytree-title a &#123;</span><br><span class="line">    color: black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://codex.wordpress.org.cn/Mediawiki%E4%BF%AE%E6%94%B9%E5%B7%A6%E4%BE%A7%E5%AF%BC%E8%88%AA%E6%9D%A1">Mediawiki修改左侧导航条</a></li>
+<li><a href="https://wiki.ling2.cn/index.php/MediaWiki-%E7%9B%AE%E5%BD%95%E6%82%AC%E6%B5%AE%2B%E9%9A%90%E8%97%8F">MediaWiki-目录悬浮+隐藏</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E5%BC%80%E6%BA%90%E8%AE%BA%E5%9D%9B%E6%8A%80%E6%9C%AF%E6%A0%88.html">开源论坛技术栈</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">MediaWiki配置文件</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html">MediaWiki常见问题汇总</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C.html">MediaWiki管理控制台命令操作</a></li></ul></div>]]></content>
+      <categories>
+        <category>MediaWiki</category>
+      </categories>
+      <tags>
+        <tag>MediaWiki</tag>
+        <tag>开源工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>腾讯云虚机自动挂载数据盘脚本</title>
+    <url>/%E8%85%BE%E8%AE%AF%E4%BA%91%E8%99%9A%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E7%9B%98%E8%84%9A%E6%9C%AC.html</url>
+    <content><![CDATA[<p>把之前在腾讯云上部署环境过程中遇到的可以抽象摘取出来的固定逻辑，稍加整理供大家参考。</p>
+<span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Usage</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">cat &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Usage:</span></span><br><span class="line"><span class="string">    sh $0</span></span><br><span class="line"><span class="string">    sh $0 -d MOUNTDIRECTORY</span></span><br><span class="line"><span class="string">    sh $0 -h|--help</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -d|--MountDirectory &#123;eg:/data&#125;:     Mount directory.</span></span><br><span class="line"><span class="string">    -h|--help:  Show help.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">OPTS=$(getopt -o d:h -a --long <span class="built_in">help</span>,MountDirectory: -n <span class="string">&#x27;warning&#x27;</span> -- <span class="string">&quot;<span class="variable">$@</span>&quot;</span>)</span><br><span class="line"><span class="built_in">eval</span> <span class="built_in">set</span> -- <span class="string">&quot;<span class="variable">$OPTS</span>&quot;</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        -d|--MountDirectory) MountDirectory=<span class="variable">$2</span>; <span class="built_in">shift</span> 2 ;;</span><br><span class="line">        -h|--<span class="built_in">help</span>) Usage; <span class="built_in">shift</span>; <span class="built_in">exit</span> 0 ;;</span><br><span class="line">        --) <span class="built_in">shift</span>; <span class="built_in">break</span> ;;</span><br><span class="line">        *) <span class="built_in">echo</span> -e <span class="string">&quot;\nParameter error.\n&quot;</span>; Usage; <span class="built_in">exit</span> 1 ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">disk_mount</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> [ -b /dev/vdb ]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span> \tfdisk /dev/vdb \033[0m&quot;</span></span><br><span class="line">		fdisk /dev/vdb 1&gt;/dev/null &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">n</span></span><br><span class="line"><span class="string">p</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">wq</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">		<span class="built_in">wait</span></span><br><span class="line">		<span class="keyword">if</span> [ -b /dev/vdb1 ]; <span class="keyword">then</span></span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mkfs.ext4 /dev/vdb1 \033[0m&quot;</span></span><br><span class="line">			mkfs.ext4 /dev/vdb1 1&gt;/dev/null</span><br><span class="line">			sleep 3</span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mounting -a \033[0m&quot;</span></span><br><span class="line">			mkdir -p <span class="variable">$&#123;MountDirectory&#125;</span></span><br><span class="line">			<span class="keyword">if</span> ! grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> /etc/fstab &gt;/dev/null 2&gt;&amp;1 ; <span class="keyword">then</span></span><br><span class="line">				<span class="built_in">echo</span> -e <span class="string">&quot;/dev/disk/by-uuid/<span class="subst">$(ls -l /dev/disk/by-uuid/ |grep vdb1 |awk &#x27;&#123;print $9&#125;&#x27;)</span>     <span class="variable">$&#123;MountDirectory&#125;</span>	ext4	defaults,nofail 0 2&quot;</span> &gt;&gt;/etc/fstab &amp;&amp; mount -a</span><br><span class="line">			    <span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t Finished. \033[0m&quot;</span></span><br><span class="line">                df -h |grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m /etc/fstab record has already existed. \033[0m&quot;</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m fdisk failed. \033[0m&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m/dev/vdb does not exist. \033[0m&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    MountDirectory=<span class="string">&quot;<span class="subst">$(echo <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> |grep -Po &#x27;^/(\w+/)</span>*\w+&#x27;)&quot;</span></span><br><span class="line">    [ -z <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> ] &amp;&amp; MountDirectory=/tencentCloud/data;</span><br><span class="line">    disk_mount</span><br><span class="line">&#125;</span><br><span class="line">main</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>自动化</tag>
+        <tag>脚本</tag>
+        <tag>腾讯云</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MediaWiki常见问题汇总</title>
+    <url>/mediawiki%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
+    <content><![CDATA[<p>MediaWiki是一个非常成熟完善的文档框架，也许是因为太过成熟，官方给出的文档太过全面，一些问题就连google都很难搜出有效信息。</p>
+<span id="more"></span>
+
+<h1 id="登录问题"><a href="#登录问题" class="headerlink" title="登录问题"></a>登录问题</h1><ul>
+<li><p>问题现象：</p>
+<ul>
+<li><p>现象描述：</p>
+<ul>
+<li><p>登录时报错：似乎您的登录会话有问题；为了防止会话劫持，这个操作已经被取消。请返回先前的页面，重新载入这个页面，然后重试。</p>
+<ul>
+<li>从服务器端看session文件写入为空，但是session配置、权限等都没有问题。报错如下图：</li>
+</ul>
+<p><img data-src="http://www.lengyuewusheng.com/assets/images/00025-01.png" alt="登录报错"></p>
+</li>
+</ul>
+</li>
+<li><p>解决方案：该问题一般是由于php 序列化导致，多数情况是由于服务器端环境缺少apcu扩展。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="访问问题"><a href="#访问问题" class="headerlink" title="访问问题"></a>访问问题</h1><ul>
+<li><p>问题现象：</p>
+<ul>
+<li><p>访问直接报错：Exception encountered, of type “InvalidArgumentException”</p>
+</li>
+<li><p>无任何其它的nginx或php层面的报错日志输出</p>
+</li>
+</ul>
+</li>
+<li><p>解决方案：MediaWiki要求服务器端php环境默认关闭session.auto_start属性，因此php.ini配置文件中session.auto_start &#x3D; 0 即可。</p>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/mediawiki%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html">MediaWiki配置文件</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E8%AE%BE%E7%BD%AE.html">MediaWiki导航菜单设置</a></li><li><a href="https://www.lengyuewusheng.com/mediawiki%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C.html">MediaWiki管理控制台命令操作</a></li></ul></div>]]></content>
+      <categories>
+        <category>MediaWiki</category>
+        <category>填坑指南</category>
+      </categories>
+      <tags>
+        <tag>MediaWiki</tag>
       </tags>
   </entry>
   <entry>
@@ -3006,22 +3022,6 @@
       </tags>
   </entry>
   <entry>
-    <title>腾讯云虚机自动挂载数据盘脚本</title>
-    <url>/%E8%85%BE%E8%AE%AF%E4%BA%91%E8%99%9A%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E7%9B%98%E8%84%9A%E6%9C%AC.html</url>
-    <content><![CDATA[<p>把之前在腾讯云上部署环境过程中遇到的可以抽象摘取出来的固定逻辑，稍加整理供大家参考。</p>
-<span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Usage</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">cat &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Usage:</span></span><br><span class="line"><span class="string">    sh $0</span></span><br><span class="line"><span class="string">    sh $0 -d MOUNTDIRECTORY</span></span><br><span class="line"><span class="string">    sh $0 -h|--help</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -d|--MountDirectory &#123;eg:/data&#125;:     Mount directory.</span></span><br><span class="line"><span class="string">    -h|--help:  Show help.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">OPTS=$(getopt -o d:h -a --long <span class="built_in">help</span>,MountDirectory: -n <span class="string">&#x27;warning&#x27;</span> -- <span class="string">&quot;<span class="variable">$@</span>&quot;</span>)</span><br><span class="line"><span class="built_in">eval</span> <span class="built_in">set</span> -- <span class="string">&quot;<span class="variable">$OPTS</span>&quot;</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        -d|--MountDirectory) MountDirectory=<span class="variable">$2</span>; <span class="built_in">shift</span> 2 ;;</span><br><span class="line">        -h|--<span class="built_in">help</span>) Usage; <span class="built_in">shift</span>; <span class="built_in">exit</span> 0 ;;</span><br><span class="line">        --) <span class="built_in">shift</span>; <span class="built_in">break</span> ;;</span><br><span class="line">        *) <span class="built_in">echo</span> -e <span class="string">&quot;\nParameter error.\n&quot;</span>; Usage; <span class="built_in">exit</span> 1 ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">disk_mount</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> [ -b /dev/vdb ]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span> \tfdisk /dev/vdb \033[0m&quot;</span></span><br><span class="line">		fdisk /dev/vdb 1&gt;/dev/null &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">n</span></span><br><span class="line"><span class="string">p</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">wq</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">		<span class="built_in">wait</span></span><br><span class="line">		<span class="keyword">if</span> [ -b /dev/vdb1 ]; <span class="keyword">then</span></span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mkfs.ext4 /dev/vdb1 \033[0m&quot;</span></span><br><span class="line">			mkfs.ext4 /dev/vdb1 1&gt;/dev/null</span><br><span class="line">			sleep 3</span><br><span class="line">			<span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t mounting -a \033[0m&quot;</span></span><br><span class="line">			mkdir -p <span class="variable">$&#123;MountDirectory&#125;</span></span><br><span class="line">			<span class="keyword">if</span> ! grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> /etc/fstab &gt;/dev/null 2&gt;&amp;1 ; <span class="keyword">then</span></span><br><span class="line">				<span class="built_in">echo</span> -e <span class="string">&quot;/dev/disk/by-uuid/<span class="subst">$(ls -l /dev/disk/by-uuid/ |grep vdb1 |awk &#x27;&#123;print $9&#125;&#x27;)</span>     <span class="variable">$&#123;MountDirectory&#125;</span>	ext4	defaults,nofail 0 2&quot;</span> &gt;&gt;/etc/fstab &amp;&amp; mount -a</span><br><span class="line">			    <span class="built_in">echo</span> -e <span class="string">&quot;\033[32m<span class="subst">$(date <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>)</span>\t Finished. \033[0m&quot;</span></span><br><span class="line">                df -h |grep <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m /etc/fstab record has already existed. \033[0m&quot;</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m fdisk failed. \033[0m&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;\033[31m/dev/vdb does not exist. \033[0m&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    MountDirectory=<span class="string">&quot;<span class="subst">$(echo <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> |grep -Po &#x27;^/(\w+/)</span>*\w+&#x27;)&quot;</span></span><br><span class="line">    [ -z <span class="string">&quot;<span class="variable">$&#123;MountDirectory&#125;</span>&quot;</span> ] &amp;&amp; MountDirectory=/tencentCloud/data;</span><br><span class="line">    disk_mount</span><br><span class="line">&#125;</span><br><span class="line">main</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>自动化</tag>
-        <tag>脚本</tag>
-        <tag>腾讯云</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTP协议中的8种请求方法</title>
     <url>/http%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%848%E7%A7%8D%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95.html</url>
     <content><![CDATA[<!-- \{\% centerquote \%\}\{\% endcenterquote \%\} -->
@@ -3441,178 +3441,6 @@
       </tags>
   </entry>
   <entry>
-    <title>drupal应用部署</title>
-    <url>/drupal%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html</url>
-    <content><![CDATA[<p>Drupal是一款诞生于2000年的基于PHP语言编写的经典开源内容管理框架。</p>
-<span id="more"></span>
-
-<p>坊间传说drupal使用成本比wp高，偶然的机会看到一个基于drupal搭建的网站还不赖。兴趣使然，简单研究了一下drupal的搭建和使用。<br>以下简单给出搭建的关键步骤：</p>
-<h2 id="composer工具准备"><a href="#composer工具准备" class="headerlink" title="composer工具准备"></a>composer工具准备</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br><span class="line">mv composer.phar /usr/sbin/</span><br><span class="line">composer self-update</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php -r &quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span><br><span class="line">php -r &quot;if (hash_file(&#x27;sha384&#x27;, &#x27;composer-setup.php&#x27;) === &#x27;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&#x27;) &#123; echo &#x27;Installer verified&#x27;; &#125; else &#123; echo &#x27;Installer corrupt&#x27;; unlink(&#x27;composer-setup.php&#x27;); &#125; echo PHP_EOL;&quot;</span><br><span class="line">php composer-setup.php --install-dir=/bin --filename=composer --version=1.9.0</span><br><span class="line">composer config -g --unset repos.packagist</span><br><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="以lightning为例部署"><a href="#以lightning为例部署" class="headerlink" title="以lightning为例部署"></a>以lightning为例部署</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer create-project acquia/lightning-project drupal</span><br><span class="line">chown -R nobody:nobody drupal</span><br></pre></td></tr></table></figure>
-<ul>
-<li>drupal&#x2F;docroot为应用根目录</li>
-<li>drupal默认使用sqlite数据库不需要单独配置</li>
-</ul>
-<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>以上方式部署完成后，用nginx的默认php应用配置会导致除了首页能访问，其它所有页面全部404，<br>根据drupal的路由特点需要简单配置rewrite规则，nginx应用的基本配置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       *:80;</span><br><span class="line">    # include vhosts/vhosts.listen.addr;</span><br><span class="line">    # server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line"></span><br><span class="line">    access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html/drupal/docroot;</span><br><span class="line">        index  index.php index.htm;</span><br><span class="line">        try_files $uri $uri/ @rewrite;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ ^/sites/.*/private/ &#123;</span><br><span class="line">        access_log  off;</span><br><span class="line">        internal;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location @rewrite &#123;</span><br><span class="line">            rewrite ^/(.*)$ /index.php?q=$1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        root           html/drupal/docroot;</span><br><span class="line">        fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny  all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如此一来，基本上就可以用了。。。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://getcomposer.org/download/">composer文档</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>drupal</category>
-      </categories>
-      <tags>
-        <tag>drupal</tag>
-        <tag>CMS</tag>
-        <tag>搭建部署</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>confluence 自动备份策略不生效</title>
-    <url>/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>一切问题都有答案。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-<p>##问题现象</p>
-<p>confluence从备份文件中降级恢复后，配置没有任何错误提示，但是发现备份策略不生效，备份目录为空。查看日志后发现，没有取到backupPath，但是实际配置中是有显示配置路径的。</p>
-<h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backupAttachmentsDaily = true</span><br><span class="line">dailyBackupFilePrefix = backup-</span><br><span class="line">backupDaily = true</span><br><span class="line">backupPath = null</span><br><span class="line">2018-03-20 02:00:00,022 WARN [Caesium-1-2] [confluence.importexport.impl.BackupJob] runJob No daily backup directory specified to store the backups. Taking no action!</span><br><span class="line">2018-03-20 02:00:00,038 WARN [Caesium-1-2] [impl.schedule.caesium.JobRunnerWrapper] runJob Scheduled job BackupJob#BackupJob completed unsuccessfully with response JobRunnerResponse[runOutcome=ABORTED,message=&#x27;No daily backup directory specified to store the backups. Taking no action!&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>参考了一些<a href="https://confluence.atlassian.com/confkb/cannot-create-xml-backup-with-the-warn-message-no-daily-backup-directory-specified-to-store-the-backups-in-the-logs-737772474.html">官网给出的case</a>,<br>将 ${CONFLUENCE_HOME}目录下的配置文件confluence.cfg.xml中的<code>&lt;property name=&quot;admin.ui.allow.daily.backup.custom.location&quot;&gt;false&lt;/property&gt;</code>属性值变更为<code>true</code>,<br>重启confluence，<br>然后将<code>每日备份管理-&gt;备份设置-&gt;备份路径</code>设置为<code>默认</code>,<br>最后重新手动触发备份任务，<br>成功生成备份文件。</p>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>由于之前有过confluence从备份文件中降级恢复操作，怀疑是由于恢复操作，导致备份路径没有生效，猜测不用修改confluence.cfg.xml，直接重新提交一下备份路径设置也是可以的，因为问题的根本原因是<code>backupPath = null</code>。由于生产环境不便于验证，反复修改验证。有兴趣的读者可以验证一下，以后有机会也会再做验证。</p>
-<p>confluence的备份恢复机制还是很好用的。wiki作为团队的重要资源，做好备份恢复还是非常重要和必要的。</p>
-]]></content>
-      <categories>
-        <category>confluence</category>
-        <category>填坑指南</category>
-      </categories>
-      <tags>
-        <tag>confluence</tag>
-        <tag>wiki</tag>
-        <tag>备份</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>yum/rpm常用命令总结</title>
-    <url>/yum-rpm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>Yum (Yellow dog Updater, Modified) ,Fedora、RedHat以及CentOS中的Shell前端软件包管理器，基于RPM。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<h2 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h2><ul>
-<li><p>显示可用的yum仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>指定某一个repo内搜索某个rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum --disablerepo=* --enablerepo=xxx search xxxx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>列出某个yum源中可用的rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo yum --disablerepo=&quot;*&quot; --enablerepo=&quot;xxxx&quot; list available</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查找某条命令的yum源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum whatprovides &quot;*/whoami&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查找某条命令由什么包提供</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum provides $&#123;cmd&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>替换安装某个rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install yum-plugin-replace</span><br><span class="line">yum replace php-common --replace-with=php56-common</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>降级安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum downgrade packages</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装程序组</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum groupinstall &#x27;Development Tools’</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>从yum源中下载rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install yum-utils</span><br><span class="line">yumdownloader xxxx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>yum下载依赖文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line">  yumdownloader 下载包名称 --resolve --destdir=/tmp/openresty</span><br><span class="line">  </span><br><span class="line">参考：</span><br><span class="line">  http://www.cnblogs.com/toSeek/p/6093679.html</span><br><span class="line"></span><br><span class="line">方法二：</span><br><span class="line">  1.安装yum-plugin-downloadonly</span><br><span class="line">    yum -y install ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/Virtualization:/Appliances/CentOS_CentOS-6/noarch/yum-plugin-downloadonly-1.1.31-2.2.noarch.rpm</span><br><span class="line">  2.下载：</span><br><span class="line">    yum install -y --downloadonly --downloaddir=/tmp/php  php</span><br><span class="line">    </span><br><span class="line">参考：</span><br><span class="line">  http://graybull.is-programmer.com/posts/37702.html</span><br><span class="line">  http://www.jianshu.com/p/5930545b5591</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>yum 查看so库文件所在的rpm包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum whatprovides  libXpm.so.4</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Yum 事务完整的历史记录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum history list all                # 查看历史yum命令</span><br><span class="line">yum history info nginx              # 查看yum涉及指定软件包的事务详情</span><br><span class="line">yum history summary nginx           # 查看yum涉及指定软件包的事务摘要</span><br><span class="line">yum history package-list nginx      # 查看yum涉及指定软件包的历史记录</span><br><span class="line">yum history addon-info              # 提供更多的信息来源</span><br><span class="line">yum history stats                   # 显示当前历史数据库的统计信息</span><br><span class="line">yum history sync                    # 更改为所有已安装软件包存储的rpmdb/yumdb数据</span><br><span class="line">yum history new                     # 创建新的历史文件</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="rpm常用命令"><a href="#rpm常用命令" class="headerlink" title="rpm常用命令"></a>rpm常用命令</h2><ul>
-<li><p>强制降级</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh oldpackage.rpm --oldpackage </span><br><span class="line">或</span><br><span class="line">rpm -Uvh oldpackage.rpm --force</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看rpm包安装前后执行的脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qp --scripts xxxx.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>rpm包安装前后执行脚本被传入参数$1的意义</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0:卸载</span><br><span class="line">1:安装、升级卸载</span><br><span class="line">2:升级</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看rpm包提供的命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qp --provides xxxx.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看rpm包注册的冲突信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qp --conflicts xxxx.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看rpm包注册的依赖信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qpR xxxx.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看rpm包中注册的配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qpc xxxx.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看rpm包的打包信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qpi xxxx.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看打包spec文件中的tag信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -q --qf %&#123;tag&#125; rpm_name</span><br><span class="line"></span><br><span class="line">tag list: Name|Version|Release|Summary|Group|License|URL</span><br><span class="line">eg：</span><br><span class="line">rpm -q --qf %&#123;Version&#125; rpm_name</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="内网yum源维护"><a href="#内网yum源维护" class="headerlink" title="内网yum源维护"></a>内网yum源维护</h2><ul>
-<li><p>创建repodata</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install createrepo</span><br><span class="line">createrepo /path/to/RPMS/epel/7/x86_64/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更新repodata</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">createrepo --update /path/to/RPMS/epel/7/x86_64</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>镜像yum源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">reposync -r &quot;repoid&quot;</span><br><span class="line">eg:</span><br><span class="line">reposync -r webtatic-archive -nu</span><br><span class="line"></span><br><span class="line">-r  指定镜像源</span><br><span class="line">-n 只下载最新镜像</span><br><span class="line">-u 只列出，不下载</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义yum源配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[epel.xxx]</span><br><span class="line">name=repo.xxx.xxx</span><br><span class="line">baseurl=http://repo.xxx/epel/$releasever/$basearch</span><br><span class="line">skip_if_unavailable=True        # 在CentOS7系统上测试当前yum源如果不可用，会直接跳过，默认False，提示错误.</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">[epel-archive.xxx]</span><br><span class="line">name=archive.xxx.xxx</span><br><span class="line">baseurl=http://repo.xxx/archive/$releasever/$basearch</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=0</span><br></pre></td></tr></table></figure></li>
-<li><p>配置文件中$releasever变量是取redhat-release-server(redhat)或centos-release(centos) rpm包的属性 %{version} 的值。验证方法:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$basearch：</span><br><span class="line">rpm -q --qf %&#123;arch&#125; redhat-release-server</span><br><span class="line">$releaseserver：</span><br><span class="line">rpm -q --qf %&#123;version&#125; redhat-release-server</span><br></pre></td></tr></table></figure></li>
-<li><p>rh和centos的$releasever稍有不同，一般rh的$releasever值是${Version}Server,centos的$releasever值直接是${Version}数值，所以在定义配置文件的时候要注意验证。</p>
-</li>
-</ul>
-<h2 id="常见yum报错处理"><a href="#常见yum报错处理" class="headerlink" title="常见yum报错处理"></a>常见yum报错处理</h2><ul>
-<li>yum报错：<code>Rpmdb checksum is invalid: dCDPT(pkg checksums)</code></li>
-<li>解决方案<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm --rebuilddb</span><br><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul>
-<li><a href="https://archives.fedoraproject.org/pub/archive/epel/5Server/x86_64/">CentOS5社区yum源</a></li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
-      <categories>
-        <category>yum</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>yum</tag>
-        <tag>rpm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>bash常用快捷键</title>
     <url>/bash%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE.html</url>
     <content><![CDATA[<p>常用但不全面，会持续总结完善。。。</p>
@@ -3836,6 +3664,178 @@
       <tags>
         <tag>bash</tag>
         <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>confluence 自动备份策略不生效</title>
+    <url>/confluence-%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5%E4%B8%8D%E7%94%9F%E6%95%88.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>一切问题都有答案。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+<p>##问题现象</p>
+<p>confluence从备份文件中降级恢复后，配置没有任何错误提示，但是发现备份策略不生效，备份目录为空。查看日志后发现，没有取到backupPath，但是实际配置中是有显示配置路径的。</p>
+<h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backupAttachmentsDaily = true</span><br><span class="line">dailyBackupFilePrefix = backup-</span><br><span class="line">backupDaily = true</span><br><span class="line">backupPath = null</span><br><span class="line">2018-03-20 02:00:00,022 WARN [Caesium-1-2] [confluence.importexport.impl.BackupJob] runJob No daily backup directory specified to store the backups. Taking no action!</span><br><span class="line">2018-03-20 02:00:00,038 WARN [Caesium-1-2] [impl.schedule.caesium.JobRunnerWrapper] runJob Scheduled job BackupJob#BackupJob completed unsuccessfully with response JobRunnerResponse[runOutcome=ABORTED,message=&#x27;No daily backup directory specified to store the backups. Taking no action!&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>参考了一些<a href="https://confluence.atlassian.com/confkb/cannot-create-xml-backup-with-the-warn-message-no-daily-backup-directory-specified-to-store-the-backups-in-the-logs-737772474.html">官网给出的case</a>,<br>将 ${CONFLUENCE_HOME}目录下的配置文件confluence.cfg.xml中的<code>&lt;property name=&quot;admin.ui.allow.daily.backup.custom.location&quot;&gt;false&lt;/property&gt;</code>属性值变更为<code>true</code>,<br>重启confluence，<br>然后将<code>每日备份管理-&gt;备份设置-&gt;备份路径</code>设置为<code>默认</code>,<br>最后重新手动触发备份任务，<br>成功生成备份文件。</p>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>由于之前有过confluence从备份文件中降级恢复操作，怀疑是由于恢复操作，导致备份路径没有生效，猜测不用修改confluence.cfg.xml，直接重新提交一下备份路径设置也是可以的，因为问题的根本原因是<code>backupPath = null</code>。由于生产环境不便于验证，反复修改验证。有兴趣的读者可以验证一下，以后有机会也会再做验证。</p>
+<p>confluence的备份恢复机制还是很好用的。wiki作为团队的重要资源，做好备份恢复还是非常重要和必要的。</p>
+]]></content>
+      <categories>
+        <category>confluence</category>
+        <category>填坑指南</category>
+      </categories>
+      <tags>
+        <tag>confluence</tag>
+        <tag>wiki</tag>
+        <tag>备份</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>drupal应用部署</title>
+    <url>/drupal%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html</url>
+    <content><![CDATA[<p>Drupal是一款诞生于2000年的基于PHP语言编写的经典开源内容管理框架。</p>
+<span id="more"></span>
+
+<p>坊间传说drupal使用成本比wp高，偶然的机会看到一个基于drupal搭建的网站还不赖。兴趣使然，简单研究了一下drupal的搭建和使用。<br>以下简单给出搭建的关键步骤：</p>
+<h2 id="composer工具准备"><a href="#composer工具准备" class="headerlink" title="composer工具准备"></a>composer工具准备</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br><span class="line">mv composer.phar /usr/sbin/</span><br><span class="line">composer self-update</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php -r &quot;copy(&#x27;https://getcomposer.org/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span><br><span class="line">php -r &quot;if (hash_file(&#x27;sha384&#x27;, &#x27;composer-setup.php&#x27;) === &#x27;a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1&#x27;) &#123; echo &#x27;Installer verified&#x27;; &#125; else &#123; echo &#x27;Installer corrupt&#x27;; unlink(&#x27;composer-setup.php&#x27;); &#125; echo PHP_EOL;&quot;</span><br><span class="line">php composer-setup.php --install-dir=/bin --filename=composer --version=1.9.0</span><br><span class="line">composer config -g --unset repos.packagist</span><br><span class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="以lightning为例部署"><a href="#以lightning为例部署" class="headerlink" title="以lightning为例部署"></a>以lightning为例部署</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">composer create-project acquia/lightning-project drupal</span><br><span class="line">chown -R nobody:nobody drupal</span><br></pre></td></tr></table></figure>
+<ul>
+<li>drupal&#x2F;docroot为应用根目录</li>
+<li>drupal默认使用sqlite数据库不需要单独配置</li>
+</ul>
+<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>以上方式部署完成后，用nginx的默认php应用配置会导致除了首页能访问，其它所有页面全部404，<br>根据drupal的路由特点需要简单配置rewrite规则，nginx应用的基本配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       *:80;</span><br><span class="line">    # include vhosts/vhosts.listen.addr;</span><br><span class="line">    # server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line"></span><br><span class="line">    access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html/drupal/docroot;</span><br><span class="line">        index  index.php index.htm;</span><br><span class="line">        try_files $uri $uri/ @rewrite;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ ^/sites/.*/private/ &#123;</span><br><span class="line">        access_log  off;</span><br><span class="line">        internal;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location @rewrite &#123;</span><br><span class="line">            rewrite ^/(.*)$ /index.php?q=$1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line"></span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        root           html/drupal/docroot;</span><br><span class="line">        fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny  all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如此一来，基本上就可以用了。。。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://getcomposer.org/download/">composer文档</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>drupal</category>
+      </categories>
+      <tags>
+        <tag>drupal</tag>
+        <tag>CMS</tag>
+        <tag>搭建部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>yum/rpm常用命令总结</title>
+    <url>/yum-rpm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>Yum (Yellow dog Updater, Modified) ,Fedora、RedHat以及CentOS中的Shell前端软件包管理器，基于RPM。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h2 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h2><ul>
+<li><p>显示可用的yum仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定某一个repo内搜索某个rpm包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum --disablerepo=* --enablerepo=xxx search xxxx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出某个yum源中可用的rpm包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo yum --disablerepo=&quot;*&quot; --enablerepo=&quot;xxxx&quot; list available</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找某条命令的yum源</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum whatprovides &quot;*/whoami&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找某条命令由什么包提供</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum provides $&#123;cmd&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替换安装某个rpm包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install yum-plugin-replace</span><br><span class="line">yum replace php-common --replace-with=php56-common</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>降级安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum downgrade packages</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装程序组</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum groupinstall &#x27;Development Tools’</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从yum源中下载rpm包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install yum-utils</span><br><span class="line">yumdownloader xxxx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yum下载依赖文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line">  yumdownloader 下载包名称 --resolve --destdir=/tmp/openresty</span><br><span class="line">  </span><br><span class="line">参考：</span><br><span class="line">  http://www.cnblogs.com/toSeek/p/6093679.html</span><br><span class="line"></span><br><span class="line">方法二：</span><br><span class="line">  1.安装yum-plugin-downloadonly</span><br><span class="line">    yum -y install ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/Virtualization:/Appliances/CentOS_CentOS-6/noarch/yum-plugin-downloadonly-1.1.31-2.2.noarch.rpm</span><br><span class="line">  2.下载：</span><br><span class="line">    yum install -y --downloadonly --downloaddir=/tmp/php  php</span><br><span class="line">    </span><br><span class="line">参考：</span><br><span class="line">  http://graybull.is-programmer.com/posts/37702.html</span><br><span class="line">  http://www.jianshu.com/p/5930545b5591</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yum 查看so库文件所在的rpm包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum whatprovides  libXpm.so.4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Yum 事务完整的历史记录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum history list all                # 查看历史yum命令</span><br><span class="line">yum history info nginx              # 查看yum涉及指定软件包的事务详情</span><br><span class="line">yum history summary nginx           # 查看yum涉及指定软件包的事务摘要</span><br><span class="line">yum history package-list nginx      # 查看yum涉及指定软件包的历史记录</span><br><span class="line">yum history addon-info              # 提供更多的信息来源</span><br><span class="line">yum history stats                   # 显示当前历史数据库的统计信息</span><br><span class="line">yum history sync                    # 更改为所有已安装软件包存储的rpmdb/yumdb数据</span><br><span class="line">yum history new                     # 创建新的历史文件</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="rpm常用命令"><a href="#rpm常用命令" class="headerlink" title="rpm常用命令"></a>rpm常用命令</h2><ul>
+<li><p>强制降级</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh oldpackage.rpm --oldpackage </span><br><span class="line">或</span><br><span class="line">rpm -Uvh oldpackage.rpm --force</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看rpm包安装前后执行的脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qp --scripts xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rpm包安装前后执行脚本被传入参数$1的意义</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0:卸载</span><br><span class="line">1:安装、升级卸载</span><br><span class="line">2:升级</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看rpm包提供的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qp --provides xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看rpm包注册的冲突信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qp --conflicts xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看rpm包注册的依赖信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qpR xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看rpm包中注册的配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qpc xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看rpm包的打包信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -qpi xxxx.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看打包spec文件中的tag信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -q --qf %&#123;tag&#125; rpm_name</span><br><span class="line"></span><br><span class="line">tag list: Name|Version|Release|Summary|Group|License|URL</span><br><span class="line">eg：</span><br><span class="line">rpm -q --qf %&#123;Version&#125; rpm_name</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="内网yum源维护"><a href="#内网yum源维护" class="headerlink" title="内网yum源维护"></a>内网yum源维护</h2><ul>
+<li><p>创建repodata</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install createrepo</span><br><span class="line">createrepo /path/to/RPMS/epel/7/x86_64/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新repodata</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">createrepo --update /path/to/RPMS/epel/7/x86_64</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>镜像yum源</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">reposync -r &quot;repoid&quot;</span><br><span class="line">eg:</span><br><span class="line">reposync -r webtatic-archive -nu</span><br><span class="line"></span><br><span class="line">-r  指定镜像源</span><br><span class="line">-n 只下载最新镜像</span><br><span class="line">-u 只列出，不下载</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义yum源配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[epel.xxx]</span><br><span class="line">name=repo.xxx.xxx</span><br><span class="line">baseurl=http://repo.xxx/epel/$releasever/$basearch</span><br><span class="line">skip_if_unavailable=True        # 在CentOS7系统上测试当前yum源如果不可用，会直接跳过，默认False，提示错误.</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">[epel-archive.xxx]</span><br><span class="line">name=archive.xxx.xxx</span><br><span class="line">baseurl=http://repo.xxx/archive/$releasever/$basearch</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=0</span><br></pre></td></tr></table></figure></li>
+<li><p>配置文件中$releasever变量是取redhat-release-server(redhat)或centos-release(centos) rpm包的属性 %{version} 的值。验证方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$basearch：</span><br><span class="line">rpm -q --qf %&#123;arch&#125; redhat-release-server</span><br><span class="line">$releaseserver：</span><br><span class="line">rpm -q --qf %&#123;version&#125; redhat-release-server</span><br></pre></td></tr></table></figure></li>
+<li><p>rh和centos的$releasever稍有不同，一般rh的$releasever值是${Version}Server,centos的$releasever值直接是${Version}数值，所以在定义配置文件的时候要注意验证。</p>
+</li>
+</ul>
+<h2 id="常见yum报错处理"><a href="#常见yum报错处理" class="headerlink" title="常见yum报错处理"></a>常见yum报错处理</h2><ul>
+<li>yum报错：<code>Rpmdb checksum is invalid: dCDPT(pkg checksums)</code></li>
+<li>解决方案<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm --rebuilddb</span><br><span class="line">yum clean all</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul>
+<li><a href="https://archives.fedoraproject.org/pub/archive/epel/5Server/x86_64/">CentOS5社区yum源</a></li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li></ul></div>]]></content>
+      <categories>
+        <category>yum</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>yum</tag>
+        <tag>rpm</tag>
       </tags>
   </entry>
   <entry>
@@ -4499,23 +4499,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TCP连接过程</title>
-    <url>/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html</url>
-    <content><![CDATA[<p>传输控制协议(TCP)是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
-<span id="more"></span>
-
-<p><img data-src="https://www.lengyuewusheng.com/assets/images/00043-01.png" alt="TCP连接过程"></p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li></ul></div>]]></content>
-      <categories>
-        <category>TCP/IP</category>
-      </categories>
-      <tags>
-        <tag>TCP/IP</tag>
-        <tag>三次握手</tag>
-        <tag>四次挥手</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>http协议头字段说明</title>
     <url>/http%E5%8D%8F%E8%AE%AE%E5%A4%B4%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -4608,7 +4591,7 @@
 <tr>
 <td align="left">From</td>
 <td align="left">发起此请求的用户的邮件地址。</td>
-<td align="left">From: <a href="mailto:&#117;&#115;&#x65;&#x72;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;">&#117;&#115;&#x65;&#x72;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td align="left">From: <a href="mailto:&#x75;&#x73;&#x65;&#114;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x75;&#x73;&#x65;&#114;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;</a></td>
 </tr>
 <tr>
 <td align="left">Host</td>
@@ -5014,6 +4997,23 @@
       <tags>
         <tag>http</tag>
         <tag>协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP连接过程</title>
+    <url>/tcp%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B.html</url>
+    <content><![CDATA[<p>传输控制协议(TCP)是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<span id="more"></span>
+
+<p><img data-src="https://www.lengyuewusheng.com/assets/images/00043-01.png" alt="TCP连接过程"></p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE.html">七层网络协议</a></li></ul></div>]]></content>
+      <categories>
+        <category>TCP/IP</category>
+      </categories>
+      <tags>
+        <tag>TCP/IP</tag>
+        <tag>三次握手</tag>
+        <tag>四次挥手</tag>
       </tags>
   </entry>
   <entry>
@@ -6553,53 +6553,6 @@
       </tags>
   </entry>
   <entry>
-    <title>自签SSL证书</title>
-    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
-</div>
-
-<p>devops 必备技能</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<ul>
-<li><p>查看当前系统使用的 OpenSSL 版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取完整的版本信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
-</blockquote>
-<ul>
-<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
-<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
-<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
-</ul>
-<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
-
-<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
-<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
-<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
-<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
-<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>openssl</tag>
-        <tag>https</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常用Notebook使用笔记</title>
     <url>/%E5%B8%B8%E7%94%A8notebook%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -6672,6 +6625,61 @@
       <tags>
         <tag>jupyter</tag>
         <tag>zeppelin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux内核崩溃分析</title>
+    <url>/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img data-src="https://lengyuewusheng.com/assets/images/Linuxkernel.png" />
+</div>
+
+<p>持续整理中。。。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h1 id="崩溃现场"><a href="#崩溃现场" class="headerlink" title="崩溃现场"></a>崩溃现场</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[@bjsjs_42_92 ~]# crash /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux /opt/var/crash/127.0.0.1-2019-08-06-10\:16\:35/vmcore</span><br><span class="line"></span><br><span class="line">crash 7.1.2-3.el7_2.1</span><br><span class="line">Copyright (C) 2002-2014  Red Hat, Inc.</span><br><span class="line">Copyright (C) 2004, 2005, 2006, 2010  IBM Corporation</span><br><span class="line">Copyright (C) 1999-2006  Hewlett-Packard Co</span><br><span class="line">Copyright (C) 2005, 2006, 2011, 2012  Fujitsu Limited</span><br><span class="line">Copyright (C) 2006, 2007  VA Linux Systems Japan K.K.</span><br><span class="line">Copyright (C) 2005, 2011  NEC Corporation</span><br><span class="line">Copyright (C) 1999, 2002, 2007  Silicon Graphics, Inc.</span><br><span class="line">Copyright (C) 1999, 2000, 2001, 2002  Mission Critical Linux, Inc.</span><br><span class="line">This program is free software, covered by the GNU General Public License,</span><br><span class="line">and you are welcome to change it and/or distribute copies of it under</span><br><span class="line">certain conditions.  Enter &quot;help copying&quot; to see the conditions.</span><br><span class="line">This program has absolutely no warranty.  Enter &quot;help warranty&quot; for details.</span><br><span class="line"></span><br><span class="line">GNU gdb (GDB) 7.6</span><br><span class="line">Copyright (C) 2013 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;</span><br><span class="line">and &quot;show warranty&quot; for details.</span><br><span class="line">This GDB was configured as &quot;x86_64-unknown-linux-gnu&quot;...</span><br><span class="line"></span><br><span class="line">      KERNEL: /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux</span><br><span class="line">    DUMPFILE: /opt/var/crash/127.0.0.1-2019-08-06-10:16:35/vmcore  [PARTIAL DUMP]</span><br><span class="line">        CPUS: 40</span><br><span class="line">        DATE: Tue Aug  6 10:16:27 2019</span><br><span class="line">      UPTIME: 390 days, 14:40:34</span><br><span class="line">LOAD AVERAGE: 81.55, 29.79, 16.87</span><br><span class="line">       TASKS: 2448</span><br><span class="line">    NODENAME: bjsjs_42_92</span><br><span class="line">     RELEASE: 3.10.0-327.el7.x86_64</span><br><span class="line">     VERSION: #1 SMP Thu Nov 19 22:10:57 UTC 2015</span><br><span class="line">     MACHINE: x86_64  (2199 Mhz)</span><br><span class="line">      MEMORY: 127.9 GB</span><br><span class="line">       PANIC: &quot;kernel BUG at fs/buffer.c:1280!&quot;</span><br><span class="line">         PID: 57502</span><br><span class="line">     COMMAND: &quot;java&quot;</span><br><span class="line">        TASK: ffff88201a2eb980  [THREAD_INFO: ffff880f7566c000]</span><br><span class="line">         CPU: 26</span><br><span class="line">       STATE:  (PANIC)</span><br><span class="line"></span><br><span class="line">crash&gt; bt</span><br><span class="line">PID: 57502  TASK: ffff88201a2eb980  CPU: 26  COMMAND: &quot;java&quot;</span><br><span class="line"> #0 [ffff880f7566f5a8] machine_kexec at ffffffff81051beb</span><br><span class="line"> #1 [ffff880f7566f608] crash_kexec at ffffffff810f2542</span><br><span class="line"> #2 [ffff880f7566f6d8] oops_end at ffffffff8163e1a8</span><br><span class="line"> #3 [ffff880f7566f700] die at ffffffff8101859b</span><br><span class="line"> #4 [ffff880f7566f730] do_trap at ffffffff8163d860</span><br><span class="line"> #5 [ffff880f7566f780] do_invalid_op at ffffffff81015204</span><br><span class="line"> #6 [ffff880f7566f830] invalid_op at ffffffff8164701e</span><br><span class="line">    [exception RIP: check_irqs_on+4]</span><br><span class="line">    RIP: ffffffff816326d1  RSP: ffff880f7566f8e8  RFLAGS: 00010046</span><br><span class="line">    RAX: 0000000000000096  RBX: ffff8810092d9110  RCX: ffff880ee7d05800</span><br><span class="line">    RDX: 0000000000001000  RSI: 000000000090014a  RDI: ffff880f8cf4b740</span><br><span class="line">    RBP: ffff880f7566f8e8   R8: 0000000000000004   R9: 0000000000000004</span><br><span class="line">    R10: ffff880ee7d05800  R11: ffff880f7566f9e8  R12: ffff880f8cf4b740</span><br><span class="line">    R13: 0000000000001000  R14: ffff8801df370800  R15: 0000000000000010</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018</span><br><span class="line"> #7 [ffff880f7566f8f0] __find_get_block at ffffffff81212c85</span><br><span class="line"> #8 [ffff880f7566f910] __getblk at ffffffff81212cb5</span><br><span class="line"> #9 [ffff880f7566f970] __ext4_get_inode_loc at ffffffffa0373030 [ext4]</span><br><span class="line">#10 [ffff880f7566f9d8] ext4_get_inode_loc at ffffffffa0374dbd [ext4]</span><br><span class="line">#11 [ffff880f7566f9e8] ext4_reserve_inode_write at ffffffffa0376906 [ext4]</span><br><span class="line">#12 [ffff880f7566fa18] ext4_mark_inode_dirty at ffffffffa03769d3 [ext4]</span><br><span class="line">#13 [ffff880f7566fa70] ext4_writepages at ffffffffa0377567 [ext4]</span><br><span class="line">#14 [ffff880f7566fba8] do_writepages at ffffffff811758fe</span><br><span class="line">#15 [ffff880f7566fbb8] __filemap_fdatawrite_range at ffffffff8116a685</span><br><span class="line">#16 [ffff880f7566fc08] filemap_flush at ffffffff8116a74c</span><br><span class="line">#17 [ffff880f7566fc18] ext4_alloc_da_blocks at ffffffffa0374a8c [ext4]</span><br><span class="line">#18 [ffff880f7566fc38] ext4_release_file at ffffffffa036df89 [ext4]</span><br><span class="line">#19 [ffff880f7566fc60] __fput at ffffffff811e0329</span><br><span class="line">#20 [ffff880f7566fca8] ____fput at ffffffff811e05ee</span><br><span class="line">#21 [ffff880f7566fcb8] task_work_run at ffffffff810a22f4</span><br><span class="line">#22 [ffff880f7566fce8] do_exit at ffffffff810815eb</span><br><span class="line">#23 [ffff880f7566fd78] do_group_exit at ffffffff81081dff</span><br><span class="line">#24 [ffff880f7566fda8] get_signal_to_deliver at ffffffff81092c10</span><br><span class="line">#25 [ffff880f7566fe40] do_signal at ffffffff81014417</span><br><span class="line">#26 [ffff880f7566ff30] do_notify_resume at ffffffff81014adf</span><br><span class="line">#27 [ffff880f7566ff50] retint_signal at ffffffff8163d1fc</span><br><span class="line">    RIP: 00007f3db495ee17  RSP: 00007f3cbc8a20f0  RFLAGS: 00010246</span><br><span class="line">    RAX: 0000000000000006  RBX: 00007f3cbc8a2430  RCX: 0000000000000001</span><br><span class="line">    RDX: 00007f3cbc99f700  RSI: 0000000000000008  RDI: 0000000000000000</span><br><span class="line">    RBP: 00007f3cbc8a2220   R8: 00007f3cbc8a25f0   R9: 00007f3cbc8a24c0</span><br><span class="line">    R10: 00000000fffffe00  R11: 0000000000000000  R12: 000000000000000b</span><br><span class="line">    R13: 00007f3cbc8a24c0  R14: 00007f3cbc8a2430  R15: 00007f3db48ee2c5</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0033  SS: 002b</span><br><span class="line">crash&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">KERNEL: 系统崩溃时运行的 kernel 文件</span><br><span class="line"></span><br><span class="line">DUMPFILE: 内核转储文件</span><br><span class="line"></span><br><span class="line">CPUS: 所在机器的 CPU 数量</span><br><span class="line"></span><br><span class="line">DATE: 系统崩溃的时间</span><br><span class="line"></span><br><span class="line">TASKS: 系统崩溃时内存中的任务数</span><br><span class="line"></span><br><span class="line">NODENAME: 崩溃的系统主机名</span><br><span class="line"></span><br><span class="line">RELEASE: 和 VERSION: 内核版本号</span><br><span class="line"></span><br><span class="line">MACHINE: CPU 架构</span><br><span class="line"></span><br><span class="line">MEMORY: 崩溃主机的物理内存</span><br><span class="line"></span><br><span class="line">PANIC: 崩溃类型，常见的崩溃类型包括：</span><br><span class="line"></span><br><span class="line">SysRq (System Request)：通过魔法组合键导致的系统崩溃，通常是测试使用。通过 echo c &gt; /proc/sysrq-trigger，就可以触发系统崩溃。</span><br><span class="line"></span><br><span class="line">oops：可以看成是内核级的 Segmentation Fault。应用程序如果进行了非法内存访问或执行了非法指令，会得到 Segfault 信号，一般行为是 coredump，应用程序也可以自己截获 Segfault 信号，自行处理。如果内核自己犯了这样的错误，则会弹出 oops 信息。</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &gt;&gt; /etc/yum.repos.d/CentOS-Debug.repo  &lt;&lt;EOF</span><br><span class="line">[CentOS-Debug]</span><br><span class="line">name=CentOS-$releasever - DebugInfo</span><br><span class="line">baseurl=http://debuginfo.centos.org/\$releasever/\$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">protect=1</span><br><span class="line">priority=1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">yum --enablerepo=CentOS-Debug install -y kernel-debuginfo-$(uname -r)</span><br><span class="line"></span><br><span class="line">debuginfo-install glibc</span><br><span class="line"></span><br><span class="line">vmcore crash</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1</a></p>
+</li>
+<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html</a></p>
+</li>
+<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html</a></p>
+</li>
+<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/5b4ef8112b97">https://www.jianshu.com/p/5b4ef8112b97</a></p>
+</li>
+<li><p><a href="https://linux.cn/article-8737-1.html">https://linux.cn/article-8737-1.html</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/yuanfang_way/article/details/77987399">https://blog.csdn.net/yuanfang_way/article/details/77987399</a></p>
+</li>
+<li><p><a href="https://yq.aliyun.com/articles/483967">https://yq.aliyun.com/articles/483967</a></p>
+</li>
+<li><p><a href="https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/">https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/</a></p>
+</li>
+</ul>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>crash</tag>
       </tags>
   </entry>
   <entry>
@@ -6757,6 +6765,53 @@
       </tags>
   </entry>
   <entry>
+    <title>自签SSL证书</title>
+    <url>/%E8%87%AA%E7%AD%BEssl%E8%AF%81%E4%B9%A6.html</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<div  align="center">    
+<img data-src="https://lengyuewusheng.com/assets/images/ssl.jpeg" />
+</div>
+
+<p>devops 必备技能</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<ul>
+<li><p>查看当前系统使用的 OpenSSL 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取完整的版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>X.509 是密码学里公钥证书的格式标准。一般包含三类文件，key，csr，crt。</p>
+</blockquote>
+<ul>
+<li>key是私用密钥，openssl格式，通常是rsa算法。</li>
+<li>csr是证书请求文件，用于申请证书。在制作csr文件的时候，必须使用自己的私钥来签署申请，还可以设定一个密钥。</li>
+<li>crt是CA认证后的证书文件（windows下面的csr，其实是crt），签署人用自己的key给你签署的凭证。</li>
+</ul>
+<h1 id="证书创建过程"><a href="#证书创建过程" class="headerlink" title="证书创建过程"></a>证书创建过程</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /usr/local/nginx/conf/cert</span><br><span class="line">cd /usr/local/nginx/conf/cert</span><br><span class="line"></span><br><span class="line">#创建RSA私有密钥</span><br><span class="line">openssl genrsa  -out domainName.key 2048</span><br><span class="line"># 创建CSR(为申请数字服务器证书而发送至证书颁发机构 (CA) 的文件)</span><br><span class="line">openssl req -out domainName.csr -key domainName.key -new -sha256</span><br><span class="line">mv domainName.key domainName.origin.key</span><br><span class="line"># 删除RSA私钥密码</span><br><span class="line">openssl rsa -in domainName.origin.key -out domainName.key</span><br><span class="line"># 请使用 openssl x509 对证书进行签名(使用私钥和签名请求创建的公有证书)</span><br><span class="line">openssl x509 -req -sha256 -days 3650 -in domainName.csr -signkey domainName.key -out domainName.crt</span><br></pre></td></tr></table></figure>
+
+<h1 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">   listen 443 ssl;</span><br><span class="line">   ssl_certificate     /usr/local/nginx/conf/cert/domainName.crt;</span><br><span class="line">   ssl_certificate_key  /usr/local/nginx/conf/cert/domainName.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">certbot生成CentOS7证书</a></li>
+<li><a href="https://certbot.eff.org/docs/using.html#nginx">certbot官方文档</a></li>
+<li><a href="https://www.openssl.org/docs/man1.1.1/man1/">OpenSSL commands·官方文档</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/configuring-https-ssl.html">创建和签名 X509 证书</a></li>
+<li><a href="https://www.jianshu.com/p/f5d9d778d9dc">openssl 生成nginx 证书</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>openssl</tag>
+        <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MongoDB基础实践</title>
     <url>/mongodb%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5.html</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -6828,61 +6883,6 @@
       <tags>
         <tag>MongoDB</tag>
         <tag>nosql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux内核崩溃分析</title>
-    <url>/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<div  align="center">    
-<img data-src="https://lengyuewusheng.com/assets/images/Linuxkernel.png" />
-</div>
-
-<p>持续整理中。。。</p>
-
-</blockquote>
-
-<span id="more"></span>
-
-
-<h1 id="崩溃现场"><a href="#崩溃现场" class="headerlink" title="崩溃现场"></a>崩溃现场</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[@bjsjs_42_92 ~]# crash /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux /opt/var/crash/127.0.0.1-2019-08-06-10\:16\:35/vmcore</span><br><span class="line"></span><br><span class="line">crash 7.1.2-3.el7_2.1</span><br><span class="line">Copyright (C) 2002-2014  Red Hat, Inc.</span><br><span class="line">Copyright (C) 2004, 2005, 2006, 2010  IBM Corporation</span><br><span class="line">Copyright (C) 1999-2006  Hewlett-Packard Co</span><br><span class="line">Copyright (C) 2005, 2006, 2011, 2012  Fujitsu Limited</span><br><span class="line">Copyright (C) 2006, 2007  VA Linux Systems Japan K.K.</span><br><span class="line">Copyright (C) 2005, 2011  NEC Corporation</span><br><span class="line">Copyright (C) 1999, 2002, 2007  Silicon Graphics, Inc.</span><br><span class="line">Copyright (C) 1999, 2000, 2001, 2002  Mission Critical Linux, Inc.</span><br><span class="line">This program is free software, covered by the GNU General Public License,</span><br><span class="line">and you are welcome to change it and/or distribute copies of it under</span><br><span class="line">certain conditions.  Enter &quot;help copying&quot; to see the conditions.</span><br><span class="line">This program has absolutely no warranty.  Enter &quot;help warranty&quot; for details.</span><br><span class="line"></span><br><span class="line">GNU gdb (GDB) 7.6</span><br><span class="line">Copyright (C) 2013 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;</span><br><span class="line">and &quot;show warranty&quot; for details.</span><br><span class="line">This GDB was configured as &quot;x86_64-unknown-linux-gnu&quot;...</span><br><span class="line"></span><br><span class="line">      KERNEL: /usr/lib/debug/lib/modules/3.10.0-327.el7.x86_64/vmlinux</span><br><span class="line">    DUMPFILE: /opt/var/crash/127.0.0.1-2019-08-06-10:16:35/vmcore  [PARTIAL DUMP]</span><br><span class="line">        CPUS: 40</span><br><span class="line">        DATE: Tue Aug  6 10:16:27 2019</span><br><span class="line">      UPTIME: 390 days, 14:40:34</span><br><span class="line">LOAD AVERAGE: 81.55, 29.79, 16.87</span><br><span class="line">       TASKS: 2448</span><br><span class="line">    NODENAME: bjsjs_42_92</span><br><span class="line">     RELEASE: 3.10.0-327.el7.x86_64</span><br><span class="line">     VERSION: #1 SMP Thu Nov 19 22:10:57 UTC 2015</span><br><span class="line">     MACHINE: x86_64  (2199 Mhz)</span><br><span class="line">      MEMORY: 127.9 GB</span><br><span class="line">       PANIC: &quot;kernel BUG at fs/buffer.c:1280!&quot;</span><br><span class="line">         PID: 57502</span><br><span class="line">     COMMAND: &quot;java&quot;</span><br><span class="line">        TASK: ffff88201a2eb980  [THREAD_INFO: ffff880f7566c000]</span><br><span class="line">         CPU: 26</span><br><span class="line">       STATE:  (PANIC)</span><br><span class="line"></span><br><span class="line">crash&gt; bt</span><br><span class="line">PID: 57502  TASK: ffff88201a2eb980  CPU: 26  COMMAND: &quot;java&quot;</span><br><span class="line"> #0 [ffff880f7566f5a8] machine_kexec at ffffffff81051beb</span><br><span class="line"> #1 [ffff880f7566f608] crash_kexec at ffffffff810f2542</span><br><span class="line"> #2 [ffff880f7566f6d8] oops_end at ffffffff8163e1a8</span><br><span class="line"> #3 [ffff880f7566f700] die at ffffffff8101859b</span><br><span class="line"> #4 [ffff880f7566f730] do_trap at ffffffff8163d860</span><br><span class="line"> #5 [ffff880f7566f780] do_invalid_op at ffffffff81015204</span><br><span class="line"> #6 [ffff880f7566f830] invalid_op at ffffffff8164701e</span><br><span class="line">    [exception RIP: check_irqs_on+4]</span><br><span class="line">    RIP: ffffffff816326d1  RSP: ffff880f7566f8e8  RFLAGS: 00010046</span><br><span class="line">    RAX: 0000000000000096  RBX: ffff8810092d9110  RCX: ffff880ee7d05800</span><br><span class="line">    RDX: 0000000000001000  RSI: 000000000090014a  RDI: ffff880f8cf4b740</span><br><span class="line">    RBP: ffff880f7566f8e8   R8: 0000000000000004   R9: 0000000000000004</span><br><span class="line">    R10: ffff880ee7d05800  R11: ffff880f7566f9e8  R12: ffff880f8cf4b740</span><br><span class="line">    R13: 0000000000001000  R14: ffff8801df370800  R15: 0000000000000010</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018</span><br><span class="line"> #7 [ffff880f7566f8f0] __find_get_block at ffffffff81212c85</span><br><span class="line"> #8 [ffff880f7566f910] __getblk at ffffffff81212cb5</span><br><span class="line"> #9 [ffff880f7566f970] __ext4_get_inode_loc at ffffffffa0373030 [ext4]</span><br><span class="line">#10 [ffff880f7566f9d8] ext4_get_inode_loc at ffffffffa0374dbd [ext4]</span><br><span class="line">#11 [ffff880f7566f9e8] ext4_reserve_inode_write at ffffffffa0376906 [ext4]</span><br><span class="line">#12 [ffff880f7566fa18] ext4_mark_inode_dirty at ffffffffa03769d3 [ext4]</span><br><span class="line">#13 [ffff880f7566fa70] ext4_writepages at ffffffffa0377567 [ext4]</span><br><span class="line">#14 [ffff880f7566fba8] do_writepages at ffffffff811758fe</span><br><span class="line">#15 [ffff880f7566fbb8] __filemap_fdatawrite_range at ffffffff8116a685</span><br><span class="line">#16 [ffff880f7566fc08] filemap_flush at ffffffff8116a74c</span><br><span class="line">#17 [ffff880f7566fc18] ext4_alloc_da_blocks at ffffffffa0374a8c [ext4]</span><br><span class="line">#18 [ffff880f7566fc38] ext4_release_file at ffffffffa036df89 [ext4]</span><br><span class="line">#19 [ffff880f7566fc60] __fput at ffffffff811e0329</span><br><span class="line">#20 [ffff880f7566fca8] ____fput at ffffffff811e05ee</span><br><span class="line">#21 [ffff880f7566fcb8] task_work_run at ffffffff810a22f4</span><br><span class="line">#22 [ffff880f7566fce8] do_exit at ffffffff810815eb</span><br><span class="line">#23 [ffff880f7566fd78] do_group_exit at ffffffff81081dff</span><br><span class="line">#24 [ffff880f7566fda8] get_signal_to_deliver at ffffffff81092c10</span><br><span class="line">#25 [ffff880f7566fe40] do_signal at ffffffff81014417</span><br><span class="line">#26 [ffff880f7566ff30] do_notify_resume at ffffffff81014adf</span><br><span class="line">#27 [ffff880f7566ff50] retint_signal at ffffffff8163d1fc</span><br><span class="line">    RIP: 00007f3db495ee17  RSP: 00007f3cbc8a20f0  RFLAGS: 00010246</span><br><span class="line">    RAX: 0000000000000006  RBX: 00007f3cbc8a2430  RCX: 0000000000000001</span><br><span class="line">    RDX: 00007f3cbc99f700  RSI: 0000000000000008  RDI: 0000000000000000</span><br><span class="line">    RBP: 00007f3cbc8a2220   R8: 00007f3cbc8a25f0   R9: 00007f3cbc8a24c0</span><br><span class="line">    R10: 00000000fffffe00  R11: 0000000000000000  R12: 000000000000000b</span><br><span class="line">    R13: 00007f3cbc8a24c0  R14: 00007f3cbc8a2430  R15: 00007f3db48ee2c5</span><br><span class="line">    ORIG_RAX: ffffffffffffffff  CS: 0033  SS: 002b</span><br><span class="line">crash&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">KERNEL: 系统崩溃时运行的 kernel 文件</span><br><span class="line"></span><br><span class="line">DUMPFILE: 内核转储文件</span><br><span class="line"></span><br><span class="line">CPUS: 所在机器的 CPU 数量</span><br><span class="line"></span><br><span class="line">DATE: 系统崩溃的时间</span><br><span class="line"></span><br><span class="line">TASKS: 系统崩溃时内存中的任务数</span><br><span class="line"></span><br><span class="line">NODENAME: 崩溃的系统主机名</span><br><span class="line"></span><br><span class="line">RELEASE: 和 VERSION: 内核版本号</span><br><span class="line"></span><br><span class="line">MACHINE: CPU 架构</span><br><span class="line"></span><br><span class="line">MEMORY: 崩溃主机的物理内存</span><br><span class="line"></span><br><span class="line">PANIC: 崩溃类型，常见的崩溃类型包括：</span><br><span class="line"></span><br><span class="line">SysRq (System Request)：通过魔法组合键导致的系统崩溃，通常是测试使用。通过 echo c &gt; /proc/sysrq-trigger，就可以触发系统崩溃。</span><br><span class="line"></span><br><span class="line">oops：可以看成是内核级的 Segmentation Fault。应用程序如果进行了非法内存访问或执行了非法指令，会得到 Segfault 信号，一般行为是 coredump，应用程序也可以自己截获 Segfault 信号，自行处理。如果内核自己犯了这样的错误，则会弹出 oops 信息。</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &gt;&gt; /etc/yum.repos.d/CentOS-Debug.repo  &lt;&lt;EOF</span><br><span class="line">[CentOS-Debug]</span><br><span class="line">name=CentOS-$releasever - DebugInfo</span><br><span class="line">baseurl=http://debuginfo.centos.org/\$releasever/\$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">protect=1</span><br><span class="line">priority=1</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">yum --enablerepo=CentOS-Debug install -y kernel-debuginfo-$(uname -r)</span><br><span class="line"></span><br><span class="line">debuginfo-install glibc</span><br><span class="line"></span><br><span class="line">vmcore crash</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
-<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564573323&amp;ver=1762&amp;signature=eYQiG0V4e3pgc5iydmtd*UEuhY7rohGi9zaL*RC0WEfAiCVkC4t1brOW0hsLGkaT3Fb54tubjVVihDE24JBc3TDelUB8VS3dXWmA5oQSE8HyC*j7Cu8KTjfSmoYkL3wN&amp;new=1</a></p>
-</li>
-<li><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1564546192&amp;ver=1761&amp;signature=4arrExz*PZo7Q3bQh5JnHWGSHOFGVdyWcc-WLOHUnHdNZoX6C0Abn*ENOjxlyt50u03ahhItFz7sj7wdGswCnLgOJ-HJBX1lEp8K2IlHxBggA8ZbcfAWj76YroR6wifv&amp;new=1</a></p>
-</li>
-<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump1/index.html</a></p>
-</li>
-<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump3/index.html</a></p>
-</li>
-<li><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html">https://www.ibm.com/developerworks/cn/linux/l-cn-kdump4/index.html</a></p>
-</li>
-<li><p><a href="https://www.jianshu.com/p/5b4ef8112b97">https://www.jianshu.com/p/5b4ef8112b97</a></p>
-</li>
-<li><p><a href="https://linux.cn/article-8737-1.html">https://linux.cn/article-8737-1.html</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/yuanfang_way/article/details/77987399">https://blog.csdn.net/yuanfang_way/article/details/77987399</a></p>
-</li>
-<li><p><a href="https://yq.aliyun.com/articles/483967">https://yq.aliyun.com/articles/483967</a></p>
-</li>
-<li><p><a href="https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/">https://xiaoyeshiyu.github.io/linux/fae/2017/05/11/%E5%AE%9E%E4%BE%8B%E4%BD%BF%E7%94%A8crash%E5%88%86%E6%9E%90Kdump%E8%BD%AC%E5%82%A8kernel%E5%B4%A9%E6%BA%83%E5%86%85%E6%A0%B8/</a></p>
-</li>
-</ul>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html">Linux OOM Killer 保护机制</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>crash</tag>
       </tags>
   </entry>
   <entry>
