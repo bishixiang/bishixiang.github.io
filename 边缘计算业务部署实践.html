@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://lengyuewusheng.com/assets/images/edge/prometheus.png">
 <meta property="og:image" content="https://lengyuewusheng.com/assets/images/edge/message.png">
 <meta property="article:published_time" content="2022-02-20T13:43:15.000Z">
-<meta property="article:modified_time" content="2022-02-23T13:51:21.192Z">
+<meta property="article:modified_time" content="2022-02-24T04:04:05.101Z">
 <meta property="article:author" content="冷月无声">
 <meta property="article:tag" content="运维自动化">
 <meta property="article:tag" content="Edge Computing">
@@ -171,7 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E7%9A%84%E7%AD%B9%E5%A4%87%E5%92%8C%E8%B0%83%E7%A0%94"><span class="nav-number">1.</span> <span class="nav-text">前期的筹备和调研</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%9A%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">了解业务架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E7%81%BE%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">容灾设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">IP资源管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%88%B6%E5%93%81%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">设计制品库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%A0%A1%E5%9E%92%E6%9C%BA"><span class="nav-number">1.6.</span> <span class="nav-text">搭建堡垒机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E8%A7%84%E8%8C%83%E7%BA%A6%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">生产环境的规范约定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E8%A7%84%E8%8C%83"><span class="nav-number">2.1.</span> <span class="nav-text">边界规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E8%A7%84%E8%8C%83"><span class="nav-number">2.2.</span> <span class="nav-text">版本规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E8%A7%84%E8%8C%83"><span class="nav-number">2.3.</span> <span class="nav-text">策略规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8-%E9%83%A8%E7%BD%B2-%E8%A7%84%E8%8C%83"><span class="nav-number">2.4.</span> <span class="nav-text">应用(部署)规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97-%E6%95%B0%E6%8D%AE%E5%9B%9E%E6%94%B6%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83"><span class="nav-number">2.5.</span> <span class="nav-text">(日志)数据回收流程规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E4%BB%98%E8%A7%84%E8%8C%83%E5%8D%B3%E5%8F%AF%E8%BF%90%E7%BB%B4%E6%A0%87%E5%87%86"><span class="nav-number">2.6.</span> <span class="nav-text">交付规范即可运维标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%AE%9E%E6%96%BD"><span class="nav-number">3.</span> <span class="nav-text">部署实施</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">服务器初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E4%B8%9A%E5%8A%A1%E5%BA%94%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">部署业务应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">自动化实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF"><span class="nav-number">4.1.</span> <span class="nav-text">业务场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82"><span class="nav-number">4.2.</span> <span class="nav-text">功能需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">4.3.</span> <span class="nav-text">设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="nav-number">4.4.</span> <span class="nav-text">实现效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E5%91%8A%E8%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">监控告警</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">5.1.</span> <span class="nav-text">监控可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%8A%E8%AD%A6"><span class="nav-number">5.2.</span> <span class="nav-text">告警</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C-1"><span class="nav-number">5.3.</span> <span class="nav-text">实现效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">最后总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E7%9A%84%E7%AD%B9%E5%A4%87%E5%92%8C%E8%B0%83%E7%A0%94"><span class="nav-number">1.</span> <span class="nav-text">前期的筹备和调研</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%9A%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">了解业务架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E7%81%BE%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">容灾设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%92%8C%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92"><span class="nav-number">1.4.</span> <span class="nav-text">IP资源管理和网络规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%88%B6%E5%93%81%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">设计制品库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%A0%A1%E5%9E%92%E6%9C%BA"><span class="nav-number">1.6.</span> <span class="nav-text">搭建堡垒机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E8%A7%84%E8%8C%83%E7%BA%A6%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">生产环境的规范约定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E8%A7%84%E8%8C%83"><span class="nav-number">2.1.</span> <span class="nav-text">边界规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E8%A7%84%E8%8C%83"><span class="nav-number">2.2.</span> <span class="nav-text">版本规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E8%A7%84%E8%8C%83"><span class="nav-number">2.3.</span> <span class="nav-text">策略规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8-%E9%83%A8%E7%BD%B2-%E8%A7%84%E8%8C%83"><span class="nav-number">2.4.</span> <span class="nav-text">应用(部署)规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97-%E6%95%B0%E6%8D%AE%E5%9B%9E%E6%94%B6%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83"><span class="nav-number">2.5.</span> <span class="nav-text">(日志)数据回收流程规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E4%BB%98%E8%A7%84%E8%8C%83%E5%8D%B3%E5%8F%AF%E8%BF%90%E7%BB%B4%E6%A0%87%E5%87%86"><span class="nav-number">2.6.</span> <span class="nav-text">交付规范即可运维标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%AE%9E%E6%96%BD"><span class="nav-number">3.</span> <span class="nav-text">部署实施</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">服务器初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E4%B8%9A%E5%8A%A1%E5%BA%94%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">部署业务应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.</span> <span class="nav-text">自动化实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF"><span class="nav-number">4.1.</span> <span class="nav-text">业务场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82"><span class="nav-number">4.2.</span> <span class="nav-text">功能需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">4.3.</span> <span class="nav-text">设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="nav-number">4.4.</span> <span class="nav-text">实现效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E5%91%8A%E8%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">监控告警</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">5.1.</span> <span class="nav-text">监控可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%8A%E8%AD%A6"><span class="nav-number">5.2.</span> <span class="nav-text">告警</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C-1"><span class="nav-number">5.3.</span> <span class="nav-text">实现效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">最后总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -292,7 +292,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-23 21:51:21" itemprop="dateModified" datetime="2022-02-23T21:51:21+08:00">2022-02-23</time>
+      <time title="修改时间：2022-02-24 12:04:05" itemprop="dateModified" datetime="2022-02-24T12:04:05+08:00">2022-02-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -350,7 +350,7 @@
 <li>其次单点服务器应该在业务容忍的时间范围内实现快速替换。可以通过文件备份，如Jenkins、prometheus的服务、配置以及数据皆为文件形式存储，相比结构化数据存储就比较容易实现快速替换；</li>
 <li>单点服务器突发故障不会对生产环境应用造成不可控的影响。如在边缘节点服务器本地设置应用数据更新的缓冲目录，更新过程中不管是制品库突发故障还是自动化引擎出现问题都不会导致服务状态未知。</li>
 </ul>
-<h2 id="IP资源管理"><a href="#IP资源管理" class="headerlink" title="IP资源管理"></a>IP资源管理</h2><p>对于过百服务器的业务场景，直接使用IP管理业务是不现实的。个人认为原因有三：</p>
+<h2 id="IP资源管理和网络规划"><a href="#IP资源管理和网络规划" class="headerlink" title="IP资源管理和网络规划"></a>IP资源管理和网络规划</h2><p>对于过百服务器的业务场景，直接使用IP管理业务是不现实的。个人认为原因有三：</p>
 <ul>
 <li>IP地址的识别度低，直接导致的结果是使用过程中极易出错；</li>
 <li>直接应用IP在部署阶段会增加自动化的难度；</li>
@@ -363,6 +363,7 @@
 </ul>
 <p>以IP资源信息为核心，可以延展出与之相关联的服务器配置信息、业务应用信息、带宽及运营商信息、成本信息等许多基础信息，这些基础信息的简单汇总就是最原始的CMDB。</p>
 <p>服务器IP和别名的映射信息，作为最基本和最根本的业务信息。如果不能实现平台化管理建议至少应该提交到Git中进行版本化管理。</p>
+<p>网络规划涉及私有网络和公网IP。私有网络一般涉及网段规划和业务IP分配规划。合理的内网IP规划可以通过IP信息直接识别区域业务或应用，便于实现更好管理。由于公有云不同区域提供的默认子网网段可能冲突而且识别度较低，因此一般不建议直接使用默认子网。公网IP一般分配较随机，一般需要考虑运营商、计费模式及费用成本、带宽限制等方面。</p>
 <h2 id="设计制品库"><a href="#设计制品库" class="headerlink" title="设计制品库"></a>设计制品库</h2><p>制品库本质上是存储制品的仓库，核心功能是存储。因此制品库可以是一个制品库平台（如：nexus、artifactory）也一个存储系统甚至一台大硬盘服务器。</p>
 <p>在考虑制品库的阶段，主要考虑以下几个方面的问题：</p>
 <ul>
@@ -374,7 +375,7 @@
 <p>制品库是ci、cd的边界，因此在实际场景中该角色不可或缺。</p>
 <h2 id="搭建堡垒机"><a href="#搭建堡垒机" class="headerlink" title="搭建堡垒机"></a>搭建堡垒机</h2><p>堡垒机是生产环境的入口。一般具有安全审计，风险拦截，权限管理等功能。在实际场景中，由于虽然会有各方面的条件限制，但我们仍需要考虑搭建堡垒机的角色，主要是实现一下功能，收紧入口降低安全风险，实现自动化，方便批处理执行。实际场景中一般应该满足以下需求：</p>
 <ul>
-<li>严格的安全策略控制访问入口；</li>
+<li>严格的安全组访问策略控制访问入口；</li>
 <li>与生产环境必要的网络和权限互通；</li>
 <li>快捷登录服务器的配置，通常有以下三种方式：<ul>
 <li>密码登录。明文存储密码极易造成密码泄漏，极不推荐；</li>
@@ -435,6 +436,14 @@
 <li>日志文件完整性。如果存在多个阶段的回传，要避免一个阶段的传输尚未结束，另一个阶段直接开始。</li>
 </ul>
 <h2 id="交付规范即可运维标准"><a href="#交付规范即可运维标准" class="headerlink" title="交付规范即可运维标准"></a>交付规范即可运维标准</h2><ul>
+<li>安全合规。<ul>
+<li>通过公有云的安全组访问策略，限制网段、IP、端口的访问规则，在不影响业务正常运行的前提下开放最小访问权限；</li>
+<li>避免非对外业务端口直接监听公网IP；</li>
+<li>rsync在白名单访问的基础上增加鉴权认证、限制到具体目录读写操作的权限粒度；</li>
+<li>配置文件中排除密码等敏感信息；</li>
+<li>其它必要的安全考量。</li>
+</ul>
+</li>
 <li>具备一定的冗余算力。在处理业务正常峰值的基础上，对于异常波动应有一定的耐受能力；</li>
 <li>生产环境服务部署的一致性。同一个或者同一组服务的多台服务器相当于一台服务器的多个副本，即无状态部署；</li>
 <li>生产环境无垃圾数据文件。生产环境中存留垃圾数据会对后续的维护产生不同程度的干扰，因此应及时清理；</li>
@@ -530,9 +539,9 @@
 <li><p>告警通知<br><img data-src="https://lengyuewusheng.com/assets/images/edge/message.png" alt="alert"></p>
 </li>
 </ul>
-<h1 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h1><p>一篇写下来终于领悟到什么叫眼高手低，没写之前觉得有无数观点可以输出，真正开始整理的时候下发现，想把这些想法条例清楚的表述出来并不容易。在此对于那些默默输出原创有价值文章的人表示敬意。业务部署和写文档一样，没有实践之前觉得没有什么复杂性可言，实际实施过程中才发现很多细节问题需要通盘考虑。快糙猛的部署行为也许可以达到业务火速上线的效果。但是欠下的技术债会在很长一个周期内潜移默化的影响着业务品质。因此我们在追求业务快速迭代的同时，一定要夯实基础。尽可能避免偷工减料的行为拉低了业务稳定性。</p>
-<p>行文至此，才发现文字已经堆积了不少，但还不确定观点是否表达清楚。在略显凌乱的文字中间，希望对缺乏业务部署经验的同学一些思路上的启发，同时也是对自己整个项目实施过程的全面总结。当然，由于个人见识和理解的局限性，造成了客观上论述的片面性，敬请各路大神不吝批评指正，进而实现持续完善。由于篇幅限制，具体的配置细节和脚本逻辑没有进一步展开。如遇到相关疑问，也欢迎线下探讨交流。</p>
-<p>纸上得来终觉浅。所谓的经验还需更多的实践才能有更深刻的理解。</p>
+<h1 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h1><p>一篇写下来终于领悟到什么叫眼高手低，没写之前觉得有无数观点可以输出，真正开始整理的时候才发现想把这些想法条例清楚的表述出来并不容易。在此不禁对那些默默输出原创有价值文章的人表示敬意。业务部署和写文档一样，没有实践之前觉得没有什么复杂性可言，实际实施过程中才发现很多细节问题需要通盘考虑。快糙猛的部署行为也许可以达到业务火速上线的效果。但是欠下的技术债会在很长一个周期内潜移默化的影响着业务品质。因此我们在追求业务快速迭代的同时，一定要夯实基础。尽可能避免偷工减料的行为拉低了业务稳定性。</p>
+<p>行文至此，才发现文字已经堆积了不少，但还不确定观点是否表达清楚。在略显凌乱的文字中间，希望对缺乏业务部署经验的同学一些思路上的启发，同时也是对自己整个项目实施过程的全面总结。当然，由于个人见识和理解的局限性，造成了客观上论述的片面性，敬请各路大神不吝批评指正，进而实现对内容的持续完善。由于篇幅限制，具体的配置细节和脚本逻辑没有进一步展开。如遇到相关疑问，也欢迎线下探讨交流。</p>
+<p>纸上得来终觉浅。所谓的经验都需要通过更多的反复实践才能有更深刻的理解。</p>
 
     </div>
 
