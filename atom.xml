@@ -6,7 +6,7 @@
   <link href="https://www.lengyuewusheng.com/atom.xml" rel="self"/>
   
   <link href="https://www.lengyuewusheng.com/"/>
-  <updated>2022-02-24T12:03:09.757Z</updated>
+  <updated>2022-03-08T07:43:52.238Z</updated>
   <id>https://www.lengyuewusheng.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>力荐几款开发者必备的Chrome插件</title>
+    <link href="https://www.lengyuewusheng.com/%E5%8A%9B%E8%8D%90%E5%87%A0%E6%AC%BE%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%85%E5%A4%87%E7%9A%84chrome%E6%8F%92%E4%BB%B6.html"/>
+    <id>https://www.lengyuewusheng.com/%E5%8A%9B%E8%8D%90%E5%87%A0%E6%AC%BE%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%85%E5%A4%87%E7%9A%84chrome%E6%8F%92%E4%BB%B6.html</id>
+    <published>2032-02-19T08:47:23.000Z</published>
+    <updated>2022-03-08T07:43:52.238Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote class="blockquote-center"><p>重度工具控的小众而实用的Chrome插件分享。</p></blockquote><span id="more"></span><h1 id="copytables"><a href="#copytables" class="headerlink" title="copytables"></a><a href="https://github.com/gebrkn/copytables">copytables</a></h1><h2 id="插件介绍"><a href="#插件介绍" class="headerlink" title="插件介绍"></a>插件介绍</h2><p>copytables是开源的用于选择和复制html页面上的表格单元格的Chrome扩展。</p><h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><p>快速选取复制如CMDB、confluence中的表格单元格信息。</p><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul><li>按住Alt(Mac: option)并用鼠标拖动选择单元格；</li><li>按住Alt+Ctrl(Mac: option+command)并拖动以选择列；</li><li>选择完成后，<code>Ctrl+C(Mac: command+C)</code>完成复制操作。</li></ul><h2 id="安装地址"><a href="#安装地址" class="headerlink" title="安装地址"></a>安装地址</h2><p><a href="https://chrome.google.com/webstore/detail/copytables/ekdpkppgmlalfkphpibadldikjimijon?hl=zh-CN">chrome 网上应用店·copytables</a></p><h1 id="User-Agent-Switcher"><a href="#User-Agent-Switcher" class="headerlink" title="User-Agent Switcher"></a>User-Agent Switcher</h1><h2 id="插件介绍-1"><a href="#插件介绍-1" class="headerlink" title="插件介绍"></a>插件介绍</h2><p>该插件提供了一个工具栏按钮，可以使用该按钮在不同的User-Agent关键字之间切换，或者输入自定义的ua关键字。<br>相比<a href="https://chrome.google.com/webstore/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg?hl=zh-CN">User-Agent Switcher for Chrome</a>，虽然其用户规模更大，但是由于<code>User-Agent Switcher</code>在交互上的便捷性，个人依然推荐前者。</p><h2 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h2><ul><li>验证站点是否存在基于User-Agent的访问限制策略；</li><li>验证站点基于User-Agent的跳转或显示逻辑是否生效。</li></ul><h2 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h2><p>直接在扩展程序清单中调出插件并选择或自定义ua类型即可。</p><h2 id="安装地址-1"><a href="#安装地址-1" class="headerlink" title="安装地址"></a>安装地址</h2><p><a href="https://chrome.google.com/webstore/detail/user-agent-switcher/lkmofgnohbedopheiphabfhfjgkhfcgf?hl=zh-CN">chrome 网上应用店·User-Agent Switcher</a></p><h1 id="Website-IP"><a href="#Website-IP" class="headerlink" title="Website IP"></a>Website IP</h1><h2 id="插件介绍-2"><a href="#插件介绍-2" class="headerlink" title="插件介绍"></a>插件介绍</h2><p>一个将当前站点解析并访问的的IP信息显示在网站右下角的简单却实用的插件。当然你如果不嫌麻烦也可以通过浏览器的调试功能查看站点IP。</p><h2 id="适用场景-2"><a href="#适用场景-2" class="headerlink" title="适用场景"></a>适用场景</h2><p>确认站点是否被劫持，确认绑定hosts调试访问是否生效等场景。</p><h2 id="使用方法-2"><a href="#使用方法-2" class="headerlink" title="使用方法"></a>使用方法</h2><p>插件开启状态下，在非隐身模式下访问页面，在页面右下角可以看到站点IP信息。</p><h2 id="安装地址-2"><a href="#安装地址-2" class="headerlink" title="安装地址"></a>安装地址</h2><p><a href="https://chrome.google.com/webstore/detail/website-ip/ghbmhlgniedlklkpimlibbaoomlpacmk?hl=zh-CN">chrome 网上应用店·Website IP</a></p><h1 id="Set-Character-Encoding"><a href="#Set-Character-Encoding" class="headerlink" title="Set Character Encoding"></a>Set Character Encoding</h1><h2 id="插件介绍-3"><a href="#插件介绍-3" class="headerlink" title="插件介绍"></a>插件介绍</h2><p>支持手动设置浏览器页面的字符集编码。</p><h2 id="适用场景-3"><a href="#适用场景-3" class="headerlink" title="适用场景"></a>适用场景</h2><ul><li>调试页面的乱码问题。</li></ul><h2 id="使用方法-3"><a href="#使用方法-3" class="headerlink" title="使用方法"></a>使用方法</h2><p>右键单击网页上的某处以手动设置字符编码。所选字符集将自动应用于同一站点上的所有页面。选择菜单中的“Use page default”取消设置。</p><h2 id="安装地址-3"><a href="#安装地址-3" class="headerlink" title="安装地址"></a>安装地址</h2><p><a href="https://chrome.google.com/webstore/detail/set-character-encoding/bpojelgakakmcfmjfilgdlmhefphglae?hl=zh-CN">chrome 网上应用店·Set Character Encoding</a></p><h1 id="omni"><a href="#omni" class="headerlink" title="omni"></a><a href="https://github.com/alyssaxuu/omni">omni</a></h1><h2 id="插件介绍-4"><a href="#插件介绍-4" class="headerlink" title="插件介绍"></a>插件介绍</h2><p>像Alfred管理macOS一样，使用简单的命令界面管理Chrome浏览器的选项卡、书签、浏览器历史记录、执行各种操作等。</p><h2 id="适用场景-4"><a href="#适用场景-4" class="headerlink" title="适用场景"></a>适用场景</h2><ul><li>快速查找定位页面，提升Chrome浏览器使用效率。</li></ul><h2 id="使用方法-4"><a href="#使用方法-4" class="headerlink" title="使用方法"></a>使用方法</h2><p>Ctrl+Shift+K(Mac: command+Shift+K)调起面板，通过以下命令来执行操作或过滤结果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/tabs:      搜索定位当前打开的tab页</span><br><span class="line">/bookmarks: 搜索书签</span><br><span class="line">/history:   搜索浏览历史</span><br><span class="line">/remove:    删除书签或关闭标签</span><br><span class="line">/actions:   搜索所有支持的操作</span><br></pre></td></tr></table></figure><h2 id="安装地址-4"><a href="#安装地址-4" class="headerlink" title="安装地址"></a>安装地址</h2><p><a href="https://chrome.google.com/webstore/detail/omni-bookmark-history-tab/mapjgeachilmcbbokkgcbgpbakaaeehi?hl=zh-CN">chrome 网上应用店·omni</a></p><h1 id="Save-to-Pocket-x2F-Add-to-Microsoft-To-Do"><a href="#Save-to-Pocket-x2F-Add-to-Microsoft-To-Do" class="headerlink" title="Save to Pocket &#x2F; Add to Microsoft To Do"></a><a href="https://github.com/Pocket/extension-save-to-pocket">Save to Pocket</a> &#x2F; <a href="https://github.com/ukhan/add-to-ms-todo">Add to Microsoft To Do</a></h1><h2 id="插件介绍-5"><a href="#插件介绍-5" class="headerlink" title="插件介绍"></a>插件介绍</h2><p>随时收集和捕获灵感的最简单、最快的方法。在我个人看来这两个插件没有本质区别，都是快速收集有价值的信息。在使用上各有优劣，<code>Microsoft To Do</code>的访问速度更快，<code>Pocket</code>的阅读体验更好。需要强调的是，<code>Microsoft To Do</code>不是官方推出的Chrome扩展。</p><h2 id="适用场景-5"><a href="#适用场景-5" class="headerlink" title="适用场景"></a>适用场景</h2><ul><li>随时收集页面浏览过程中发现的有价值信息。</li></ul><h2 id="使用方法-5"><a href="#使用方法-5" class="headerlink" title="使用方法"></a>使用方法</h2><ul><li><a href="https://chrome.google.com/webstore/detail/add-to-microsoft-to-do/loblkkbfciiklgoblkigehhghfjfjede?hl=zh-CN">Add to Microsoft To Do</a>登录后直接通过鼠标右键菜单添加即可。</li><li><a href="https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=zh-CN">Save to Pocket</a>保存内容3种不同的方式：<ul><li>单击工具栏中的口袋按钮;</li><li>或右键单击链接并选择“保存到 Pocket”;</li><li>或使用键盘快捷键：Ctrl+Shift+P (Windows)、Command+Shift+P (Mac)。</li></ul></li></ul><h2 id="安装地址-5"><a href="#安装地址-5" class="headerlink" title="安装地址"></a>安装地址</h2><ul><li><a href="https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=zh-CN">chrome 网上应用店·Save to Pocket</a></li><li><a href="https://chrome.google.com/webstore/detail/add-to-microsoft-to-do/loblkkbfciiklgoblkigehhghfjfjede?hl=zh-CN">chrome 网上应用店·Add to Microsoft To Do</a></li></ul><p>如有其它优质工具推荐，欢迎留言交流。</p>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
+&lt;p&gt;重度工具控的小众而实用的Chrome插件分享。&lt;/p&gt;
+
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="工具控" scheme="https://www.lengyuewusheng.com/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    
+    <category term="Chrome插件" scheme="https://www.lengyuewusheng.com/tags/Chrome%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="工具控" scheme="https://www.lengyuewusheng.com/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>边缘计算业务部署实践</title>
@@ -535,31 +561,6 @@
     <category term="git" scheme="https://www.lengyuewusheng.com/tags/git/"/>
     
     <category term="版本控制" scheme="https://www.lengyuewusheng.com/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux OOM Killer 保护机制</title>
-    <link href="https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html"/>
-    <id>https://www.lengyuewusheng.com/linux-oom-killer-%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6.html</id>
-    <published>2018-12-25T14:47:57.000Z</published>
-    <updated>2019-04-02T09:33:36.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>OOM killer（Out Of Memory killer）</p><span id="more"></span><blockquote><p>linux下允许程序申请比系统可用内存更多的内存，这个特性叫Overcommit（过度分配）。在系统内存耗尽的情况下，OOM killer机制选择性的干掉一些进程以求释放一些内存。默认具体的记录日志是在&#x2F;var&#x2F;log&#x2F;messages中。</p></blockquote><h1 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h1><ul><li>参数&#x2F;proc&#x2F;sys&#x2F;vm&#x2F;overcommit_memory可以控制进程对内存过量使用的应对策略</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">overcommit_memory=0，这是缺省值，表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。</span><br><span class="line">overcommit_memory=1，内核会永远认为有充足的内存可用，进程申请内存时总是允许。</span><br><span class="line">overcommit_memory=2，表示系统所能分配的内存不会超过swap+RAM*系数（/proc/sys/vm/overcommit_ratio，默认50%，可以调整），如果这么多资源已经用光，那么后面任何尝试申请内存的行为都会返回错误，这通常意味着此时没法运行任何新程序。</span><br></pre></td></tr></table></figure><h1 id="内核决策依据"><a href="#内核决策依据" class="headerlink" title="内核决策依据"></a>内核决策依据</h1><ul><li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_adj，该pid进程被oom killer杀掉的权重，一般介于 [-17,15]（具体具体权重的范围需要查看内核确认）之间，越高的权重，意味着更可能被oom killer选中，-17表示禁止被kill掉。</p></li><li><p>&#x2F;proc&#x2F;[pid]&#x2F;oom_score，当前该pid进程的被kill的分数，越高的分数意味着越可能被kill，这个数值是根据oom_adj运算（2ⁿ，n就是oom_adj的值）后的结果，本身oom_score是不能修改值。</p></li></ul><h1 id="两种进程保护措施"><a href="#两种进程保护措施" class="headerlink" title="两种进程保护措施"></a>两种进程保护措施</h1><ul><li><p>修改权重</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -17 &gt; /proc/[PID]/oom_adj（输入-17，禁止被OOM机制处理）</span><br></pre></td></tr></table></figure></li><li><p>开启OOM较为的保险机制</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo “vm.panic_on_oom=2” &gt;&gt; /etc/sysctl.conf</span><br><span class="line">systcl -p</span><br></pre></td></tr></table></figure></li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.linuxba.com/archives/7744">https://www.linuxba.com/archives/7744</a></p><div><h1>推荐文章<span style="font-size:0.45em; color:gray">（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）</span></h1><ul><li><a href="https://www.lengyuewusheng.com/prometheus%E7%9B%91%E6%8E%A7%E5%AE%9E%E8%B7%B5.html">prometheus监控实践</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%86%85%E6%A0%B8%E5%B4%A9%E6%BA%83%E5%88%86%E6%9E%90.html">Linux内核崩溃分析</a></li><li><a href="https://www.lengyuewusheng.com/linux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html">Linux开机启动的多种实现方式</a></li><li><a href="https://www.lengyuewusheng.com/linux%E9%98%B2%E7%81%AB%E5%A2%99%E4%B9%8Biptables.html">Linux防火墙之iptables</a></li><li><a href="https://www.lengyuewusheng.com/rsync%E7%BB%8F%E5%85%B8%E7%94%A8%E4%BE%8B%E6%80%BB%E7%BB%93.html">rsync经典用例总结</a></li></ul></div>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;OOM killer（Out Of Memory killer）&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Linux" scheme="https://www.lengyuewusheng.com/categories/Linux/"/>
-    
-    
-    <category term="Linux" scheme="https://www.lengyuewusheng.com/tags/Linux/"/>
-    
-    <category term="OOM" scheme="https://www.lengyuewusheng.com/tags/OOM/"/>
-    
-    <category term="kernel" scheme="https://www.lengyuewusheng.com/tags/kernel/"/>
     
   </entry>
   
