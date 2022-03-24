@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="baidu_verify_efFTzzqBeC.html">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.lengyuewusheng.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="过去两年对容器化的一些经验和浅显思考，抛砖引玉，分享给大家。欢迎有相关思路的同学沟通探讨。本文更侧重技术层面的实现思路，可以适度摆脱内部合规和现实规范的束缚，思路可能会更开阔一些。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker镜像定制实践">
+<meta property="og:url" content="https://www.lengyuewusheng.com/docker%E9%95%9C%E5%83%8F%E5%AE%9A%E5%88%B6%E5%AE%9E%E8%B7%B5.html">
+<meta property="og:site_name" content="冷月无声">
+<meta property="og:description" content="过去两年对容器化的一些经验和浅显思考，抛砖引玉，分享给大家。欢迎有相关思路的同学沟通探讨。本文更侧重技术层面的实现思路，可以适度摆脱内部合规和现实规范的束缚，思路可能会更开阔一些。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-19T09:39:08.000Z">
+<meta property="article:modified_time" content="2022-03-24T12:32:56.779Z">
+<meta property="article:author" content="冷月无声">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="容器化">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.lengyuewusheng.com/docker%E9%95%9C%E5%83%8F%E5%AE%9A%E5%88%B6%E5%AE%9E%E8%B7%B5.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.lengyuewusheng.com/docker%E9%95%9C%E5%83%8F%E5%AE%9A%E5%88%B6%E5%AE%9E%E8%B7%B5.html","path":"docker镜像定制实践.html","title":"Docker镜像定制实践"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Docker镜像定制实践 | 冷月无声</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119523284-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-119523284-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?01d66b7109c2a75544d1724df8a28646"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="冷月无声" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">冷月无声</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">相信积累的力量！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E9%95%9C%E5%83%8F%E7%9A%84%E5%AE%9A%E5%88%B6%E5%8E%9F%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">Docker镜像的定制原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Red-Hat%E7%9A%84%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%B9%E5%99%A8%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">1.1.</span> <span class="nav-text">Red Hat的云原生容器设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">1.2.</span> <span class="nav-text">最佳实践</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base%E9%95%9C%E5%83%8F%E7%9A%84%E5%AE%9A%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">base镜像的定制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#base%E9%95%9C%E5%83%8F%E9%80%89%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">base镜像选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E5%88%B6%E4%BC%98%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text">定制优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#golang%E5%BA%94%E7%94%A8%E9%95%9C%E5%83%8F%E7%9A%84%E5%AE%9A%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">golang应用镜像的定制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#golang%E5%BA%94%E7%94%A8%E6%9E%84%E5%BB%BA%E7%8E%AF%E5%A2%83%E9%95%9C%E5%83%8F%E5%AE%9A%E5%88%B6"><span class="nav-number">3.1.</span> <span class="nav-text">golang应用构建环境镜像定制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#golang%E5%BA%94%E7%94%A8%E8%BF%90%E8%A1%8C%E6%97%B6%E7%8E%AF%E5%A2%83%E9%95%9C%E5%83%8F%E5%AE%9A%E5%88%B6"><span class="nav-number">3.2.</span> <span class="nav-text">golang应用运行时环境镜像定制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php%E5%BA%94%E7%94%A8%E9%95%9C%E5%83%8F%E7%9A%84%E5%AE%9A%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">php应用镜像的定制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#php%E6%89%A9%E5%B1%95%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86"><span class="nav-number">4.1.</span> <span class="nav-text">php扩展如何管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#php%E5%92%8Cnginx%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6%E5%BA%94%E8%AF%A5%E9%9B%86%E6%88%90"><span class="nav-number">4.2.</span> <span class="nav-text">php和nginx环境是否应该集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8Dphp-fpm%E8%BF%9B%E7%A8%8B%E9%80%80%E5%87%BA%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%A3%8E%E9%99%A9"><span class="nav-number">4.3.</span> <span class="nav-text">如何避免php-fpm进程退出带来的风险</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lua%E5%BA%94%E7%94%A8%E9%95%9C%E5%83%8F%E5%AE%9A%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">lua应用镜像定制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crond%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%A6%82%E4%BD%95%E8%80%83%E8%99%91"><span class="nav-number">6.</span> <span class="nav-text">crond定时任务如何考虑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8init-Container%E5%B0%86%E8%BF%90%E8%A1%8C%E6%97%B6%E7%8E%AF%E5%A2%83%E5%92%8C%E4%BB%A3%E7%A0%81%E5%89%A5%E7%A6%BB"><span class="nav-number">7.</span> <span class="nav-text">使用init Container将运行时环境和代码剥离</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E9%98%85%E8%B5%84%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">参阅资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="冷月无声"
+      src="/private/logo.jpg">
+  <p class="site-author-name" itemprop="name">冷月无声</p>
+  <div class="site-description" itemprop="description">不止于技术。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">120</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bishixiang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/bishixiang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;bishixiang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bishixiang@163.com" title="E-Mail → mailto:bishixiang@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://openresty.org/cn/" title="https:&#x2F;&#x2F;openresty.org&#x2F;cn&#x2F;" rel="noopener" target="_blank">openresty</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://docs.ansible.com/" title="https:&#x2F;&#x2F;docs.ansible.com&#x2F;" rel="noopener" target="_blank">Ansible</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.lengyuewusheng.com/docker%E9%95%9C%E5%83%8F%E5%AE%9A%E5%88%B6%E5%AE%9E%E8%B7%B5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/private/logo.jpg">
+      <meta itemprop="name" content="冷月无声">
+      <meta itemprop="description" content="不止于技术。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冷月无声">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker镜像定制实践
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-19 17:39:08" itemprop="dateCreated datePublished" datetime="2022-03-19T17:39:08+08:00">2022-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-24 20:32:56" itemprop="dateModified" datetime="2022-03-24T20:32:56+08:00">2022-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+<p>过去两年对容器化的一些经验和浅显思考，抛砖引玉，分享给大家。欢迎有相关思路的同学沟通探讨。本文更侧重技术层面的实现思路，可以适度摆脱内部合规和现实规范的束缚，思路可能会更开阔一些。</p>
+
+</blockquote>
+
+<span id="more"></span>
+
+
+<h1 id="Docker镜像的定制原则"><a href="#Docker镜像的定制原则" class="headerlink" title="Docker镜像的定制原则"></a>Docker镜像的定制原则</h1><h2 id="Red-Hat的云原生容器设计原则"><a href="#Red-Hat的云原生容器设计原则" class="headerlink" title="Red Hat的云原生容器设计原则"></a>Red Hat的云原生容器设计原则</h2><ul>
+<li><p>唯一关注性原则(Single concern principle · SCP)<br>SCP类似于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SOLID_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1)">SOLID</a>的单一职责原则(SRP)，容器通常管理单个进程，并且大多数时候是通过该进程解决一个问题。如果容器化微服务需要解决多个关注点，则可以使用sidecar或init-containers等模式将多个容器组合成一个部署单元(Pod)，其中每个容器仍然处理一个关注点。</p>
+</li>
+<li><p>高度可观测性原则(High observability principle · HOP)<br>容器提供了一种统一的方式来打包和运行应用程序。任何旨在成为云原生公民的容器都必须为运行时环境提供API，以观察容器的健康状况并触发相应行为。这是以统一方式自动化容器更新和生命周期的基本前提，同时也提高了系统的弹性和用户体验。实际上，容器化应用程序至少应提供存活和就绪状态检查的API。应用程序应将重要事件记录到标准错误(STDERR)和标准输出(STDOUT)中，以便通过Fluentd或Logstash等工具进行日志聚合，并可与OpenTracing、Prometheus等工具集成。</p>
+</li>
+<li><p>生命周期一致性原则(Life-cycle conformance principle · LCP)<br>应用程序可以读取来自管理平台的事件，并作出响应。来自管理平台的各种事件旨在管理容器的生命周期，应用程序将决定要处理哪些事件。</p>
+</li>
+<li><p>镜像不可变更性原则（Image immutability principle · IIP）<br>容器化应用程序是不可变的，不会在不同环境之间发生变化。使用外部方法来存储运行时数据，通过外部化配置区分不同环境，而非为每个环境创建或修改容器。容器化应用程序中的任何更改都应构建新的容器镜像并在所有环境中重新应用。</p>
+</li>
+<li><p>进程可处置性原则（Process disposability principle · PDP）<br>容器化应用程序必须保持其无状态、分布式和冗余。能够快速启动和关闭。</p>
+</li>
+<li><p>自包含性原则(Self-containment principle · S-CP)<br>容器应该包含它在构建时所需的一切。</p>
+</li>
+<li><p>运行时约束性原则(Runtime confinement principle·RCP)<br>容器应声明其资源需求并将该信息传递给管理平台，应用程序应保持在指定的资源需求范围内运行。</p>
+</li>
+</ul>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><ul>
+<li><p>精简镜像。尽可能小的容器镜像可以减少构建和网络传输时间。</p>
+</li>
+<li><p>支持任意用户ID，避免使用sudo命令或要求特定用户ID来运行容器。</p>
+</li>
+<li><p>声明重要端口，使用EXPOSE命令声明端口，将更易读和易维护。</p>
+</li>
+<li><p>持久化卷存储持久化数据，需要在容器销毁后依然保留的数据存储在持久化卷中。</p>
+</li>
+<li><p>声明元数据，标签和注释等元数据可以使容器镜像更易用和易维护。</p>
+</li>
+<li><p>宿主和镜像间同步，宿主属性同步到容器，如时间和机器id等。</p>
+</li>
+<li><p>使用.dockerignore 文件。</p>
+</li>
+<li><p>多阶段构建，压缩镜像大小。</p>
+</li>
+<li><p>利用构建缓存，加速构建。</p>
+</li>
+</ul>
+<h1 id="base镜像的定制"><a href="#base镜像的定制" class="headerlink" title="base镜像的定制"></a>base镜像的定制</h1><h2 id="base镜像选型"><a href="#base镜像选型" class="headerlink" title="base镜像选型"></a>base镜像选型</h2><table>
+<thead>
+<tr>
+<th align="left">系统名称</th>
+<th align="left">状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://busybox.net/">BusyBox</a></td>
+<td align="left">非常轻量，Multi-Call binary</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://alpinelinux.org/">Alpine</a></td>
+<td align="left">轻量、基于musl和BusyBox，包含包管理器</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/GoogleContainerTools/distroless">distroless</a></td>
+<td align="left">及其轻量，不包含包管理器、shell</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/vmware/photon">Photon Platform（VMware光子操作系统）</a></td>
+<td align="left">针对vSphere和云计算平台</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/rancher/os">RacncherOS</a></td>
+<td align="left">不再维护</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://coreos.com/">CoreOS</a></td>
+<td align="left">不再维护</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.projectatomic.io/">Atomic（红帽原子项目）</a></td>
+<td align="left">不再维护</td>
+</tr>
+</tbody></table>
+<ul>
+<li>在轻量和易用性之间取折中，综合考虑社区活跃度，生态丰富度等多方面因素，选定<code>Alpine</code>作为base镜像。当然这不代表其它系统镜像有任何缺陷，适合的就是最好的，当然也可以选用其它系统镜像。</li>
+</ul>
+<h2 id="定制优化"><a href="#定制优化" class="headerlink" title="定制优化"></a>定制优化</h2><ul>
+<li><p>追加必要的软件包。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ca-certificates tzdata sysstat procps lsof strace tcpdump paris-traceroute-ping vim bash rsync curl iproute2 alpine-base coreutils bind-tools tini shadow logrotate</span><br></pre></td></tr></table></figure>
+<ul>
+<li>易用性和镜像大小之间取平衡。</li>
+</ul>
+</li>
+<li><p>优化vim，定制vim配置，不建议安装扩展。</p>
+</li>
+<li><p>声明时区。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -v /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;</span><br><span class="line">echo &quot;Asia/Shanghai&quot; &gt;  /etc/timezone;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定制登录用户相关的环境变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># alias</span><br><span class="line">echo &quot;alias ll=&#x27;ls -l --color=auto&#x27;&quot; &gt;&gt; /etc/profile.d/alias.sh;</span><br><span class="line">echo &quot;alias tailf=&#x27;tail -f&#x27;&quot; &gt;&gt; /etc/profile.d/alias.sh;</span><br><span class="line"># history</span><br><span class="line">echo &quot;HISTSIZE=3000&quot; &gt;&gt; /etc/profile.d/tty_rc.sh;</span><br><span class="line">echo &quot;HISTFILESIZE=3000&quot; &gt;&gt; /etc/profile.d/tty_rc.sh;</span><br><span class="line">echo &#x27;HISTTIMEFORMAT=&quot;%Y-%m-%d %T  &quot;&#x27; &gt;&gt; /etc/profile.d/tty_rc.sh;</span><br><span class="line">echo -e &quot;# .bashrc\nsource /etc/profile&quot; &gt;&gt; $&#123;HOME&#125;/.bashrc;</span><br><span class="line"># tty</span><br><span class="line">echo &#x27;PS1=&quot;[\u@\H:\w]\$ &quot;&#x27; &gt;&gt; /etc/profile.d/tty_rc.sh;</span><br><span class="line"># bash</span><br><span class="line">sed -i &#x27;s/\/bin\/ash$/\/bin\/bash/g&#x27; /etc/passwd;</span><br><span class="line">unlink /bin/sh;</span><br><span class="line">ln -svf /bin/bash /bin/sh;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>tini</code>管理进程。</p>
+<ul>
+<li>避免僵尸进程的产生；</li>
+<li>处理Docker进程信号；</li>
+<li>对镜像完全透明。</li>
+</ul>
+</li>
+</ul>
+<h1 id="golang应用镜像的定制"><a href="#golang应用镜像的定制" class="headerlink" title="golang应用镜像的定制"></a>golang应用镜像的定制</h1><ul>
+<li><p>golang应用的编译构建和镜像打包阶段在Docker环境中执行，用完即删，以保证持续纯净的构建环境。</p>
+</li>
+<li><p>将go的缓存目录挂在到构建机的宿主目录下，复用缓存。</p>
+</li>
+</ul>
+<p>基于以上两点，考虑针对应用的构建环境以及运行时环境进行镜像拆分设计。</p>
+<h2 id="golang应用构建环境镜像定制"><a href="#golang应用构建环境镜像定制" class="headerlink" title="golang应用构建环境镜像定制"></a>golang应用构建环境镜像定制</h2><ul>
+<li><p>golang环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ENV GOPATH /go</span><br><span class="line">ENV PATH $GOPATH/bin:$PATH</span><br><span class="line">mkdir -pv $GOPATH/&#123;bin,pkg,src&#125;;</span><br><span class="line">go env -w GOPROXY=&quot;https://goproxy.cn,https://goproxy.io,direct&quot;;</span><br><span class="line">go env -w CGO_ENABLED=0;</span><br><span class="line">go env -w GOFLAGS=&quot;-mod=readonly&quot;;</span><br><span class="line">go env -w GOOS=&quot;linux&quot;;</span><br><span class="line">go env -w GOARCH=&quot;amd64&quot;;</span><br><span class="line">WORKDIR $GOPATH/src</span><br></pre></td></tr></table></figure>
+<ul>
+<li>也可以集成安全扫描、语法扫描等扫描工具</li>
+</ul>
+</li>
+<li><p>构建步骤的关键逻辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GIT_VERSION=$(git describe --tags --always --dirty=&quot;-dev&quot;)</span><br><span class="line">GIT_COMMIT=$(git rev-parse HEAD)</span><br><span class="line">BUILD_DATE=$(date &quot;+%Y-%m-%d_%H%M%S&quot;)</span><br><span class="line">APP_VERSION=&quot;$&#123;BUILD_DATE&#125;_$&#123;GIT_VERSION&#125;&quot;</span><br><span class="line"></span><br><span class="line">go mod download</span><br><span class="line"></span><br><span class="line">go build -ldflags &quot;-s -w -X main.version=$&#123;APP_VERSION&#125; -X main.commit=$&#123;GIT_COMMIT&#125;&quot; -o $GOPATH/bin/$&#123;APP_NAME:-app&#125;  main.go</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="golang应用运行时环境镜像定制"><a href="#golang应用运行时环境镜像定制" class="headerlink" title="golang应用运行时环境镜像定制"></a>golang应用运行时环境镜像定制</h2><ul>
+<li>golang应用环境可在base镜像的基础上，集成logrotate。并规范应用的目录规划。</li>
+</ul>
+<h1 id="php应用镜像的定制"><a href="#php应用镜像的定制" class="headerlink" title="php应用镜像的定制"></a>php应用镜像的定制</h1><h2 id="php扩展如何管理"><a href="#php扩展如何管理" class="headerlink" title="php扩展如何管理"></a>php扩展如何管理</h2><p><a target="_blank" rel="noopener" href="https://github.com/docker-library/php">docker社区</a>提供的方案是通过源码编译，结合多个脚本组合管理，实现较为复杂。个人推荐的方案是通过apk全量将扩展集成到镜像中，然后通过php的扩展配置文件，管理哪些扩展生效。此种方法虽然会导致镜像存在冗余数据，但是易用性更强。</p>
+<h2 id="php和nginx环境是否应该集成"><a href="#php和nginx环境是否应该集成" class="headerlink" title="php和nginx环境是否应该集成"></a>php和nginx环境是否应该集成</h2><p>一般php应用和nginx代理搭配使用。按照唯一关注性原则(SCP)，理论上应该拆分成两个container组成一个Pod的方式拆分。<br>但是这种拆分的问题非常明显：</p>
+<ul>
+<li>nginx和php需要共享代码目录</li>
+<li>nginx和php需要分别切日志</li>
+<li>nginx和php分别定义容器资源配置，造成浪费</li>
+<li>logrotate需要给进程号发信号，不能作为独立容器，nginx和php分别自带logrotate造成冗余</li>
+</ul>
+<p>本质上只有php环境的镜像中，只能提供fast_cgi服务，不是一个完整的http服务。只有集成了代理之后，才能提供一个完整的功能。一定程度上也符合唯一关注性原则。<br>另外其它社区提供的php服务一般也都是php-fpm和代理集成在一起的。</p>
+<h2 id="如何避免php-fpm进程退出带来的风险"><a href="#如何避免php-fpm进程退出带来的风险" class="headerlink" title="如何避免php-fpm进程退出带来的风险"></a>如何避免php-fpm进程退出带来的风险</h2><p>nginx和php-fpm共存于一个镜像中，php-fpm作为后台进程。一旦php-fpm进程异常，会导致业务请求返回502。可以通过开启php-fpm的ping检测，nginx层代理的ping.path作为Pod的存活检测接口，这样可以实现，php-fpm异常时候，容器自动销毁重建。</p>
+<h1 id="lua应用镜像定制"><a href="#lua应用镜像定制" class="headerlink" title="lua应用镜像定制"></a>lua应用镜像定制</h1><ul>
+<li>在<a target="_blank" rel="noopener" href="http://openresty.org/package/alpine/">alpine官方</a>提供的openresty的apk包的基础上，定制默认的配置文件，如日志格式、代码目录、lua配置等；</li>
+<li>集成logrotate配置，容器内建议滚动保留少量的日志，便于出现异常时快速定位原因。</li>
+</ul>
+<h1 id="crond定时任务如何考虑"><a href="#crond定时任务如何考虑" class="headerlink" title="crond定时任务如何考虑"></a>crond定时任务如何考虑</h1><p>crond在容器中主要为logrotate服务，在微服务架构下，crond应以Sidecar模式的CronJob工作负载形式存在。但具体到logrotate日志滚动实现，crond和logrotate集成在应用镜像中更易用更易实现。可以考虑的实现方式是，将crond和logrotate集成到base镜像中，在应用镜像中按需增加logrotate配置，并启动crond进程。<br><a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/concepts/cluster-administration/logging/">Kubernetes官方</a>建议使用日志代理，在实际生产中，把握原则灵活实现即可。</p>
+<h1 id="使用init-Container将运行时环境和代码剥离"><a href="#使用init-Container将运行时环境和代码剥离" class="headerlink" title="使用init Container将运行时环境和代码剥离"></a>使用init Container将运行时环境和代码剥离</h1><ul>
+<li>避免由于镜像管理不善，增加敏感信息泄露的风险；</li>
+<li>通过Secret对象传入代码库或制品库token，形成鉴权闭环；</li>
+<li>此种方式也可以一定程度减小harbor的存储压力。</li>
+<li>这种方式允许开发者在初始化容器阶段执行一些预处理操作，如创建缓存目录；</li>
+</ul>
+<p>以php应用为例,init Container镜像中的entrypoint.sh脚本中的部分关键逻辑如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line"># 下载代码</span><br><span class="line">git clone --depth 1 -b $&#123;gitTag&#125; https://$&#123;gitUser&#125;:$&#123;gitToken&#125;@$&#123;gitRepo&#125;</span><br><span class="line">if [ $? -ne 0 ]; then</span><br><span class="line">  git clone https://$&#123;gitUser&#125;:$&#123;gitToken&#125;@$&#123;gitRepo&#125;</span><br><span class="line">  git checkout $&#123;gitTag&#125;</span><br><span class="line">fi</span><br><span class="line">unset gitUser</span><br><span class="line">unset gitToken</span><br><span class="line">......</span><br><span class="line"># 根据配置文件管理php扩展，ph扩展的配置文件作为业务代码的一部分，由版本化工具管理</span><br><span class="line">if [ -s &quot;$&#123;phpExtConf:-zruntime/modules.ini&#125;&quot; ]; then</span><br><span class="line">  [ -d /etc/php7/conf.d ] &amp;&amp; rsync -avP $&#123;phpExtConf:-zruntime/modules.ini&#125; /etc/php7/conf.d/ || true</span><br><span class="line">  [ -d /etc/php5/conf.d ] &amp;&amp; rsync -avP $&#123;phpExtConf:-zruntime/modules.ini&#125; /etc/php5/conf.d/ || true</span><br><span class="line">  # 由于init container退出后才开始启动应用容器，因此此处不需要kill -USR2</span><br><span class="line">  # kill -USR2 $(cat /run/php-fpm.pid)</span><br><span class="line">fi</span><br><span class="line">......</span><br><span class="line"># 允许用户在准备代码阶段执行简单的脚本逻辑，由于此处的脚本是从代码库中拉取，因此风险相对可控。</span><br><span class="line">if [ -s &quot;$&#123;initScript&#125;&quot; ]; then</span><br><span class="line">  cat &quot;$&#123;initScript&#125;&quot; |sed -e &#x27;s/rm /echo /g&#x27; -e &#x27;s/find /echo /g&#x27; -e &#x27;s/dirname /echo /g&#x27; -e &#x27;s/cd /echo /g&#x27; -e &#x27;s/ \// /g&#x27; -e &#x27;s/ \\\// /g&#x27;|/bin/sh</span><br><span class="line">fi</span><br><span class="line">......</span><br><span class="line"># 允许用户通过文件方式主动声明在生产环境中需要显式删除的文件或目录，如测试配置文件、文档文件等</span><br><span class="line">if [ -s &quot;$&#123;deleteList&#125;&quot; ]; then</span><br><span class="line">  cat &quot;$&#123;deleteList&#125;&quot; |sed &#x27;s/\(\.*\/\+\)\+$//g&#x27; |xargs -ti rm -rvf &#123;&#125;</span><br><span class="line">fi</span><br><span class="line">......</span><br><span class="line"># 集成固定逻辑清理一些无需保留的文件</span><br><span class="line">rm -rvf .git .drone.yml .gitlab-ci.yml .gitignore .dockerignore Makefile README.md values.yaml zruntime zlist.del zinit.sh /root/entrypoint.sh</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当然，任何方案都不是无懈可击的，此种实现方案的一个明显缺陷在于，每一个Pod副本都需要下载一遍文件，Pod重启也存在这个问题。这种内网传输成本我们认为是可以接受的。</li>
+</ul>
+<h1 id="参阅资料"><a href="#参阅资料" class="headerlink" title="参阅资料"></a>参阅资料</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="https://kuboard.cn/learning/k8s-practice/micro-service/design-pattern.html#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99">kuboard.cn·容器应用的设计原则、模式和反模式</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.12factor.net/zh_cn/">软件交付的12要素</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/opencontainers/runtime-spec">runtime-spec</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.redhat.com/zh/topics/containers/kubernetes-architecture">RedHat·Kubernetes 架构简介</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.redhat.com/en/resources/cloud-native-container-design-whitepaper">RedHat·容器应用的设计原则</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://kubernetes.io/zh/blog/2018/03/principles-of-container-app-design/">基于容器的应用程序设计原理</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SOLID_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1)">面向对象设计原则·SOLID</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Dockerfile最佳实践</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud-atlas.readthedocs.io/zh_CN/latest/docker/init/docker_tini.html">Docker tini进程管理器</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/concepts/cluster-administration/logging/">kubernetes日志架构</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/private/wechatpay.jpg" alt="冷月无声 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/private/alipay.jpg" alt="冷月无声 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/" rel="tag"># 容器化</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E4%B8%9A%E5%8A%A1%E9%83%A8%E7%BD%B2%E5%AE%9E%E8%B7%B5.html" rel="prev" title="边缘计算业务部署实践">
+                  <i class="fa fa-chevron-left"></i> 边缘计算业务部署实践
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%8A%9B%E8%8D%90%E5%87%A0%E6%AC%BE%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%85%E5%A4%87%E7%9A%84chrome%E6%8F%92%E4%BB%B6.html" rel="next" title="力荐几款开发者必备的Chrome插件">
+                  力荐几款开发者必备的Chrome插件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">冷月无声</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"bishixiang","repo":"bishixiang.github.io","client_id":"b5e998f5d6d270ee17b7","client_secret":"b06e51d896fa8c2a1fca271c810046e610b7740f","admin_user":"bishixiang","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"eca18c05d3fdab562588f2fa9ea46a4e"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
